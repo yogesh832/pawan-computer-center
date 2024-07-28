@@ -1,0 +1,28 @@
+.contact{
+    display: flex;
+    font-size: 10px;
+    gap: 30px;
+    background-color: rgb(106, 248, 70);
+    margin: 0;
+    padding: 0;
+}
+.socialIcons{
+    display: flex;
+    gap: 10px;
+}
+.mail{
+    display: flex;
+    flex-direction: row;
+}
+.call{
+display: flex;
+    flex-direction: row;
+}
+
+.socialIcons a{
+    text-decoration: none;
+    color: inherit;
+    font-size: 20px;
+    
+    
+}
