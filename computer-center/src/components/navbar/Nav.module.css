@@ -89,6 +89,22 @@ nav ul li:hover::after {
   position: relative;
 }
 
+@media (max-width: 1206px) {
+  .button1{
+    display:flex;
+    margin-left: 20px;
+    padding:10px;
+    position: fixed;
+  }
+  .button2 {
+    display:flex;
+    margin-left: 20px;
+    padding:10px;
+    position: fixed;
+    /* position: relative; */
+  }
+}
+
 @media (max-width: 768px) {
   nav .mainContainer {
     height: 65px;
