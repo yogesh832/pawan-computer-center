@@ -45,3 +45,4 @@ const LandingContact=()=>{
         </>
     )
 }
+export default LandingContact;
