@@ -1,6 +1,6 @@
 
 import './App.css'
-import Nav from './components/Nav';
+import Nav from './components/navbar/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
