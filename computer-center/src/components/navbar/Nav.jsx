@@ -25,7 +25,9 @@ const Nav = () => {
             aria-label="Toggle navigation"
             onClick={toggleMenu}
           >
-            <span className={`${style.hamburgerIcon}navbar-toggler-icon`}></span>
+
+            
+            <span className="navbar-toggler-icon"></span>
           </button>
           <div className={`collapse navbar-collapse ${isMenuOpen ? 'show' : ''}`} id="navbarNav">
             <ul className="navbar-nav active">

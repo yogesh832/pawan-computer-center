@@ -45,4 +45,9 @@ const LandingContact=()=>{
         </>
     )
 }
+<<<<<<< HEAD
 export default LandingContact;
+=======
+
+export default LandingContact
+>>>>>>> 91e931174ab0d9a6094f945c08d2f6d88168ceea
