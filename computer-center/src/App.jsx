@@ -1,19 +1,14 @@
-
 import './App.css'
-import Contact from './components/contact/Contact';
+import LandingContact from './components/LandingContact/LandingContact';
 import Nav from './components/navbar/Nav';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
 function App() {
-
-
   return (
     <>
 <Nav/>
-<Contact/>
+<LandingContact />
     </>
   )
 }
-
 export default App

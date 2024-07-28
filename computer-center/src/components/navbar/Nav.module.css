@@ -61,6 +61,9 @@ nav ul li:hover::after {
   width: 100%;
   left: 0;
 }
+nav ul li:active{
+  border: 3px solid red;
+}
 
 .buttons {
   position: relative;
@@ -111,44 +114,6 @@ nav ul li:hover::after {
   
 }
 
-
-@media (max-width: 1200px){
-  .resButton1 {
-    max-width: 100px;
-    top: -20px;
-    position: absolute;
-    left: -75vw;
-    padding: 0;
-    font-size: 0.5vw;
-    border-radius: 50px;
-  }
-
-  .resButton2 {
-    display: flex;
-    top: -10px;
-    position: absolute;
-    left: -47vw;
-  }
-  
-}
-@media (max-width: 960px) {
-  .resButton1 {
-    max-width: 100px;
-    top: -20px;
-    position: absolute;
-    left: -75vw;
-    padding: 0;
-    font-size: 0.5vw;
-    border-radius: 50px;
-  }
-
-  .resButton2 {
-    display: flex;
-    top: -10px;
-    position: absolute;
-    left: -47vw;
-  }
-}
 
 
 @media (max-width: 768px) {
