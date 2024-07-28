@@ -1,22 +1,23 @@
 .contact{
     display: flex;
     font-size: 10px;
-    gap: 30px;
-    background-color: rgb(106, 248, 70);
+    gap: 10vw;
+
     margin: 0;
     padding: 0;
 }
-.socialIcons{
-    display: flex;
-    gap: 10px;
-}
+
 .mail{
     display: flex;
     flex-direction: row;
+    padding-left: 5vw;
+    min-width: 200px;
 }
 .call{
 display: flex;
     flex-direction: row;
+    min-width: 200px;
+
 }
 
 .socialIcons a{
@@ -25,4 +26,49 @@ display: flex;
     font-size: 20px;
 
 
+}
+.detail{
+    font-size: 15px;
+    font-weight: 600;
+    color: rgb(141, 46, 46);
+}
+.mainIcon{
+    font-size: 3rem;
+    margin-top: -20px;
+    padding-right: 10px;
+    color: red;
+}
+span{
+    font-size: 20px;
+    font-weight: 700;
+}
+.socialIcons{
+    display: flex;
+    gap: 10px;
+    font-size: 30px;
+ 
+}
+.icon{
+color: rgb(119, 15, 15);
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 10%;
+width: 30px;
+padding: 5px;
+font-size: 30px;
+border-radius: 50%;
+height: 30px;
+}
+.icon:hover{
+    color: blue;
+    padding: 5px;
+    background-color: rgb(216, 208, 208);
+}
+.icon:hover{
+    color: blue;
+    padding: 5px;
+}
+.icon:hover:active{
+    color:blue;
 }

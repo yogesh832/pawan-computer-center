@@ -6,7 +6,7 @@ import { FaTelegram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { MdOutlineEmail } from "react-icons/md";
-import { IoCall } from "react-icons/io5";
+import { IoCallOutline } from "react-icons/io5";
 
 const LandingContact=()=>{
 
@@ -16,20 +16,20 @@ const LandingContact=()=>{
     return(
         <>
         <div className={style.contact}>
-            <h1>Contact:</h1>
-            <div className="mail">
-            <MdOutlineEmail />
-                <div className="mailContent">
-                    <h5>Mail Us</h5>
-                    lskdfjlsdkj@gmail.com
+
+            <div className={style.mail}>
+<p className={style.mainIcon}><MdOutlineEmail /></p>
+                <div className={style.mailContent}>
+                    <span>Mail Us</span>
+                    <p className={style.detail}> lskdfjlsdkj@gmail.com</p>
                 </div>
             </div>
 
-            <div className="call">
-            <IoCall />
-                <div className="callContent">
-                    <h5>Call Us</h5>
-                    +91 9999999999
+            <div className={style.call}>
+            <p className={style.mainIcon}><IoCallOutline /></p>
+                <div className={style.callContent}>
+                    <span>Call Us</span>
+                    <p className={style.detail}> +91 99999999 </p>
     </div>
             </div>
 
@@ -45,9 +45,6 @@ const LandingContact=()=>{
         </>
     )
 }
-<<<<<<< HEAD
-export default LandingContact;
-=======
 
-export default LandingContact
->>>>>>> 91e931174ab0d9a6094f945c08d2f6d88168ceea
+export default LandingContact;
+
