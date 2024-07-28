@@ -1,4 +1,4 @@
-import style from "./LandingContact.module.css";
+import style from "../LandingContact/LandingContact.module.css";
 import { FaFacebookF } from "react-icons/fa6";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -24,7 +24,7 @@ const LandingContact=()=>{
                     lskdfjlsdkj@gmail.com
                 </div>
             </div>
-            
+
             <div className="call">
             <IoCall />
                 <div className="callContent">
@@ -45,4 +45,3 @@ const LandingContact=()=>{
         </>
     )
 }
-export default LandingContact;
