@@ -9,8 +9,14 @@ import 'swiper/css/autoplay';
 
 // import required modules
 import { Pagination, Autoplay } from 'swiper/modules';
+import { FaFacebookF } from "react-icons/fa6";
+import { FaInstagram } from "react-icons/fa";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FaTelegram } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { IoLogoYoutube } from "react-icons/io";
+import { MdOutlineEmail } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
-
 function MySwiper() {
   return (
     <>
@@ -28,14 +34,14 @@ function MySwiper() {
         className={style.mySwiper}
       >
         <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
+        <SwiperSlide><span className={style.img}><MdOutlineEmail /></span></SwiperSlide>
+        <SwiperSlide><span className={style.img}><IoLogoYoutube /></span></SwiperSlide>
+        <SwiperSlide><span className={style.img}><FaTwitter /></span></SwiperSlide>
+        <SwiperSlide><span className={style.img}><FaTelegram /></span></SwiperSlide>
+        <SwiperSlide><span className={style.img}><FaLinkedinIn /></span></SwiperSlide>
+        <SwiperSlide><span className={style.img}><FaLinkedinIn /></span></SwiperSlide>
         <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
+        <SwiperSlide><span className={style.img}><FaInstagram /></span></SwiperSlide>
       </SwiperComponent>
     </>
   );

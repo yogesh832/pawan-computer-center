@@ -1,19 +1,35 @@
 .contact{
     display: flex;
     font-size: 10px;
-    gap: 10vw;
-
+    gap: 4vw;
     margin: 0;
     padding: 0;
 }
-
-.mail{
+.welcome{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 20px;
+    color: rgb(141, 46, 46);
+    padding-top: 0;
+    min-width: 250px;
+   
+}
+.smallContainer{
+    display: flex;
+    flex-direction: row;
+}
+
+ .mail{
+    display: flex;  
     flex-direction: row;
     padding-left: 5vw;
     min-width: 200px;
 }
-.call{
+ .call{
 display: flex;
     flex-direction: row;
     min-width: 200px;
@@ -73,3 +89,61 @@ height: 30px;
 .icon:hover:active{
     color:blue;
 }
+@media screen and (max-width: 1008px) {
+    .contact{
+        flex-direction: column;
+        gap: 0;
+        font-size: 10px;
+        overflow: hidden;
+        padding-top: 0;
+    }
+    .smallContainer{
+        display: flex;
+        flex-direction: row;
+        
+    }
+    .welcome{
+        font-size: 15px;
+        font-weight: 700;
+        margin-left: 20px;
+        color: rgb(141, 46, 46);
+        padding-top: 0;
+        min-width: 250px;
+        padding-top: 0;
+    }
+    span{
+        font-size: 10px;
+    }
+    .mail{
+        display: flex;
+        flex-direction: row;
+        padding-left: 5vw;
+        min-width: 100px;
+    
+        padding-top: 0;
+    }
+    .mainIcon{
+        font-size: 2rem;    
+        padding-top: 7px;
+    }
+    .call{
+        display: flex;
+        flex-direction: row;
+        min-width: 200px;
+        padding-left: 10vw;
+    }
+    .socialIcons {
+        display: none;
+    }
+    .detail{
+        font-size: 10px;
+        font-weight: 600;
+        color: rgb(141, 46, 46);
+    }
+    
+        }
+        @media  (max-width: 768px) {
+.socialIcons{
+    display: flex;
+}
+        }

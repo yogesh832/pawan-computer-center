@@ -92,24 +92,51 @@ nav ul li:active{
   position: relative;
 }
 
-
-
-@media (max-width: 992px) {
-  .resButton1 {
-    max-width: 100px;
-    top: -20px;
+@media (max-width: 1200px) {
+  .button1, .resButton1 {
+    display: flex;
+    top: -40px;
     position: absolute;
-    left: -75vw;
-    padding: 0;
-    font-size: 0.5vw;
-    border-radius: 50px;
+    left: -507vw;
+
   }
 
-  .resButton2 {
+  .button2, .resButton2 {
     display: flex;
-    top: -10px;
+    top: -40px;
     position: absolute;
-    left: -47vw;
+    left: -707vw;
+  }
+  .socialIcon{
+    margin-right: 20px;
+  }
+    
+}
+
+@media (max-width: 991px) {
+  nav ul{
+    z-index: 9;
+    position: absolute;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    top:120px;
+        background: linear-gradient(to bottom, rgb(255, 119, 119) 0%, rgb(46, 151, 142));
+      }
+  .button1, .resButton1 {
+    display: flex;
+    top: -40px;
+    position: absolute;
+    left: -57vw;
+
+  }
+
+  .button2, .resButton2 {
+    display: flex;
+    top: -40px;
+    position: absolute;
+    left: -77vw;
   }
   
 }
@@ -117,12 +144,15 @@ nav ul li:active{
 
 
 @media (max-width: 768px) {
-  nav .mainContainer {
-    height: 65px;
-    position: relative;
-    padding-left: 5px;
-  }
 
+  nav ul{
+    z-index: 9;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 80px;
+        background: linear-gradient(to bottom, rgb(255, 119, 119) 0%, rgb(46, 151, 142));
+      }
   .logo {
     width: 60px;
     height: 60px;
@@ -146,7 +176,7 @@ nav ul li:active{
 
   .button1 {
     display: flex;
-    top: -20px;
+    top: -25px;
     position: absolute;
     left: -80vw;
     margin-left: 20px;
@@ -155,7 +185,7 @@ nav ul li:active{
 
   .button2 {
     display: flex;
-    top: -20px;
+    top: -25px;
     position: absolute;
     left: -55vw;
     margin-left: 20px;
@@ -164,7 +194,20 @@ nav ul li:active{
 }
 
 @media (max-width: 600px) {
-  .buttons {
+ 
+  nav ul{
+z-index: 9;
+position: absolute;
+right: 0;
+left: 0;
+top: 70px;
+    background: linear-gradient(to bottom, rgb(255, 119, 119) 0%, rgb(46, 151, 142));
+  }
+  nav ul li{
+    font-size: 4vw;
+    padding-left: 5vw;
+  }
+   .buttons {
     display: none;
   }
 
@@ -180,9 +223,9 @@ nav ul li:active{
 
   .resButton1 {
     max-width: 100px;
-    top: -20px;
+    top: -25px;
     position: absolute;
-    left: -75vw;
+    left: -70vw;
     padding: 0;
     font-size: 0.5vw;
     border-radius: 50px;
@@ -190,7 +233,7 @@ nav ul li:active{
 
   .resButton2 {
     display: flex;
-    top: -20px;
+    top: -25px;
     position: absolute;
     left: -47vw;
   }

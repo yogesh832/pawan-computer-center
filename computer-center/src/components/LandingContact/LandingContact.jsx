@@ -9,21 +9,22 @@ import { MdOutlineEmail } from "react-icons/md";
 import { IoCallOutline } from "react-icons/io5";
 
 const LandingContact=()=>{
-
+ 
 
 
 
     return(
         <>
         <div className={style.contact}>
-
+<p className={style.welcome}>Welcome To Pawan Computer Center 🖥️</p>
             <div className={style.mail}>
+                <div className={style.smallContainer}>
 <p className={style.mainIcon}><MdOutlineEmail /></p>
                 <div className={style.mailContent}>
                     <span>Mail Us</span>
                     <p className={style.detail}> lskdfjlsdkj@gmail.com</p>
                 </div>
-            </div>
+            
 
             <div className={style.call}>
             <p className={style.mainIcon}><IoCallOutline /></p>
@@ -31,6 +32,8 @@ const LandingContact=()=>{
                     <span>Call Us</span>
                     <p className={style.detail}> +91 99999999 </p>
     </div>
+            </div>
+            </div>
             </div>
 
             <div className={style.socialIcons}>
