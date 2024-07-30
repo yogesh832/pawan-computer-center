@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import style from './Nav.module.css';
 import logo from '../../assets/Images/logo.png';
-
+import { FaHome } from "react-icons/fa";
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -33,7 +33,7 @@ const Nav = () => {
             <ul className="navbar-nav active">
               <li className="nav-item">
                 <a className="nav-link" href="#">
-                  Home
+               <span className={style.icon}> <FaHome /></span>Home
                 </a>
               </li>
               <li className="nav-item">

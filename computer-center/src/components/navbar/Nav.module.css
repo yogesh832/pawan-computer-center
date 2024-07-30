@@ -35,6 +35,15 @@ nav ul {
   gap: 20px;
 }
 
+nav .nav-link {
+  display: flex;
+  flex-direction: row;
+
+}
+nav .icon{
+  font-size: 25px;
+  margin-right: 5px;
+}
 nav ul li {
   text-decoration: none;
   color: #a02020;

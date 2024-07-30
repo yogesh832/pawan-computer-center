@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from './components/account/Login';
 import MySwiper from './components/swiper/swiper';
 import Marquee from './components/Marque/Marque';
-
+import InfoSections from './components/InfoSection/InfoSections';
 
 
 function App() {
@@ -14,9 +14,9 @@ function App() {
 <Nav/>
 <LandingContact />
 
-<Marquee />
-<MySwiper />
-
+{/* <Marquee />
+<MySwiper /> */}
+<InfoSections />
     </>
   )
 }

@@ -17,24 +17,27 @@ const LandingContact=()=>{
         <>
         <div className={style.contact}>
 <p className={style.welcome}>Welcome To Pawan Computer Center 🖥️</p>
-            <div className={style.mail}>
-                <div className={style.smallContainer}>
-<p className={style.mainIcon}><MdOutlineEmail /></p>
+          
+                
+    <div className={style.smallContainer}>
+    <div className={style.mail}>
+                    <p className={style.mainIcon}><MdOutlineEmail /></p>
                 <div className={style.mailContent}>
                     <span>Mail Us</span>
                     <p className={style.detail}> lskdfjlsdkj@gmail.com</p>
                 </div>
-            
+        </div>
 
             <div className={style.call}>
-            <p className={style.mainIcon}><IoCallOutline /></p>
+             <p className={style.mainIcon}><IoCallOutline /></p>
                 <div className={style.callContent}>
                     <span>Call Us</span>
                     <p className={style.detail}> +91 99999999 </p>
+                    </div> 
+            </div>
+
+
     </div>
-            </div>
-            </div>
-            </div>
 
             <div className={style.socialIcons}>
                 <div className={style.icon}><a href=""><FaFacebookF />      </a></div>

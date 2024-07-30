@@ -1,0 +1,123 @@
+/* Base styles for the container and sections */
+.container {
+    display: flex;
+gap: 100px;
+    justify-content: space-around;
+margin-inline: 10vw;
+    background-color: #f4f4f4;
+}
+
+.section {
+    width: calc(50% - 20px); /* Two columns with gap for spacing */
+    padding: 40px 20px 20px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+}
+
+.section h3 {
+    font-size: 1.2em;
+    margin: 20px 0 10px;
+}
+
+.section p {
+    font-size: 0.9em;
+    margin: 0;
+}
+
+.courses {
+    background-color: #FF0000; /* Red */
+}
+
+.books {
+    background-color: #039603; /* Green */
+}
+
+.teachers {
+    background-color: #3333ff; /* Blue */
+}
+
+.certification {
+    background-color: #9933ff; /* Purple */
+}
+
+.semiSphere {
+    position: absolute;
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 110px;
+    height: 60px;
+    border-top-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.coursesSphere {
+    background-color: #FF0000; /* Red */
+}
+
+.booksSphere {
+    background-color: #039603; /* Green */
+}
+
+.teachersSphere {
+    background-color: #3333ff; /* Blue */
+}
+
+.certificationSphere {
+    background-color: #9933ff; /* Purple */
+}
+
+.icon {
+    font-size: 24px;
+    color: rgb(255, 164, 164);
+    transition: transform 0.3s;
+}
+
+
+.section:hover {
+    .icon{
+        color: white;
+    transform: scale(1.5);
+}
+}
+
+/* Media Query for tablets and small desktops */
+@media (max-width: 1200px) {
+    .container{
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .section {
+
+   
+        width: calc(100% - 40px); /* Full width with gap for spacing */
+    }
+}
+@media (max-width: 768px) {
+    .container{
+        flex-wrap: wrap;
+    }
+    .section {
+
+   
+        width: calc(100% - 40px); /* Full width with gap for spacing */
+    }
+}
+
+/* Media Query for mobile devices */
+@media (max-width: 600px) {
+    .section {
+        width: calc(100% - 20px); /* Full width with gap for spacing */
+    }
+}

@@ -21,19 +21,21 @@
 .smallContainer{
     display: flex;
     flex-direction: row;
+  
+    
 }
 
  .mail{
     display: flex;  
     flex-direction: row;
-    padding-left: 5vw;
+    padding-left: 2vw;
     min-width: 200px;
 }
  .call{
 display: flex;
     flex-direction: row;
     min-width: 200px;
-
+    padding-left: 5vw;
 }
 
 .socialIcons a{
@@ -144,6 +146,26 @@ height: 30px;
         }
         @media  (max-width: 768px) {
 .socialIcons{
-    display: flex;
+    display: none;
+
 }
-        }
+.smallContainer{
+    justify-content: center;
+    flex-direction: row;
+    gap: 5vw;
+}
+.welcome{
+    font-size: 15px;
+    font-weight: 700;
+    margin-left: 20px;
+    color: rgb(141, 46, 46);
+    padding-top: 0;
+    min-width: 250px;
+   
+}
+.call{
+    margin-left: 5vw;
+    margin-right: 0;
+}
+}
+        
