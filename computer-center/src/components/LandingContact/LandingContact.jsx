@@ -23,7 +23,7 @@ const LandingContact=()=>{
     <div className={style.mail}>
                     <p className={style.mainIcon}><MdOutlineEmail /></p>
                 <div className={style.mailContent}>
-                    <span>Mail Us</span>
+                    
                     <p className={style.detail}> lskdfjlsdkj@gmail.com</p>
                 </div>
         </div>
@@ -31,7 +31,7 @@ const LandingContact=()=>{
             <div className={style.call}>
              <p className={style.mainIcon}><IoCallOutline /></p>
                 <div className={style.callContent}>
-                    <span>Call Us</span>
+                   
                     <p className={style.detail}> +91 99999999 </p>
                     </div> 
             </div>

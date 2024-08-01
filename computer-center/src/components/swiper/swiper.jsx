@@ -6,17 +6,16 @@ import style from "../swiper/Swiper.module.css";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
-
-// import required modules
 import { Pagination, Autoplay } from 'swiper/modules';
-import { FaFacebookF } from "react-icons/fa6";
-import { FaInstagram } from "react-icons/fa";
-import { FaLinkedinIn } from "react-icons/fa";
-import { FaTelegram } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { IoLogoYoutube } from "react-icons/io";
-import { MdOutlineEmail } from "react-icons/md";
-import { IoCallOutline } from "react-icons/io5";
+// import required modules
+
+
+import hero from "../../assets/Images/hero.jpg";
+ import hero1  from "../../assets/Images/hero1.jpg";
+ import hero2  from "../../assets/Images/hero2.jpg";
+ import hero3  from "../../assets/Images/hero3.jpg";
+ import hero4  from "../../assets/Images/hero4.jpg";
+ import hero5  from "../../assets/Images/hero5.jpg";
 function MySwiper() {
   return (
     <>
@@ -33,15 +32,13 @@ function MySwiper() {
         }}
         className={style.mySwiper}
       >
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><MdOutlineEmail /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoLogoYoutube /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><FaTwitter /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><FaTelegram /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><FaLinkedinIn /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><FaLinkedinIn /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><IoCallOutline /></span></SwiperSlide>
-        <SwiperSlide><span className={style.img}><FaInstagram /></span></SwiperSlide>
+        <SwiperSlide><div className={style.img}><img src={hero} alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className={style.img}><img src={hero1} alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className={style.img}><img src={hero2} alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className={style.img}><img src={hero3} alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className={style.img}><img src={hero4} alt="" /></div></SwiperSlide>
+        <SwiperSlide><div className={style.img}><img src={hero5} alt="" /></div></SwiperSlide>
+
       </SwiperComponent>
     </>
   );

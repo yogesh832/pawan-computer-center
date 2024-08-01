@@ -143,7 +143,7 @@ background-color: white;
     top:120px;
         background: linear-gradient(to bottom, rgb(255, 119, 119) 0%, rgb(46, 151, 142));
       }
-  .button1, .resButton1 {
+  .button1 {
     display: flex;
     top: -40px;
     position: absolute;
@@ -151,7 +151,7 @@ background-color: white;
 
   }
 
-  .button2, .resButton2 {
+  .button2 {
     display: flex;
     top: -40px;
     position: absolute;
@@ -197,7 +197,7 @@ background-color: white;
     display: flex;
     top: -25px;
     position: absolute;
-    left: -80vw;
+    left: -55vw;
     margin-left: 20px;
     font-weight: 500;
   }
@@ -206,7 +206,7 @@ background-color: white;
     display: flex;
     top: -25px;
     position: absolute;
-    left: -55vw;
+    left: -33vw;
     margin-left: 20px;
     font-weight: 500;
   }
@@ -245,9 +245,12 @@ top: 70px;
     top: -25px;
     position: absolute;
     left: -70vw;
-    padding: 0;
-    font-size: 0.5vw;
     border-radius: 50px;
+    margin-left: 0px;
+  padding: 4px 8px;
+  font-weight: 500;
+    border-radius: 20px;
+  border: 1px solid rgba(26, 4, 4, 0.479);
   }
 
   .resButton2 {
@@ -255,5 +258,11 @@ top: 70px;
     top: -25px;
     position: absolute;
     left: -47vw;
+    color: rgb(245, 241, 241);
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 20px;
+    border: none;
+    background-color: rgb(15, 15, 15);
   }
 }

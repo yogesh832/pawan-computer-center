@@ -17,7 +17,7 @@ function App() {
 <Marquee></Marquee>
 <InfoSections />
 <Login></Login>
-<Contact />
+{/* <Contact /> */}
 
     </>
   )

@@ -73,10 +73,10 @@ const Nav = () => {
           </button>
         </div>
         <div className={style.resButtons}>
-          <button type="button" className={`${style.resButton1} btn btn-danger`}>
+          <button type="button" className={`${style.resButton1} `}>
             SignIn
           </button>
-          <button type="button" className={`${style.resButton2} btn btn-danger`}>
+          <button type="button" className={`${style.resButton2}`}>
             SignUp
           </button>
         </div>

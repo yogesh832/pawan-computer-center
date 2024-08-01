@@ -10,14 +10,12 @@
     padding-top: 20px;
     padding-bottom: 20px;
     width: 100%;
-    height: 70px;
+    height: 0px;
     color: white;
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     overflow: hidden;
-    /* border-top: 1px solid rgb(255, 255, 255); */
-    /* border-bottom: 1px solid rgb(255, 255, 255); */
-    /* border-radius: 10px; */
+   
 }
 .welcome{
     display: flex;
@@ -37,7 +35,7 @@
     display: flex;
     flex-direction: row;
   
-    
+     ;
 }
 
  .mail{
@@ -52,7 +50,7 @@ display: flex;
     flex-direction: row;
     min-width: 200px;
     padding-top: 10px;
-    padding-left: 5vw;
+
 }
 
 .socialIcons a{
@@ -68,7 +66,7 @@ display: flex;
     color: rgb(230, 197, 197);
 }
 .mainIcon{
-    font-size: 2rem;
+    font-size: rem;
     margin-top: -10px;
     padding-right: 5px;
     color: rgb(235, 209, 209);
@@ -110,81 +108,29 @@ height: 30px;
 .icon:hover:active{
     color:blue;
 }
-@media screen and (max-width: 1008px) {
+
+@media (max-width: 768px) {
     .contact{
-        flex-direction: column;
-        gap: 0;
-        font-size: 10px;
-        overflow: hidden;
-        padding-top: 0;
-    }
-    .smallContainer{
-        display: flex;
-        flex-direction: row;
         
-    }
-    .welcome{
-        font-size: 15px;
-        font-weight: 700;
-        margin-left: 20px;
-        color: rgb(141, 46, 46);
-        padding-top: 0;
-        min-width: 250px;
-        padding-top: 0;
-    }
-    span{
         font-size: 10px;
-    }
-    .mail{
-        display: flex;
-        flex-direction: row;
-        padding-left: 5vw;
-        min-width: 100px;
+        background-color: #DB2016;
+            justify-content: center;
+            align-items: center;
+        width: 100%;
+        height: 30px;
+        color: white;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 700;
     
-        padding-top: 0;
     }
-    .mainIcon{
-        font-size: 2rem;    
-        padding-top: 7px;
-    }
-    .call{
-        display: flex;
-        flex-direction: row;
-        min-width: 200px;
-        padding-left: 10vw;
-    }
-    .socialIcons {
+
+    .socialIcons{
         display: none;
     }
-    .detail{
-        font-size: 10px;
-        font-weight: 600;
-        color: rgb(141, 46, 46);
+    .mail, .call{
+        display: none   ;
     }
-    
-        }
-        @media  (max-width: 768px) {
-.socialIcons{
-    display: none;
-
-}
-.smallContainer{
-    justify-content: center;
-    flex-direction: row;
-    gap: 5vw;
-}
 .welcome{
-    font-size: 15px;
-    font-weight: 700;
-    margin-left: 20px;
-    color: rgb(141, 46, 46);
-    padding-top: 0;
-    min-width: 250px;
-   
-}
-.call{
-    margin-left: 5vw;
-    margin-right: 0;
+    font-size: 14px;
 }
 }
-        
