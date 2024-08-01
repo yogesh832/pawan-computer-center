@@ -2,6 +2,7 @@
 .container {
     display: flex;
 gap: 100px;
+margin-top: 5vw;
     justify-content: space-around;
 margin-inline: 10vw;
     background-color: #f4f4f4;

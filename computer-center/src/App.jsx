@@ -6,17 +6,19 @@ import Login from './components/account/Login';
 import MySwiper from './components/swiper/swiper';
 import Marquee from './components/Marque/Marque';
 import InfoSections from './components/InfoSection/InfoSections';
-
+import Contact from './components/contact/Contact';
 
 function App() {
   return (
     <>
+    <LandingContact />
 <Nav/>
-<LandingContact />
-
-{/* <Marquee />
-<MySwiper /> */}
+<MySwiper></MySwiper>
+<Marquee></Marquee>
 <InfoSections />
+<Login></Login>
+<Contact />
+
     </>
   )
 }
