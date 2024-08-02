@@ -14,11 +14,11 @@ function App() {
     <>
     <LandingContact />
 <Nav/>
-{/* <MySwiper />
+<MySwiper />
  <Marquee/>
 <InfoSections />
-<Login />
-<Contact /> */}
+<Login /> 
+ <Contact /> 
 <Footer/>
     </>
   )
