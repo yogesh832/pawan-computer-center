@@ -7,18 +7,19 @@ import MySwiper from './components/swiper/swiper';
 import Marquee from './components/Marque/Marque';
 import InfoSections from './components/InfoSection/InfoSections';
 import Contact from './components/contact/Contact';
+import { Footer } from './components/footer/Footer';
 
 function App() {
   return (
     <>
     <LandingContact />
 <Nav/>
-<MySwiper></MySwiper>
-<Marquee></Marquee>
+{/* <MySwiper />
+ <Marquee/>
 <InfoSections />
-<Login></Login>
-{/* <Contact /> */}
-
+<Login />
+<Contact /> */}
+<Footer/>
     </>
   )
 }
