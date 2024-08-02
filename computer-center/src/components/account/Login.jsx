@@ -76,8 +76,9 @@ const Login = () => {
             </Loginimg>
 
             <Wrapper>
-                <TextField label="Username" variant="filled" fullWidth />
-                <TextField label="Password" type="password" variant="filled" fullWidth />
+                <TextField label="Username" variant="filled" fullWidth 
+                    sx={{ width: 500 }} />
+                <TextField label="Password" type="password" variant="filled" fullWidth sx={{ width: 500 }} />
                 <Button variant="contained" fullWidth>Login</Button>
                 <CenteredText variant="body2">OR</CenteredText>
                 <Button variant="outlined" fullWidth>Create an Account</Button>
