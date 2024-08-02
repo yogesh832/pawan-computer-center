@@ -48,7 +48,7 @@ export function Footer() {
                                     <div className="col-md-4 mb-2" key={index}>
                                         <h6 className="font-weight-bold">
                                             <MdOutlineKeyboardArrowRight />
-                                            <a href="#!" className="text-white ms-2">{link}</a>
+                                            <a href="#!" className="text-white ms-1 fs-6">{link}</a>
                                         </h6>
                                     </div>
                                 ))}
