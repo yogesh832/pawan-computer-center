@@ -3,15 +3,18 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTelegram, FaTwitter } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import dummyimg from "../../assets/Images/dummy.jpg";
-
+import logo from "../../assets/Images/logo.png"
 export function Footer() {
     return (
         <div className="container my-5">
-            <footer className="text-white" style={{ backgroundColor: '#FF0000' }}>
+            <footer className="text-white" style={{ backgroundColor: '#111D5E' }}>
                 <div className="container">
                     <div className="row mt-5">
                         {/* Left Section */}
                         <div className="col-md-6">
+                            <div>
+                                <img src={logo} alt="logo" style={{ width: '100%', maxWidth: '120px', margin: '0 10px'}} className="mx-2 p-2" />
+                            </div>
                             <h5 className="text-center">Recent Blogs</h5>
                             <div className="d-flex justify-content-center">
                                 <a href="https://www.nicecomputerbageshwar.com/page.php" target="_blank" rel="noopener noreferrer">
@@ -65,7 +68,7 @@ export function Footer() {
                     </section>
                 </div>
 
-                <div className="text-center p-3" style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}>
+                <div className="text-center p-3" style={{ backgroundColor: 'rgba(220, 31, 22, 1)' }}>
                     © 2024 All Rights Reserved By
                 </div>
             </footer>
