@@ -49,8 +49,13 @@ const Nav = () => {
                   Courses
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="coursesDropdown">
-                  <li><a className="dropdown-item" href="#">Course 1</a></li>
-                  <li><a className="dropdown-item" href="#">Course 2</a></li>
+                  <li><a className="dropdown-item" href="#">1 Month</a></li>
+                  <li><a className="dropdown-item" href="#">2 Month</a></li>
+                  <li><a className="dropdown-item" href="#">3 Month</a></li>
+                  <li><a className="dropdown-item" href="#">6 Month</a></li>
+                  <li><a className="dropdown-item" href="#">12 Month</a></li>
+                  <li><a className="dropdown-item" href="#">18 Month</a></li>
+                  <li><a className="dropdown-item" href="#">24 Month</a></li>
                 </ul>
               </li>
               <li className="nav-item dropdown">
