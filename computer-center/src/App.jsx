@@ -11,17 +11,19 @@ import  Footer  from './components/footer/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import AboutUs from '../src/components/navbar/About us/AboutUs'
+import { One } from './components/services/onemonth/One';
 function App() {
   return (
     <>
     <LandingContact />
 <Nav/>
-<MySwiper />
+{/* <MySwiper />
  <Marquee/>
 <InfoSections />
-{/* <Login /> 
- <Contact />  */}
-<AboutUs />
+<Login /> 
+ <Contact /> 
+<AboutUs /> */}
+<One />
 <Footer />
     </>
   )

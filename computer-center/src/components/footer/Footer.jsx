@@ -6,7 +6,7 @@ import dummyimg from "../../assets/Images/dummy.jpg";
 import logo from "../../assets/Images/logo.png"
 export function Footer() {
     return (
-        <div className="container my-5">
+        
             <footer className="text-white" style={{ backgroundColor: '#111D5E' }}>
                 <div className="container">
                     <div className="row mt-5">
@@ -72,7 +72,7 @@ export function Footer() {
                     © 2024 All Rights Reserved By
                 </div>
             </footer>
-        </div>
+       
     );
 }
 
