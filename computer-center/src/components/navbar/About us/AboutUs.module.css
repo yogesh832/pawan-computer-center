@@ -49,7 +49,7 @@ font-size: 3vw;
   
   .container2 {
     background-image: linear-gradient(to bottom,
-     rgba(80, 12, 12, 0.678), rgba(2, 2, 2, 0.74)),
+     rgba(80, 12, 12, 0.678), rgba(39, 43, 85, 0.74)),
     url('../../../assets/Images/vison.png');
     background-size: cover;
     padding: 20px;
@@ -79,7 +79,7 @@ font-size: 3vw;
   .container2 .right{
     width: 50%;
     margin-block: 50px;
-    pading-inline: 30px;
+    padding-inline: 30px;
     font-size: 1.2em;
     font-weight: 500;
     color: #fff9f9;
