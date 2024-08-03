@@ -66,8 +66,8 @@ display: flex;
     color: rgb(230, 197, 197);
 }
 .mainIcon{
-    font-size: rem;
-    margin-top: -10px;
+    font-size: 1.5rem;
+    margin-top: -8px;
     padding-right: 5px;
     color: rgb(235, 209, 209);
 }
@@ -75,6 +75,7 @@ display: flex;
 span{
     font-size: 13px;
     font-weight: 700;
+  
 }
 .socialIcons{
     display: flex;
@@ -83,6 +84,10 @@ span{
     font-size: 30px;
     align-items: center;
  
+}
+p{
+  
+    
 }
 .icon{
 color: rgb(116, 87, 87);

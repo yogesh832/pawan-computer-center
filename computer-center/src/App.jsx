@@ -7,8 +7,10 @@ import MySwiper from './components/swiper/swiper';
 import Marquee from './components/Marque/Marque';
 import InfoSections from './components/InfoSection/InfoSections';
 import Contact from './components/contact/Contact';
-import { Footer } from './components/footer/Footer';
-
+import  Footer  from './components/footer/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import AboutUs from '../src/components/navbar/About us/AboutUs'
 function App() {
   return (
     <>
@@ -17,9 +19,10 @@ function App() {
 <MySwiper />
  <Marquee/>
 <InfoSections />
-<Login /> 
- <Contact /> 
-<Footer/>
+{/* <Login /> 
+ <Contact />  */}
+<AboutUs />
+<Footer />
     </>
   )
 }

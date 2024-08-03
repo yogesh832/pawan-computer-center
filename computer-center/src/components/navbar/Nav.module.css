@@ -1,7 +1,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family:sans-serif;
+  font-family: sans-serif;
 }
 
 nav .mainContainer {
@@ -9,10 +9,10 @@ nav .mainContainer {
   gap: 5vw;
   padding-left: 30px;
   padding-bottom: 10px;
-  font-family: sans-serif;
   background-color: white;
   height: 80px;
 }
+
 .logo {
   width: 80px;
   height: 80px;
@@ -25,37 +25,23 @@ nav .mainContainer {
   font-size: 2rem;
   font-weight: bold;
   color: #333;
-  margin-bottom: -55px;
   cursor: pointer;
 }
 
 nav ul {
   display: flex;
   list-style: none;
-  margin: 0;
-  padding: 0;
-  font-size: 16px;
   gap: 20px;
 }
 
-nav .nav-link {
-  display: flex;
-  flex-direction: row;
-  color: #000;
-}
-
 nav ul li {
-  text-decoration: none;
-
-  transition: all 0.3s ease-in-out;
-  
-  font-weight: 600;
-  padding: 0;
-  cursor: pointer;
   position: relative;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
 }
 
-nav ul li::after {
+/* nav ul li::after {
   content: '';
   position: absolute;
   left: 0;
@@ -63,47 +49,45 @@ nav ul li::after {
   width: 0;
   height: 3px;
   background-color: rgb(235, 222, 222);
-  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  transition: width 0.3s ease-in-out;
+} */
+
+nav ul li a {
+  text-decoration: none;
+  color: #000;
 }
 
-nav ul li:hover::after {
-  width: 100%;
-  left: 0;
-}
-nav ul li:active{
-  border: 3px solid red;
+nav ul li a:active {
+  border: none;
 }
 
 .buttons {
   position: relative;
 }
 
-.button1 {
+.button1,
+.button2 {
   display: flex;
+  position: absolute;
   top: -20px;
-  position: absolute; 
-color: rgb(12, 1, 1);
-background-color: white;  
-  left: -23vw;
   margin-left: 20px;
   padding: 8px 16px;
   font-weight: 500;
-    border-radius: 20px;
+  border-radius: 20px;
+}
+
+.button1 {
+  left: -23vw;
+  color: rgb(12, 1, 1);
+  background-color: white;
   border: 1px solid rgba(26, 4, 4, 0.479);
 }
 
 .button2 {
-  display: flex;
-  top: -20px;
-  position: absolute;
   left: -13vw;
-  margin-left: 20px;
   color: rgb(245, 241, 241);
-  font-weight: 500;
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: none;
   background-color: rgb(15, 15, 15);
+  border: none;
 }
 
 .resButtons {
@@ -112,79 +96,47 @@ background-color: white;
 }
 
 @media (max-width: 1200px) {
-  .button1, .resButton1 {
-    display: flex;
-    top: -40px;
-    position: absolute;
-    left: -507vw;
-
-  }
-
-  .button2, .resButton2 {
-    display: flex;
-    top: -40px;
-    position: absolute;
-    left: -707vw;
-  }
-  .socialIcon{
-    margin-right: 20px;
-  }
-    
-}
-
-@media (max-width: 991px) {
-  nav ul{
-    z-index: 9;
-    position: absolute;
-    right: 0;
-    left: 0;
-    display: flex;
-    flex-direction: column;
-    top:120px;
-        background: linear-gradient(to bottom, rgb(255, 119, 119) 0%, rgb(46, 151, 142));
-      }
   .button1 {
-    display: flex;
-    top: -40px;
-    position: absolute;
-    left: -57vw;
-
+    left: -507vw;
   }
 
   .button2 {
-    display: flex;
-    top: -40px;
-    position: absolute;
-    left: -77vw;
+    left: -707vw;
   }
-  
+
+  .socialIcon {
+    margin-right: 20px;
+  }
 }
 
-
-
-@media (max-width: 768px) {
-
-  nav ul{
-    z-index: 9;
+@media (max-width: 991px) {
+  nav ul {
     position: absolute;
+    top: 120px;
     right: 0;
     left: 0;
+    flex-direction: column;
+    background: linear-gradient(to bottom, rgb(255, 119, 119) 0%, rgb(46, 151, 142));
+    z-index: 9;
+  }
+
+  .button1 {
+    left: -57vw;
+  }
+
+  .button2 {
+    left: -77vw;
+  }
+}
+
+@media (max-width: 768px) {
+  nav ul {
     top: 80px;
-        background: linear-gradient(to bottom, rgb(255, 119, 119) 0%, rgb(46, 151, 142));
-      }
+  }
+
   .logo {
     width: 60px;
     height: 60px;
-    margin-right: 20px;
-    border-radius: 50%;
-    background-color: #f5f5f5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    font-weight: bold;
-    color: #333;
-    cursor: pointer;
   }
 
   .hamburgerNav {
@@ -194,75 +146,57 @@ background-color: white;
   }
 
   .button1 {
-    display: flex;
-    top: -25px;
-    position: absolute;
     left: -55vw;
-    margin-left: 20px;
-    font-weight: 500;
   }
 
   .button2 {
-    display: flex;
-    top: -25px;
-    position: absolute;
     left: -33vw;
-    margin-left: 20px;
-    font-weight: 500;
   }
 }
 
 @media (max-width: 600px) {
- 
-  nav ul{
-z-index: 9;
-position: absolute;
-right: 0;
-left: 0;
-top: 70px;
-    background: linear-gradient(to bottom, rgb(255, 119, 119) 0%, rgb(46, 151, 142));
+  nav ul {
+    top: 70px;
   }
-  nav ul li{
+
+  nav ul li {
     font-size: 4vw;
     padding-left: 5vw;
   }
-   .buttons {
+
+  .buttons {
     display: none;
   }
 
   .resButtons {
     display: flex;
   }
-  
+
   .hamburgerNav {
     top: 50px;
     position: absolute;
     color: red;
   }
 
-  .resButton1 {
-    max-width: 100px;
-    top: -25px;
+  .resButton1,
+  .resButton2 {
+    display: flex;
     position: absolute;
-    left: -70vw;
-    border-radius: 50px;
-    margin-left: 0px;
-  padding: 4px 8px;
-  font-weight: 500;
+    top: -25px;
+    padding: 4px 8px;
+    font-weight: 500;
     border-radius: 20px;
-  border: 1px solid rgba(26, 4, 4, 0.479);
+  }
+
+  .resButton1 {
+    left: -70vw;
+    border: 1px solid rgba(26, 4, 4, 0.479);
   }
 
   .resButton2 {
-    display: flex;
-    top: -25px;
-    position: absolute;
     left: -47vw;
     color: rgb(245, 241, 241);
-    font-weight: 500;
-    padding: 4px 8px;
-    border-radius: 20px;
-    border: none;
     background-color: rgb(15, 15, 15);
+    border: none;
   }
 }

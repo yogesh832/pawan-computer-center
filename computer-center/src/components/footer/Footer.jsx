@@ -87,3 +87,4 @@ export function Footer() {
                                     <img src={dummyimg} alt="Blog 1" style={{ width: '100%', maxWidth: '120px', margin: '0 10px' }} />
                                 </a>
 
+export default Footer;

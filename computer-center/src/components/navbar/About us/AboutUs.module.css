@@ -1,0 +1,90 @@
+/* src/components/OurStory.module.css */
+
+.container1 {
+  background-image: linear-gradient(to top, rgba(58, 8, 8, 0.678), rgba(0, 0, 255, 0.473)), 
+  url('../../../assets/Images/about.png');
+  padding: 20px;
+  padding-inline: 15vw;
+  background-color: #fff;
+  color: #333;
+  max-width: 85%;
+  height: 80vh;
+  margin-top: 20px;
+  margin: 0 auto;
+  border-radius: 8px;
+  background-size: cover;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+  
+  .head1  {
+padding-bottom: 50px;
+    padding: 20px;
+    font-size: 5vw;
+    font-weight: 900;
+    color: #000000;
+    text-align: center;
+   -webkit-text-stroke:  2px rgb(207, 187, 160);
+   
+  }
+  .head2{
+    padding: 20px;
+    font-weight: 600;
+    color: #fff9f9;
+font-size: 3vw;
+-webkit-text-stroke:  1px rgb(228, 196, 15);
+
+    text-align: center;
+ 
+  }
+  .paragraph{
+    margin-top: 10vh;
+    line-height: 1.6;
+    text-align: center;
+    font-size: 1.5em;
+    color: #ddcdcd;
+    margin-bottom: 20px;
+  }
+  
+  .container2 {
+    background-image: linear-gradient(to bottom,
+     rgba(80, 12, 12, 0.678), rgba(2, 2, 2, 0.74)),
+    url('../../../assets/Images/vison.png');
+    background-size: cover;
+    padding: 20px;
+    background-color: #fff;
+    color: #333;
+    max-width: 85%;
+    height: 80vh;
+    margin: 0 auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    color: white;
+    display: flex;
+  }
+  .container2 .left{
+    width: 50%;
+    margin-block: 50px;
+    
+    margin-inline: 30px;
+    padding-right: 20px;
+    font-size: 1.em;
+    font-weight: 500;
+    color: #fff9f9;
+    text-align: center;
+ 
+  
+  }
+  .container2 .right{
+    width: 50%;
+    margin-block: 50px;
+    pading-inline: 30px;
+    font-size: 1.2em;
+    font-weight: 500;
+    color: #fff9f9;
+    text-align: center;
+    border-left: 1px solid #fff9f9;
+    margin-bottom: 8vw;
+  }
+  

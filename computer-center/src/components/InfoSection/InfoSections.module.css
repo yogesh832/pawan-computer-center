@@ -1,124 +1,134 @@
-/* Base styles for the container and sections */
+/* InfoSections.module.css */
 .container {
-    display: flex;
-gap: 100px;
-margin-top: 5vw;
-    justify-content: space-around;
-margin-inline: 10vw;
-    background-color: #f4f4f4;
+  font-family: sans-serif;
+  display: flex;
+  flex-wrap: wrap; /* Enable wrapping for smaller screens */
+  justify-content: space-between;
+  padding: 20px;
+  border-radius: 10px;
+  margin: 0 auto; /* Center the container */
+  width: 90%; /* Adjust as needed */
 }
 
 .section {
-    width: calc(50% - 20px); /* Two columns with gap for spacing */
-    padding: 40px 20px 20px;
-    border-radius: 10px;
-    text-align: center;
-    color: white;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 30px;
-    box-sizing: border-box; /* Ensure padding and border are included in the width */
+  background-color: #d3cecedc; /* Dark section background */
+  color: #050505; /* Text color */
+  padding: 20px;
+  border-radius: 10px;
+  text-align: left; /* Align text to the left */
+  width: 20%; /* Adjust width for spacing */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px; /* Add margin to separate boxes */
+  position: relative; /* For pop-up positioning */
+  transition: transform 0.3s ease-in-out; /* Smooth pop-up transition */
 }
 
-.section h3 {
-    font-size: 1.2em;
-    margin: 20px 0 10px;
+.section:hover {
+  transform: scale(1.05); /* Scale up on hover */
 }
 
-.section p {
-    font-size: 0.9em;
-    margin: 0;
+.section:hover .icon {
+  color: #f57104; /* Icon color on hover */
+  transform: scale(1.05); /* Scale up on hover */
 }
 
-.courses {
-    background-color: #FF0000; /* Red */
-}
-
-.books {
-    background-color: #039603; /* Green */
-}
-
-.teachers {
-    background-color: #3333ff; /* Blue */
-}
-
-.certification {
-    background-color: #9933ff; /* Purple */
-}
-
-.semiSphere {
-    position: absolute;
-    top: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 110px;
-    height: 60px;
-    border-top-left-radius: 80px;
-    border-top-right-radius: 80px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-}
-
-.coursesSphere {
-    background-color: #FF0000; /* Red */
-}
-
-.booksSphere {
-    background-color: #039603; /* Green */
-}
-
-.teachersSphere {
-    background-color: #3333ff; /* Blue */
-}
-
-.certificationSphere {
-    background-color: #9933ff; /* Purple */
+h2 {
+  font-size: 1.6vw;
+  font-weight: 700;
+  color: #050505;
+  text-align: center;
 }
 
 .icon {
-    font-size: 24px;
-    color: rgb(255, 164, 164);
-    transition: transform 0.3s;
+  font-size: 5vw; /* Increased icon size */
+  color: #df3e0d; /* Icon color */
+  margin-bottom: 20px;
+  margin-left: 4vw;
+  align-self: center; /* Center the icon horizontally */
 }
 
-
-.section:hover {
-    .icon{
-        color: white;
-    transform: scale(1.5);
-}
+p {
+  font-size: 0.9em;
+  color: #000000;
+  margin-bottom: 20px;
 }
 
-/* Media Query for tablets and small desktops */
-@media (max-width: 1200px) {
-    .container{
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-    .section {
-
-   
-        width: calc(100% - 40px); /* Full width with gap for spacing */
-    }
+.readMore {
+  color: #d9e021; /* Read more link color */
+  text-decoration: none;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
 }
+
+.readMore:hover {
+  text-decoration: underline;
+}
+
+.readMore::after {
+  content: ' →';
+  margin-left: 5px;
+}
+
+/* Pop-up Box */
+.popup-box {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  z-index: -1; /* Hide behind the section */
+}
+
+.section:hover .popup-box {
+  opacity: 1;
+  transform: translateY(0);
+  z-index: 1; /* Bring it to the front */
+}
+
+/* Image Color Changing Animation */
+.popup-box img {
+  width: 100px; /* Adjust as needed */
+  transition: filter 0.3s ease-in-out;
+}
+
+.popup-box img:hover {
+  filter: hue-rotate(90deg); /* Change image color */
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets */
 @media (max-width: 768px) {
-    .container{
-        flex-wrap: wrap;
-    }
-    .section {
-
-   
-        width: calc(100% - 40px); /* Full width with gap for spacing */
-    }
+  .section {
+    width: 45%; /* Adjust width for tablets */
+  }
+  .icon {
+    font-size: 8vw; /* Adjust icon size */
+  }
 }
 
-/* Media Query for mobile devices */
-@media (max-width: 600px) {
-    .section {
-        width: calc(100% - 20px); /* Full width with gap for spacing */
-    }
+/* Mobile Phones */
+@media (max-width: 480px) {
+  .section {
+    width: 100%; /* Full width for mobile */
+    margin: 10px 0; /* Adjust margin for mobile */
+  }
+  h2 {
+    font-size: 4vw; /* Adjust heading size */
+  }
+  .icon {
+    font-size: 10vw; /* Adjust icon size */
+  }
+  p {
+    font-size: 1em; /* Adjust paragraph font size */
+  }
 }
