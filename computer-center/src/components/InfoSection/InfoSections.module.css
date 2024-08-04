@@ -126,7 +126,8 @@ p {
     font-size: 4vw; /* Adjust heading size */
   }
   .icon {
-    font-size: 10vw; /* Adjust icon size */
+    font-size: 10vw; 
+    padding-left: 40%;/* Adjust icon size */
   }
   p {
     font-size: 1em; /* Adjust paragraph font size */

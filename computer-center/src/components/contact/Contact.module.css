@@ -1,52 +1,113 @@
-.container{
+/* General Styles */
+.container {
     display: flex;
     flex-direction: row;
-}
-.heading{
-    font-size: 5em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+  
 }
 
-.title{
-    padding: 2vw 5vw 0vw 5vw ;
+.heading {
+    font-size: 5em;
+    text-align: center;
+    font-weight: 600;
+    width: 100%;
 }
-p{
-    /* font-size: 20px; */
+
+.title {
+    padding: 2vw 5vw 0vw 5vw;
+}
+
+p {
     font-family: sans-serif;
     font-weight: 650;
+    text-align: center;
+    padding-inline: 20px;
 }
-.right{
-    width: 70vw;
+
+.right {
+    overflow: hidden;
+    width: 30vw;
+margin: 1vw 1vw;
+margin-left: -5vw;
+margin-top: -4vw;
+    flex: 1;
 }
-.left{
-    
+
+.left {
     border: 2px solid black;
     font-size: 1.5rem;
-    width: 37vw;
-    padding: 5vw;
-    margin: 5vw;
+   width: 40vw;
+    padding: 3vw;
+    margin: 5vw 4vw;
     border-radius: 10px;
 }
-img{
-    width: 45vw;
-    margin-top:-50px ;
+
+
+.right  img{
+    height: 50vw;
+
+width: 45vw;
+   
 }
 
-.left input{
+.left input {
     border: 2px solid black;
+  
     max-width: 60vw;
+    box-sizing: border-box;
 }
-.left textarea{
+
+.left textarea {
     border: 2px solid black;
-    max-width: 40vw;
+  
+    max-width: 60vw;
+    box-sizing: border-box;
 }
 
-
-@media (max-width:526px) {
-    .container{
-        display: flex;
-        flex-direction: column;
+/* Media Queries */
+@media (max-width: 1024px) {
+    .heading {
+        font-size: 4em;
     }
-    img{
-        width: 250%;
+    .title {
+        padding: 2vw;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .right, .left {
+        width: 100%;
+        max-width: 90vw;
+    }
+   .right img {
+        max-width: 100vw;
+    }
+    .left input, .left textarea {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 426px) {
+    .heading {
+        font-size: 3em;
+    }
+    .title {
+        padding: 2vw;
+    }
+    .right img {
+        height: 70vw;
+        width: 90vw;
+        margin-top: 50px;
+    }
+    .left input, .left textarea {
+        max-width: 1000%;
+        font-size: 13px;
+    
     }
 }

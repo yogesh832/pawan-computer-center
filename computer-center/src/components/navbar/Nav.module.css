@@ -16,13 +16,13 @@ nav .mainContainer {
 .logo {
   width: 80px;
   height: 80px;
+  padding-bottom: 0;
   margin-right: 20px;
   border-radius: 50%;
   background-color: #f5f5f5;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
   font-weight: bold;
   color: #333;
   cursor: pointer;
@@ -41,24 +41,28 @@ nav ul li {
   transition: all 0.3s ease-in-out;
 }
 
-/* nav ul li::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 0;
-  height: 3px;
-  background-color: rgb(235, 222, 222);
-  transition: width 0.3s ease-in-out;
-} */
-
 nav ul li a {
   text-decoration: none;
   color: #000;
 }
 
-nav ul li a:active {
-  border: none;
+nav ul li a:hover {
+  color: red; /* Changes link color to red on hover */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  padding: 10px 0;
+  border: 1px rgba(0, 0, 0, 0.411) solid;
+  border-radius: 12px;
+}
+
+.nav-item:hover .dropdown-menu {
+  display: block;
 }
 
 .buttons {
@@ -154,9 +158,15 @@ nav ul li a:active {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 480px) {
   nav ul {
     top: 70px;
+  }
+  nav {
+    height: 60px;
+  }
+  .logo {
+    padding-left: -10px;
   }
 
   nav ul li {

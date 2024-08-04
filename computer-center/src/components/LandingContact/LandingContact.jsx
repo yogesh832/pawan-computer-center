@@ -40,10 +40,10 @@ const LandingContact=()=>{
     </div>
 
             <div className={style.socialIcons}>
-                <div className={style.icon}><a href=""><FaFacebookF />      </a></div>
-                <div className={style.icon}><a href=""><FaInstagram />    </a></div>
+                <div className={style.icon}><a href=""><FaFacebookF /></a></div>
+                <div className={style.icon}><a href=""><FaInstagram /></a></div>
                 <div className={style.icon}><a href=""><FaLinkedinIn /></a></div>
-                <div className={style.icon}><a href=""><FaTelegram />        </a></div>
+                <div className={style.icon}><a href=""><FaTelegram /></a></div>
                 <div className={style.icon}><a href=""><FaTwitter /></a></div>
                 <div className={style.icon}><a href=""><IoLogoYoutube /></a></div>
             </div>

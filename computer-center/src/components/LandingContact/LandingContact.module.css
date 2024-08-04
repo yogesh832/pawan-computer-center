@@ -34,8 +34,7 @@
 .smallContainer{
     display: flex;
     flex-direction: row;
-  
-     ;
+   
 }
 
  .mail{
@@ -63,11 +62,12 @@ display: flex;
 .detail{
     font-size: 12px;
     font-weight: 600;
+    padding-top: 10px;
     color: rgb(230, 197, 197);
 }
 .mainIcon{
     font-size: 1.5rem;
-    margin-top: -8px;
+    margin-top: -0px;
     padding-right: 5px;
     color: rgb(235, 209, 209);
 }
@@ -85,10 +85,7 @@ span{
     align-items: center;
  
 }
-p{
-  
-    
-}
+
 .icon{
 color: rgb(116, 87, 87);
 display: flex;
@@ -114,6 +111,11 @@ height: 30px;
     color:blue;
 }
 
+@media (max-width: 1268px) {
+    .welcome{
+        font-size: 12px;
+    }
+}
 @media (max-width: 768px) {
     .contact{
         
@@ -137,5 +139,6 @@ height: 30px;
     }
 .welcome{
     font-size: 14px;
+    padding-top: 5px;
 }
 }
