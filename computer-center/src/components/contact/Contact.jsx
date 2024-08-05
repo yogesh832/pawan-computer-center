@@ -10,6 +10,12 @@ function Contact() {
           <p>LET’S CONNECT: WE’RE HERE TO HELP, AND WE’D LOVE TO HEAR FROM YOU! WHETHER SOCIAL MEDIA. </p>
           </div>
           <div className={style.container}>
+          <div className={style.right}> 
+        <img src={contactimg} alt='contactimg'/>
+        </div>
+
+
+        
         <div className={style.left}>
          <form >
           
@@ -34,9 +40,7 @@ function Contact() {
             <button data-mdb-ripple-init type="submit" className="btn btn-primary btn-block mb-4">Send</button>
         </form>
         </div>
-        <div className={style.right}> 
-        <img src={contactimg} alt='contactimg'/>
-        </div>
+        
         </div>
         </>
     );
