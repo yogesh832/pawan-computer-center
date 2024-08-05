@@ -17,19 +17,17 @@ export function Footer() {
                             </div>
                             <h5 className="text-center">Recent Blogs</h5>
                             <div className="d-flex justify-content-center">
-                                <a href="https://www.nicecomputerbageshwar.com/page.php" target="_blank" rel="noopener noreferrer">
-                                <img src={dummyimg} alt="dummy" style={{ width: '100%', maxWidth: '120px', margin: '0 10px' }} />
+                                <a href="" target="_blank" rel="noopener noreferrer">
                                 </a>
                                 
-                                <a href="https://www.nicecomputerbageshwar.com/page.php" target="_blank" rel="noopener noreferrer">
-                                <img src={dummyimg} alt="dummy" style={{ width: '100%', maxWidth: '120px', margin: '0 10px' }} />
+                                <a href="" target="_blank" rel="noopener noreferrer">
                                 </a>
                             </div>
                         </div>
 
                         {/* Right Section */}
                         <div className="col-md-6">
-                            <h5 className="text-center">Quick Links</h5>
+                            <h5 className="text-center pt-100">Quick Links</h5>
                             <div className="d-flex flex-wrap justify-content-center">
                                 {[
                                     "Home",
@@ -48,7 +46,7 @@ export function Footer() {
                                     <div className="col-md-4 mb-2" key={index}>
                                         <h6 className="font-weight-bold">
                                             <MdOutlineKeyboardArrowRight />
-                                            <a href="#!" className="text-white ms-1 fs-6">{link}</a>
+                                            <a href="#!" className="text-white ms-1  fs-6">{link}</a>
                                         </h6>
                                     </div>
                                 ))}

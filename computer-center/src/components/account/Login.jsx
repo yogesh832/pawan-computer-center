@@ -4,7 +4,7 @@ import loginimg from "../../assets/Images/loginpage.png";
 const Login = () => {
     return (
         <>
-            <h1 style={{ textAlign: 'center', marginTop: '30px', fontWeight: '700', fontSize: '60px' }}>Join Us</h1>
+            <h1 style={{ textAlign: 'center', marginTop: '100px', marginBottom: '-50px', fontWeight: '700', fontSize: '60px', }}>Sign In Now!</h1>
             <Component>
                 <Loginimg>
                     <Image src={loginimg} alt="loginimg" />

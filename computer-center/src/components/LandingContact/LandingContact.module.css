@@ -59,6 +59,9 @@ display: flex;
 
 
 }
+.socialIcons a:hover{
+color:rgb(75, 75, 204);
+}
 .detail{
     font-size: 12px;
     font-weight: 600;

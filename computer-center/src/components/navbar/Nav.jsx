@@ -97,7 +97,7 @@ const Nav = () => {
           Register Now
         </button>
         <button type="button" className={style.button2}>
-          Student SignUp
+           Sign Up
         </button>
       </div>
       <div className={style.resButtons}>
