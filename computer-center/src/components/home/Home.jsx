@@ -1,37 +1,3 @@
-// import '../../App.css';
-// import { useEffect } from 'react';
-// import LandingContact from '../LandingContact/LandingContact';
-// import Nav from '../navbar/Nav';
-// import 'bootstrap/dist/css/bootstrap.min.css';
-// import Login from '../account/Login';
-// import MySwiper from '../swiper/swiper';
-// import Marquee from '../Marque/Marque';
-// import InfoSections from '../InfoSection/InfoSections';
-// import Contact from '../contact/Contact';
-// import Footer from '../footer/Footer';
-// import AboutUs from '../navbar/About us/AboutUs';
-// import { One } from '../services/onemonth/One';
-// import useLocomotiveScroll from '../../useLocomotiveScroll';  // Import the custom hook
-
-// function Home() {
-//   useLocomotiveScroll();  // Apply the custom hook
-
-//   return (
-//     <div className="all-content"> 
-//       <MySwiper />
-//       <Marquee />
-//       <InfoSections />
-//       <Login />
-//       <Contact />
-//       <AboutUs />
-//     </div>
-//   );
-// }
-
-// export default Home;
-
-
-
 import '../../App.css';  // Ensure this path is correct
 import { useEffect } from 'react';
 import MySwiper from '../swiper/swiper';  // Ensure this path is correct
