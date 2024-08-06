@@ -17,8 +17,8 @@ function App() {
   // useLocomotiveScroll();  // Apply the custom hook
 
   return (
-    <div> {/* Add the container for LocomotiveScroll */}
-      
+    <div> 
+
     </div>
   );
 }
