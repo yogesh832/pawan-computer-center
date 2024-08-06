@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import { FaRegCircle, FaShoppingCart, FaVideo } from "react-icons/fa";
+import { IoMdHome } from "react-icons/io";
+import { PiStudentFill } from "react-icons/pi";
+import { AiFillProduct } from "react-icons/ai";
+import { Dropdown } from "react-bootstrap";
+
+
 
 const Sidebar = () => {
   const [activeLink, setActiveLink] = useState("home");
