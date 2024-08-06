@@ -10,7 +10,7 @@ const Layout = () => {
             <LandingContact />
             <Nav />
             <Outlet />
-            {/* <Footer /> */}
+            <Footer />
         </>
     );
 };
