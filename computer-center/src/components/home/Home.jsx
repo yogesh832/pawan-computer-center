@@ -9,7 +9,7 @@ function Home() {
 
   return (
     <div className="all-content"> 
-      <MySwiper />
+     <MySwiper />
       <Marquee />
       <InfoSections />
     </div>
