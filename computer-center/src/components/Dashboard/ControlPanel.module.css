@@ -1,0 +1,85 @@
+
+
+
+
+
+.controlPanel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    padding: 20px;
+    background-color: #f0f4f8;
+  }
+  
+  .panel {
+    position: relative;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+  }
+  
+  .panel:hover {
+    transform: translateY(-5px);
+  }
+  
+  .panelHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .panelCount {
+    font-size: 2.5em;
+    font-weight: bold;
+  }
+  
+  .panelLabel {
+    font-size: 1.2em;
+    margin: 15px 0;
+  }
+  
+  .panelIcon {
+    font-size: 3em;
+    opacity: 0.2;
+  }
+  
+  .moreInfo {
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    align-items: center;
+  }
+  
+  .moreInfo i {
+    margin-left: 5px;
+  }
+  
+  .blue {
+    background-color: #3B82F6;
+  }
+  
+  .cyan {
+    background-color: #06B6D4;
+  }
+  
+  .pink {
+    background-color: #EC4899;
+  }
+  
+  .orange {
+    background-color: #F59E0B;
+  }
+  
+  .purple {
+    background-color: #8B5CF6;
+  }
+  
+  .red {
+    background-color: #EF4444;
+  }
+  

@@ -8,18 +8,19 @@ import Contact from '../contact/Contact';  // Ensure this path is correct
 import Footer from '../footer/Footer';  // If used, otherwise remove
 import AboutUs from '../navbar/About us/AboutUs';  // Corrected path
 import useLocomotiveScroll from '../../useLocomotiveScroll';  // Ensure this path is correct
-
+import Dashboard from '../Dashboard/Dashboard';
 function Home() {
   useLocomotiveScroll();  // Apply the custom hook
 
   return (
     <div className="all-content"> 
-      <MySwiper />
+      {/* <MySwiper />
       <Marquee />
       <InfoSections />
       <Login />
       <Contact />
-      <AboutUs />
+      <AboutUs /> */}
+      <Dashboard />
       {/* Include <Footer /> if needed */}
     </div>
   );
