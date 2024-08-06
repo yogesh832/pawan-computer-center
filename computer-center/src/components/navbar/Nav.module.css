@@ -10,6 +10,7 @@
   position: relative;
   display: flex;
   color: #EEEEEE;
+  z-index: 9;
 }
 .navbarNav{
   width: 100vw;

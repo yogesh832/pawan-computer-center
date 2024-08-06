@@ -15,6 +15,7 @@ const LandingContact=()=>{
 
     return(
         <>
+        <div className={style.MainContainer} >
         <div className={style.contact}>
 <p className={style.welcome}>Welcome To Pawan Computer Center 🖥️</p>
           
@@ -47,6 +48,7 @@ const LandingContact=()=>{
                 <div className={style.icon}><a href=""><FaTwitter /></a></div>
                 <div className={style.icon}><a href=""><IoLogoYoutube /></a></div>
             </div>
+        </div>
         </div>
         </>
     )
