@@ -6,6 +6,9 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './components/home/Home.jsx'; // Ensure this path is correct
 import Layout from '../Layout.jsx'; // Ensure this path is correct
 import { One } from './components/services/onemonth/One.jsx'; // Ensure this path is correct
+import Contact from './components/contact/Contact.jsx';
+import Login from './components/account/Login.jsx';
+import AboutUs from './components/navbar/About us/AboutUs.jsx';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +22,18 @@ const router = createBrowserRouter([
       {
         path: "course",
         element: <One />
+      },
+      {
+       path: "contact",
+       element: <Contact/> 
+      },
+      {
+        path: "login",
+        element: <Login />
+      },
+      {
+        path: "about",
+        element: <AboutUs />
       }
     ]
   }
