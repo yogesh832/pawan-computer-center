@@ -3,7 +3,8 @@ import MySwiper from '../swiper/swiper';
 import Marquee from '../Marque/Marque';  
 import InfoSections from '../InfoSection/InfoSections';  
 import useLocomotiveScroll from '../../useLocomotiveScroll';  
-import Sidebar from '../Dashboard/Sidebar';
+import { Dashboard } from '../Dashboard/Dashboard';
+
 
 function Home() {
   useLocomotiveScroll();  
@@ -13,8 +14,7 @@ function Home() {
      {/* <MySwiper /> */}
       {/* <Marquee /> */}
       {/* <InfoSections /> */}
-
-      <Sidebar />
+      <Dashboard />
     </div>
   );
 }

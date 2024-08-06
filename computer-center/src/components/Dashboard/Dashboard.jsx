@@ -1,11 +1,17 @@
 import React from 'react'
 
 import ControlPanel from './pannel/ControlPanel'
+import Sidebar from './Sidebar'
 
 
 
 export const Dashboard = () => {
   return (
-  <ControlPanel></ControlPanel>
+    <>
+    <div style={{display: 'flex'}}>
+  <Sidebar />  
+  <ControlPanel />
+  </div>
+  </>
   )
 }
