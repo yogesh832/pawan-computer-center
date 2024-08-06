@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import { Dropdown } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { IoMdHome } from "react-icons/io";
+import { PiStudentFill } from "react-icons/pi";
+import { FaShoppingCart } from "react-icons/fa";
+import { AiFillProduct } from "react-icons/ai";
+import { FaVideo } from "react-icons/fa6";
+import { FaRegCircle } from "react-icons/fa";
+
+
+
 
 const Sidebar = () => {
   const [activeLink, setActiveLink] = useState("home");
+  const [showStudentLinks, setShowStudentLinks] = useState(false);
 
   const linkStyle = {
     transition: "background-color 0.3s ease",
@@ -32,6 +42,7 @@ const Sidebar = () => {
             onClick={() => setActiveLink("home")}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#home"></use></svg>
+            <IoMdHome />
             Home
           </a>
         </li>
@@ -42,11 +53,35 @@ const Sidebar = () => {
             style={linkStyle}
             onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor}
             onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}
-            onClick={() => setActiveLink("dashboard")}
+            onClick={() => {
+              setActiveLink("dashboard");
+              setShowStudentLinks(!showStudentLinks);
+            }}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
-            Dashboard
+            <PiStudentFill />
+            Student
           </a>
+          {showStudentLinks && (
+            <div style={{ paddingLeft: '20px', marginTop: '10px' }}>
+              <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
+              <FaRegCircle />
+              Add Student
+                </a>
+              <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
+              <FaRegCircle />
+              Manage Application
+                </a>
+                <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
+              <FaRegCircle />
+              See All student
+                </a>
+                <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
+              <FaRegCircle />
+              Course Enquiry
+                </a>
+            </div>
+          )}
         </li>
         <li>
           <a
@@ -58,6 +93,7 @@ const Sidebar = () => {
             onClick={() => setActiveLink("orders")}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#table"></use></svg>
+            <FaShoppingCart />
             Orders
           </a>
         </li>
@@ -71,6 +107,7 @@ const Sidebar = () => {
             onClick={() => setActiveLink("products")}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#grid"></use></svg>
+            <AiFillProduct />
             Products
           </a>
         </li>
@@ -84,7 +121,8 @@ const Sidebar = () => {
             onClick={() => setActiveLink("customers")}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#people-circle"></use></svg>
-            Customers
+            <FaVideo />
+           Lectures
           </a>
         </li>
       </ul>
