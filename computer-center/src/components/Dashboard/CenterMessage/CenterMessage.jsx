@@ -5,6 +5,7 @@ const CenterMessage = () => {
   return (
     <>
       <Contact />
+      
     </>
   );
 };
