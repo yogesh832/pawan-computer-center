@@ -11,7 +11,7 @@ import Contact from './components/contact/Contact';
 import Footer from './components/footer/Footer';
 import AboutUs from './components/navbar/About us/AboutUs';
 import { One } from './components/services/onemonth/One';
-import useLocomotiveScroll from './useLocomotiveScroll';  // Import the custom hook
+// import useLocomotiveScroll from './useLocomotiveScroll';  // Import the custom hook
 
 function App() {
   // useLocomotiveScroll();  // Apply the custom hook
