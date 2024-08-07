@@ -4,6 +4,10 @@ import Marquee from '../Marque/Marque';
 import InfoSections from '../InfoSection/InfoSections';  
 import useLocomotiveScroll from '../../useLocomotiveScroll';  
 import { Dashboard } from '../Dashboard/Dashboard';
+import Centersection from '../Dashboard/centersection/Centersection';
+import CenterMessage from '../Dashboard/CenterMessage/CenterMessage';
+import MarketingTools from '../Dashboard/Marketing Tool/MarketingTool';
+
 
 
 function Home() {
@@ -15,6 +19,9 @@ function Home() {
       {/* <Marquee /> */}
       {/* <InfoSections /> */}
       <Dashboard />
+      {/* <Centersection /> */}
+      {/* <CenterMessage /> */}
+      {/* <MarketingTools /> */}
     </div>
   );
 }

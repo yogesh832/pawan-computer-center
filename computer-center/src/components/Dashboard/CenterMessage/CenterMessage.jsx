@@ -1,7 +1,12 @@
-import React from 'react'
-import Contact from '../../contact/Contact'
-export const CenterMessage = () => {
+import React from 'react';
+import Contact from '../../contact/Contact';
+
+const CenterMessage = () => {
   return (
- <Contact/>
-  )
-}
+    <>
+      <Contact />
+    </>
+  );
+};
+
+export default CenterMessage;

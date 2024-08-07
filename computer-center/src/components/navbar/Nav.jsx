@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import style from './Nav.module.css';
+import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import logo from '../../assets/Images/logo.png';
+import style from './Nav.module.css';
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -27,86 +28,86 @@ const Nav = () => {
         <div className={`${style.navbarNav} ${isMenuOpen ? style.showMenu : ''}`} id="navbarNav">
           <ul className={style.navList}>
             <li className={style.navItem}>
-              <a className={style.navLink} href="#">
+              <Link className={style.navLink} to="/">
                 <span className={style.icon}></span>Home
-              </a>
+              </Link>
             </li>
             <li className={style.navItem}>
-              <a className={`${style.navLink} ${style.dropdownToggle}`} href="#" role="button">
+              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/about" role="button">
                 About Us
-              </a>
+              </Link>
               <div className={style.dropdownMenu}>
-                <a className={style.dropdownItem} href="#">Our Story</a>
-                <a className={style.dropdownItem} href="#">Mission & Vision</a>
+                <Link className={style.dropdownItem} to="/about">Our Story</Link>
+                <Link className={style.dropdownItem} to="/about">Mission & Vision</Link>
               </div>
             </li>
             <li className={style.navItem}>
-              <a className={`${style.navLink} ${style.dropdownToggle}`} href="#" role="button">
+              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/course" role="button">
                 Courses
-              </a>
+              </Link>
               <div className={style.dropdownMenu}>
-                <a className={style.dropdownItem} href="#">1 Month</a>
-                <a className={style.dropdownItem} href="#">2 Month</a>
-                <a className={style.dropdownItem} href="#">6 Month</a>
-                <a className={style.dropdownItem} href="#">12 Month</a>
-                <a className={style.dropdownItem} href="#">18 Month</a>
-                <a className={style.dropdownItem} href="#">24 Month</a>
+                <Link className={style.dropdownItem} to="/course">1 Month</Link>
+                <Link className={style.dropdownItem} to="/course">2 Month</Link>
+                <Link className={style.dropdownItem} to="/course">6 Month</Link>
+                <Link className={style.dropdownItem} to="/course">12 Month</Link>
+                <Link className={style.dropdownItem} to="/course">18 Month</Link>
+                <Link className={style.dropdownItem} to="/course">24 Month</Link>
               </div>
             </li>
             <li className={style.navItem}>
-              <a className={`${style.navLink} ${style.dropdownToggle}`} href="#" role="button">
+              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/" role="button">
                 Our Service
-              </a>
+              </Link>
               <div className={style.dropdownMenu}>
-                <a className={style.dropdownItem} href="#">Service 1</a>
-                <a className={style.dropdownItem} href="#">Service 2</a>
+                <Link className={style.dropdownItem} to="/">Service 1</Link>
+                <Link className={style.dropdownItem} to="/">Service 2</Link>
               </div>
             </li>
             <li className={style.navItem}>
-              <a className={`${style.navLink} ${style.dropdownToggle}`} href="#" role="button">
+              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/" role="button">
                 Certification
-              </a>
+              </Link>
               <div className={style.dropdownMenu}>
-                <a className={style.dropdownItem} href="#">Certification 1</a>
-                <a className={style.dropdownItem} href="#">Certification 2</a>
+                <Link className={style.dropdownItem} to="/">Certification 1</Link>
+                <Link className={style.dropdownItem} to="/">Certification 2</Link>
               </div>
             </li>
             <li className={style.navItem}>
-              <a className={`${style.navLink} ${style.dropdownToggle}`} href="#" role="button">
+              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/contact" role="button">
                 Contact Us
-              </a>
+              </Link>
               <div className={style.dropdownMenu}>
-                <a className={style.dropdownItem} href="#">Email</a>
-                <a className={style.dropdownItem} href="#">Phone</a>
+                <Link className={style.dropdownItem} to="/contact">Email</Link>
+                <Link className={style.dropdownItem} to="/contact">Phone</Link>
               </div>
             </li>
             <li className={style.navItem}>
-              <a className={`${style.navLink} ${style.dropdownToggle}`} href="#" role="button">
+              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/" role="button">
                 Gallery
-              </a>
+              </Link>
               <div className={style.dropdownMenu}>
-                <a className={style.dropdownItem} href="#">Photos</a>
-                <a className={style.dropdownItem} href="#">Videos</a>
+                <Link className={style.dropdownItem} to="/">Photos</Link>
+                <Link className={style.dropdownItem} to="/">Videos</Link>
               </div>
             </li>
           </ul>
         </div>
       </div>
       <div className={style.buttons}>
-        <button type="button" className={style.button1}>
+        <Link to="/login" className={style.button1}>
           Register Now
-        </button>
-        <button type="button" className={style.button2}>
-           Sign Up
-        </button>
+        </Link>
+        <Link to="/login" className={style.button2}>
+          Sign Up
+        </Link>
       </div>
       <div className={style.resButtons}>
-        <button type="button" className={style.resButton1}>
+        <Link to="/login" className={style.resButton1}>
           SignIn
-        </button>
-        <button type="button" className={style.resButton2}>
+        </Link>
+        <Link to="/login" className={style.resButton2}>
           SignUp
-        </button>
+        </Link>
       </div>
     </nav>
   );

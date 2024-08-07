@@ -6,6 +6,8 @@ import { IoMdHome } from "react-icons/io";
 import { PiStudentFill } from "react-icons/pi";
 import { AiFillProduct } from "react-icons/ai";
 import { Dropdown } from "react-bootstrap";
+import { FaBuildingColumns } from "react-icons/fa6";
+
 
 
 
@@ -29,21 +31,6 @@ const Sidebar = () => {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
-          <a
-            href="#"
-            className={`nav-link text-white ${activeLink === "home" ? "active" : ""}`}
-            aria-current="page"
-            style={linkStyle}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}
-            onClick={() => setActiveLink("home")}
-          >
-            <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#home"></use></svg>
-            <IoMdHome />
-            Home
-          </a>
-        </li>
         <li>
           <a
             href="#"
@@ -91,8 +78,8 @@ const Sidebar = () => {
             onClick={() => setActiveLink("orders")}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#table"></use></svg>
-            <FaShoppingCart />
-            Orders
+            <FaBuildingColumns />
+            Center Section
           </a>
         </li>
         <li>
