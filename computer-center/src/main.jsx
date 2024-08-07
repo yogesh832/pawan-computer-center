@@ -9,6 +9,7 @@ import { One } from './components/services/onemonth/One.jsx'; // Ensure this pat
 import Contact from './components/contact/Contact.jsx';
 import Login from './components/account/Login.jsx';
 import AboutUs from './components/navbar/About us/AboutUs.jsx';
+import "../src/index.css"
 
 const router = createBrowserRouter([
   {
