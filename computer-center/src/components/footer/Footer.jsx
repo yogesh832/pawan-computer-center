@@ -55,7 +55,7 @@ export function Footer() {
 
                 <hr className="my-5 border-gray-500" />
 
-                <section className="text-center mb-5">
+                <section className="flex text-center mb-5 justify-center">
                     <a href="" className="text-white mx-2 text-xl"><FaFacebookF /></a>
                     <a href="" className="text-white mx-2 text-xl"><FaInstagram /></a>
                     <a href="" className="text-white mx-2 text-xl"><FaLinkedinIn /></a>

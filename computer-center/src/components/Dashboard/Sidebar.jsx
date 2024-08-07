@@ -44,26 +44,36 @@ const Sidebar = () => {
             }}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
-            <PiStudentFill />
+            <div className="flex gap-2 text-lg">
+            <PiStudentFill className="text-[27px]"/>
             Student
+            </div>
           </a>
           {showStudentLinks && (
             <div style={{ paddingLeft: '20px', marginTop: '10px' }}>
               <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
+              <div className="flex gap-2 text-lg">
               <FaRegCircle />
               Add Student
+              </div>
                 </a>
               <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
+              <div className="flex gap-2 text-lg">
               <FaRegCircle />
               Manage Application
+              </div>
                 </a>
                 <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
+                <div className="flex gap-2 text-lg">
               <FaRegCircle />
               See All student
+              </div>
                 </a>
                 <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
+                <div className="flex gap-2 text-lg">
               <FaRegCircle />
               Course Enquiry
+              </div>
                 </a>
             </div>
           )}
@@ -78,8 +88,10 @@ const Sidebar = () => {
             onClick={() => setActiveLink("orders")}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#table"></use></svg>
-            <FaBuildingColumns />
+            <div className="flex gap-2 text-lg">
+            <FaBuildingColumns className="text-[27px]"/>
             Center Section
+            </div>
           </a>
         </li>
         <li>
@@ -92,8 +104,10 @@ const Sidebar = () => {
             onClick={() => setActiveLink("products")}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#grid"></use></svg>
-            <AiFillProduct />
+            <div className="flex gap-2 text-lg">
+            <AiFillProduct className="text-[27px]"/>
             Products
+            </div>
           </a>
         </li>
         <li>
@@ -106,8 +120,10 @@ const Sidebar = () => {
             onClick={() => setActiveLink("customers")}
           >
             <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#people-circle"></use></svg>
-            <FaVideo />
+            <div className="flex gap-2 text-lg">
+            <FaVideo className="text-[27px]"/>
            Lectures
+           </div>
           </a>
         </li>
       </ul>
