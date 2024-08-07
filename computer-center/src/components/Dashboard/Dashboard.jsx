@@ -10,13 +10,13 @@ export const Dashboard = () => {
   return (
     <>
     <div style={{display: 'flex', Height: '100vh'}}>
-  {/* <Sidebar />   */}
-  {/* <ControlPanel /> */}
-  <Buttongpt/>
+  <Sidebar />  
+ <ControlPanel />
+
  
   </div>
-  {/* <MarketingTools />
-  <CenterMessage /> */}
+  <MarketingTools />
+  <CenterMessage />
   </>
   )
 }
