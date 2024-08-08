@@ -4,7 +4,6 @@ import ControlPanel from './pannel/ControlPanel'
 import Sidebar from './Sidebar'
 import MarketingTools from './Marketing Tool/MarketingTool'
 import CenterMessage from './CenterMessage/CenterMessage'
-import InfoSections from '../InfoSection/InfoSections'
 
 
 export const Dashboard = () => {
@@ -18,7 +17,6 @@ export const Dashboard = () => {
   </div>
   <MarketingTools />
   <CenterMessage />
-  <InfoSections />
   </>
   )
 }
