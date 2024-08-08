@@ -9,13 +9,16 @@ import Addfund from './AccountSection/Addfund'
 import Addstudentfee from './AccountSection/Addstudentfee'
 import Viewstudentfee from './AccountSection/Viewstudentfee'
 import Passbook from './AccountSection/Passbook'
+import CertificateRequisition from './CertificatesFile/CertificateRequisition'
+import TrackCertificate from './CertificatesFile/TrackCertificate'
+import ViewCertificate from './CertificatesFile/ViewCerticate'
 
 
 
 export const Dashboard = () => {
   return (
     <>
-    <div style={{display: 'flex', Height: '100vh'}}>
+    <div>
   {/* <Sidebar />  
  <ControlPanel /> */}
 
@@ -23,6 +26,7 @@ export const Dashboard = () => {
   </div>
   {/* <MarketingTools /> */}
   {/* <CenterMessage /> */}
+
    {/* <Addfund/> 
    <Addstudentfee/>
    <Viewstudentfee/>
