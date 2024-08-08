@@ -23,6 +23,10 @@ export const Dashboard = () => {
   </div>
   {/* <MarketingTools /> */}
   {/* <CenterMessage /> */}
+   {/* <Addfund/> 
+   <Addstudentfee/>
+   <Viewstudentfee/>
+   <Passbook/> */}
   <AddStudent/>
   </>
   )
