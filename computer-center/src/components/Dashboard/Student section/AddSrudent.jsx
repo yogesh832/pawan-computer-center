@@ -30,7 +30,42 @@ const AddStudent = () => {
                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 >
                   <option value="select">--Select--</option>
-                  {/* Add options here */}
+                  <option value="AP">Andhra Pradesh</option>
+                  <option value="AR">Arunachal Pradesh</option>
+                  <option value="AS">Assam</option>
+                  <option value="BR">Bihar</option>
+                  <option value="CT">Chhattisgarh</option>
+                  <option value="GA">Gujarat</option>
+                  <option value="HR">Haryana</option>
+                  <option value="HP">Himachal Pradesh</option>
+                  <option value="JK">Jammu and Kashmir</option>
+                  <option value="GA">Goa</option>
+                  <option value="JH">Jharkhand</option>
+                  <option value="KA">Karnataka</option>
+                  <option value="KL">Kerala</option>
+                  <option value="MP">Madhya Pradesh</option>
+                  <option value="MH">Maharashtra</option>
+                  <option value="MN">Manipur</option>
+                  <option value="ML">Meghalaya</option>
+                  <option value="MZ">Mizoram</option>
+                  <option value="NL">Nagaland</option>
+                  <option value="OR">Odisha</option>
+                  <option value="PB">Punjab</option>
+                  <option value="RJ">Rajasthan</option>
+                  <option value="SK">Sikkim</option>
+                  <option value="TN">Tamil Nadu</option>
+                  <option value="TG">Telangana</option>
+                  <option value="TR">Tripura</option>
+                  <option value="UT">Uttarakhand</option>
+                  <option value="UP">Uttar Pradesh</option>
+                  <option value="WB">West Bengal</option>
+                  <option value="AN">Andaman and Nicobar Islands</option>
+                  <option value="CH">Chandigarh</option>
+                  <option value="DN">Dadra and Nagar Haveli</option>
+                  <option value="DD">Daman and Diu</option>
+                  <option value="DL">Delhi</option>
+                  <option value="LD">Lakshadweep</option>
+                  <option value="PY">Puducherry</option>
                 </select>
               </div>
 
@@ -45,10 +80,21 @@ const AddStudent = () => {
                   id="district"
                   name="district"
                   className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  >
-                
+                >
                   <option value="select">--Select--</option>
-                  {/* Add options here */}
+                <option value="">Almora</option>
+                <option value="">Nainital</option>
+                <option value=""> Dehradun</option>
+                <option value=""> Uttarkashi</option>
+                <option value="">Rudraprayag</option>
+                <option value=""> Uddham Singh Nagar</option>
+                <option value="">Bageshwar</option>
+                <option value="">Tehri Garhwal</option>
+                <option value="">Chamoli</option>
+                <option value="">Haridwar</option>
+                <option value=""> Pauri Garhwal</option>
+                <option value=""> Pithoragarh</option>
+                <option value=""> Champawat</option>
                 </select>
               </div>
 
@@ -57,23 +103,22 @@ const AddStudent = () => {
                   <label
                     htmlFor="course"
                     className="block text-sm font-medium min-w-[50%] text-gray-700"
-                    style={{minWidth: "50%"}}>
+                    style={{ minWidth: "50%" }}
+                  >
                     Course Applying For:
                   </label>
                   <select
                     id="course"
                     name="course"
-                   defaultValue={selectedCourse}
+                    defaultValue={selectedCourse}
                     onChange={handleCourseChange}
                     className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-    >
-                    
-                  
-                    <option value="5">--Select Course--</option >
+                  >
+                    <option value="5">--Select Course--</option>
                     <option value="8">1 MONTH COURSES</option>
                     <option value="9">3 MONTHS COURSES</option>
                     <option value="14">6 MONTHS COURSES</option>
-                    <option value="15">12 MONTHS  COURSES</option>
+                    <option value="15">12 MONTHS COURSES</option>
                     <option value="12">18 MONTHS COURSES</option>
                     <option value="13">24 MONTHS COURSES</option>
                     <option value="20">1 YEAR HEALTH CARE COURSE</option>
@@ -528,8 +573,7 @@ const AddStudent = () => {
                   </div>
                 )}
 
-
-{selectedCourse === "15" && (
+                {selectedCourse === "15" && (
                   <div className="w-full md:w-1/2 px-4 mb-4">
                     <label
                       htmlFor="courseOption"
@@ -587,53 +631,46 @@ const AddStudent = () => {
                       name="courseOption"
                       className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                     >
-                     
-                        <option selected="selected" value="">
-                          --Select Course--
-                        </option>
-                        <option value="140">
-                          Advance Diploma in Barbering(RVV24004)
-                        </option>
-                        <option value="133">
-                          ADVANCE DIPLOMA IN COMPUTER HARDWARE &amp; NETWORKING
-                          ENGINEERING(RV24003)
-                        </option>
-                        <option value="136">
-                          ADVANCE DIPLOMA IN FINANCIAL ACCOUNTING(RV24006)
-                        </option>
-                        <option value="134">
-                          ADVANCE DIPLOMA IN INFORMATION TECHNOLOGY(RV24004)
-                        </option>
-                        <option value="137">
-                          ADVANCE DIPLOMA IN NURSERY TEACHER TRAINNING(RVV24001)
-                        </option>
-                        <option value="135">
-                          Diploma in Computer Application (RV24005)
-                        </option>
-                        <option value="141">
-                          Diploma in Cooking(RVV24005)
-                        </option>
-                        <option value="138">Diploma in Yoga(RVV24002)</option>
-                        <option value="139">
-                          Diploma Programs in Professional Cooking(RVV24003)
-                        </option>
-                        <option value="132">
-                          POST GRADUATE DIPLOMA IN COMPUTER TEACHER
-                          TRAINING(RV24002)
-                        </option>
-                        <option value="131">
-                          POST GRADUATE DIPLOMA IN INFORMATION
-                          TECHNOLOGY(RV24001)
-                        </option>
-                        <option value="142">
-                          UNDER GRADUATE DIPLOMA IN FASHION DESIGNING(RVV24006)
-                        </option>
-                     
+                      <option selected="selected" value="">
+                        --Select Course--
+                      </option>
+                      <option value="140">
+                        Advance Diploma in Barbering(RVV24004)
+                      </option>
+                      <option value="133">
+                        ADVANCE DIPLOMA IN COMPUTER HARDWARE &amp; NETWORKING
+                        ENGINEERING(RV24003)
+                      </option>
+                      <option value="136">
+                        ADVANCE DIPLOMA IN FINANCIAL ACCOUNTING(RV24006)
+                      </option>
+                      <option value="134">
+                        ADVANCE DIPLOMA IN INFORMATION TECHNOLOGY(RV24004)
+                      </option>
+                      <option value="137">
+                        ADVANCE DIPLOMA IN NURSERY TEACHER TRAINNING(RVV24001)
+                      </option>
+                      <option value="135">
+                        Diploma in Computer Application (RV24005)
+                      </option>
+                      <option value="141">Diploma in Cooking(RVV24005)</option>
+                      <option value="138">Diploma in Yoga(RVV24002)</option>
+                      <option value="139">
+                        Diploma Programs in Professional Cooking(RVV24003)
+                      </option>
+                      <option value="132">
+                        POST GRADUATE DIPLOMA IN COMPUTER TEACHER
+                        TRAINING(RV24002)
+                      </option>
+                      <option value="131">
+                        POST GRADUATE DIPLOMA IN INFORMATION TECHNOLOGY(RV24001)
+                      </option>
+                      <option value="142">
+                        UNDER GRADUATE DIPLOMA IN FASHION DESIGNING(RVV24006)
+                      </option>
                     </select>
                   </div>
                 )}
-
-
 
                 {selectedCourse === "20" && (
                   <div className="w-full md:w-1/2 px-4 mb-4">
@@ -742,22 +779,7 @@ const AddStudent = () => {
                 />
               </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label
-                  htmlFor="fatheroccupation"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Father's Occupation:
-                </label>
-                <select
-                  id="fatheroccupation"
-                  name="fatheroccupation"
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="select">--Select--</option>
-                  {/* Add options here */}
-                </select>
-              </div>
+             
 
               <div className="w-full md:w-1/2 px-4 mb-4">
                 <label
@@ -774,37 +796,9 @@ const AddStudent = () => {
                 />
               </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label
-                  htmlFor="motheroccupation"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Mother's Occupation:
-                </label>
-                <select
-                  id="motheroccupation"
-                  name="motheroccupation"
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="select">--Select--</option>
-                  {/* Add options here */}
-                </select>
-              </div>
+            
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label
-                  htmlFor="annualincome"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Family Income:
-                </label>
-                <input
-                  type="text"
-                  id="annualincome"
-                  name="annualincome"
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+             
 
               <div className="w-full md:w-1/2 px-4 mb-4">
                 <label
@@ -851,20 +845,39 @@ const AddStudent = () => {
                 />
               </div>
 
+
+{/* 
               <div className="w-full md:w-1/2 px-4 mb-4">
-                <label
-                  htmlFor="adhar"
-                  className="block text-sm font-medium text-gray-700"
-                >
-                  Aadhar Number:
-                </label>
-                <input
-                  type="text"
-                  id="adhar"
-                  name="adhar"
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+        <label
+          htmlFor="adhar"
+          className="block text-sm font-medium text-gray-700"
+        >
+          Aadhar Number:
+        </label>
+        <input
+          type="text"
+          id="adhar"
+          name="adhar"
+          value={input}
+          onChange={(e)=>{
+             e.preventDefault();
+    const cleanInput = input.replace(/\s/g, ''); // Remove spaces for final validation
+    const isValid = /^[2-9][0-9]{11}$/.test(cleanInput);
+
+    if (isValid) {
+      alert('Form submitted successfully!');
+    } else {
+      setError('Please correct the input errors.');
+    }
+          }}
+          className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+          maxLength="15" // 12 digits + 3 spaces
+          placeholder="2345 6789 0123"
+        />
+        {error && <p className="text-red-500 text-xs mt-2">{error}</p>}
+      </div>
+ */}
+
 
               <div className="w-full md:w-1/2 px-4 mb-4">
                 <label
