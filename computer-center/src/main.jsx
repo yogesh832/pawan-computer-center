@@ -42,7 +42,7 @@ const router = createBrowserRouter([
       },
       {
         path: "Dashboard",
-        element: <Dashboard />, // Use the root component for the dashboard layout
+        element: <Dashboard />, 
         children: [
           {
             path: "CenterMessage",
