@@ -14,6 +14,10 @@ import { Dashboard } from './components/Dashboard/Dashboard.jsx';
 import CenterMessage from './components/Dashboard/CenterMessage/CenterMessage.jsx';
 import MarketingTools from './components/Dashboard/Marketing Tool/MarketingTool.jsx';
 import Centerdocument from './components/Dashboard/centersection/Centerdocument.jsx';
+import AddStudent from './components/Dashboard/Student section/AddSrudent.jsx';
+import CertificateRequisition from './components/Dashboard/CertificatesFile/CertificateRequisition.jsx';
+import TrackCertificate from './components/Dashboard/CertificatesFile/TrackCertificate.jsx';
+import ViewCertificate from './components/Dashboard/CertificatesFile/ViewCerticate.jsx';
 
 
 const router = createBrowserRouter([
@@ -40,9 +44,6 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutUs />
-      },{
-        path: "dashboard",
-        element: <Dashboard />
       },
       {
         path: "dashboard/centermessage",
@@ -56,7 +57,35 @@ const router = createBrowserRouter([
       {
         path: "dashboard/marketingtool",
         element: <MarketingTools />
-      }
+      },
+      {
+        path: "dashboard/addStudent",
+        element: <AddStudent />
+      },
+      {
+        path: "dashboard/MarketingTools",
+        element: <MarketingTools />
+      },
+      {
+        path: "dashboard/CenterMessage",
+        element: <CenterMessage />
+      },
+      {
+        path: "dashboard/CertificationRequisition",
+        element: <CertificateRequisition />
+      },
+      {
+        path: "dashboard/MarketingTools",
+        element: <MarketingTools />
+      },
+      {
+        path: "dashboard/TrackCertificate",
+        element: <TrackCertificate />
+      },
+      {
+        path: "dashboard/ViewCertificate",
+        element: <ViewCertificate />
+      },
     ]
   }
 ]);

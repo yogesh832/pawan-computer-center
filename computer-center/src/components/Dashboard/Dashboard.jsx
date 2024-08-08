@@ -18,20 +18,20 @@ import ViewCertificate from './CertificatesFile/ViewCerticate'
 export const Dashboard = () => {
   return (
     <>
-    <div>
-  {/* <Sidebar />  
- <ControlPanel /> */}
+    <div className='flex'>
+  <Sidebar />  
+ <ControlPanel /> 
+ {/* <MarketingTools /> 
+   <CenterMessage />
 
- 
-  </div>
-  {/* <MarketingTools /> */}
-  {/* <CenterMessage /> */}
-
-   {/* <Addfund/> 
+   <Addfund/> 
    <Addstudentfee/>
    <Viewstudentfee/>
-   <Passbook/> */}
-  <AddStudent/>
+   <Passbook/>
+  <AddStudent/> */}
+ 
+  </div>
+  
   </>
   )
 }

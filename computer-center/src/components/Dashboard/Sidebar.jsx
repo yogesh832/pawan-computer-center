@@ -1,148 +1,258 @@
 import React, { useState } from "react";
-
-import "bootstrap/dist/css/bootstrap.min.css";
-import { FaRegCircle, FaShoppingCart, FaVideo } from "react-icons/fa";
-import { IoMdHome } from "react-icons/io";
+import { Link } from "react-router-dom";
+import { FaRegCircle } from "react-icons/fa";
 import { PiStudentFill } from "react-icons/pi";
 import { AiFillProduct } from "react-icons/ai";
-import { Dropdown } from "react-bootstrap";
 import { FaBuildingColumns } from "react-icons/fa6";
 
-
-
-
 const Sidebar = () => {
-  const [activeLink, setActiveLink] = useState("home");
+  const [studentLink, setStudentLink] = useState("home");
   const [showStudentLinks, setShowStudentLinks] = useState(false);
 
-  const linkStyle = {
-    transition: "background-color 0.3s ease",
-  };
+  const [courseLink, setCourseLink] = useState("home");
+  const [showCourseLinks, setShowCourseLinks] = useState(false);
 
-  const linkHoverStyle = {
-    backgroundColor: "#343a40",
-  };
+  const [certificateLink, setCertificateLink] = useState("home");
+  const [showCertificateLinks, setShowCertificateLinks] = useState(false);
+
+  const [onlineLink, setOnlineLink] = useState("home");
+  const [showOnlineLinks, setShowOnlineLinks] = useState(false);
+
+  const [offlineLink, setOfflineLink] = useState("home");
+  const [showOfflineLinks, setShowOfflineLinks] = useState(false);
+
+  const [accountLink, setAccountLink] = useState("home");
+  const [showAccountLinks, setShowAccountLinks] = useState(false);
+
+  const [showDropdown, setShowDropdown] = useState(false);
+
+  const linkStyle = "transition-colors duration-300 ease-in-out hover:bg-gray-700 p-2 rounded-md";
+  const linkActiveStyle = "bg-gray-800 text-white";
+  const linkTextStyle = "flex items-center gap-2 text-lg";
 
   return (
-    <div className="d-flex flex-column flex-shrink-0 p-3 bg-dark text-white" style={{ width: '280px' }}>
-      <a href="/" className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+    <div className="flex min-w-60 flex-col p-4 bg-gray-900 text-white h-100vh">
+      <a href="/" className="flex items-center mb-6 text-white text-xl font-semibold">
         <svg className="bi pe-none me-2" width="40" height="32"><use xlinkHref="#bootstrap"></use></svg>
-        <span className="fs-4">Dashboard</span>
+        <span>Dashboard</span>
       </a>
-      <hr />
-      <ul className="nav nav-pills flex-column mb-auto">
+      <hr className="mb-4 border-red-700" />
+      <ul className="space-y-2">
+        
         <li>
           <a
             href="#"
-            className={`nav-link text-white ${activeLink === "dashboard" ? "active" : ""}`}
-            style={linkStyle}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}
+            className={`block ${linkStyle} ${studentLink === "dashboard" ? linkActiveStyle : ""} flex gap-2`}
             onClick={() => {
-              setActiveLink("dashboard");
+              setStudentLink("dashboard");
               setShowStudentLinks(!showStudentLinks);
             }}
           >
-            <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
-            <div className="flex gap-2 text-lg">
-            <PiStudentFill className="text-[27px]"/>
-            Student
-            </div>
+            <PiStudentFill className="text-2xl" />
+            <span className={`linkTextStyle text-[15px]`}>Student Section</span>
           </a>
           {showStudentLinks && (
-            <div style={{ paddingLeft: '20px', marginTop: '10px' }}>
-              <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
-              <div className="flex gap-2 text-lg">
-              <FaRegCircle />
-              Add Student
-              </div>
-                </a>
-              <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
-              <div className="flex gap-2 text-lg">
-              <FaRegCircle />
-              Manage Application
-              </div>
-                </a>
-                <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
-                <div className="flex gap-2 text-lg">
-              <FaRegCircle />
-              See All student
-              </div>
-                </a>
-                <a href="#" className="nav-link text-white" style={linkStyle} onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor} onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}>
-                <div className="flex gap-2 text-lg">
-              <FaRegCircle />
-              Course Enquiry
-              </div>
-                </a>
+            <div className="pl-6 mt-2 space-y-1">
+              <Link to="dashboard/AddStudent" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Add Student
+              </Link>
+              <Link to="dashboard/" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Manage Application
+              </Link>
+              <Link to="#" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                See All Students
+              </Link>
+              <Link to="#" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Course Enquiry
+              </Link>
             </div>
           )}
         </li>
+
         <li>
           <a
             href="#"
-            className={`nav-link text-white ${activeLink === "orders" ? "active" : ""}`}
-            style={linkStyle}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}
-            onClick={() => setActiveLink("orders")}
+            className={`block ${linkStyle} ${courseLink === "dashboard" ? linkActiveStyle : ""} flex gap-2`}
+            onClick={() => {
+              setCourseLink("dashboard");
+              setShowCourseLinks(!showCourseLinks);
+            }}
           >
-            <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#table"></use></svg>
-            <div className="flex gap-2 text-lg">
-            <FaBuildingColumns className="text-[27px]"/>
-            Center Section
+            <FaBuildingColumns className="text-2xl" />
+            <span className={`linkTextStyle text-[15px]`}>Center Section</span>
+          </a>
+          {showCourseLinks && (
+            <div className="pl-6 mt-2 space-y-1">
+              <Link to="dashboard/CenterDocument" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+             center Document
+              </Link>
+              <Link to="dashboard/MarketingTools" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Marking Tools
+              </Link>
+              <Link to="dashboard/CenterMessage" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Center Message
+              </Link>
+              
             </div>
-          </a>
+          )}
         </li>
+
         <li>
           <a
             href="#"
-            className={`nav-link text-white ${activeLink === "products" ? "active" : ""}`}
-            style={linkStyle}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}
-            onClick={() => setActiveLink("products")}
+            className={`block ${linkStyle} ${certificateLink === "dashboard" ? linkActiveStyle : ""} flex gap-2`}
+            onClick={() => {
+              setCertificateLink("dashboard");
+              setShowCertificateLinks(!showCertificateLinks);
+            }}
           >
-            <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#grid"></use></svg>
-            <div className="flex gap-2 text-lg">
-            <AiFillProduct className="text-[27px]"/>
-            Products
+            <AiFillProduct className="text-2xl" />
+            <span className={`linkTextStyle text-[15px]`}>Certificate Section</span>
+          </a>
+          {showCertificateLinks && (
+            <div className="pl-6 mt-2 space-y-1">
+              <Link to="dashboard/CertificationRequisition" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Certificate Requisition
+              </Link>
+              <Link to="dashboard/TrackCertificate" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Track Certificate
+              </Link>
+              <Link to="dashboard/ViewCertificate" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+              View Certificates
+              </Link>
+              
             </div>
-          </a>
+          )}
         </li>
+
         <li>
           <a
             href="#"
-            className={`nav-link text-white ${activeLink === "customers" ? "active" : ""}`}
-            style={linkStyle}
-            onMouseEnter={e => e.currentTarget.style.backgroundColor = linkHoverStyle.backgroundColor}
-            onMouseLeave={e => e.currentTarget.style.backgroundColor = ""}
-            onClick={() => setActiveLink("customers")}
+            className={`block ${linkStyle} ${onlineLink === "dashboard" ? linkActiveStyle : ""} flex gap-2`}
+            onClick={() => {
+              setOnlineLink("dashboard");
+              setShowOnlineLinks(!showOnlineLinks);
+            }}
           >
-            <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#people-circle"></use></svg>
-            <div className="flex gap-2 text-lg">
-            <FaVideo className="text-[27px]"/>
-           Lectures
-           </div>
+            <PiStudentFill className="text-2xl" />
+            <span className={`linkTextStyle text-[15px]`}>Online Examination</span>
           </a>
+          {showOnlineLinks && (
+            <div className="pl-6 mt-2 space-y-1">
+              <Link to="dashboard/AddOnline" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Exam Link
+              </Link>
+              <Link to="dashboard/" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Appeared Students
+              </Link>
+              
+            </div>
+          )}
         </li>
+
+        <li>
+          <a
+            href="#"
+            className={`block ${linkStyle} ${offlineLink === "dashboard" ? linkActiveStyle : ""} flex gap-2`}
+            onClick={() => {
+              setOfflineLink("dashboard");
+              setShowOfflineLinks(!showOfflineLinks);
+            }}
+          >
+            <PiStudentFill className="text-2xl" />
+            <span className={`linkTextStyle text-[15px]`}>Offline Examination</span>
+          </a>
+          {showOfflineLinks && (
+            <div className="pl-6 mt-2 space-y-1">
+              <Link to="dashboard/AddOffline" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Add Marks
+              </Link>
+              <Link to="dashboard/" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+               View Marks
+              </Link>
+             
+            </div>
+          )}
+        </li>
+
+        <li>
+          <a
+            href="#"
+            className={`block ${linkStyle} ${accountLink === "dashboard" ? linkActiveStyle : ""} flex gap-2`}
+            onClick={() => {
+              setAccountLink("dashboard");
+              setShowAccountLinks(!showAccountLinks);
+            }}
+          >
+            <PiStudentFill className="text-2xl" />
+            <span className={linkTextStyle}>Account Section</span>
+          </a>
+          {showAccountLinks && (
+            <div className="pl-6 mt-2 space-y-1">
+              <Link to="dashboard/AddAccount" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Add Fund
+              </Link>
+              <Link to="dashboard/" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                Add Student Fee
+              </Link>
+              <Link to="#" className={`${linkStyle} flex items-center gap-2`}>
+                <FaRegCircle />
+                View Student Fee
+              </Link>
+              
+            </div>
+          )}
+        </li>
+        
       </ul>
-      <hr />
-      <Dropdown>
-        <Dropdown.Toggle className="d-flex align-items-center text-white text-decoration-none">
-          <img src="https://github.com/mdo.png" alt="" width="32" height="32" className="rounded-circle me-2" />
+      <hr className="my-4 border-gray-700" />
+      <div className="flex items-center mt-auto space-x-2">
+        <img
+          src="https://github.com/mdo.png"
+          alt=""
+          width="32"
+          height="32"
+          className="rounded-full"
+        />
+        <div className="text-white">
           <strong>mdo</strong>
-        </Dropdown.Toggle>
-        <Dropdown.Menu className="dropdown-menu-dark text-small shadow">
-          <Dropdown.Item href="#">New project...</Dropdown.Item>
-          <Dropdown.Item href="#">Settings</Dropdown.Item>
-          <Dropdown.Item href="#">Profile</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#">Sign out</Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+        </div>
+        <div className="relative">
+         
+          <div
+            className={`absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-md shadow-lg ${showDropdown ? 'block' : 'hidden'}`}
+          >
+            <a href="#" className={`${linkStyle} block`}>New project...</a>
+            <a href="#" className={`${linkStyle} block`}>Settings</a>
+            <a href="#" className={`${linkStyle} block`}>Profile</a>
+            <hr className="my-1 border-gray-700" />
+            <a href="#" className={`${linkStyle} block`}>Sign out</a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
 
 export default Sidebar;
+
+
+
+
+
