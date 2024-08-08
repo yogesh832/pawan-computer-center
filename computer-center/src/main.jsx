@@ -14,6 +14,9 @@ import { Dashboard } from './components/Dashboard/Dashboard.jsx';
 import CenterMessage from './components/Dashboard/CenterMessage/CenterMessage.jsx';
 import Centersection from './components/Dashboard/centersection/Centersection.jsx';
 import MarketingTools from './components/Dashboard/Marketing Tool/MarketingTool.jsx';
+// import Centersection from './components/Dashboard/centersection/Centersection.jsx';
+// import {MarketingTools} from './components/Dashboard/Marketing Tool/MarketingTool.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -39,25 +42,23 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <AboutUs />
+      },{
+        path: "dashboard",
+        element: <Dashboard />
       },
       {
-        path: "Dashboard",
-        element: <Dashboard />, 
-        children: [
-          {
-            path: "CenterMessage",
-            element: <CenterMessage />,
-          },
-          {
-            path: "CenterSection",
-            element: <Centersection />,
-          },
-          {
-            path: "MarketingTool",
-            element: <MarketingTools />,
-          },
-        ],
+        path: "dashboard/centermessage",
+        element: <CenterMessage />
       },
+      {
+        path: "dashboard/centersection",
+        element: <Centersection />
+      }
+      ,
+      {
+        path: "dashboard/marketingtool",
+        element: <MarketingTools />
+      }
     ]
   }
 ]);

@@ -16,7 +16,7 @@ export const Dashboard = () => {
  
   </div>
   <MarketingTools />
-  <CenterMessage />
+  {/* <CenterMessage /> */}
   </>
   )
 }
