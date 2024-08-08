@@ -12,10 +12,8 @@ import AboutUs from './components/navbar/About us/AboutUs.jsx';
 import "../src/index.css"
 import { Dashboard } from './components/Dashboard/Dashboard.jsx';
 import CenterMessage from './components/Dashboard/CenterMessage/CenterMessage.jsx';
-import Centersection from './components/Dashboard/centersection/Centersection.jsx';
 import MarketingTools from './components/Dashboard/Marketing Tool/MarketingTool.jsx';
-// import Centersection from './components/Dashboard/centersection/Centersection.jsx';
-// import {MarketingTools} from './components/Dashboard/Marketing Tool/MarketingTool.jsx';
+import Centerdocument from './components/Dashboard/centersection/Centerdocument.jsx';
 
 
 const router = createBrowserRouter([
@@ -51,8 +49,8 @@ const router = createBrowserRouter([
         element: <CenterMessage />
       },
       {
-        path: "dashboard/centersection",
-        element: <Centersection />
+        path: "dashboard/centerdocument",
+        element: <Centerdocument />
       }
       ,
       {

@@ -1,7 +1,7 @@
 import React from "react";
 import { alignPropType } from "react-bootstrap/esm/types";
 
-const Centersection = () =>{
+const Centerdocument = () =>{
 
     const image = {
         height:'100px', 
@@ -63,4 +63,4 @@ const Centersection = () =>{
     )
 }
 
-export default Centersection
+export default Centerdocument
