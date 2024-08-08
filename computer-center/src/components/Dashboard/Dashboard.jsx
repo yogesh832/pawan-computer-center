@@ -7,6 +7,9 @@ import Addfund from './AccountSection/Addfund'
 import Addstudentfee from './AccountSection/Addstudentfee'
 import Viewstudentfee from './AccountSection/Viewstudentfee'
 import Passbook from './AccountSection/Passbook'
+import CertificateRequisition from './CertificatesFile/CertificateRequisition'
+import TrackCertificate from './CertificatesFile/TrackCertificate'
+import ViewCertificate from './CertificatesFile/ViewCerticate'
 
 
 
@@ -22,7 +25,10 @@ export const Dashboard = () => {
   {/* <Addfund /> */}
   {/* <Addstudentfee /> */}
   {/* <Viewstudentfee /> */}
-  <Passbook /> 
+  {/* <Passbook />  */}
+  <CertificateRequisition />
+  <TrackCertificate />
+  
   </>
   )
 }
