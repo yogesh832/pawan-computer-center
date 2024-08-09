@@ -12,6 +12,10 @@ import Passbook from './AccountSection/Passbook'
 import CertificateRequisition from './CertificatesFile/CertificateRequisition'
 import TrackCertificate from './CertificatesFile/TrackCertificate'
 import ViewCertificate from './CertificatesFile/ViewCerticate'
+import AddMarks from './OfflineExamination/AddMarks'
+import ViewMarks from './OfflineExamination/ViewMarks'
+
+
 
 
 
@@ -19,19 +23,20 @@ export const Dashboard = () => {
   return (
     <>
     <div className='flex'>
-  <Sidebar />  
+  {/* <Sidebar />   */}
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
 
    {/* <Addfund/>  */}
-   <Addstudentfee/>
+   {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}
    {/* <Passbook/> */}
-  
- 
+   
   </div>
-  <AddStudent/>  
+  {/* <AddMarks /> */}
+ <ViewMarks />
+
   </>
   )
 }
