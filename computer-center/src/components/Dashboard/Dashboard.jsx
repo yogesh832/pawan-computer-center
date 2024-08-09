@@ -24,9 +24,9 @@ export const Dashboard = () => {
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
 
-   {/* <Addfund/>  */}
-   <Addstudentfee/>
-   {/* <Viewstudentfee/> */}
+   <Addfund/> 
+   {/* <Addstudentfee/> */}
+   <Viewstudentfee/>
    {/* <Passbook/> */}
   
  
