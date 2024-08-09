@@ -31,7 +31,7 @@ const Sidebar = () => {
   const linkTextStyle = "flex items-center gap-2 text-lg";
 
   return (
-    <div className="flex min-w-60 flex-col p-4 bg-gray-900 text-white h-100vh">
+    <div className="flex min-w-80 flex-col p-4 bg-gray-900  text-white h-100vh">
       <a href="/" className="flex items-center mb-6 text-white text-xl font-semibold">
         <svg className="bi pe-none me-2" width="40" height="32"><use xlinkHref="#bootstrap"></use></svg>
         <span>Dashboard</span>
@@ -57,7 +57,7 @@ const Sidebar = () => {
                 <FaRegCircle />
                 Add Student
               </Link>
-              <Link to="dashboard/" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Manage Application
               </Link>

@@ -126,7 +126,7 @@ const AddStudent = () => {
                   </select>
                 </div>
 
-                {selectedCourse === "8" && (
+                { selectedCourse === "8" && (
                   <div className="w-full md:w-1/2 px-4 mb-4">
                     <label
                       htmlFor="courseOption"

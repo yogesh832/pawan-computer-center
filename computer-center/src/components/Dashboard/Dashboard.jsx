@@ -20,18 +20,18 @@ export const Dashboard = () => {
     <>
     <div className='flex'>
   <Sidebar />  
- <ControlPanel /> 
- {/* <MarketingTools /> 
-   <CenterMessage />
+ {/* <ControlPanel />  */}
+  {/* <MarketingTools />  */}
+    {/* <CenterMessage /> */}
 
-   <Addfund/> 
+   {/* <Addfund/>  */}
    <Addstudentfee/>
-   <Viewstudentfee/>
-   <Passbook/>
-  <AddStudent/> */}
+   {/* <Viewstudentfee/> */}
+   {/* <Passbook/> */}
+  
  
   </div>
-  
+  <AddStudent/>  
   </>
   )
 }
