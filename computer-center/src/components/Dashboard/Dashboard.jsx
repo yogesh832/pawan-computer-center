@@ -15,19 +15,20 @@ import ViewCertificate from './CertificatesFile/ViewCerticate'
 import AddMarks from './OfflineExamination/AddMarks'
 import ViewMarks from './OfflineExamination/ViewMarks'
 
-
+import PracticeCRUD from './practiceCRUD'
 
 
 
 export const Dashboard = () => {
   return (
     <>
+
     <div className='flex'>
   <Sidebar />  
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
-
+    <PracticeCRUD />
    {/* <Addfund/>  */}
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}
@@ -35,7 +36,7 @@ export const Dashboard = () => {
    
   </div>
   {/* <AddMarks /> */}
- <ViewMarks />
+ {/* <ViewMarks /> */}
 
   </>
   )
