@@ -15,13 +15,13 @@ function Home() {
 
   return (
     <div className="all-content"> 
-     {/* <MySwiper /> */}
-      {/* <Marquee /> */}
-      {/* <InfoSections /> */}
+     {/* <MySwiper /> 
+       <Marquee /> 
+      <InfoSections /> */}
       <Dashboard />
-      {/* <Centersection /> */}
-      {/* <CenterMessage /> */}
-      {/* <MarketingTools /> */}
+       {/* <Centersection />
+       <CenterMessage /> 
+     <MarketingTools />  */}
     </div>
   );
 }
