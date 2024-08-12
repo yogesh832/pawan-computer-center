@@ -17,7 +17,7 @@ import ViewMarks from './OfflineExamination/ViewMarks'
 
 import PracticeCRUD from './practiceCRUD'
 
-
+// import StudentTable from './Student section/StudentTable'
 
 export const Dashboard = () => {
   return (
@@ -28,13 +28,15 @@ export const Dashboard = () => {
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
-    <PracticeCRUD />
+    <AddStudent/>
+    {/* <PracticeCRUD /> */}
    {/* <Addfund/>  */}
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}
    {/* <Passbook/> */}
    
   </div>
+  {/* <StudentTable/> */}
   {/* <AddMarks /> */}
  {/* <ViewMarks /> */}
 

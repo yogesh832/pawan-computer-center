@@ -14,7 +14,7 @@ import { One } from './components/services/onemonth/One';
 // import useLocomotiveScroll from './useLocomotiveScroll';  // Import the custom hook
 
 function App() {
-  // useLocomotiveScroll();  // Apply the custom hook
+  useLocomotiveScroll();  // Apply the custom hook
 
   return (
     <div> 

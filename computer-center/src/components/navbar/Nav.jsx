@@ -94,7 +94,7 @@ const Nav = () => {
         </div>
       </div>
       <div className={style.buttons}>
-        <Link to="/login" className={style.button1}>
+        <Link to="/dashboard" className={style.button1}>
           Register Now
         </Link>
         <Link to="/login" className={style.button2}>
