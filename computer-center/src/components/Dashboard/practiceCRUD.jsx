@@ -1,214 +1,226 @@
-import React, { useState } from 'react';
+// import React, { useState } from 'react';
 
-function App() {
-  // State to hold the list of items
-  const [items, setItems] = useState([]);
-  // State for the new item being added
-  const [newItem, setNewItem] = useState('');
-  // State for the index of the item being edited
-  const [editIndex, setEditIndex] = useState(null);
-  // State for the updated value of the item being edited
-  const [editValue, setEditValue] = useState('');
+// function App() {
+//   const [items, setItems] = useState([]);
+//   const [newItem, setNewItem] = useState('');
+//   const [editIndex, setEditIndex] = useState(null);
+//   const [editValue, setEditValue] = useState('');
 
-  // Function to handle adding a new item
-  const handleAdd = () => {
-    if (newItem.trim()) {
-      setItems([...items, newItem.trim()]);
-      setNewItem('');
+//   const handleAdd = () => {
+//     if (newItem.trim()) {
+//       setItems([...items, newItem.trim()]);
+//       setNewItem('');
+//     }
+//   };
+
+//   const handleEdit = (index) => {
+//     setEditIndex(index);
+//     setEditValue(items[index]);
+//   };
+
+//   const handleUpdate = () => {
+//     if (editValue.trim()) {
+//       const updatedItems = items.map((item, index) =>
+//         index === editIndex ? editValue.trim() : item
+//       );
+//       setItems(updatedItems);
+//       setEditIndex(null);
+//       setEditValue('');
+//     }
+//   };
+
+//   const handleDelete = (index) => {
+//     const updatedItems = items.filter((_, i) => i !== index);
+//     setItems(updatedItems);
+//   };
+
+//   return (
+//     <div className="max-w-4xl mx-auto p-4">
+//       <h1 className="text-2xl font-bold mb-4">CRUD Operations Example</h1>
+
+//       <div className="flex gap-2 mb-4">
+//         <input
+//           type="text"
+//           value={newItem}
+//           onChange={(e) => setNewItem(e.target.value)}
+//           placeholder="Add new item"
+//           className="border border-gray-300 p-2 rounded-lg w-full"
+//         />
+//         <button
+//           onClick={handleAdd}
+//           className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
+//         >
+//           Add
+//         </button>
+//       </div>
+
+//       <table className="w-full border-collapse">
+//         <thead>
+//           <tr>
+//             <th className="border border-gray-300 p-2">Item</th>
+//             <th className="border border-gray-300 p-2">Actions</th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           {items.map((item, index) => (
+//             <tr key={index}>
+//               <td className="border border-gray-300 p-2">
+//                 {editIndex === index ? (
+//                   <input
+//                     type="text"
+//                     value={editValue}
+//                     onChange={(e) => setEditValue(e.target.value)}
+//                     className="border border-gray-300 p-2 rounded-lg w-full"
+//                   />
+//                 ) : (
+//                   item
+//                 )}
+//               </td>
+//               <td className="border border-gray-300 p-2">
+//                 {editIndex === index ? (
+//                   <>
+//                     <button
+//                       onClick={handleUpdate}
+//                       className="bg-yellow-400 text-white p-2 rounded-lg hover:bg-yellow-500"
+//                     >
+//                       Update
+//                     </button>
+//                     <button
+//                       onClick={() => setEditIndex(null)}
+//                       className="bg-gray-500 text-white p-2 rounded-lg hover:bg-gray-600 ml-2"
+//                     >
+//                       Cancel
+//                     </button>
+//                   </>
+//                 ) : (
+//                   <>
+//                     <button
+//                       onClick={() => handleEdit(index)}
+//                       className="bg-yellow-400 text-white p-2 rounded-lg hover:bg-yellow-500"
+//                     >
+//                       Edit
+//                     </button>
+//                     <button
+//                       onClick={() => handleDelete(index)}
+//                       className="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 ml-2"
+//                     >
+//                       Delete
+//                     </button>
+//                   </>
+//                 )}
+//               </td>
+//             </tr>
+//           ))}
+//         </tbody>
+//       </table>
+//     </div>
+//   );
+// }
+
+// export default App;
+
+
+
+
+import  { useState } from "react";
+
+
+const PracticeCRUD = () => {
+
+  const [items, setItems] = useState([]); 
+  const [newItem,setNewItem] = useState(''); 
+  const [editItems, setEditItems] = useState('');
+  const [editIndex, setEditIndex] = useState(null)
+  
+    const  handleOnChange = (e) => {
+      if (editIndex !== null) {
+        setEditItems(e.target.value); 
+      } else {
+        setNewItem(e.target.value); 
+      }
+      // console.log(e.target.value);
     }
-  };
+    const handleAdd = (e) =>{
+      e.preventDefault();
+      if (newItem.trim()) {
+              setItems([...items, newItem.trim()]);
+              setNewItem('');
+            }
+    };
+    const handleDelete = (index) =>{
+        const updatedData = items.filter((_,e) => e !== index);
+        setItems(updatedData)
+    }
+    const handleEdit = (index) =>{
+      setEditIndex(index);
+      setEditItems(items[index]);
+    }
 
-  // Function to handle editing an item
-  const handleEdit = (index) => {
-    setEditIndex(index); // Set the index of the item being edited
-    setEditValue(items[index]); // Set the value of the item being edited
-  };
-
-  // Function to handle updating an item
-  const handleUpdate = () => {
-    if (editValue.trim()) {
-      const updatedItems = items.map((item, index) =>
-        index === editIndex ? editValue.trim() : item
+    const handleUpdate = () => {
+      const updatedItems = items.map((item, index) => 
+        index === editIndex ? editItems : item
       );
       setItems(updatedItems);
-      setEditIndex(null); // Clear the edit index after updating
-      setEditValue(''); // Clear the edit value
+      setEditIndex(null); 
+      setEditItems('');   
+      setNewItem('');     
     }
-  };
-
-  // Function to handle deleting an item
-  const handleDelete = (index) => {
-    const updatedItems = items.filter((_, i) => i !== index);
-    setItems(updatedItems);
-  };
-
-  // Inline styles
-  const containerStyle = {
-    maxWidth: '960px',
-    margin: '0 auto',
-    padding: '16px',
-  };
-
-  const headerStyle = {
-    fontSize: '24px',
-    fontWeight: 'bold',
-    marginBottom: '16px',
-  };
-
-  const formContainerStyle = {
-    marginBottom: '16px',
-    display: 'flex',
-    gap: '8px',
-  };
-
-  const inputStyle = {
-    border: '1px solid #d1d5db',
-    padding: '8px',
-    borderRadius: '8px',
-    width: '100%',
-  };
-
-  const buttonStyle = {
-    padding: '8px 16px',
-    borderRadius: '8px',
-    color: '#ffffff',
-    cursor: 'pointer',
-    fontSize: '16px',
-  };
-
-  const addButtonStyle = {
-    ...buttonStyle,
-    backgroundColor: '#3b82f6',
-  };
-
-  const addButtonHoverStyle = {
-    ...addButtonStyle,
-    backgroundColor: '#2563eb',
-  };
-
-  const tableStyle = {
-    width: '100%',
-    borderCollapse: 'collapse',
-  };
-
-  const thTdStyle = {
-    border: '1px solid #d1d5db',
-    padding: '8px',
-  };
-
-  const editButtonStyle = {
-    ...buttonStyle,
-    backgroundColor: '#facc15',
-  };
-
-  const editButtonHoverStyle = {
-    ...editButtonStyle,
-    backgroundColor: '#fbbf24',
-  };
-
-  const deleteButtonStyle = {
-    ...buttonStyle,
-    backgroundColor: '#ef4444',
-  };
-
-  const deleteButtonHoverStyle = {
-    ...deleteButtonStyle,
-    backgroundColor: '#dc2626',
-  };
-
-  return (
-    <div style={containerStyle}>
-      <h1 style={headerStyle}>CRUD Operations Example</h1>
-
-      <div style={formContainerStyle}>
-        <input
-          type="text"
-          value={newItem}
-          onChange={(e) => setNewItem(e.target.value)}
-          placeholder="Add new item"
-          style={inputStyle}
-        />
+  return(
+  <>
+   <div className="max-w-4xl mx-auto p-4">
+   <h1 className="text-2xl font-bold mb-4">CRUD Operation</h1>
+   
+   
+   <div className="flex gap-2 mb-4">
+         <input type="text"
+                    value= {editIndex !== null ? editItems : newItem}
+                    placeholder="Add new item"
+                    className="border border-gray-300 p-2 rounded-lg w-full"
+                    onChange={handleOnChange}
+                  />
+         {editIndex === null ? (         
         <button
           onClick={handleAdd}
-          style={addButtonStyle}
-          onMouseOver={(e) => e.currentTarget.style.backgroundColor = addButtonHoverStyle.backgroundColor}
-          onMouseOut={(e) => e.currentTarget.style.backgroundColor = addButtonStyle.backgroundColor}
+          className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
         >
           Add
         </button>
+         ) : (
+          <button
+          onClick={handleUpdate}
+          className="bg-blue-500 text-white p-2 rounded-lg hover:bg-blue-600"
+        >
+          Update
+        </button>
+         )}
       </div>
-
-      <table style={tableStyle}>
-        <thead>
+      
+      <table className="w-full border-collapse">
+        
+          <thead>
           <tr>
-            <th style={thTdStyle}>Item</th>
-            <th style={thTdStyle}>Actions</th>
+          <th className="border border-gray-300 p-2">Items</th>
+          <th className="border border-gray-300 p-2">Actions</th>
           </tr>
-        </thead>
-        <tbody>
-          {items.map((item, index) => (
-            <tr key={index}>
-              <td style={thTdStyle}>
-                {editIndex === index ? (
-                  <input
-                    type="text"
-                    value={editValue}
-                    onChange={(e) => setEditValue(e.target.value)}
-                    style={inputStyle}
-                  />
-                ) : (
-                  item
-                )}
-              </td>
-              <td style={thTdStyle}>
-                {editIndex === index ? (
-                  <>
-                    <button
-                      onClick={handleUpdate}
-                      style={editButtonStyle}
-                      onMouseOver={(e) => e.currentTarget.style.backgroundColor = editButtonHoverStyle.backgroundColor}
-                      onMouseOut={(e) => e.currentTarget.style.backgroundColor = editButtonStyle.backgroundColor}
-                    >
-                      Update
-                    </button>
-                    <button
-                      onClick={() => setEditIndex(null)}
-                      style={buttonStyle}
-                      onMouseOver={(e) => e.currentTarget.style.backgroundColor = '#6b7280'}
-                      onMouseOut={(e) => e.currentTarget.style.backgroundColor = '#6b7280'}
-                      className="ml-2"
-                    >
-                      Cancel
-                    </button>
-                  </>
-                ) : (
-                  <>
-                    <button
-                      onClick={() => handleEdit(index)}
-                      style={editButtonStyle}
-                      onMouseOver={(e) => e.currentTarget.style.backgroundColor = editButtonHoverStyle.backgroundColor}
-                      onMouseOut={(e) => e.currentTarget.style.backgroundColor = editButtonStyle.backgroundColor}
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(index)}
-                      style={deleteButtonStyle}
-                      onMouseOver={(e) => e.currentTarget.style.backgroundColor = deleteButtonHoverStyle.backgroundColor}
-                      onMouseOut={(e) => e.currentTarget.style.backgroundColor = deleteButtonStyle.backgroundColor}
-                      className="ml-2"
-                    >
-                      Delete
-                    </button>
-                  </>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
+          </thead>
+        
+          <tbody>
+  
+            {items.map((item,index)=>(
+              <tr key={index}>
+                <td>{item}</td>
+                <td><button onClick={() => handleDelete(index)}>Delete</button></td>
+                <td><button onClick={() => handleEdit(index)}>Edit</button></td>
+              </tr>
+            ))}
+            
+          </tbody>
+        
       </table>
-    </div>
-  );
+        
+      
+  </div>
+  </>
+)
 }
-
-export default App;
+export default PracticeCRUD;
