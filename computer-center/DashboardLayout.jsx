@@ -1,17 +1,14 @@
-import React from "react";
+// DashboardLayout.jsx
+import React from 'react';
+import Sidebar from './src/components/Dashboard/Sidebar';
 
-import { Outlet } from "react-router-dom";
-import Sidebar from "./src/components/Dashboard/Sidebar";
-import MarketingTool from "./src/components/Dashboard/Marketing Tool/MarketingTool";
-
-const DashboardLayout = () => {
-    return (
-        <>
-           <Sidebar/>
-            <Outlet />
-            <MarketingTool/>
-        </>
-    );
+const DashboardLayout = ({ children }) => {
+  return (
+    <div className="flex">
+      <Sidebar />
+      <main>{children}</main>
+    </div>
+  );
 };
 
 export default DashboardLayout;

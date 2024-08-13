@@ -99,4 +99,3 @@ root.render(
 
 // Correctly handle web vitals by passing a function
 reportWebVitals(console.log); // Log metrics to console
-P
