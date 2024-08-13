@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import StudentTable from './StudentTable';
+// import StudentTable from './StudentTable';
 
 const AddStudent = () => {
   const [formData, setFormData] = useState({
@@ -63,7 +63,7 @@ const AddStudent = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Basic validation
@@ -429,10 +429,10 @@ const AddStudent = () => {
             </button>
           </fieldset>
         </form>
-        <StudentTable students={students} />
+        {/* <StudentTable students={students} /> */}
       </div>
     </div>
   );
-};
+}
 
 export default AddStudent;
