@@ -36,7 +36,7 @@ export const Dashboard = () => {
    {/* <Passbook/> */}
    
   </div>
-  <StudentTable/>
+  {/* <StudentTable/> */}
   {/* <AddMarks /> */}
  {/* <ViewMarks /> */}
 
