@@ -36,7 +36,7 @@ const AddStudent = () => {
     '14': ['DIPLOMA IN MOBILE REPAIRING &amp; SOFTWARE INSTALLATION(RVV06021)','CERTIFICATE IN COMPUTER BASIC AND TALLY(RV06016) CERTIFICATE IN ENGLISH AND HINDI TYPING(RV06018)  DIPLOMA IN BASIC MULTIMEDIA(RV06011)',' DIPLOMA IN COMPUTER APPLICATION ACCOUNTING(RV06009)',' DIPLOMA IN COMPUTER PROGRAMMING(RV06007)',' DIPLOMA IN DESK TOP PUBLISHING(RV06003)','  CERTIFICATE IN COMPUTER APPLICATION(RV06017)',' CERTIFICATE IN DECORATIVE PAINTINGS(RVV06045)','  Certificate in Digital Marketing(RV06020)','  CERTIFICATE IN GRAPHIC DESIGNING(RV06014)',' TO WEAR WITH ANGELA WOLF (RVV06006) DIPLOMA IN WEB TECHNOLOGY(RV06006)','',], // 6 MONTHS COURSES
 
 
-    '15': ['','','','','','','','','','','','',], 
+    '15': ['','','','','','',], 
 
 
 
@@ -102,6 +102,7 @@ const AddStudent = () => {
   };
 
   return (
+  <>
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-semibold mb-4">Add Student</h1>
       <div className="bg-white p-6 rounded-lg shadow-md">
@@ -432,7 +433,7 @@ const AddStudent = () => {
         {/* <StudentTable students={students} /> */}
       </div>
     </div>
-  );
+    </>  );
 }
 
 export default AddStudent;

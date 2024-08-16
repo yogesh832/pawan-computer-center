@@ -12,10 +12,10 @@ import "../src/index.css";
 import CenterMessage from './components/Dashboard/CenterMessage/CenterMessage.jsx';
 import MarketingTools from './components/Dashboard/Marketing Tool/MarketingTool.jsx';
 import Centerdocument from './components/Dashboard/centersection/Centerdocument.jsx';
-import AddStudent from './components/Dashboard/Studentsection/AddSrudent.jsx'; // Fixed typo
+import AddStudent from './components/Dashboard/Studentsection/AddStudent.jsx';
 import CertificateRequisition from './components/Dashboard/CertificatesFile/CertificateRequisition.jsx';
 import TrackCertificate from './components/Dashboard/CertificatesFile/TrackCertificate.jsx';
-import ViewCertificate from './components/Dashboard/CertificatesFile/ViewCerticate.jsx'; // Fixed typo
+import ViewCertificate from './components/Dashboard/CertificatesFile/ViewCerticate.jsx';
 import { Dashboard } from './components/Dashboard/Dashboard.jsx';
 
 const router = createBrowserRouter([
@@ -32,7 +32,7 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <DashboardLayout />,
         children: [
-          
+          { path: '', element: <Dashboard /> }, // Default Dashboard page
           { path: 'centermessage', element: <CenterMessage /> },
           { path: 'centerdocument', element: <Centerdocument /> },
           { path: 'marketingtools', element: <MarketingTools /> },

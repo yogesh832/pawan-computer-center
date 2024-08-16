@@ -22,7 +22,9 @@ function Home() {
       <InfoSections />
     <Contact />
     <Login/>
-    <AboutUs/> */}
+    <AboutUs/>  */}
+
+
 <Dashboard />
 
        {/* <Centersection />

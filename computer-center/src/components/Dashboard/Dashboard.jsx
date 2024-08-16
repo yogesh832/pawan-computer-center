@@ -4,7 +4,7 @@ import ControlPanel from './pannel/ControlPanel'
 import Sidebar from './Sidebar'
 import MarketingTools from './Marketing Tool/MarketingTool'
 import CenterMessage from './CenterMessage/CenterMessage'
-import AddStudent from './Studentsection/AddSrudent'
+import AddStudent from './Studentsection/AddStudent'
 import Addfund from './AccountSection/Addfund'
 import Addstudentfee from './AccountSection/Addstudentfee'
 import Viewstudentfee from './AccountSection/Viewstudentfee'
@@ -23,12 +23,12 @@ export const Dashboard = () => {
   return (
     <>
 
-    <div className='flex'>
+    <div className='flex flex-row'>
   <Sidebar />  
- {/* <ControlPanel />  */}
+ <ControlPanel /> 
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
-    <AddStudent/>
+    {/* <AddStudent/> */}
     {/* <PracticeCRUD /> */}
    {/* <Addfund/>  */}
    {/* <Addstudentfee/> */}

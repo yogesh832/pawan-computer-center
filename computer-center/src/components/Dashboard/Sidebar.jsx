@@ -31,14 +31,15 @@ const Sidebar = () => {
   const linkTextStyle = "flex items-center gap-2 text-lg";
 
   return (
-    <div className="flex min-w-80 flex-col p-4 bg-gray-900  text-white h-100vh">
+    <div className="flex min-w-80 flex-col p-4 mt-2 overflow-y-scroll bg-gray-900 text-white h-100vh">
       <a href="/" className="flex items-center mb-6 text-white text-xl font-semibold">
-        <svg className="bi pe-none me-2" width="40" height="32"><use xlinkHref="#bootstrap"></use></svg>
+        <svg className="bi pe-none me-2" width="40" height="32">
+          <use xlinkHref="#bootstrap"></use>
+        </svg>
         <span>Dashboard</span>
       </a>
       <hr className="mb-4 border-red-700" />
       <ul className="space-y-2">
-        
         <li>
           <a
             href="#"
@@ -53,19 +54,19 @@ const Sidebar = () => {
           </a>
           {showStudentLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link to="dashboard/AddStudent" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/AddStudent" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Student
               </Link>
-              <Link to="/" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/ManageApplication" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Manage Application
               </Link>
-              <Link to="#" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/SeeAllStudents" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 See All Students
               </Link>
-              <Link to="#" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/CourseEnquiry" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Course Enquiry
               </Link>
@@ -87,19 +88,18 @@ const Sidebar = () => {
           </a>
           {showCourseLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link to="/CenterDocument" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/CenterDocument" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
-             center Document
+                Center Document
               </Link>
-              <Link to="/MarketingTools" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/MarketingTools" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
-                Marking Tools
+                Marketing Tools
               </Link>
-              <Link to="/CenterMessage" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/CenterMessage" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Center Message
               </Link>
-              
             </div>
           )}
         </li>
@@ -118,19 +118,18 @@ const Sidebar = () => {
           </a>
           {showCertificateLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link to="/CertificationRequisition" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/CertificationRequisition" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Certificate Requisition
               </Link>
-              <Link to="/TrackCertificate" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/TrackCertificate" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Track Certificate
               </Link>
-              <Link to="/ViewCertificate" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/ViewCertificate" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
-              View Certificates
+                View Certificates
               </Link>
-              
             </div>
           )}
         </li>
@@ -149,15 +148,14 @@ const Sidebar = () => {
           </a>
           {showOnlineLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link to="/AddOnline" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/AddOnline" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Exam Link
               </Link>
-              <Link to="/dashboard" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/AppearedStudents" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Appeared Students
               </Link>
-              
             </div>
           )}
         </li>
@@ -176,15 +174,14 @@ const Sidebar = () => {
           </a>
           {showOfflineLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link to="/AddOffline" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/AddOffline" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Marks
               </Link>
-              <Link to="/dashboard" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/ViewMarks" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
-               View Marks
+                View Marks
               </Link>
-             
             </div>
           )}
         </li>
@@ -203,23 +200,21 @@ const Sidebar = () => {
           </a>
           {showAccountLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link to="/AddAccount" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/AddAccount" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Fund
               </Link>
-              <Link to="/dashboard" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/AddStudentFee" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Student Fee
               </Link>
-              <Link to="#" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/ViewStudentFee" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 View Student Fee
-              </Link>
-              
+      </Link>
             </div>
           )}
         </li>
-        
       </ul>
       <hr className="my-4 border-gray-700" />
       <div className="flex items-center mt-auto space-x-2">
@@ -230,20 +225,9 @@ const Sidebar = () => {
           height="32"
           className="rounded-full"
         />
-        <div className="text-white">
-          <strong>mdo</strong>
-        </div>
-        <div className="relative">
-         
-          <div
-            className={`absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded-md shadow-lg ${showDropdown ? 'block' : 'hidden'}`}
-          >
-            <a href="#" className={`${linkStyle} block`}>New project...</a>
-            <a href="#" className={`${linkStyle} block`}>Settings</a>
-            <a href="#" className={`${linkStyle} block`}>Profile</a>
-            <hr className="my-1 border-gray-700" />
-            <a href="#" className={`${linkStyle} block`}>Sign out</a>
-          </div>
+        <div className="text-sm">
+          <p className="text-white font-medium">Logged in as <strong>Admin</strong></p>
+          <p className="text-gray-500 truncate">admin@domain.com</p>
         </div>
       </div>
     </div>
@@ -251,8 +235,4 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-
-
-
-
+ 
