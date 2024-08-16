@@ -5,11 +5,14 @@ const UserSchema = new mongoose.Schema({
     fathername: { type: String, required: true},
     mothername: { type: String, required: true},
     dob: Date,
-    nationality: String,
+    course: String,
+    courseOption: String,
+    state: String,
+    district: String,
     qualification: String,
     contactno: String,
     guardiancontact: String,
-    adhar: String,
+    adhar: Number,
     gender: String,
     category: String,
     religion: String,
@@ -18,7 +21,6 @@ const UserSchema = new mongoose.Schema({
     signature: Buffer,
     marksheet: Buffer,
     address: String,
-    presentaddress: String,
 })
 
 
