@@ -5,6 +5,7 @@ const AddStudent = () => {
   const [formData, setFormData] = useState({
     name: '',
     dob: '',
+    state: '',
     district: '',
     course: '',
     courseOption: '',
@@ -80,19 +81,17 @@ const AddStudent = () => {
       'TO WEAR WITH ANGELA WOLF (RVV06006)',
       'DIPLOMA IN WEB TECHNOLOGY(RV06006)'
     ],
-    '15': [
-      // Add options for course level 15 if available
-    ],
+    '15': [],
     '12': [
       'ADVANCE DIPLOMA IN COMPUTER APPLICATION(RV18001)',
-      'Master Diploma in Computer Information(EV18002)'
+      'Master Diploma in Computer information(EV18002)'
     ],
     '13': [
       'Advance Diploma in Barbering(RVV24004)',
       'ADVANCE DIPLOMA IN COMPUTER HARDWARE & NETWORKING ENGINEERING(RV24003)',
       'ADVANCE DIPLOMA IN FINANCIAL ACCOUNTING(RV24006)',
       'ADVANCE DIPLOMA IN INFORMATION TECHNOLOGY(RV24004)',
-      'ADVANCE DIPLOMA IN NURSERY TEACHER TRAINING(RVV24001)',
+      'ADVANCE DIPLOMA IN NURSERY TEACHER TRAINNING(RVV24001)',
       'Diploma in Computer Application (RV24005)',
       'UNDER GRADUATE DIPLOMA IN FASHION DESIGNING(RVV24006)',
       'POST GRADUATE DIPLOMA IN INFORMATION TECHNOLOGY(RV24001)'
@@ -107,20 +106,26 @@ const AddStudent = () => {
     ]
   };
 
-  const categoryOptions = [
-    'General',
-    'OBC',
-    'SC',
-    'ST',
-    'Other'
+  const states = [
+    'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat',
+    'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh',
+    'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 
+    'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 
+    'Uttarakhand', 'West Bengal'
   ];
 
-  const maritalStatusOptions = [
-    'Single',
-    'Married',
-    'Divorced',
-    'Widowed',
-    'Other'
+  const uttarakhandDistricts = [
+    'Almora', 'Nainital', 'Dehradun', 'Uttarkashi', 'Rudraprayag', 'Udham Singh Nagar',
+    'Bageshwar', 'Tehri Garhwal', 'Chamoli', 'Haridwar', 'Pauri Garhwal', 'Pithoragarh',
+    'Champawat'
+  ];
+
+  const categories = [
+    'General', 'OBC', 'SC', 'ST', 'EWS'
+  ];
+
+  const maritalStatuses = [
+    'Single', 'Married', 'Divorced', 'Widowed'
   ];
 
   const handleChange = (e) => {
@@ -194,334 +199,354 @@ const AddStudent = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-semibold mb-4">Add Student</h1>
-      <div className="bg-white p-6 rounded-lg shadow-md">
-        <form onSubmit={handleSubmit}>
-          <fieldset>
-            <div className="flex flex-wrap">
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
-                  First Name:
-                </label>
-                <input
-                  type="text"
-                  id="firstname"
-                  name="firstname"
-                  value={formData.firstname}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+    <>
+      <div className="container mx-auto p-4">
+        <h1 className="text-2xl font-semibold mb-4">Add Student</h1>
+        <div className="bg-white p-6 rounded-lg shadow-md">
+          <form onSubmit={handleSubmit}>
+            <fieldset>
+              <div className="flex flex-wrap">
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">
+                    First Name:
+                  </label>
+                  <input
+                    type="text"
+                    id="firstname"
+                    name="firstname"
+                    value={formData.firstname}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
-                  Last Name:
-                </label>
-                <input
-                  type="text"
-                  id="lastname"
-                  name="lastname"
-                  value={formData.lastname}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">
+                    Last Name:
+                  </label>
+                  <input
+                    type="text"
+                    id="lastname"
+                    name="lastname"
+                    value={formData.lastname}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="dob" className="block text-sm font-medium text-gray-700">
-                  Date of Birth:
-                </label>
-                <input
-                  type="date"
-                  id="dob"
-                  name="dob"
-                  value={formData.dob}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="dob" className="block text-sm font-medium text-gray-700">
+                    Date of Birth:
+                  </label>
+                  <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    value={formData.dob}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="district" className="block text-sm font-medium text-gray-700">
-                  District:
-                </label>
-                <input
-                  type="text"
-                  id="district"
-                  name="district"
-                  value={formData.district}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="state" className="block text-sm font-medium text-gray-700">
+                    State:
+                  </label>
+                  <select
+                    id="state"
+                    name="state"
+                    value={formData.state}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="">Select State</option>
+                    {states.map(state => (
+                      <option key={state} value={state}>{state}</option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="course" className="block text-sm font-medium text-gray-700">
-                  Course:
-                </label>
-                <select
-                  id="course"
-                  name="course"
-                  value={formData.course}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">--Select Course--</option>
-                  {Object.keys(courseOptions).map((key) => (
-                    <option key={key} value={key}>
-                      {key}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="district" className="block text-sm font-medium text-gray-700">
+                    District:
+                  </label>
+                  <select
+                    id="district"
+                    name="district"
+                    value={formData.district}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="">Select District</option>
+                    {formData.state === 'Uttarakhand' && uttarakhandDistricts.map(district => (
+                      <option key={district} value={district}>{district}</option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="courseOption" className="block text-sm font-medium text-gray-700">
-                  Course Option:
-                </label>
-                <select
-                  id="courseOption"
-                  name="courseOption"
-                  value={formData.courseOption}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">--Select Course Option--</option>
-                  {courseOptions[formData.course]?.map((option, index) => (
-                    <option key={index} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="course" className="block text-sm font-medium text-gray-700">
+                    Course:
+                  </label>
+                  <select
+                    id="course"
+                    name="course"
+                    value={formData.course}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="">Select Course</option>
+                    {Object.keys(courseOptions).map(key => (
+                      <option key={key} value={key}>{key}</option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="mothername" className="block text-sm font-medium text-gray-700">
-                  Mother's Name:
-                </label>
-                <input
-                  type="text"
-                  id="mothername"
-                  name="mothername"
-                  value={formData.mothername}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="courseOption" className="block text-sm font-medium text-gray-700">
+                    Course Option:
+                  </label>
+                  <select
+                    id="courseOption"
+                    name="courseOption"
+                    value={formData.courseOption}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="">Select Course Option</option>
+                    {courseOptions[formData.course].map(option => (
+                      <option key={option} value={option}>{option}</option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="qualification" className="block text-sm font-medium text-gray-700">
-                  Qualification:
-                </label>
-                <input
-                  type="text"
-                  id="qualification"
-                  name="qualification"
-                  value={formData.qualification}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+                    Category:
+                  </label>
+                  <select
+                    id="category"
+                    name="category"
+                    value={formData.category}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="">Select Category</option>
+                    {categories.map(category => (
+                      <option key={category} value={category}>{category}</option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="contactno" className="block text-sm font-medium text-gray-700">
-                  Contact No:
-                </label>
-                <input
-                  type="text"
-                  id="contactno"
-                  name="contactno"
-                  value={formData.contactno}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="maritalstatus" className="block text-sm font-medium text-gray-700">
+                    Marital Status:
+                  </label>
+                  <select
+                    id="maritalstatus"
+                    name="maritalstatus"
+                    value={formData.maritalstatus}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="">Select Marital Status</option>
+                    {maritalStatuses.map(status => (
+                      <option key={status} value={status}>{status}</option>
+                    ))}
+                  </select>
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="guardiancontact" className="block text-sm font-medium text-gray-700">
-                  Guardian's Contact:
-                </label>
-                <input
-                  type="text"
-                  id="guardiancontact"
-                  name="guardiancontact"
-                  value={formData.guardiancontact}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                {/* Other fields */}
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="address" className="block text-sm font-medium text-gray-700">
+                    Address:
+                  </label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="adhar" className="block text-sm font-medium text-gray-700">
-                  Aadhar No:
-                </label>
-                <input
-                  type="text"
-                  id="adhar"
-                  name="adhar"
-                  value={formData.adhar}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="presentaddress" className="block text-sm font-medium text-gray-700">
+                    Present Address:
+                  </label>
+                  <input
+                    type="text"
+                    id="presentaddress"
+                    name="presentaddress"
+                    value={formData.presentaddress}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="gender" className="block text-sm font-medium text-gray-700">
-                  Gender:
-                </label>
-                <select
-                  id="gender"
-                  name="gender"
-                  value={formData.gender}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">--Select Gender--</option>
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                  <option value="Other">Other</option>
-                </select>
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="mothername" className="block text-sm font-medium text-gray-700">
+                    Mother's Name:
+                  </label>
+                  <input
+                    type="text"
+                    id="mothername"
+                    name="mothername"
+                    value={formData.mothername}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="category" className="block text-sm font-medium text-gray-700">
-                  Category:
-                </label>
-                <select
-                  id="category"
-                  name="category"
-                  value={formData.category}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">--Select Category--</option>
-                  {categoryOptions.map((option, index) => (
-                    <option key={index} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="qualification" className="block text-sm font-medium text-gray-700">
+                    Qualification:
+                  </label>
+                  <input
+                    type="text"
+                    id="qualification"
+                    name="qualification"
+                    value={formData.qualification}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="religion" className="block text-sm font-medium text-gray-700">
-                  Religion:
-                </label>
-                <input
-                  type="text"
-                  id="religion"
-                  name="religion"
-                  value={formData.religion}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="contactno" className="block text-sm font-medium text-gray-700">
+                    Contact No:
+                  </label>
+                  <input
+                    type="text"
+                    id="contactno"
+                    name="contactno"
+                    value={formData.contactno}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="maritalstatus" className="block text-sm font-medium text-gray-700">
-                  Marital Status:
-                </label>
-                <select
-                  id="maritalstatus"
-                  name="maritalstatus"
-                  value={formData.maritalstatus}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  <option value="">--Select Marital Status--</option>
-                  {maritalStatusOptions.map((option, index) => (
-                    <option key={index} value={option}>
-                      {option}
-                    </option>
-                  ))}
-                </select>
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="guardiancontact" className="block text-sm font-medium text-gray-700">
+                    Guardian Contact:
+                  </label>
+                  <input
+                    type="text"
+                    id="guardiancontact"
+                    name="guardiancontact"
+                    value={formData.guardiancontact}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="address" className="block text-sm font-medium text-gray-700">
-                  Address:
-                </label>
-                <textarea
-                  id="address"
-                  name="address"
-                  value={formData.address}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                ></textarea>
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="adhar" className="block text-sm font-medium text-gray-700">
+                    Aadhar No:
+                  </label>
+                  <input
+                    type="text"
+                    id="adhar"
+                    name="adhar"
+                    value={formData.adhar}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="presentaddress" className="block text-sm font-medium text-gray-700">
-                  Present Address:
-                </label>
-                <textarea
-                  id="presentaddress"
-                  name="presentaddress"
-                  value={formData.presentaddress}
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                ></textarea>
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="gender" className="block text-sm font-medium text-gray-700">
+                    Gender:
+                  </label>
+                  <select
+                    id="gender"
+                    name="gender"
+                    value={formData.gender}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  >
+                    <option value="">Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
-                  Photo:
-                </label>
-                <input
-                  type="file"
-                  id="photo"
-                  name="photo"
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="religion" className="block text-sm font-medium text-gray-700">
+                    Religion:
+                  </label>
+                  <input
+                    type="text"
+                    id="religion"
+                    name="religion"
+                    value={formData.religion}
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="signature" className="block text-sm font-medium text-gray-700">
-                  Signature:
-                </label>
-                <input
-                  type="file"
-                  id="signature"
-                  name="signature"
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
-              </div>
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
+                    Photo:
+                  </label>
+                  <input
+                    type="file"
+                    id="photo"
+                    name="photo"
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
 
-              <div className="w-full md:w-1/2 px-4 mb-4">
-                <label htmlFor="marksheet" className="block text-sm font-medium text-gray-700">
-                  Marksheet:
-                </label>
-                <input
-                  type="file"
-                  id="marksheet"
-                  name="marksheet"
-                  onChange={handleChange}
-                  className="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                />
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="signature" className="block text-sm font-medium text-gray-700">
+                    Signature:
+                  </label>
+                  <input
+                    type="file"
+                    id="signature"
+                    name="signature"
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
+
+                <div className="w-full md:w-1/2 px-4 mb-4">
+                  <label htmlFor="marksheet" className="block text-sm font-medium text-gray-700">
+                    Marksheet:
+                  </label>
+                  <input
+                    type="file"
+                    id="marksheet"
+                    name="marksheet"
+                    onChange={handleChange}
+                    className="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  />
+                </div>
               </div>
 
               {error && (
-                <div className="w-full px-4 mb-4 text-red-500">
+                <div className="text-red-500 mb-4">
                   {error}
                 </div>
               )}
 
-              <div className="w-full px-4 mb-4">
-                <button
-                  type="submit"
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                  Add Student
-                </button>
-              </div>
-            </div>
-          </fieldset>
-        </form>
+              <button
+                type="submit"
+                className="bg-indigo-600 text-white py-2 px-4 rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              >
+                Add Student
+              </button>
+            </fieldset>
+          </form>
+        </div>
+
+        {/* Uncomment if you want to show the StudentTable component */}
+        {/* <StudentTable students={students} /> */}
       </div>
-    </div>
+    </>
   );
 };
 
