@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './components/home/Home.jsx';
 import Layout from '../Layout.jsx';
@@ -17,7 +18,7 @@ import CertificateRequisition from './components/Dashboard/CertificatesFile/Cert
 import TrackCertificate from './components/Dashboard/CertificatesFile/TrackCertificate.jsx';
 import ViewCertificate from './components/Dashboard/CertificatesFile/ViewCerticate.jsx';
 import { Dashboard } from './components/Dashboard/Dashboard.jsx';
-
+import SeeAllStudent from './components/Dashboard/Studentsection/SeeAllStudent.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -39,7 +40,8 @@ const router = createBrowserRouter([
           { path: 'addstudent', element: <AddStudent /> },
           { path: 'certificationrequisition', element: <CertificateRequisition /> },
           { path: 'trackcertificate', element: <TrackCertificate /> },
-          { path: 'viewcertificate', element: <ViewCertificate /> }
+          { path: 'viewcertificate', element: <ViewCertificate /> },
+          { path: 'seeAllStudents', element: <SeeAllStudent />}
         ]
       }
     ]
