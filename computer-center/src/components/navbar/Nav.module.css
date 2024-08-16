@@ -11,6 +11,9 @@
   display: flex;
   color: #EEEEEE;
   z-index: 9;
+
+ 
+
 }
 .navbarNav{
   width: 100vw;
@@ -24,6 +27,9 @@
   padding-bottom: 10px;
   background-color: white;
   height: 80px;
+  min-width: 90vw;
+
+  box-sizing: border-box;
 }
 
 .logo {
@@ -149,7 +155,7 @@
 
 
 .button1 {
-  left: -40vw;
+  left: -30vw;
   color: rgb(12, 1, 1);
   background-color: white;
   border: 1px solid rgba(26, 4, 4, 0.479);
@@ -171,7 +177,7 @@
   transition: all ease 0.5s;
 }
 .button2 {
-  left: -25vw;
+  left: -15vw;
   color: rgb(245, 241, 241);
   background-color: rgb(15, 15, 15);
   border: none;
