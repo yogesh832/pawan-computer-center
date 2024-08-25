@@ -3,6 +3,7 @@ const app = express();
 const port = 5000;
 const connectDB = require('./db/dbConnection');
 const User = require('./db/user');
+const Counter = require('../backend/db/counter');
 const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
@@ -54,14 +55,57 @@ app.post('/dashboard/AddStudent', cors(), upload.fields([
     console.log('Body:', req.body); // Add this to debug
 
     // Extract form data and file paths
+//     const studentData = {
+//       ...req.body,
+//       photo: req.files['photo'] ? req.files['photo'][0].path : null,
+//       signature: req.files['signature'] ? req.files['signature'][0].path : null,
+//       marksheet: req.files['marksheet'] ? req.files['marksheet'][0].path : null
+//     };
+
+   
+//     // Save the student data to MongoDB
+//     const newUser = new User(studentData);
+//     await newUser.save();
+
+//     res.status(201).send('Student data saved successfully');
+//   } catch (error) {
+//     res.status(500).send('Error saving student data: ' + error.message);
+//   }
+// });
+
+
+// app.get('/dashboard/AddStudent', async (req, res) => {
+//   try {
+//     const students = await User.find(); // Fetch all students from MongoDB
+//     res.status(200).json(students);
+//   } catch (error) {
+//     res.status(500).send('Error fetching student data: ' + error.message);
+//   }
+// });
+
+// // Start the server
+// app.listen(port, () => {
+//   console.log(`Server is listening on Port ${port}`);
+// });
+
+let counter = await Counter.findById('registrationNumber');
+    if (!counter) {
+      counter = await Counter.create({ _id: 'registrationNumber', sequence_value: 0 });
+    }
+    counter.sequence_value += 1;
+    await counter.save();
+
+    const registrationNumber = `PCC${String(counter.sequence_value).padStart(6, '0')}`;
+
+    // Extract form data and file paths
     const studentData = {
       ...req.body,
       photo: req.files['photo'] ? req.files['photo'][0].path : null,
       signature: req.files['signature'] ? req.files['signature'][0].path : null,
-      marksheet: req.files['marksheet'] ? req.files['marksheet'][0].path : null
+      marksheet: req.files['marksheet'] ? req.files['marksheet'][0].path : null,
+      registrationNumber: registrationNumber // Add registration number
     };
 
-   
     // Save the student data to MongoDB
     const newUser = new User(studentData);
     await newUser.save();
@@ -71,7 +115,6 @@ app.post('/dashboard/AddStudent', cors(), upload.fields([
     res.status(500).send('Error saving student data: ' + error.message);
   }
 });
-
 
 app.get('/dashboard/AddStudent', async (req, res) => {
   try {
@@ -86,7 +129,5 @@ app.get('/dashboard/AddStudent', async (req, res) => {
 app.listen(port, () => {
   console.log(`Server is listening on Port ${port}`);
 });
-
-
 
 

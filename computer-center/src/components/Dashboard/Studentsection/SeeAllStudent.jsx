@@ -28,7 +28,7 @@ const SeeAllStudent = () => {
         <table className="table-auto w-full border-collapse border border-gray-400">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border border-gray-400 px-4 py-2">ID</th>
+              <th className="border border-gray-400 px-4 py-2">Registration Number</th>
               <th className="border border-gray-400 px-4 py-2">First Name</th>
               <th className="border border-gray-400 px-4 py-2">Last Name</th>
               <th className="border border-gray-400 px-4 py-2">Date of Birth</th>
