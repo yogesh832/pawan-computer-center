@@ -28,25 +28,43 @@ const SeeAllStudent = () => {
         <table className="table-auto w-full border-collapse border border-gray-400">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border border-gray-400 px-4 py-2">Registration Number</th>
+              <th className="border border-gray-400 px-4 py-2">
+                Registration Number
+              </th>
               <th className="border border-gray-400 px-4 py-2">First Name</th>
               <th className="border border-gray-400 px-4 py-2">Last Name</th>
-              <th className="border border-gray-400 px-4 py-2">Date of Birth</th>
+              <th className="border border-gray-400 px-4 py-2">
+                Date of Birth
+              </th>
               <th className="border border-gray-400 px-4 py-2">State</th>
               <th className="border border-gray-400 px-4 py-2">District</th>
               <th className="border border-gray-400 px-4 py-2">Course</th>
-              <th className="border border-gray-400 px-4 py-2">Course Option</th>
-              <th className="border border-gray-400 px-4 py-2">Mother's Name</th>
-              <th className="border border-gray-400 px-4 py-2">Qualification</th>
+              <th className="border border-gray-400 px-4 py-2">
+                Course Option
+              </th>
+              <th className="border border-gray-400 px-4 py-2">
+                Mother's Name
+              </th>
+              <th className="border border-gray-400 px-4 py-2">
+                Qualification
+              </th>
               <th className="border border-gray-400 px-4 py-2">Contact No</th>
-              <th className="border border-gray-400 px-4 py-2">Guardian's Contact</th>
+              <th className="border border-gray-400 px-4 py-2">
+                Guardian's Contact
+              </th>
               <th className="border border-gray-400 px-4 py-2">Aadhaar No</th>
               <th className="border border-gray-400 px-4 py-2">Gender</th>
               <th className="border border-gray-400 px-4 py-2">Category</th>
               <th className="border border-gray-400 px-4 py-2">Religion</th>
-              <th className="border border-gray-400 px-4 py-2">Marital Status</th>
-              <th className="border border-gray-400 px-4 py-2">Permanent Address</th>
-              <th className="border border-gray-400 px-4 py-2">Present Address</th>
+              <th className="border border-gray-400 px-4 py-2">
+                Marital Status
+              </th>
+              <th className="border border-gray-400 px-4 py-2">
+                Permanent Address
+              </th>
+              <th className="border border-gray-400 px-4 py-2">
+                Present Address
+              </th>
               <th className="border border-gray-400 px-4 py-2">Photo</th>
               <th className="border border-gray-400 px-4 py-2">Signature</th>
               <th className="border border-gray-400 px-4 py-2">Marksheet</th>
@@ -119,7 +137,13 @@ const SeeAllStudent = () => {
                   <img src={student.signature} alt="Student Signature" />
                 </td>
                 <td className="border border-gray-400 px-4 py-2">
-                  <a href={student.marksheet} target="_blank" rel="noopener noreferrer">View Marksheet</a>
+                  <a
+                    href={student.marksheet}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Marksheet
+                  </a>
                 </td>
               </tr>
             ))}
