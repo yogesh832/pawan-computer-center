@@ -74,7 +74,8 @@ const SeeAllStudent = () => {
             {students.map((student) => (
               <tr key={student._id}>
                 <td className="border border-gray-400 px-4 py-2">
-                  {student._id}
+                  {student.registrationNumber}
+            {}
                 </td>
                 <td className="border border-gray-400 px-4 py-2">
                   {student.firstname}
