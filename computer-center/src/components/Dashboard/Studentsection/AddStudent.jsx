@@ -68,17 +68,12 @@ const AddStudent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
 
     // Basic validation
-=======
-  
->>>>>>> ada630d12cbde468b5d39e7574a757b5d1c10e43
     if (!formData.firstname || !formData.lastname || !formData.dob || !formData.district || !formData.course || !formData.courseOption) {
       setError('Please fill out all required fields.');
       return;
     }
-<<<<<<< HEAD
 
     setError('');
     setStudents([...students, formData]);
@@ -107,55 +102,6 @@ const AddStudent = () => {
       marksheet: null,
     });
     setSelectedCourse('');
-=======
-  
-    try {
-      // Prepare the form data to be sent as multipart/form-data if there are files
-      const data = new FormData();
-      for (const key in formData) {
-        data.append(key, formData[key]);
-      }
-  
-      // Send a POST request to your backend
-      const response = await axios.post('http://localhost:5000/dashboard/AddStudent', data, {
-        headers: {
-          'Content-Type': 'multipart/form-data', // This is required for file uploads
-        },
-      });
-  
-      // Assuming the backend returns the added student, you can update the students state
-      setStudents([...students, response.data]);
-      setError(''); // Clear any errors
-  
-      // Reset the form after successful submission
-      setFormData({
-        firstname: '',
-        lastname: '',
-        dob: '',
-        district: '',
-        course: '',
-        courseOption: '',
-        mothername: '',
-        qualification: '',
-        contactno: '',
-        guardiancontact: '',
-        adhar: '',
-        gender: '',
-        category: '',
-        religion: '',
-        maritalstatus: '',
-        address: '',
-        presentaddress: '',
-        photo: null,
-        signature: null,
-        marksheet: null,
-      });
-      setSelectedCourse('');
-    } catch (error) {
-      setError('Failed to add student. Please try again.');
-      console.error(error); // For debugging purposes
-    }
->>>>>>> ada630d12cbde468b5d39e7574a757b5d1c10e43
   };
 
   return (
