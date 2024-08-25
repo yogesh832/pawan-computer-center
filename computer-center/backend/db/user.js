@@ -31,12 +31,12 @@
 const mongoose = require('mongoose')
 
 const UserSchema = new mongoose.Schema({
-  firstname: { type: String, required: true },
-  lastname: { type: String, required: true },
-  dob: { type: String, required: true },
-  district: { type: String, required: true },
-  course: { type: String, required: true },
-  courseOption: { type: String, required: true },
+  firstname: { type: String  },
+  lastname: { type: String  },
+  dob: { type: String },
+  district: { type: String  },
+  course: { type: String  },
+  courseOption: { type: String },
   mothername: { type: String },
   qualification: { type: String },
   contactno: { type: String },
