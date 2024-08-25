@@ -108,6 +108,7 @@ const AddStudent = () => {
     "Bihar",
     "Chhattisgarh",
     "Goa",
+    "Delhi",
     "Gujarat",
     "Haryana",
     "Himachal Pradesh",
