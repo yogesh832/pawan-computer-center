@@ -27,17 +27,17 @@ const SeeAllStudent = () => {
         <table className="table-auto w-full border-collapse border border-gray-400">
           <thead>
             <tr className="bg-gray-200">
-              <th className="border border-gray-400 px-4 py-2">ID</th>
+              <th className="border border-gray-400 px-4 py-2">Registration Number</th>
               <th className="border border-gray-400 px-4 py-2">First Name</th>
               <th className="border border-gray-400 px-4 py-2">Last Name</th>
-              <th className="border border-gray-400 px-4 py-2">Age</th>
+              <th className="border border-gray-400 px-4 py-2">Date of Birth</th>
               <th className="border border-gray-400 px-4 py-2">Contact</th>
             </tr>
           </thead>
           <tbody>
             {students.map((student) => (
               <tr key={student._id}>
-                <td className="border border-gray-400 px-4 py-2">{student._id}</td>
+                <td className="border border-gray-400 px-4 py-2">{student.registrationNumber}</td>
                 <td className="border border-gray-400 px-4 py-2">{student.firstname}</td>
                 <td className="border border-gray-400 px-4 py-2">{student.lastname}</td>
                 <td className="border border-gray-400 px-4 py-2">{student.dob}</td>
