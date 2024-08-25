@@ -561,6 +561,7 @@ const AddStudent = () => {
   const [formData, setFormData] = useState({
     name: '',
     dob: '',
+    state: '',
     district: '',
     course: '',
     courseOption: '',
@@ -580,33 +581,108 @@ const AddStudent = () => {
     marksheet: null,
   });
 
-  const maritalStatusOptions = ['Single', 'Married', 'Divorced', 'Widowed'];
-  const categoryOptions = ['General', 'OBC', 'SC', 'ST', 'Other'];
-
-
   const [students, setStudents] = useState([]);
   const [error, setError] = useState('');
   const [selectedCourse, setSelectedCourse] = useState('');
 
   const courseOptions = {
     '': [],
-    '8': ['   CERTIFICATE IN FUNDAMENTAL(RV01001)', 'CERTIFICATE IN MS EXCEL(RV01003)', 'CERTIFICATE IN MS POWER POINT(RV01004)',' CERTIFICATE IN MS WORD(RV01002)',], // 1 MONTH COURSES
-    '9': ['     Advanced Level Graphic Design(RV03039)',' Advanced Level Video Production(RV03040)','CERTIFICATE IN ADOBE IN-DESIGN(RV03023)','CERTIFICATE IN ADOBE PREMIER(RV03012)','CERTIFICATE IN AJAX(RV03026)','CERTIFICATE IN ASP.NET, ADO.NET(RV03019)',`CERTIFICATE IN AUTOCAD [2D & 3D](RV03032)`,'CERTIFICATE IN C(RV03018)','CERTIFICATE IN C ++(RV03020)','  CERTIFICATE IN COMPUTER BASIC(RV03003)','CERTIFICATE IN CORE JAVA(RV03033)','   CERTIFICATE IN COREL DRAW(RV03011)','CERTIFICATE IN DOTNET PROGRAMMING(RV03038)','CERTIFICATE IN DREAMWEAVER(RV03017)','CERTIFICATE IN ENGLISH &amp; REGIONAL LANGUAGE $ TYPING(RV03036)','CERTIFICATE IN EXCEL(RV03041)',' CERTIFICATE IN HINDI TYPING(RV03006)','CERTIFICATE IN HTML(RV03027)',' CERTIFICATE IN ILLUSTRATOR(RV03024)',' CERTIFICATE IN SERVLET, JSP, JDBC(RV03029)','CERTIFICATE IN SOUND FORGE(RV03015)',' CERTIFICATE IN SPOKEN ENGLISH(RV03004)CERTIFICATE IN VISUAL BASIC(RV03028)','CERTIFICATE COURSE IN REVIT ARCHITECTURE(RVV03008)',' CERTIFICATE IN 3D STUDIO MAX(RV03013)','   CERTIFICATE IN AFTER EFFECTS(RV03014)','DIPLOMA IN COMPUTER APPLICATION(RV03001)',], // 3 MONTHS COURSES
-    '14': ['DIPLOMA IN MOBILE REPAIRING &amp; SOFTWARE INSTALLATION(RVV06021)','CERTIFICATE IN COMPUTER BASIC AND TALLY(RV06016) CERTIFICATE IN ENGLISH AND HINDI TYPING(RV06018)  DIPLOMA IN BASIC MULTIMEDIA(RV06011)',' DIPLOMA IN COMPUTER APPLICATION ACCOUNTING(RV06009)',' DIPLOMA IN COMPUTER PROGRAMMING(RV06007)',' DIPLOMA IN DESK TOP PUBLISHING(RV06003)','  CERTIFICATE IN COMPUTER APPLICATION(RV06017)',' CERTIFICATE IN DECORATIVE PAINTINGS(RVV06045)','  Certificate in Digital Marketing(RV06020)','  CERTIFICATE IN GRAPHIC DESIGNING(RV06014)',' TO WEAR WITH ANGELA WOLF (RVV06006) DIPLOMA IN WEB TECHNOLOGY(RV06006)','',], // 6 MONTHS COURSES
-
-
-    '15': ['','','','','','',], 
-
-
-
-    '12': [' ADVANCE DIPLOMA IN COMPUTER APPLICATION(RV18001)',' Master Diploma in Computer information(EV18002)',], // 18 MONTHS COURSES
-    '13': ['Advance Diploma in Barbering(RVV24004)',' ADVANCE DIPLOMA IN COMPUTER HARDWARE &amp; NETWORKING ENGINEERING(RV24003)','ADVANCE DIPLOMA IN FINANCIAL ACCOUNTING(RV24006)',' ADVANCE DIPLOMA IN INFORMATION TECHNOLOGY(RV24004)','ADVANCE DIPLOMA IN NURSERY TEACHER TRAINNING(RVV24001)','  Diploma in Computer Application (RV24005)',' UNDER GRADUATE DIPLOMA IN FASHION DESIGNING(RVV24006)',' POST GRADUATE DIPLOMA IN INFORMATION TECHNOLOGY(RV24001)',], // 24 MONTHS COURSES
-
-
-
-    '20': [' 1-Year Health Care Option 1','1-Year Health Care Option 2',  ], // 1 YEAR HEALTH CARE COURSE
-    '21': ['2-Years Health Care Option 1','2-Years Health Care Option 2',], // 2 YEARS HEALTH CARE COURSE
+    '8': [
+      'CERTIFICATE IN FUNDAMENTAL(RV01001)',
+      'CERTIFICATE IN MS EXCEL(RV01003)',
+      'CERTIFICATE IN MS POWER POINT(RV01004)',
+      'CERTIFICATE IN MS WORD(RV01002)'
+    ],
+    '9': [
+      'Advanced Level Graphic Design(RV03039)',
+      'Advanced Level Video Production(RV03040)',
+      'CERTIFICATE IN ADOBE IN-DESIGN(RV03023)',
+      'CERTIFICATE IN ADOBE PREMIER(RV03012)',
+      'CERTIFICATE IN AJAX(RV03026)',
+      'CERTIFICATE IN ASP.NET, ADO.NET(RV03019)',
+      'CERTIFICATE IN AUTOCAD [2D & 3D](RV03032)',
+      'CERTIFICATE IN C(RV03018)',
+      'CERTIFICATE IN C ++(RV03020)',
+      'CERTIFICATE IN COMPUTER BASIC(RV03003)',
+      'CERTIFICATE IN CORE JAVA(RV03033)',
+      'CERTIFICATE IN COREL DRAW(RV03011)',
+      'CERTIFICATE IN DOTNET PROGRAMMING(RV03038)',
+      'CERTIFICATE IN DREAMWEAVER(RV03017)',
+      'CERTIFICATE IN ENGLISH & REGIONAL LANGUAGE $ TYPING(RV03036)',
+      'CERTIFICATE IN EXCEL(RV03041)',
+      'CERTIFICATE IN HINDI TYPING(RV03006)',
+      'CERTIFICATE IN HTML(RV03027)',
+      'CERTIFICATE IN ILLUSTRATOR(RV03024)',
+      'CERTIFICATE IN SERVLET, JSP, JDBC(RV03029)',
+      'CERTIFICATE IN SOUND FORGE(RV03015)',
+      'CERTIFICATE IN SPOKEN ENGLISH(RV03004)',
+      'CERTIFICATE IN VISUAL BASIC(RV03028)',
+      'CERTIFICATE COURSE IN REVIT ARCHITECTURE(RVV03008)',
+      'CERTIFICATE IN 3D STUDIO MAX(RV03013)',
+      'CERTIFICATE IN AFTER EFFECTS(RV03014)',
+      'DIPLOMA IN COMPUTER APPLICATION(RV03001)'
+    ],
+    '14': [
+      'DIPLOMA IN MOBILE REPAIRING & SOFTWARE INSTALLATION(RVV06021)',
+      'CERTIFICATE IN COMPUTER BASIC AND TALLY(RV06016)',
+      'CERTIFICATE IN ENGLISH AND HINDI TYPING(RV06018)',
+      'DIPLOMA IN BASIC MULTIMEDIA(RV06011)',
+      'DIPLOMA IN COMPUTER APPLICATION ACCOUNTING(RV06009)',
+      'DIPLOMA IN COMPUTER PROGRAMMING(RV06007)',
+      'DIPLOMA IN DESK TOP PUBLISHING(RV06003)',
+      'CERTIFICATE IN COMPUTER APPLICATION(RV06017)',
+      'CERTIFICATE IN DECORATIVE PAINTINGS(RVV06045)',
+      'Certificate in Digital Marketing(RV06020)',
+      'CERTIFICATE IN GRAPHIC DESIGNING(RV06014)',
+      'TO WEAR WITH ANGELA WOLF (RVV06006)',
+      'DIPLOMA IN WEB TECHNOLOGY(RV06006)'
+    ],
+    '15': [],
+    '12': [
+      'ADVANCE DIPLOMA IN COMPUTER APPLICATION(RV18001)',
+      'Master Diploma in Computer information(EV18002)'
+    ],
+    '13': [
+      'Advance Diploma in Barbering(RVV24004)',
+      'ADVANCE DIPLOMA IN COMPUTER HARDWARE & NETWORKING ENGINEERING(RV24003)',
+      'ADVANCE DIPLOMA IN FINANCIAL ACCOUNTING(RV24006)',
+      'ADVANCE DIPLOMA IN INFORMATION TECHNOLOGY(RV24004)',
+      'ADVANCE DIPLOMA IN NURSERY TEACHER TRAINNING(RVV24001)',
+      'Diploma in Computer Application (RV24005)',
+      'UNDER GRADUATE DIPLOMA IN FASHION DESIGNING(RVV24006)',
+      'POST GRADUATE DIPLOMA IN INFORMATION TECHNOLOGY(RV24001)'
+    ],
+    '20': [
+      '1-Year Health Care Option 1',
+      '1-Year Health Care Option 2'
+    ],
+    '21': [
+      '2-Years Health Care Option 1',
+      '2-Years Health Care Option 2'
+    ]
   };
+
+  const states = [
+    'Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat',
+    'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh',
+    'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 
+    'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 
+    'Uttarakhand', 'West Bengal'
+  ];
+
+  const uttarakhandDistricts = [
+    'Almora', 'Nainital', 'Dehradun', 'Uttarkashi', 'Rudraprayag', 'Udham Singh Nagar',
+    'Bageshwar', 'Tehri Garhwal', 'Chamoli', 'Haridwar', 'Pauri Garhwal', 'Pithoragarh',
+    'Champawat'
+  ];
+
+  const categories = [
+    'General', 'OBC', 'SC', 'ST', 'EWS'
+  ];
+
+  const maritalStatuses = [
+    'Single', 'Married', 'Divorced', 'Widowed'
+  ];
 
   const handleChange = (e) => {
     const { name, value, type, files } = e.target;
@@ -710,7 +786,6 @@ const AddStudent = () => {
       setError('Failed to add student. Please try again.');
       console.error(error); // For debugging purposes
     }
-
   };
 
   return (
