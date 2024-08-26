@@ -57,7 +57,6 @@ const SeeAllStudent = () => {
               <tr key={student._id}>
                 <td className="border border-gray-400 px-4 py-2">
                   {student.registrationNumber}
-            {}
                 </td>
                 <td className="border border-gray-400 px-4 py-2">
                   {student.firstname}
@@ -113,9 +112,16 @@ const SeeAllStudent = () => {
                 <td className="border border-gray-400 px-4 py-2">
                   {student.presentaddress}
                 </td>
-                <td className="border border-gray-400 px-4 py-2">
+                {/* <td className="border border-gray-400 px-4 py-2">
                   <img src={student.photo} alt="Student Photo" />
-                </td>
+                </td> */}
+                <td>
+          {student.photo ? (
+            <img src={`http://localhost:5000${student.photo}`} alt="Student Photo" width="100" />
+          ) : (
+            <p>No photo available</p>
+          )}
+        </td>
                 <td className="border border-gray-400 px-4 py-2">
                   <img src={student.signature} alt="Student Signature" />
                 </td>

@@ -10,7 +10,9 @@ const path = require('path');
 const fs = require('fs');
 
 
+app.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
+// console.log(path.join(__dirname, '../uploads/default'))
 
 // Middleware
 app.use(express.json());
@@ -34,11 +36,14 @@ const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     const userId = req.user?.id || 'default';
     const uploadPath = path.join(__dirname, 'uploads', userId);
+    console.log('Upload path:', uploadPath);
     fs.mkdirSync(uploadPath, { recursive: true }); // Ensure directory exists
     cb(null, uploadPath);
   },
   filename: function (req, file, cb) {
-    cb(null, Date.now() + '-' + file.originalname); // generate a unique filename
+    const filename = Date.now() + '-' + file.originalname;
+    console.log('Filename:', filename); // Log the filename
+    cb(null, filename);
   }
 });
 
@@ -69,10 +74,12 @@ let counter = await Counter.findById('registrationNumber');
     // Extract form data and file paths
     const studentData = {
       ...req.body,
-      photo: req.files['photo'] ? req.files['photo'][0].path : null,
-      signature: req.files['signature'] ? req.files['signature'][0].path : null,
-      marksheet: req.files['marksheet'] ? req.files['marksheet'][0].path : null,
+      // photo: req.files['photo'] ? req.files['photo'][0].path : null,
+      photo: req.files['photo'] ? `/uploads/${userId}/${req.files['photo'][0].filename}` : null,
+      signature: req.files['signature'] ? `/uploads/default/${req.files['signature'][0].filename}` : null,
+      marksheet: req.files['marksheet'] ? `/uploads/default/${req.files['marksheet'][0].filename}` : null,
       registrationNumber: registrationNumber // Add registration number
+      
     };
 
     // Save the student data to MongoDB
