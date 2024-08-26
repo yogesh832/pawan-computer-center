@@ -17,13 +17,12 @@ function Home() {
 
   return (
     <div className="all-content"> 
-     {/* <MySwiper /> 
+      {/* <MySwiper /> 
        <Marquee /> 
       <InfoSections />
     <Contact />
     <Login/>
-    <AboutUs/>  */}
-
+    <AboutUs/>   */}
 
 <Dashboard />
 
