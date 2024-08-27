@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import reportWebVitals from './reportWebVitals.js';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Home from './components/home/Home.jsx';
 import Layout from '../Layout.jsx';
@@ -19,6 +18,9 @@ import TrackCertificate from './components/Dashboard/CertificatesFile/TrackCerti
 import ViewCertificate from './components/Dashboard/CertificatesFile/ViewCerticate.jsx';
 import { Dashboard } from './components/Dashboard/Dashboard.jsx';
 import SeeAllStudent from './components/Dashboard/Studentsection/SeeAllStudent.jsx';
+import Student from './components/Dashboard/Student.jsx';
+import EditStudent from './components/Dashboard/Studentsection/EditStudent.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -33,7 +35,7 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <DashboardLayout />,
         children: [
-          { path: '', element: <Dashboard /> }, // Default Dashboard page
+          { path: '', element: <Dashboard /> },
           { path: 'centermessage', element: <CenterMessage /> },
           { path: 'centerdocument', element: <Centerdocument /> },
           { path: 'marketingtools', element: <MarketingTools /> },
@@ -41,7 +43,9 @@ const router = createBrowserRouter([
           { path: 'certificationrequisition', element: <CertificateRequisition /> },
           { path: 'trackcertificate', element: <TrackCertificate /> },
           { path: 'viewcertificate', element: <ViewCertificate /> },
-          { path: 'seeAllStudents', element: <SeeAllStudent />}
+          { path: 'seeAllStudents', element: <SeeAllStudent /> },
+          { path: 'AddStudent/:registrationNumber', element: <Student /> },
+          { path: 'EditStudent/:registrationNumber', element: <EditStudent /> }
         ]
       }
     ]
@@ -55,5 +59,4 @@ root.render(
   </React.StrictMode>
 );
 
-// Correctly handle web vitals by passing a function
-reportWebVitals(console.log); // Log metrics to console
+reportWebVitals(console.log);

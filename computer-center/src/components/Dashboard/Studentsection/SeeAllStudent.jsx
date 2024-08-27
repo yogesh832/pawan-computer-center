@@ -1,25 +1,45 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { CiEdit } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
+import { FaEye } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const SeeAllStudent = () => {
   const [students, setStudents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/dashboard/AddStudent")
       .then((response) => {
-        console.log("Fetched Data:", response.data);
-
         if (Array.isArray(response.data)) {
           setStudents(response.data);
         } else {
           console.error("Unexpected data format:", response.data);
         }
       })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
+      .catch((error) => console.error("Error fetching data:", error));
   }, []);
+
+  const handleViewDetails = (registrationNumber) => {
+    navigate(`/dashboard/AddStudent/${registrationNumber}`);
+  };
+
+  const handleEdit = (registrationNumber) => {
+    navigate(`/dashboard/EditStudent/${registrationNumber}`);
+  };
+
+  const handleDelete = (registrationNumber) => {
+    axios
+      .delete(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
+      .then(() => {
+        setStudents((prevStudents) =>
+          prevStudents.filter((student) => student.registrationNumber !== registrationNumber)
+        );
+      })
+      .catch((error) => console.error("Error deleting student:", error));
+  };
 
   return (
     <div className="p-4">
