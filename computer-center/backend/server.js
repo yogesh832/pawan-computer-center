@@ -125,6 +125,50 @@ app.get('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
   }
 });
 
+// Route to update a specific student by registration number
+app.put('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
+  try {
+    const updatedStudent = await User.findOneAndUpdate(
+      { registrationNumber: req.params.registrationNumber },
+      req.body,
+      { new: true, runValidators: true } // Return the updated document and run validation
+    );
+
+    if (updatedStudent) {
+      res.status(200).json({ message: "Student updated successfully", updatedStudent });
+    } else {
+      res.status(404).send('Student not found');
+    }
+  } catch (error) {
+    res.status(500).send('Error updating student data: ' + error.message);
+  }
+});
+
+// Route to delete a specific student by registration number
+app.delete('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
+  try {
+    const deletedStudent = await User.findOneAndDelete({ registrationNumber: req.params.registrationNumber });
+
+    if (deletedStudent) {
+      // Optionally, delete associated files if necessary
+      if (deletedStudent.photo) {
+        fs.unlinkSync(path.join(__dirname, "..", deletedStudent.photo));
+      }
+      if (deletedStudent.signature) {
+        fs.unlinkSync(path.join(__dirname, "..", deletedStudent.signature));
+      }
+      if (deletedStudent.marksheet) {
+        fs.unlinkSync(path.join(__dirname, "..", deletedStudent.marksheet));
+      }
+
+      res.status(200).json({ message: "Student deleted successfully" });
+    } else {
+      res.status(404).send('Student not found');
+    }
+  } catch (error) {
+    res.status(500).send('Error deleting student: ' + error.message);
+  }
+});
 
 // Start the server
 app.listen(port, () => {
