@@ -5,6 +5,7 @@ import { PiStudentFill } from "react-icons/pi";
 import { AiFillProduct } from "react-icons/ai";
 import { FaBuildingColumns } from "react-icons/fa6";
 
+
 const Sidebar = () => {
   const [studentLink, setStudentLink] = useState("home");
   const [showStudentLinks, setShowStudentLinks] = useState(false);
@@ -32,6 +33,8 @@ const Sidebar = () => {
   const linkTextStyle = "flex items-center gap-2 text-lg";
 
   return (
+    
+
     <div className="flex min-w-80 flex-col p-4 mt-2 overflow-y-scroll bg-gray-900 text-white h-100vh">
       <a
         href="/"
