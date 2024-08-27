@@ -45,68 +45,56 @@ const SeeAllStudent = () => {
     <div className="p-4">
       <h1 className="text-2xl font-bold mb-4">All Students</h1>
       {students.length > 0 ? (
-        <div className="overflow-x-auto">
-          <table className="min-w-full divide-y divide-gray-200 border border-gray-400">
-            <thead className="bg-gray-200">
-              <tr>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">
-                  Registration Number
-                </th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">
-                  First Name
-                </th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">
-                  Last Name
-                </th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">
-                  Course
-                </th>
-                <th className="px-4 py-2 text-left w-[1rem] text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">
-                  Course Option
-                </th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">
-                  Aadhaar No
-                </th>
-                <th className="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider border-b border-gray-300">
-                  Marksheet
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {students.map((student) => (
-                <tr key={student._id}>
-                  <td className="px-4 py-2 whitespace-nowrap border-b border-gray-300">
-                    {student.registrationNumber}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap border-b border-gray-300">
-                    {student.firstname}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap border-b border-gray-300">
-                    {student.lastname}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap border-b border-gray-300">
-                    {student.course}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap border-b border-gray-300">
-                    {student.courseOption}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap border-b border-gray-300">
-                    {student.adhar}
-                  </td>
-                  <td className="px-4 py-2 whitespace-nowrap border-b border-gray-300">
-                    <a
-                      href={student.marksheet}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-blue-600 hover:text-blue-800"
-                    >
-                      View Marksheet
-                    </a>
-                  </td>
+        <div className="max-h-96 overflow-y-auto">
+          <div className="overflow-x-auto">
+            <table className="table-auto w-full border-collapse border border-gray-400">
+              <thead>
+                <tr className="bg-gray-200">
+                  <th className="border border-gray-400 px-4 py-2">Registration Number</th>
+                  <th className="border border-gray-400 px-4 py-2">Name</th>
+                  <th className="border border-gray-400 px-4 py-2">Course</th>
+                  <th className="border border-gray-400 px-4 py-2">Course Option</th>
+                  <th className="border border-gray-400 px-4 py-2">Aadhaar No</th>
+                  <th className="border border-gray-400 px-4 py-2">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {students.map((student) => (
+                  <tr key={student._id}>
+                    <td className="border border-gray-400 px-4 py-2">{student.registrationNumber}</td>
+                    <td className="border border-gray-400 px-4 py-2">{student.firstname} {student.lastname}</td>
+                    <td className="border border-gray-400 px-4 py-2">{student.course}</td>
+                    <td className="border border-gray-400 px-4 py-2">{student.courseOption}</td>
+                    <td className="border border-gray-400 px-4 py-2">{student.adhar}</td>
+                    <td className="border border-gray-400 px-4 py-2">
+                      <div className="flex flex-col gap-3 text-center justify-center items-center">
+                        <button
+                          className="bg-green-500 gap-2 flex hover:bg-green-700 text-white font-bold py-2 px-2 rounded"
+                          onClick={() => handleViewDetails(student.registrationNumber)}
+                        >
+                          <FaEye className="w-5 h-5" /> View Details
+                        </button>
+                        <div className="flex gap-2 flex-row">
+                          <button
+                            className="bg-blue-500 flex gap-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={() => handleEdit(student.registrationNumber)}
+                          >
+                            <CiEdit className="w-5 h-5" /> Edit
+                          </button>
+                          <button
+                            className="bg-red-500 gap-2 flex hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                            onClick={() => handleDelete(student.registrationNumber)}
+                          >
+                            <MdDelete className="w-5 h-5" /> Delete
+                          </button>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       ) : (
         <p>No students data available.</p>
