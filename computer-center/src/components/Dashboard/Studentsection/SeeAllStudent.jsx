@@ -42,55 +42,80 @@ const SeeAllStudent = () => {
   };
 
   return (
-    <div className="p-4">
+    <div className="container p-4">
+      <style>
+        {`
+          /* Container for horizontal scrolling */
+          .table-container {
+            overflow-x: auto; /* Enables horizontal scrolling */
+            -webkit-overflow-scrolling: touch; /* Smooth scrolling on touch devices */
+          }
+          /* Table styles */
+          .table {
+            font-size: 0.875rem; /* Smaller font size for the table */
+            min-width: 1000px; /* Ensures that table has enough width to show scroll */
+          }
+          .table th, .table td {
+            padding: 0.5rem; /* Smaller padding for compact table */
+          }
+          .btn-sm {
+            font-size: 0.75rem; /* Smaller font size for buttons */
+            padding: 0.25rem 0.5rem; /* Smaller padding for buttons */
+          }
+
+          /* Responsive styles */
+          @media (max-width: 768px) {
+            .table {
+              font-size: 0.75rem; /* Even smaller font size on small screens */
+            }
+            .btn-sm {
+              font-size: 0.625rem; /* Even smaller font size for buttons on small screens */
+            }
+          }
+        `}
+      </style>
       <h1 className="text-2xl font-bold mb-4">All Students</h1>
       {students.length > 0 ? (
-        <div className="overflow-x-auto">
-          <table className="min-w-full border-collapse border border-gray-400">
-            <thead>
-              <tr className="bg-gray-200">
-                <th className="border border-gray-400 px-4 py-2">Registration Number</th>
-                <th className="border border-gray-400 px-4 py-2">Name</th>
-                <th className="border border-gray-400 px-4 py-2">Course</th>
-                <th className="border border-gray-400 px-4 py-2">Course Option</th>
-                <th className="border border-gray-400 px-4 py-2">Aadhaar No</th>
-                <th className="border border-gray-400 px-4 py-2">Actions</th>
+        <div className="table-container">
+          <table className="table table-sm table-striped table-bordered">
+            <thead className="thead-light">
+              <tr>
+                <th>Registration Number</th>
+                <th>Name</th>
+                <th>Course</th>
+                <th>Course Option</th>
+                <th>Aadhaar No</th>
+                <th>Actions</th>
               </tr>
             </thead>
             <tbody>
               {students.map((student) => (
                 <tr key={student._id}>
-                  <td className="border border-gray-400 px-4 py-2">
-                    {student.registrationNumber}
-                  </td>
-                  <td className="border border-gray-400 px-4 py-2">
-                    {student.firstname} {student.lastname}
-                  </td>
-                  <td className="border border-gray-400 px-4 py-2">{student.course}</td>
-                  <td className="border border-gray-400 px-4 py-2">
-                    {student.courseOption}
-                  </td>
-                  <td className="border border-gray-400 px-4 py-2">{student.adhar}</td>
-                  <td className="border border-gray-400 px-4 py-2">
-                    <div className="flex flex-col gap-3 text-center justify-center items-center">
+                  <td>{student.registrationNumber}</td>
+                  <td>{student.firstname} {student.lastname}</td>
+                  <td>{student.course}</td>
+                  <td>{student.courseOption}</td>
+                  <td>{student.adhar}</td>
+                  <td>
+                    <div className="d-flex flex-column align-items-center">
                       <button
-                        className="bg-green-500 gap-2 flex hover:bg-green-700 text-white font-bold py-2 px-2 rounded"
+                        className="btn btn-success mb-2 btn-sm"
                         onClick={() => handleViewDetails(student.registrationNumber)}
                       >
-                        <FaEye className="w-5 h-5" /> View Details
+                        <FaEye className="me-2" /> View Details
                       </button>
-                      <div className="flex gap-2 flex-row">
+                      <div className="d-flex">
                         <button
-                          className="bg-blue-500 flex gap-2 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                          className="btn btn-primary me-2 btn-sm"
                           onClick={() => handleEdit(student.registrationNumber)}
                         >
-                          <CiEdit className="w-5 h-5" /> Edit
+                          <CiEdit className="me-2" /> Edit
                         </button>
                         <button
-                          className="bg-red-500 gap-2 flex hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                          className="btn btn-danger btn-sm"
                           onClick={() => handleDelete(student.registrationNumber)}
                         >
-                          <MdDelete className="w-5 h-5" /> Delete
+                          <MdDelete className="me-2" /> Delete
                         </button>
                       </div>
                     </div>

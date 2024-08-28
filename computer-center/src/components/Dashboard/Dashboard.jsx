@@ -17,6 +17,7 @@ import ViewMarks from './OfflineExamination/ViewMarks'
 
 import PracticeCRUD from './practiceCRUD'
 import Student from './Student'
+import StudentDashboardUI from '../StudentDashboard/StudentDashboardUI'
 
 // import StudentTable from './Student section/StudentTable'
 
@@ -25,7 +26,7 @@ export const Dashboard = () => {
     <>
 
     <div className='flex flex-row'>
-  <Sidebar />  
+  {/* <Sidebar />   */}
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
@@ -35,7 +36,9 @@ export const Dashboard = () => {
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}
    {/* <Passbook/> */}
-   <Student />
+   {/* <Student /> */}
+
+   <StudentDashboardUI />
   </div>
   {/* <StudentTable/> */}
   {/* <AddMarks /> */}
