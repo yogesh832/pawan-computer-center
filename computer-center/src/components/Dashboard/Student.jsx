@@ -1,135 +1,99 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import axios from "axios";
+import { useParams } from "react-router-dom";
+import { FaEye } from "react-icons/fa";
+import { CiEdit } from "react-icons/ci";
+import { MdDelete } from "react-icons/md";
 
-const Student = () => {
-  const { registrationNumber } = useParams();
+const StudentDashboardUI = () => {
+  const { registrationNumber } = useParams(); // Get registrationNumber from the URL
   const [student, setStudent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
       .then((response) => {
-        if (response.data) {
-          setStudent(response.data);
-        } else {
-          console.error("No data received");
-        }
+        console.log(response.data);
+        setStudent(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         console.error("Error fetching student data:", error);
+        setError("Failed to fetch student data");
+        setLoading(false);
       });
   }, [registrationNumber]);
 
-  if (!student) {
+  if (loading) {
     return <div>Loading...</div>;
   }
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
+  if (!student) {
+    return <div>No student data available.</div>;
+  }
+
+
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">View Student</h1>
-      <div className="border rounded-lg shadow-lg p-6 bg-white">
-        <table className="w-full border-collapse">
-          <thead>
-            <tr className=" text-white">
-              <th className="border bg-blue-500 px-4 py-2">Field</th>
-              <th className="border bg-blue-500 px-4 py-2">Value</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Registration Number</td>
-              <td className="border px-4 py-2">{student.registrationNumber}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">First Name</td>
-              <td className="border px-4 py-2">{student.firstname}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Last Name</td>
-              <td className="border px-4 py-2">{student.lastname}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Date of Birth</td>
-              <td className="border px-4 py-2">{student.dob}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">State</td>
-              <td className="border px-4 py-2">{student.state}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">District</td>
-              <td className="border px-4 py-2">{student.district}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Course</td>
-              <td className="border px-4 py-2">{student.course}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Course Option</td>
-              <td className="border px-4 py-2">{student.courseOption}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Mother's Name</td>
-              <td className="border px-4 py-2">{student.mothername}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Qualification</td>
-              <td className="border px-4 py-2">{student.qualification}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Contact No</td>
-              <td className="border px-4 py-2">{student.contactno}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Guardian's Contact</td>
-              <td className="border px-4 py-2">{student.guardiancontact}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Aadhaar No</td>
-              <td className="border px-4 py-2">{student.adhar}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Gender</td>
-              <td className="border px-4 py-2">{student.gender}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Category</td>
-              <td className="border px-4 py-2">{student.category}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Religion</td>
-              <td className="border px-4 py-2">{student.religion}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Marital Status</td>
-              <td className="border px-4 py-2">{student.maritalstatus}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Permanent Address</td>
-              <td className="border px-4 py-2">{student.address}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Present Address</td>
-              <td className="border px-4 py-2">{student.presentaddress}</td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Photo</td>
-              <td className="border px-4 py-2">
-                <img src={student.photo} alt="Student Photo" className="w-32 h-32 object-cover rounded-lg border" />
-              </td>
-            </tr>
-            <tr>
-              <td className="border px-4 py-2 font-semibold">Signature</td>
-              <td className="border px-4 py-2">
-                <img src={student.signature} alt="Student Signature" className="w-32 h-32 object-cover rounded-lg border" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
+    <div className="container p-4">
+      <h1 className="text-3xl font-bold mb-4">Student Profile</h1>
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="flex justify-center mb-4">
+          <img
+            src={student.photo || "https://via.placeholder.com/150"}
+            alt={`${student.firstname} ${student.lastname}`}
+            className="w-32 h-32 object-cover rounded-full border-4 border-gray-200"
+          />
+        </div>
+        <div className="text-center">
+          <h2 className="text-2xl font-semibold mb-2">
+            {student.firstname} {student.lastname}
+          </h2>
+          <p className="text-gray-600 mb-1">ID: {student.registrationNumber}</p>
+          <p className="text-gray-600 mb-1">Course: {student.course}</p>
+          <p className="text-gray-600 mb-2">
+            Date of Birth: {new Date(student.dob).toLocaleDateString()}
+          </p>
+          <p className="text-gray-600 mb-2">Father's Name: {student.fatherName}</p>
+          <p className="text-gray-600 mb-2">Mother's Name: {student.mothername}</p>
+          <p className="text-gray-600 mb-2">Aadhaar Number: {student.adhar}</p>
+          <p className="text-gray-600 mb-4">Address: {student.address}</p>
+          <p className="text-gray-600 mb-2">Completion Status: {student.completionStatus}</p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <button
+              onClick={() => alert("Viewing certificates")}
+              className="bg-blue-500 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+              <FaEye className="me-2" /> View Certificates
+            </button>
+            <button
+              onClick={() => alert("Checking course completion")}
+              className="bg-green-500 text-white py-2 px-4 rounded-lg shadow hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-500"
+            >
+              <FaEye className="me-2" /> Check Completion
+            </button>
+            <button
+              onClick={() => alert("Request to edit completion status sent to admin.")}
+              className="bg-yellow-500 text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            >
+              <CiEdit className="me-2" /> Request Edit
+            </button>
+            <button
+              onClick={() => alert("Viewing course details")}
+              className="bg-purple-500 text-white py-2 px-4 rounded-lg shadow hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
+            >
+              <FaEye className="me-2" /> View Course
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Student;
+export default StudentDashboardUI;
