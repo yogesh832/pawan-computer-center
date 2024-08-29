@@ -18,6 +18,7 @@ import ViewMarks from './OfflineExamination/ViewMarks'
 import PracticeCRUD from './practiceCRUD'
 import Student from './Student'
 import StudentDashboardUI from '../StudentDashboard/StudentDashboardUI'
+import Imageview from '../Imageview'
 
 // import StudentTable from './Student section/StudentTable'
 
@@ -38,7 +39,8 @@ export const Dashboard = () => {
    {/* <Passbook/> */}
    {/* <Student /> */}
 
-   <StudentDashboardUI />
+   {/* <StudentDashboardUI /> */}
+   <Imageview />
   </div>
   {/* <StudentTable/> */}
   {/* <AddMarks /> */}

@@ -9,11 +9,17 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
+app.use("./backend/uploads", express.static(path.join(__dirname, "../uploads")));
+
+app.use("/uploads", (req, res, next) => {
+  console.log(`Serving static file: ${req.path}`);
+  next();
+}, express.static(path.join(__dirname, "../uploads")));
+
 
 // Middleware
 app.use(express.json());
-app.use(express.static("dist"));
+app.use(express.static("uploads"));
 app.use(cors());
 
 // Connect to the database

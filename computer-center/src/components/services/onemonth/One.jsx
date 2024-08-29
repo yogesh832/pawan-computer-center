@@ -7,21 +7,27 @@ import img from '../../../assets/Images/books.jpg';
 // Course data
 const courseData = [
     {
-        title: "Certificate in Fundamental",
-        semester: "Semester: I",
-        description: "Computer Fundamentals, Dreamweaver",
+        title: "CERTIFICATE IN FUNDAMENTAL",
+        semester: "Semester 1",
+        description: "Learn the fundamentals of computer operations.",
         image: img
     },
     {
-        title: "Advanced Web Development",
-        semester: "Semester: II",
-        description: "JavaScript, React, Node.js",
+        title: "CERTIFICATE IN MS EXCEL",
+        semester: "Semester 1",
+        description: "Master the essentials of Microsoft Excel.",
         image: img
     },
     {
-        title: "Data Science Bootcamp",
-        semester: "Semester: III",
-        description: "Python, Machine Learning, Data Analysis",
+        title: "CERTIFICATE IN MS POWER POINT",
+        semester: "Semester 1",
+        description: "Learn how to create impactful presentations.",
+        image: img
+    },
+    {
+        title: "CERTIFICATE IN MS WORD",
+        semester: "Semester 1",
+        description: "Become proficient in Microsoft Word.",
         image: img
     }
 ];
