@@ -27,7 +27,7 @@ export const Dashboard = () => {
     <>
 
     <div className='flex flex-row'>
-  {/* <Sidebar />   */}
+  <Sidebar />  
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
