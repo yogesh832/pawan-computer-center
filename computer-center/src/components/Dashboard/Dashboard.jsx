@@ -20,6 +20,7 @@ import Student from './Student'
 import StudentDashboardUI from '../StudentDashboard/StudentDashboardUI'
 import Imageview from '../Imageview'
 
+// import ViewCertificate from '../Dashboard/CertificatesFile/ViewCerticate'
 // import StudentTable from './Student section/StudentTable'
 
 export const Dashboard = () => {
@@ -27,7 +28,8 @@ export const Dashboard = () => {
     <>
 
     <div className='flex flex-row'>
-  <Sidebar />  
+    <ViewCertificate/>
+  {/* <Sidebar />   */}
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
@@ -39,8 +41,9 @@ export const Dashboard = () => {
    {/* <Passbook/> */}
    {/* <Student /> */}
 
+
    {/* <StudentDashboardUI /> */}
-   <Imageview />
+   {/* <Imageview /> */}
   </div>
   {/* <StudentTable/> */}
   {/* <AddMarks /> */}
