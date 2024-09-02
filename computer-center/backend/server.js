@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const multer = require('multer');
 const { GridFSBucket } = require('mongodb');
-const connectDB = require('./db/dbConnection'); // Ensure this file exports the connectDB function
+const connectDB = require('./db/dbConnection.js');
 const User = require('./db/user'); // Ensure this file exports the User model
 const Counter = require('./db/counter');
 
@@ -12,12 +12,12 @@ const port = 5000;
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: '*' })); // Temporarily allow all origins for testing
+app.use(cors({ origin: '*' }));
 
 // Initialize GridFSBucket
 let gfs;
 connectDB().then(() => {
-  const db = mongoose.connection.db; // Access the MongoDB database instance
+  const db = mongoose.connection.db;
   gfs = new GridFSBucket(db, { bucketName: 'uploads' });
   console.log('Database connected and GridFSBucket initialized');
 }).catch(error => {
@@ -28,10 +28,18 @@ connectDB().then(() => {
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Route to handle form submissions with file uploads
-app.post('/dashboard/AddStudent', upload.single('photo'), async (req, res) => {
-  console.log('Request received:', req.body); // Log the request body
-  console.log('File received:', req.file); // Log the file object
+// Route to handle form submissions with multiple file uploads
+app.post('/dashboard/AddStudent', upload.fields([
+  { name: 'photo', maxCount: 1 },
+  { name: 'signature', maxCount: 1 },
+  { name: 'marksheet', maxCount: 1 }
+]), async (req, res) => {
+  console.log('Request received:', req.body);
+  console.log('Files received:', req.files);
+
+  if (req.fileValidationError) {
+    return res.status(400).send(req.fileValidationError);
+  }
 
   try {
     if (!gfs) {
@@ -58,7 +66,7 @@ app.post('/dashboard/AddStudent', upload.single('photo'), async (req, res) => {
 
           uploadStream.on('finish', () => {
             console.log(`File uploaded successfully: ${file.originalname}`);
-            resolve(uploadStream.id); // Return fileId
+            resolve(uploadStream.id);
           });
 
           uploadStream.on('error', (error) => {
@@ -73,22 +81,28 @@ app.post('/dashboard/AddStudent', upload.single('photo'), async (req, res) => {
     };
 
     // Validate required fields
-    const requiredFields = ['firstname', 'lastname'];
+    const requiredFields = ['firstname', 'lastname', 'state', 'maritalstatus'];
     for (const field of requiredFields) {
       if (!req.body[field]) {
         return res.status(400).json({ error: `${field} is required` });
       }
     }
 
-    // Upload file to GridFS
-    const photoId = req.file ? await uploadFileToGridFS(req.file) : null;
+    // Upload files to GridFS
+    const photoId = req.files.photo ? await uploadFileToGridFS(req.files.photo[0]) : null;
+    const signatureId = req.files.signature ? await uploadFileToGridFS(req.files.signature[0]) : null;
+    const marksheetId = req.files.marksheet ? await uploadFileToGridFS(req.files.marksheet[0]) : null;
 
     // Create a new student document with image metadata
     const newStudent = new User({
       registrationNumber,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      photo: photoId, // Store the fileId from GridFS
+      state: req.body.state,
+      maritalstatus: req.body.maritalstatus,
+      photo: photoId,
+      signature: signatureId,
+      marksheet: marksheetId,
     });
 
     await newStudent.save();
@@ -104,10 +118,11 @@ app.post('/dashboard/AddStudent', upload.single('photo'), async (req, res) => {
 app.get('/dashboard/AddStudent', async (req, res) => {
   try {
     const students = await User.find({});
-    // Add full URL for the photo field
     const studentsWithPhotos = students.map(student => ({
       ...student.toObject(),
-      photo: student.photo ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}` : null
+      photo: student.photo ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}` : null,
+      signature: student.signature ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}` : null,
+      marksheet: student.marksheet ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}` : null
     }));
     res.status(200).json(studentsWithPhotos);
   } catch (error) {
@@ -121,7 +136,6 @@ app.get('/dashboard/AddStudent/photo/:id', async (req, res) => {
   try {
     const { id } = req.params;
 
-    // Validate ObjectId format
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).send('Invalid photo ID.');
     }
