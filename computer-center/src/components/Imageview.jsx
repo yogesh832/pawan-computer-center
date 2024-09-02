@@ -2,52 +2,57 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function Imageview() {
-  const [studentData, setStudentData] = useState({}); // Store all student data
+  const [students, setStudents] = useState([]); // Store all student data
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/dashboard/AddStudent/PCC000006")
-      .then(response => {
-        console.log(response.data); // Check the response structure
-        setStudentData(response.data); 
-      })
-      .catch(error => {
-        console.error("Error fetching student data:", error);
-      });
+    const fetchStudents = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/dashboard/AddStudent");
+        if (Array.isArray(response.data)) {
+          setStudents(response.data);
+        } else {
+          setError('Unexpected data format');
+        }
+      } catch (error) {
+        setError('Error fetching data');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStudents();
   }, []);
 
   return (
-    <>
-      <h1>Image Testing</h1>
-      <div>
-        <h3>Photo</h3>
-        {/* Only render the image if 'studentData.photo' exists */}
-        {studentData.photo ? (
-          <img src={`http://localhost:5000${studentData.photo}`} alt="Photo" />
-        ) : (
-          <p>No photo available</p>
-        )}
-      </div>
+    <div className="max-w-4xl mx-auto p-8">
+      <h1 className="text-3xl font-bold text-center mb-8">Image Viewer</h1>
 
-      <div>
-        <h3>Signature</h3>
-        {/* Only render the image if 'studentData.signature' exists */}
-        {studentData.signature ? (
-          <img src={`http://localhost:5000${studentData.signature}`} alt="Signature" />
+      {loading && <p className="text-center">Loading...</p>}
+      {error && <p className="text-center text-red-500">{error}</p>}
+      
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        {students.length > 0 ? (
+          students.map(student => (
+            <div key={student._id} className="flex flex-col items-center">
+              <h3 className="text-xl font-semibold mb-4">{student.registrationId}</h3>
+              {student.photo ? (
+                <img
+                  src={`${student.photo}`}
+                  alt={`Photo of ${student.registrationId}`}
+                  className="w-full h-auto rounded-lg shadow-lg"
+                />
+              ) : (
+                <p className="text-gray-500">No photo available</p>
+              )}
+            </div>
+          ))
         ) : (
-          <p>No signature available</p>
+          !loading && <p className="text-center">No photos available</p>
         )}
       </div>
-
-      <div>
-        <h3>Marksheet</h3>
-        {/* Only render the image if 'studentData.marksheet' exists */}
-        {studentData.marksheet ? (
-          <img src={`http://localhost:5000${studentData.marksheet}`} alt="Marksheet" />
-        ) : (
-          <p>No marksheet available</p>
-        )}
-      </div>
-    </>
+    </div>
   );
 }
 
