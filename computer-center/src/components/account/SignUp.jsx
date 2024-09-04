@@ -6,12 +6,18 @@ import Joi from 'joi';
 import 'react-toastify/dist/ReactToastify.css';
 import loginimg from "../../assets/Images/loginpage.png";
 
-const Login = () => {
-  const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
+// SignUp Component
+const SignUp = () => {
+  const [signUpInfo, setSignUpInfo] = useState({ name: '', email: '', password: '' });
   const navigate = useNavigate();
 
   // Define the schema for validation using Joi
   const schema = Joi.object({
+    name: Joi.string().min(3).max(100).required().messages({
+      "string.empty": "Name is required",
+      "string.min": "Name must be at least 3 characters long",
+      "string.max": "Name must be less than 100 characters long",
+    }),
     email: Joi.string().email({ tlds: { allow: false } }).required().messages({
       "string.empty": "Email is required",
       "string.email": "Invalid email format",
@@ -24,57 +30,64 @@ const Login = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setLoginInfo(prev => ({ ...prev, [name]: value }));
+    setSignUpInfo(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleLogin = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
     // Validate the form data
-    const { error } = schema.validate(loginInfo, { abortEarly: false });
+    const { error } = schema.validate(signUpInfo, { abortEarly: false });
     if (error) {
       error.details.forEach(err => toast.error(err.message));
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:5000/login', {
+      const response = await fetch('http://localhost:5000/register', {  // Corrected URL
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(loginInfo)
+        body: JSON.stringify(signUpInfo)
       });
 
       const result = await response.json();
 
       if (!response.ok) {
-        return toast.error(result.message || 'Login failed. Please check your credentials.');
+        return toast.error(result.message || 'Sign up failed. Please try again.'); // Updated error message handling
       }
 
-      toast.success('Login successful');
-      localStorage.setItem('token', result.token);
-      localStorage.setItem('loggedInUser', result.name);
-      setTimeout(() => navigate('/home'), 1000);
+      toast.success('Sign up successful!');
+      setTimeout(() => navigate('/login'), 1000);
     } catch (err) {
-      toast.error('Login failed. Please try again.');
+      toast.error('Sign up failed. Please try again.');
     }
   };
 
   return (
     <>
       <Typography variant="h1" sx={{ textAlign: 'center', mt: 10, mb: -5, fontWeight: 700, fontSize: '60px' }}>
-        Login Now!
+        Sign Up Now!
       </Typography>
       <Component>
         <Loginimg>
           <Image src={loginimg} alt="loginimg" />
         </Loginimg>
-        <Wrapper onSubmit={handleLogin}>
+        <Wrapper onSubmit={handleSignUp}>
+          <TextField
+            label="Name"
+            variant="filled"
+            fullWidth
+            name="name"
+            value={signUpInfo.name}
+            onChange={handleChange}
+            sx={{ marginBottom: "16px" }}
+          />
           <TextField
             label="Email"
             variant="filled"
             fullWidth
             name="email"
-            value={loginInfo.email}
+            value={signUpInfo.email}
             onChange={handleChange}
             sx={{ marginBottom: "16px" }}
           />
@@ -84,17 +97,17 @@ const Login = () => {
             variant="filled"
             fullWidth
             name="password"
-            value={loginInfo.password}
+            value={signUpInfo.password}
             onChange={handleChange}
             sx={{ marginBottom: "16px" }}
           />
           <Button variant="contained" fullWidth type="submit">
-            Login
+            Sign up Now
           </Button>
           <CenteredText variant="body2">OR</CenteredText>
-          <Link to='/singup' style={{ textDecoration: 'none' }}>
+          <Link to="/login" style={{ textDecoration: 'none' }}>
             <Button variant="outlined" fullWidth>
-              Sign up Now
+              Login
             </Button>
           </Link>
         </Wrapper>
@@ -104,8 +117,9 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
 
+// Styled components
 const Component = styled(Box)`
   display: flex;
   flex-direction: row;

@@ -19,7 +19,7 @@ import PracticeCRUD from './practiceCRUD'
 import Student from './Student'
 import StudentDashboardUI from '../StudentDashboard/StudentDashboardUI'
 import Imageview from '../Imageview'
-
+import Login from "../account/Login"
 // import ViewCertificate from '../Dashboard/CertificatesFile/ViewCerticate'
 // import StudentTable from './Student section/StudentTable'
 
@@ -28,7 +28,7 @@ export const Dashboard = () => {
     <>
 
     <div className='flex flex-row'>
-    <ViewCertificate/>
+    {/* <ViewCertificate/> */}
   {/* <Sidebar />   */}
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
@@ -36,6 +36,7 @@ export const Dashboard = () => {
     {/* <AddStudent/> */}
     {/* <PracticeCRUD /> */}
    {/* <Addfund/>  */}
+   <Login/>
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}
    {/* <Passbook/> */}
