@@ -4,7 +4,7 @@ const cors = require('cors');
 const multer = require('multer');
 const { GridFSBucket } = require('mongodb');
 const connectDB = require('./db/dbConnection.js');
-const User = require('./db/user'); // Ensure this file exports the User model
+const User = require('./db/user');  // Ensure User model is correctly defined
 const Counter = require('./db/counter');
 
 const app = express();
@@ -28,13 +28,13 @@ connectDB().then(() => {
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// Route to handle form submissions with multiple file uploads
+// POST: Add a new student
 app.post('/dashboard/AddStudent', upload.fields([
   { name: 'photo', maxCount: 1 },
   { name: 'signature', maxCount: 1 },
   { name: 'marksheet', maxCount: 1 }
 ]), async (req, res) => {
-  console.log('Request received:', req.body);
+  console.log('Request body:', req.body); // Debug log
   console.log('Files received:', req.files);
 
   if (req.fileValidationError) {
@@ -81,7 +81,7 @@ app.post('/dashboard/AddStudent', upload.fields([
     };
 
     // Validate required fields
-    const requiredFields = ['firstname', 'lastname', 'state', 'maritalstatus'];
+    const requiredFields = ['firstname', 'lastname', 'dob', 'state', 'district', 'course', 'courseOption', 'mothername', 'qualification', 'contactno', 'guardiancontact', 'adhar', 'gender', 'category', 'religion', 'address', 'presentaddress'];
     for (const field of requiredFields) {
       if (!req.body[field]) {
         return res.status(400).json({ error: `${field} is required` });
@@ -93,13 +93,27 @@ app.post('/dashboard/AddStudent', upload.fields([
     const signatureId = req.files.signature ? await uploadFileToGridFS(req.files.signature[0]) : null;
     const marksheetId = req.files.marksheet ? await uploadFileToGridFS(req.files.marksheet[0]) : null;
 
-    // Create a new student document with image metadata
+    // Create a new student document with all fields
     const newStudent = new User({
       registrationNumber,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
+      dob: req.body.dob,
       state: req.body.state,
+      district: req.body.district,
+      course: req.body.course,
+      courseOption: req.body.courseOption,
+      mothername: req.body.mothername,
+      qualification: req.body.qualification,
+      contactno: req.body.contactno,
+      guardiancontact: req.body.guardiancontact,
+      adhar: req.body.adhar,
+      gender: req.body.gender,
+      category: req.body.category,
+      religion: req.body.religion,
       maritalstatus: req.body.maritalstatus,
+      address: req.body.address,
+      presentaddress: req.body.presentaddress,
       photo: photoId,
       signature: signatureId,
       marksheet: marksheetId,
@@ -114,7 +128,23 @@ app.post('/dashboard/AddStudent', upload.fields([
   }
 });
 
-// Route to fetch all students
+// DELETE: Remove a student by registration number
+app.delete('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
+  const registrationNumber = req.params.registrationNumber;
+  try {
+    const result = await User.findOneAndDelete({ registrationNumber });
+    if (result) {
+      res.status(200).send({ message: 'Student deleted successfully' });
+    } else {
+      res.status(404).send({ message: 'Student not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting student:', error);
+    res.status(500).send({ message: 'Server error' });
+  }
+});
+
+// GET: Fetch all students
 app.get('/dashboard/AddStudent', async (req, res) => {
   try {
     const students = await User.find({});
@@ -131,7 +161,31 @@ app.get('/dashboard/AddStudent', async (req, res) => {
   }
 });
 
-// Route to fetch student photos from GridFS
+// GET: Fetch a specific student by registration number
+app.get('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
+  try {
+    const { registrationNumber } = req.params;
+    const student = await User.findOne({ registrationNumber });
+
+    if (!student) {
+      return res.status(404).send('Student not found.');
+    }
+
+    const studentWithPhotos = {
+      ...student.toObject(),
+      photo: student.photo ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}` : null,
+      signature: student.signature ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}` : null,
+      marksheet: student.marksheet ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}` : null
+    };
+
+    res.status(200).json(studentWithPhotos);
+  } catch (error) {
+    console.error('Error fetching student:', error);
+    res.status(500).send('Failed to fetch student. Please try again.');
+  }
+});
+
+// GET: Fetch student photos from GridFS
 app.get('/dashboard/AddStudent/photo/:id', async (req, res) => {
   try {
     const { id } = req.params;
@@ -146,15 +200,104 @@ app.get('/dashboard/AddStudent/photo/:id', async (req, res) => {
     downloadStream.on('data', chunk => res.write(chunk));
     downloadStream.on('end', () => res.end());
     downloadStream.on('error', error => {
-      console.error('Error downloading file:', error);
-      res.status(404).send('File not found.');
+      console.error('Error streaming file:', error);
+      res.status(500).send('Failed to download photo.');
     });
   } catch (error) {
-    console.error('Error fetching student photo:', error);
-    res.status(500).send('Failed to fetch photo. Please try again.');
+    console.error('Error fetching photo:', error);
+    res.status(500).send('Failed to fetch photo.');
   }
 });
 
+
+
+// PUT: Update a student's information by registration number
+app.put('/dashboard/AddStudent/:registrationNumber', upload.fields([
+  { name: 'photo', maxCount: 1 },
+  { name: 'signature', maxCount: 1 },
+  { name: 'marksheet', maxCount: 1 }
+]), async (req, res) => {
+  const { registrationNumber } = req.params;
+
+  try {
+    // Validate required fields
+    const requiredFields = [
+      'firstname', 'lastname', 'dob', 'state', 'district', 
+      'course', 'courseOption', 'mothername', 'qualification', 
+      'contactno', 'guardiancontact', 'adhar', 'gender', 
+      'category', 'religion', 'address', 'presentaddress'
+    ];
+    for (const field of requiredFields) {
+      if (!req.body[field]) {
+        return res.status(400).json({ error: `${field} is required` });
+      }
+    }
+
+    // Function to handle file uploads to GridFS
+    const uploadFileToGridFS = (file) => {
+      return new Promise((resolve, reject) => {
+        if (file) {
+          const uploadStream = gfs.openUploadStream(file.originalname);
+          uploadStream.end(file.buffer);
+
+          uploadStream.on('finish', () => resolve(uploadStream.id));
+          uploadStream.on('error', (error) => reject(error));
+        } else {
+          resolve(null);
+        }
+      });
+    };
+
+    // Upload new files if provided
+    const photoId = req.files.photo ? await uploadFileToGridFS(req.files.photo[0]) : undefined;
+    const signatureId = req.files.signature ? await uploadFileToGridFS(req.files.signature[0]) : undefined;
+    const marksheetId = req.files.marksheet ? await uploadFileToGridFS(req.files.marksheet[0]) : undefined;
+
+    // Prepare the update data with the provided fields and uploaded files
+    const updateData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      dob: req.body.dob,
+      state: req.body.state,
+      district: req.body.district,
+      course: req.body.course,
+      courseOption: req.body.courseOption,
+      mothername: req.body.mothername,
+      qualification: req.body.qualification,
+      contactno: req.body.contactno,
+      guardiancontact: req.body.guardiancontact,
+      adhar: req.body.adhar,
+      gender: req.body.gender,
+      category: req.body.category,
+      religion: req.body.religion,
+      maritalstatus: req.body.maritalstatus,
+      address: req.body.address,
+      presentaddress: req.body.presentaddress,
+      ...(photoId && { photo: photoId }),
+      ...(signatureId && { signature: signatureId }),
+      ...(marksheetId && { marksheet: marksheetId }),
+    };
+
+    // Update the student record
+    const updatedStudent = await User.findOneAndUpdate(
+      { registrationNumber },
+      { $set: updateData },
+      { new: true, runValidators: true }
+    );
+
+    if (!updatedStudent) {
+      return res.status(404).send('Student not found.');
+    }
+
+    res.status(200).json(updatedStudent);
+  } catch (error) {
+    console.error('Error updating student:', error);
+    res.status(500).send('Failed to update student. Please try again.');
+  }
+});
+
+
+// Start the server
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
