@@ -14,32 +14,25 @@ const LoginModel = require('./db/Login.schema.js');
 const Counter = require('./db/counter');
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
+
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: '*', credentials: true }));
-app.use(cookieParser());
+app.use(cors({ origin: '*' }));
 
-// Connect to the database
-connectDB()
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch((error) => {
-    console.error('Failed to connect to MongoDB:', error);
-  });
 
 // JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || 'your_jwt_secret_key'; // Use environment variable
 
 // Initialize GridFSBucket
 let gfs;
-mongoose.connection.once('open', () => {
-  gfs = new mongoose.mongo.GridFSBucket(mongoose.connection.db, {
-    bucketName: 'uploads'
-  });
-  console.log('GridFSBucket initialized');
+connectDB().then(() => {
+  const db = mongoose.connection.db;
+  gfs = new GridFSBucket(db, { bucketName: 'uploads' });
+  console.log('Database connected and GridFSBucket initialized');
+}).catch(error => {
+  console.error('Failed to connect to database:', error);
 });
 
 // Configure Multer for memory storage
@@ -208,11 +201,11 @@ app.post('/dashboard/AddStudent', upload.fields([
 app.get('/dashboard/AddStudent', async (req, res) => {
   try {
     const students = await User.find({});
-    const studentsWithPhotos = students.map((student) => ({
+    const studentsWithPhotos = students.map(student => ({
       ...student.toObject(),
-      photo: student.photo ? `/dashboard/AddStudent/photo/${student.photo}` : null,
-      signature: student.signature ? `/dashboard/AddStudent/photo/${student.signature}` : null,
-      marksheet: student.marksheet ? `/dashboard/AddStudent/photo/${student.marksheet}` : null,
+      photo: student.photo ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}` : null,
+      signature: student.signature ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}` : null,
+      marksheet: student.marksheet ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}` : null
     }));
     res.status(200).json(studentsWithPhotos);
   } catch (error) {
