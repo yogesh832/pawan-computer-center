@@ -3,15 +3,14 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const multer = require('multer');
 const { GridFSBucket } = require('mongodb');
+const connectDB = require('./db/dbConnection.js');
+const User = require('./db/user');  // Ensure User model is correctly defined
+const Counter = require('./db/counter');
+
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const cookieParser = require('cookie-parser');
-require('dotenv').config(); // Load environment variables
 
-const connectDB = require('./db/dbConnection');
-const User = require('./db/user'); // Ensure this file exports the User model
 const LoginModel = require('./db/Login.schema.js');
-const Counter = require('./db/counter');
 
 const app = express();
 const port = 5000;
@@ -98,13 +97,14 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Route to handle form submissions with multiple file uploads
+
+// POST: Add a new student
 app.post('/dashboard/AddStudent', upload.fields([
   { name: 'photo', maxCount: 1 },
   { name: 'signature', maxCount: 1 },
   { name: 'marksheet', maxCount: 1 }
 ]), async (req, res) => {
-  console.log('Request received:', req.body);
+  console.log('Request body:', req.body); // Debug log
   console.log('Files received:', req.files);
 
   if (req.fileValidationError) {
@@ -144,6 +144,7 @@ app.post('/dashboard/AddStudent', upload.fields([
             reject(error);
           });
         } else {
+          console.log('No file to upload');
           resolve(null);
         }
       });
@@ -168,7 +169,6 @@ app.post('/dashboard/AddStudent', upload.fields([
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       dob: req.body.dob,
-      email: req.body.email,
       state: req.body.state,
       district: req.body.district,
       course: req.body.course,
@@ -190,6 +190,7 @@ app.post('/dashboard/AddStudent', upload.fields([
     });
 
     await newStudent.save();
+
     res.status(201).json(newStudent);
   } catch (error) {
     console.error('Error handling request:', error);
@@ -197,7 +198,23 @@ app.post('/dashboard/AddStudent', upload.fields([
   }
 });
 
-// Route to fetch all students
+// DELETE: Remove a student by registration number
+app.delete('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
+  const registrationNumber = req.params.registrationNumber;
+  try {
+    const result = await User.findOneAndDelete({ registrationNumber });
+    if (result) {
+      res.status(200).send({ message: 'Student deleted successfully' });
+    } else {
+      res.status(404).send({ message: 'Student not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting student:', error);
+    res.status(500).send({ message: 'Server error' });
+  }
+});
+
+// GET: Fetch all students
 app.get('/dashboard/AddStudent', async (req, res) => {
   try {
     const students = await User.find({});
@@ -214,7 +231,7 @@ app.get('/dashboard/AddStudent', async (req, res) => {
   }
 });
 
-// Route to fetch a specific student by registration number
+// GET: Fetch a specific student by registration number
 app.get('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
   try {
     const { registrationNumber } = req.params;
@@ -226,9 +243,9 @@ app.get('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
 
     const studentWithPhotos = {
       ...student.toObject(),
-      photo: student.photo ? `/dashboard/AddStudent/photo/${student.photo}` : null,
-      signature: student.signature ? `/dashboard/AddStudent/photo/${student.signature}` : null,
-      marksheet: student.marksheet ? `/dashboard/AddStudent/photo/${student.marksheet}` : null
+      photo: student.photo ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}` : null,
+      signature: student.signature ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}` : null,
+      marksheet: student.marksheet ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}` : null
     };
 
     res.status(200).json(studentWithPhotos);
@@ -238,46 +255,105 @@ app.get('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
   }
 });
 
-// Route to update a student's information and files
+// GET: Fetch student photos from GridFS
+app.get('/dashboard/AddStudent/photo/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).send('Invalid photo ID.');
+    }
+
+    const fileId = new mongoose.Types.ObjectId(id);
+    const downloadStream = gfs.openDownloadStream(fileId);
+
+    downloadStream.on('data', chunk => res.write(chunk));
+    downloadStream.on('end', () => res.end());
+    downloadStream.on('error', error => {
+      console.error('Error streaming file:', error);
+      res.status(500).send('Failed to download photo.');
+    });
+  } catch (error) {
+    console.error('Error fetching photo:', error);
+    res.status(500).send('Failed to fetch photo.');
+  }
+});
+
+
+
+// PUT: Update a student's information by registration number
 app.put('/dashboard/AddStudent/:registrationNumber', upload.fields([
   { name: 'photo', maxCount: 1 },
   { name: 'signature', maxCount: 1 },
   { name: 'marksheet', maxCount: 1 }
 ]), async (req, res) => {
-  try {
-    const { registrationNumber } = req.params;
-    const updates = req.body;
+  const { registrationNumber } = req.params;
 
-    if (req.files) {
-      const updateFile = async (file, fieldName) => {
+  try {
+    // Validate required fields
+    const requiredFields = [
+      'firstname', 'lastname', 'dob', 'state', 'district', 
+      'course', 'courseOption', 'mothername', 'qualification', 
+      'contactno', 'guardiancontact', 'adhar', 'gender', 
+      'category', 'religion', 'address', 'presentaddress'
+    ];
+    for (const field of requiredFields) {
+      if (!req.body[field]) {
+        return res.status(400).json({ error: `${field} is required` });
+      }
+    }
+
+    // Function to handle file uploads to GridFS
+    const uploadFileToGridFS = (file) => {
+      return new Promise((resolve, reject) => {
         if (file) {
           const uploadStream = gfs.openUploadStream(file.originalname);
           uploadStream.end(file.buffer);
 
-          return new Promise((resolve, reject) => {
-            uploadStream.on('finish', () => {
-              resolve(uploadStream.id);
-            });
-            uploadStream.on('error', (error) => {
-              console.error(`Upload error for file ${file.originalname}:`, error);
-              reject(error);
-            });
-          });
+          uploadStream.on('finish', () => resolve(uploadStream.id));
+          uploadStream.on('error', (error) => reject(error));
         } else {
-          return null;
+          resolve(null);
         }
-      };
+      });
+    };
 
-      const photoId = req.files.photo ? await updateFile(req.files.photo[0], 'photo') : null;
-      const signatureId = req.files.signature ? await updateFile(req.files.signature[0], 'signature') : null;
-      const marksheetId = req.files.marksheet ? await updateFile(req.files.marksheet[0], 'marksheet') : null;
+    // Upload new files if provided
+    const photoId = req.files.photo ? await uploadFileToGridFS(req.files.photo[0]) : undefined;
+    const signatureId = req.files.signature ? await uploadFileToGridFS(req.files.signature[0]) : undefined;
+    const marksheetId = req.files.marksheet ? await uploadFileToGridFS(req.files.marksheet[0]) : undefined;
 
-      if (photoId) updates.photo = photoId;
-      if (signatureId) updates.signature = signatureId;
-      if (marksheetId) updates.marksheet = marksheetId;
-    }
+    // Prepare the update data with the provided fields and uploaded files
+    const updateData = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      dob: req.body.dob,
+      state: req.body.state,
+      district: req.body.district,
+      course: req.body.course,
+      courseOption: req.body.courseOption,
+      mothername: req.body.mothername,
+      qualification: req.body.qualification,
+      contactno: req.body.contactno,
+      guardiancontact: req.body.guardiancontact,
+      adhar: req.body.adhar,
+      gender: req.body.gender,
+      category: req.body.category,
+      religion: req.body.religion,
+      maritalstatus: req.body.maritalstatus,
+      address: req.body.address,
+      presentaddress: req.body.presentaddress,
+      ...(photoId && { photo: photoId }),
+      ...(signatureId && { signature: signatureId }),
+      ...(marksheetId && { marksheet: marksheetId }),
+    };
 
-    const updatedStudent = await User.findOneAndUpdate({ registrationNumber }, updates, { new: true });
+    // Update the student record
+    const updatedStudent = await User.findOneAndUpdate(
+      { registrationNumber },
+      { $set: updateData },
+      { new: true, runValidators: true }
+    );
 
     if (!updatedStudent) {
       return res.status(404).send('Student not found.');
@@ -290,73 +366,8 @@ app.put('/dashboard/AddStudent/:registrationNumber', upload.fields([
   }
 });
 
-// Route to delete a student by registration number
-app.delete('/dashboard/AddStudent/:registrationNumber', async (req, res) => {
-  try {
-    const { registrationNumber } = req.params;
-    const student = await User.findOneAndDelete({ registrationNumber });
 
-    if (!student) {
-      return res.status(404).send('Student not found.');
-    }
-
-    if (student.photo) {
-      gfs.delete(new mongoose.Types.ObjectId(student.photo), (err) => {
-        if (err) {
-          console.error('Error deleting photo:', err);
-        }
-      });
-    }
-    if (student.signature) {
-      gfs.delete(new mongoose.Types.ObjectId(student.signature), (err) => {
-        if (err) {
-          console.error('Error deleting signature:', err);
-        }
-      });
-    }
-    if (student.marksheet) {
-      gfs.delete(new mongoose.Types.ObjectId(student.marksheet), (err) => {
-        if (err) {
-          console.error('Error deleting marksheet:', err);
-        }
-      });
-    }
-
-    res.status(200).send('Student deleted successfully.');
-  } catch (error) {
-    console.error('Error deleting student:', error);
-    res.status(500).send('Failed to delete student. Please try again.');
-  }
-});
-
-// Route to view a file by its ID
-app.get('/dashboard/AddStudent/photo/:id', (req, res) => {
-  const { id } = req.params;
-
-  if (!gfs) {
-    return res.status(500).send('GridFS is not initialized.');
-  }
-
-  gfs.find({ _id: new mongoose.Types.ObjectId(id) }).toArray((err, files) => {
-    if (err) {
-      return res.status(500).send('Failed to find file.');
-    }
-
-    if (!files || files.length === 0) {
-      return res.status(404).send('No file found.');
-    }
-
-    gfs.openDownloadStream(new mongoose.Types.ObjectId(id)).pipe(res);
-  });
-});
-
-// Logout route
-app.post('/logout', (req, res) => {
-  res.cookie('token', '', { httpOnly: true, expires: new Date(0) });
-  res.status(200).json({ message: 'Logout successful' });
-});
-
-// Start server
+// Start the server
 app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+  console.log(`Server is running on http://localhost:${port}`);
 });
