@@ -6,11 +6,15 @@ import 'react-toastify/dist/ReactToastify.css';
 import loginimg from "../../assets/Images/loginpage.png";
 
 const Login = () => {
-  const [loginInfo, setLoginInfo] = useState({ email: '', password: '' });
+  const [loginInfo, setLoginInfo] = useState({ registration: '', email: '', password: '' });
   const navigate = useNavigate();
 
   // Define the schema for validation using Joi
   const schema = Joi.object({
+    registration: Joi.string().min(7).max(100).required().messages({
+      "string.empty": "Registration number is required",
+      "string.min": "Registration number must be at least 7 characters long",
+    }),
     email: Joi.string().email({ tlds: { allow: false } }).required().messages({
       "string.empty": "Email is required",
       "string.email": "Invalid email format",
@@ -28,32 +32,32 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-  
+
     // Validate the form data
     const { error } = schema.validate(loginInfo, { abortEarly: false });
     if (error) {
       error.details.forEach(err => toast.error(err.message));
       return;
     }
-  
+
     try {
       const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginInfo)
       });
-  
+
       const result = await response.json();
-  
+
       if (!response.ok) {
         toast.error(result.message || 'Login failed. Please check your credentials.');
         return;
       }
-  
+
       toast.success('Login successful');
       localStorage.setItem('token', result.token);
       localStorage.setItem('loggedInUser', result.name);
-  
+
       toast.info(`Welcome ${result.name}`);
       navigate('/dashboard', { replace: true });
 
@@ -61,7 +65,6 @@ const Login = () => {
       toast.error('Login failed. Please try again.');
     }
   };
-  
 
   return (
     <>
@@ -72,6 +75,15 @@ const Login = () => {
         </div>
 
         <form onSubmit={handleLogin} className="w-full md:w-1/2 max-w-md bg-white p-6 rounded-lg shadow-lg">
+          <input
+            type="text"
+            name="registration"
+            value={loginInfo.registration}
+            onChange={handleChange}
+            placeholder="Registration No."
+            className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
+          />
           <input
             type="email"
             name="email"

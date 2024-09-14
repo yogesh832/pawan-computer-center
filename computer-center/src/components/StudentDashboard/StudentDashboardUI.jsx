@@ -6,8 +6,8 @@ import { CiEdit } from "react-icons/ci";
 import ProgressBar from './ProgressBar.jsx';
 
 const StudentDashboardUI = () => {
-  const totalDays = 30; // Total number of days in the course
-  const courseStartDate = new Date('2024-08-01'); // Adjust the start date accordingly
+  const totalDays = 100; // Total number of days in the course
+  const courseStartDate = new Date('2024-09-01'); // Adjust the start date accordingly
 
   const calculateCurrentDay = () => {
     const today = new Date();
@@ -76,6 +76,7 @@ const StudentDashboardUI = () => {
           <p className="text-gray-600 mb-2">
             Date of Birth: {new Date(student.dob).toLocaleDateString()}
           </p>
+          <p className="text-gray-600 mb-2">Email: {student.email}</p>
           <p className="text-gray-600 mb-2">Father's Name: {student.fatherName}</p>
           <p className="text-gray-600 mb-2">Mother's Name: {student.mothername}</p>
           <p className="text-gray-600 mb-2">Aadhaar Number: {student.adhar}</p>
