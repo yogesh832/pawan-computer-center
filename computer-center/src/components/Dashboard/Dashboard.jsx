@@ -19,6 +19,11 @@ import PracticeCRUD from './practiceCRUD'
 import Student from './Student'
 import StudentDashboardUI from '../StudentDashboard/StudentDashboardUI'
 import Imageview from '../Imageview'
+import { Three } from '../services/threemonth/Three'
+import { Six } from '../services/sixmonth/Six'
+import { Twelve } from '../services/twelvemonth/Twelve'
+import { Eighteen } from '../services/eighteenmonth/Eighteen'
+import { Twentyfour } from '../services/twentyfourmonth/Twentyfour'
 
 // import StudentTable from './Student section/StudentTable'
 
@@ -40,7 +45,12 @@ export const Dashboard = () => {
    {/* <Student /> */}
 
    {/* <StudentDashboardUI /> */}
-   <Imageview />
+   {/* <Imageview /> */}
+   {/* <Three /> */}
+   {/* <Six /> */}
+   {/* <Twelve /> */}
+   {/* <Eighteen /> */}
+   <Twentyfour />
   </div>
   {/* <StudentTable/> */}
   {/* <AddMarks /> */}

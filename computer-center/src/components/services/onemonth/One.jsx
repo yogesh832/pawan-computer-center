@@ -9,25 +9,25 @@ const courseData = [
     {
         title: "CERTIFICATE IN FUNDAMENTAL",
         semester: "Semester 1",
-        description: "Learn the fundamentals of computer operations.",
-        image: img
-    },
-    {
-        title: "CERTIFICATE IN MS EXCEL",
-        semester: "Semester 1",
-        description: "Master the essentials of Microsoft Excel.",
-        image: img
-    },
-    {
-        title: "CERTIFICATE IN MS POWER POINT",
-        semester: "Semester 1",
-        description: "Learn how to create impactful presentations.",
+        description: "Computer Fundamentals",
         image: img
     },
     {
         title: "CERTIFICATE IN MS WORD",
         semester: "Semester 1",
-        description: "Become proficient in Microsoft Word.",
+        description: "MS WORD",
+        image: img
+    },
+    {
+        title: "CERTIFICATE IN MS EXCEL",
+        semester: "Semester 1",
+        description: "MS EXCEL",
+        image: img
+    },
+    {
+        title: "CERTIFICATE IN MS POWER POINT",
+        semester: "Semester 1",
+        description: "MS POWER POINT",
         image: img
     }
 ];
