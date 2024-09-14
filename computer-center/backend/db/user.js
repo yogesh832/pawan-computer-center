@@ -5,7 +5,11 @@ const userSchema = new mongoose.Schema({
   firstname: { type: String },
   lastname: { type: String },
   dob: { type: String },
-  // email:{type:email , required: true},
+  email: { 
+    type: String, 
+    required: true,  // Required
+    match: [/^\S+@\S+.\S+$/, 'Please use a valid email address'] // Email validation
+  },
   state: { type: String },
   district: { type: String },
   course: { type: String },
