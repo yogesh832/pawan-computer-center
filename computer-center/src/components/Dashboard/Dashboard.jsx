@@ -54,7 +54,7 @@ export const Dashboard = () => {
    {/* <Six /> */}
    {/* <Twelve /> */}
    {/* <Eighteen /> */}
-   <Twentyfour />
+   {/* <Twentyfour /> */}
   </div>
   {/* <StudentTable/> */}
   {/* <AddMarks /> */}
