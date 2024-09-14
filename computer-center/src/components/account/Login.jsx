@@ -46,17 +46,15 @@ const Login = () => {
       const result = await response.json();
   
       if (!response.ok) {
-        return toast.error(result.message || 'Login failed. Please check your credentials.');
+        toast.error(result.message || 'Login failed. Please check your credentials.');
+        return;
       }
   
       toast.success('Login successful');
       localStorage.setItem('token', result.token);
       localStorage.setItem('loggedInUser', result.name);
   
-      // Optionally, display the JSON message or any other UI element
-      console.log(result); // You can use this to debug or display in the UI
       toast.info(`Welcome ${result.name}`);
-      
       navigate('/dashboard', { replace: true });
 
     } catch (err) {

@@ -19,17 +19,12 @@ import PracticeCRUD from './practiceCRUD'
 import Student from './Student'
 import StudentDashboardUI from '../StudentDashboard/StudentDashboardUI'
 import Imageview from '../Imageview'
-<<<<<<< HEAD
 import { Three } from '../services/threemonth/Three'
 import { Six } from '../services/sixmonth/Six'
 import { Twelve } from '../services/twelvemonth/Twelve'
 import { Eighteen } from '../services/eighteenmonth/Eighteen'
 import { Twentyfour } from '../services/twentyfourmonth/Twentyfour'
 
-=======
-import Login from "../account/Login"
-// import ViewCertificate from '../Dashboard/CertificatesFile/ViewCerticate'
->>>>>>> 86ea325ac5046b77398bfd411ed39ce2a03752d0
 // import StudentTable from './Student section/StudentTable'
 
 export const Dashboard = () => {
@@ -53,7 +48,6 @@ export const Dashboard = () => {
    {/* <Passbook/> */}
    {/* <Student /> */}
 
-<<<<<<< HEAD
    {/* <StudentDashboardUI /> */}
    {/* <Imageview /> */}
    {/* <Three /> */}
@@ -61,10 +55,6 @@ export const Dashboard = () => {
    {/* <Twelve /> */}
    {/* <Eighteen /> */}
    <Twentyfour />
-=======
-
-   {/* <Imageview /> */}
->>>>>>> 86ea325ac5046b77398bfd411ed39ce2a03752d0
   </div>
   {/* <StudentTable/> */}
   {/* <AddMarks /> */}
