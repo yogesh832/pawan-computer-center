@@ -22,7 +22,7 @@ const StudentDashboardUI = () => {
   const [currentDay, setCurrentDay] = useState(calculateCurrentDay());
 
   useEffect(() => {
-    const registrationNumber = 'PCC000008'; // Ensure this is correct
+    const registrationNumber = 'PCC000001'; // Ensure this is correct
     axios
       .get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
       .then((response) => {
