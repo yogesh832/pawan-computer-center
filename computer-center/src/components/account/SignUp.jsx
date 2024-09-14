@@ -1,27 +1,33 @@
-import React, { useState } from 'react';
-import { Box, TextField, Button, styled, Typography } from "@mui/material";
-import { Link, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import Joi from 'joi';
-import 'react-toastify/dist/ReactToastify.css';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import Joi from "joi";
+import "react-toastify/dist/ReactToastify.css";
 import loginimg from "../../assets/Images/loginpage.png";
 
-// SignUp Component
 const SignUp = () => {
-  const [signUpInfo, setSignUpInfo] = useState({ name: '', email: '', password: '' });
+  const [signUpInfo, setSignUpInfo] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
   const navigate = useNavigate();
 
-  // Define the schema for validation using Joi
+  // Joi schema for validation
   const schema = Joi.object({
     name: Joi.string().min(3).max(100).required().messages({
       "string.empty": "Name is required",
       "string.min": "Name must be at least 3 characters long",
       "string.max": "Name must be less than 100 characters long",
     }),
-    email: Joi.string().email({ tlds: { allow: false } }).required().messages({
-      "string.empty": "Email is required",
-      "string.email": "Invalid email format",
-    }),
+    email: Joi.string()
+      .email({ tlds: { allow: false } })
+      .required()
+      .messages({
+        "string.empty": "Email is required",
+        "string.email": "Invalid email format",
+      }),
     password: Joi.string().min(4).max(100).required().messages({
       "string.empty": "Password is required",
       "string.min": "Password must be at least 4 characters long",
@@ -30,7 +36,7 @@ const SignUp = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setSignUpInfo(prev => ({ ...prev, [name]: value }));
+    setSignUpInfo((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSignUp = async (e) => {
@@ -39,149 +45,99 @@ const SignUp = () => {
     // Validate the form data
     const { error } = schema.validate(signUpInfo, { abortEarly: false });
     if (error) {
-      error.details.forEach(err => toast.error(err.message));
+      error.details.forEach((err) => toast.error(err.message));
       return;
     }
 
     try {
-      const response = await fetch('http://localhost:5000/register', {  // Corrected URL
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(signUpInfo)
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(signUpInfo),
       });
 
       const result = await response.json();
 
+      // Log the response and result for debugging
+      console.log("Response:", response); // Logs the entire response object
+      console.log("Result:", result); // Logs the response body from the server
+
       if (!response.ok) {
-        return toast.error(result.message || 'Sign up failed. Please try again.'); // Updated error message handling
+        return toast.error(result.message || "Sign up failed. Please try again.");
       }
 
-      toast.success('Sign up successful!');
-      setTimeout(() => navigate('/login'), 1000);
+      toast.success("Sign up successful!");
+      setTimeout(() => navigate("/login"), 1000);
     } catch (err) {
-      toast.error('Sign up failed. Please try again.');
+      console.error("Error:", err); // Logs any error that occurred in the try block
+      toast.error("Sign up failed. Please try again.");
     }
   };
 
   return (
     <>
-      <Typography variant="h1" sx={{ textAlign: 'center', mt: 10, mb: -5, fontWeight: 700, fontSize: '60px' }}>
-        Sign Up Now!
-      </Typography>
-      <Component>
-        <Loginimg>
-          <Image src={loginimg} alt="loginimg" />
-        </Loginimg>
-        <Wrapper onSubmit={handleSignUp}>
-          <TextField
-            label="Name"
-            variant="filled"
-            fullWidth
+      <h1 className="text-center text-5xl font-bold mt-10 mb-5">Sign Up Now!</h1>
+      <div className="flex flex-col md:flex-row items-center justify-center p-6 min-h-screen">
+        <div className="w-full md:w-1/2 p-6">
+          <img
+            src={loginimg}
+            alt="Sign Up"
+            className="w-full max-w-md mx-auto"
+          />
+        </div>
+
+        <form
+          onSubmit={handleSignUp}
+          className="flex flex-col items-center w-full md:w-1/2 max-w-md bg-white p-6 rounded-lg shadow-lg"
+        >
+          <input
+            type="text"
             name="name"
             value={signUpInfo.name}
             onChange={handleChange}
-            sx={{ marginBottom: "16px" }}
+            placeholder="Name"
+            className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
-          <TextField
-            label="Email"
-            variant="filled"
-            fullWidth
+          <input
+            type="email"
             name="email"
             value={signUpInfo.email}
             onChange={handleChange}
-            sx={{ marginBottom: "16px" }}
+            placeholder="Email"
+            className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
-          <TextField
-            label="Password"
+          <input
             type="password"
-            variant="filled"
-            fullWidth
             name="password"
             value={signUpInfo.password}
             onChange={handleChange}
-            sx={{ marginBottom: "16px" }}
+            placeholder="Password"
+            className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
-          <Button variant="contained" fullWidth type="submit">
-            Sign up Now
-          </Button>
-          <CenteredText variant="body2">OR</CenteredText>
-          <Link to="/login" style={{ textDecoration: 'none' }}>
-            <Button variant="outlined" fullWidth>
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
+          >
+            Sign Up Now
+          </button>
+
+          <p className="text-center mt-4">Already have an account?</p>
+          <Link to="/login" className="w-full">
+            <button
+              type="button"
+              className="w-full mt-2 bg-white text-blue-600 border-2 border-blue-600 p-3 rounded-lg hover:bg-blue-600 hover:text-white"
+            >
               Login
-            </Button>
+            </button>
           </Link>
-        </Wrapper>
-      </Component>
+        </form>
+      </div>
       <ToastContainer />
     </>
   );
 };
 
 export default SignUp;
-
-// Styled components
-const Component = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  padding: 20px;
-  min-height: 100vh;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    padding: 20px;
-  }
-`;
-
-const Image = styled("img")({
-  width: "100%",
-  maxWidth: "500px",
-  margin: "auto",
-  marginRight: "40px",
-  display: "block",
-  padding: "20px 0",
-});
-
-const Loginimg = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-
-  @media (max-width: 600px) {
-    justify-content: center;
-  }
-`;
-
-const Wrapper = styled('form')`
-  padding: 25px 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-
-  & > button,
-  & > p {
-    margin-top: 20px;
-  }
-
-  & > * {
-    margin-top: 16px;
-  }
-
-  @media (max-width: 600px) {
-    padding: 15px;
-
-    & > * {
-      margin-top: 12px;
-    }
-  }
-`;
-
-const CenteredText = styled(Typography)`
-  text-align: center;
-  margin: 16px 0;
-`;

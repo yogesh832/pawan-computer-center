@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Box, TextField, Button, styled, Typography } from "@mui/material";
 import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import Joi from 'joi';
@@ -29,145 +28,91 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     // Validate the form data
     const { error } = schema.validate(loginInfo, { abortEarly: false });
     if (error) {
       error.details.forEach(err => toast.error(err.message));
       return;
     }
-
+  
     try {
       const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginInfo)
       });
-
+  
       const result = await response.json();
-
+  
       if (!response.ok) {
         return toast.error(result.message || 'Login failed. Please check your credentials.');
       }
-
+  
       toast.success('Login successful');
       localStorage.setItem('token', result.token);
       localStorage.setItem('loggedInUser', result.name);
-      setTimeout(() => navigate('/home'), 1000);
+  
+      // Optionally, display the JSON message or any other UI element
+      console.log(result); // You can use this to debug or display in the UI
+      toast.info(`Welcome ${result.name}`);
+      
+      navigate('/dashboard', { replace: true });
+
     } catch (err) {
       toast.error('Login failed. Please try again.');
     }
   };
+  
 
   return (
     <>
-      <Typography variant="h1" sx={{ textAlign: 'center', mt: 10, mb: -5, fontWeight: 700, fontSize: '60px' }}>
-        Login Now!
-      </Typography>
-      <Component>
-        <Loginimg>
-          <Image src={loginimg} alt="loginimg" />
-        </Loginimg>
-        <Wrapper onSubmit={handleLogin}>
-          <TextField
-            label="Email"
-            variant="filled"
-            fullWidth
+      <h1 className="text-center text-5xl font-bold mt-10 mb-5">Login Now!</h1>
+      <div className="flex flex-col md:flex-row items-center justify-center min-h-screen p-6">
+        <div className="w-full md:w-1/2 p-6">
+          <img src={loginimg} alt="loginimg" className="w-full max-w-md mx-auto" />
+        </div>
+
+        <form onSubmit={handleLogin} className="w-full md:w-1/2 max-w-md bg-white p-6 rounded-lg shadow-lg">
+          <input
+            type="email"
             name="email"
             value={loginInfo.email}
             onChange={handleChange}
-            sx={{ marginBottom: "16px" }}
+            placeholder="Email"
+            className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
-          <TextField
-            label="Password"
+          <input
             type="password"
-            variant="filled"
-            fullWidth
             name="password"
             value={loginInfo.password}
             onChange={handleChange}
-            sx={{ marginBottom: "16px" }}
+            placeholder="Password"
+            className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            required
           />
-          <Button variant="contained" fullWidth type="submit">
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700"
+          >
             Login
-          </Button>
-          <CenteredText variant="body2">OR</CenteredText>
-          <Link to='/singup' style={{ textDecoration: 'none' }}>
-            <Button variant="outlined" fullWidth>
-              Sign up Now
-            </Button>
+          </button>
+
+          <p className="text-center mt-4">Don't have an account?</p>
+          <Link to='/signup'>
+            <button
+              type="button"
+              className="w-full mt-2 bg-white text-blue-600 border-2 border-blue-600 p-3 rounded-lg hover:bg-blue-600 hover:text-white"
+            >
+              Sign Up Now
+            </button>
           </Link>
-        </Wrapper>
-      </Component>
+        </form>
+      </div>
       <ToastContainer />
     </>
   );
 };
 
 export default Login;
-
-const Component = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  margin: auto;
-  padding: 20px;
-  min-height: 100vh;
-
-  @media (max-width: 600px) {
-    flex-direction: column;
-    padding: 20px;
-  }
-`;
-
-const Image = styled("img")({
-  width: "100%",
-  maxWidth: "500px",
-  margin: "auto",
-  marginRight: "40px",
-  display: "block",
-  padding: "20px 0",
-});
-
-const Loginimg = styled(Box)`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-bottom: 20px;
-
-  @media (max-width: 600px) {
-    justify-content: center;
-  }
-`;
-
-const Wrapper = styled('form')`
-  padding: 25px 35px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-
-  & > button,
-  & > p {
-    margin-top: 20px;
-  }
-
-  & > * {
-    margin-top: 16px;
-  }
-
-  @media (max-width: 600px) {
-    padding: 15px;
-
-    & > * {
-      margin-top: 12px;
-    }
-  }
-`;
-
-const CenteredText = styled(Typography)`
-  text-align: center;
-  margin: 16px 0;
-`;

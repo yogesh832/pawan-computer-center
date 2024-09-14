@@ -29,21 +29,22 @@ export const Dashboard = () => {
 
     <div className='flex flex-row'>
     {/* <ViewCertificate/> */}
-  {/* <Sidebar />   */}
+  <Sidebar />  
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
     {/* <AddStudent/> */}
     {/* <PracticeCRUD /> */}
    {/* <Addfund/>  */}
-   <Login/>
+   {/* <Login/> */}
+   <StudentDashboardUI />
+
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}
    {/* <Passbook/> */}
    {/* <Student /> */}
 
 
-   {/* <StudentDashboardUI /> */}
    {/* <Imageview /> */}
   </div>
   {/* <StudentTable/> */}
