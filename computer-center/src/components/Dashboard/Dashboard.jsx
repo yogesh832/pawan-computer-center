@@ -24,6 +24,7 @@ import { Six } from '../services/sixmonth/Six'
 import { Twelve } from '../services/twelvemonth/Twelve'
 import { Eighteen } from '../services/eighteenmonth/Eighteen'
 import { Twentyfour } from '../services/twentyfourmonth/Twentyfour'
+import Result from './Result/Result'
 
 // import StudentTable from './Student section/StudentTable'
 
@@ -42,7 +43,8 @@ export const Dashboard = () => {
    {/* <Addfund/>  */}
    {/* <Login/> */}
    {/* <StudentDashboardUI /> */}
-   <ViewCertificate />
+   {/* <ViewCertificate /> */}
+   <Result />
 
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}

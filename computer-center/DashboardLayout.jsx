@@ -1,20 +1,3 @@
-// // DashboardLayout.jsx
-// import React from 'react';
-// import Sidebar from './src/components/Dashboard/Sidebar';
-// import { Outlet } from "react-router-dom";
-
-// const DashboardLayout = ({ children }) => {
-//   return (
-//     <div className="flex">
-//       <Sidebar />
-//       <Outlet />
-//       {/* <main>{children}</main> */}
-//     </div>
-//   );
-// };
-
-// export default DashboardLayout;
-
 
 import React from 'react';
 import { Outlet } from 'react-router-dom';
