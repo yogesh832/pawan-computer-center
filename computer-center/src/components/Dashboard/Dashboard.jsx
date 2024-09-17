@@ -25,6 +25,9 @@ import { Twelve } from '../services/twelvemonth/Twelve'
 import { Eighteen } from '../services/eighteenmonth/Eighteen'
 import { Twentyfour } from '../services/twentyfourmonth/Twentyfour'
 import Result from './Result/Result'
+import NewUser from '../NewUserWithoutSub/newUser'
+import Courses from './Courses'
+
 
 // import StudentTable from './Student section/StudentTable'
 
@@ -43,8 +46,11 @@ export const Dashboard = () => {
    {/* <Addfund/>  */}
    {/* <Login/> */}
    {/* <StudentDashboardUI /> */}
+   <Courses />
+   
    {/* <ViewCertificate /> */}
-   <Result />
+   {/* <Result /> */}
+   {/* <NewUser /> */}
 
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}

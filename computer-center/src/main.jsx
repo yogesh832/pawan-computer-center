@@ -6,7 +6,6 @@ import 'react-toastify/dist/ReactToastify.css'; // Import toastify CSS
 import Home from "./components/home/Home.jsx";
 import Layout from "../Layout.jsx";
 import DashboardLayout from "../DashboardLayout.jsx";
-import { One } from "./components/services/onemonth/One.jsx";
 import Contact from "./components/contact/Contact.jsx";
 import Login from "./components/account/Login.jsx";
 import AboutUs from "./components/navbar/About us/AboutUs.jsx";
@@ -23,6 +22,9 @@ import SeeAllStudent from "./components/Dashboard/Studentsection/SeeAllStudent.j
 import Student from "./components/Dashboard/Student.jsx";
 import EditStudent from "./components/Dashboard/Studentsection/EditStudent.jsx";
 import SignUp from "./components/account/SignUp.jsx";
+import Courses from "./components/Dashboard/Courses.jsx";
+
+
 
 const router = createBrowserRouter([
   {
@@ -30,7 +32,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "", element: <Home /> },
-      { path: "course", element: <One /> },
+      { path: "course", element: <Courses /> },
       { path: "contact", element: <Contact /> },
       { path: "login", element: <Login /> },
       { path: "singup", element: <SignUp /> },
