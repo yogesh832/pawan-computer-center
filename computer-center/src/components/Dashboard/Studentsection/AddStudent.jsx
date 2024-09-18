@@ -33,13 +33,13 @@ const AddStudent = () => {
 
   const courseOptions = {
     "": [],
-    8: [
+    "1-Month Certificate Course": [
       "CERTIFICATE IN FUNDAMENTAL(RV01001)",
       "CERTIFICATE IN MS EXCEL(RV01003)",
       "CERTIFICATE IN MS POWER POINT(RV01004)",
       "CERTIFICATE IN MS WORD(RV01002)",
     ],
-    9: [
+    "3-Months Certificate Course": [
       "Advanced Level Graphic Design(RV03039)",
       "Advanced Level Video Production(RV03040)",
       "CERTIFICATE IN ADOBE IN-DESIGN(RV03023)",
@@ -68,7 +68,7 @@ const AddStudent = () => {
       "CERTIFICATE IN AFTER EFFECTS(RV03014)",
       "DIPLOMA IN COMPUTER APPLICATION(RV03001)",
     ],
-    14: [
+    "6-Months Certificate Course": [
       "DIPLOMA IN MOBILE REPAIRING & SOFTWARE INSTALLATION(RVV06021)",
       "CERTIFICATE IN COMPUTER BASIC AND TALLY(RV06016)",
       "CERTIFICATE IN ENGLISH AND HINDI TYPING(RV06018)",
@@ -83,12 +83,12 @@ const AddStudent = () => {
       "TO WEAR WITH ANGELA WOLF (RVV06006)",
       "DIPLOMA IN WEB TECHNOLOGY(RV06006)",
     ],
-    15: [],
-    12: [
+    "1-Year Diploma Course": [],
+    "1-Year Advance Diploma Course": [
       "ADVANCE DIPLOMA IN COMPUTER APPLICATION(RV18001)",
       "Master Diploma in Computer information(EV18002)",
     ],
-    13: [
+    "2-Years Diploma Course": [
       "Advance Diploma in Barbering(RVV24004)",
       "ADVANCE DIPLOMA IN COMPUTER HARDWARE & NETWORKING ENGINEERING(RV24003)",
       "ADVANCE DIPLOMA IN FINANCIAL ACCOUNTING(RV24006)",
@@ -98,8 +98,8 @@ const AddStudent = () => {
       "UNDER GRADUATE DIPLOMA IN FASHION DESIGNING(RVV24006)",
       "POST GRADUATE DIPLOMA IN INFORMATION TECHNOLOGY(RV24001)",
     ],
-    20: ["1-Year Health Care Option 1", "1-Year Health Care Option 2"],
-    21: ["2-Years Health Care Option 1", "2-Years Health Care Option 2"],
+    '1-Year Health Care Course': ["1-Year Health Care Option 1", "1-Year Health Care Option 2"],
+    "2-Year Health Care Course": ["2-Years Health Care Option 1", "2-Years Health Care Option 2"],
   };
 
   const states = [
