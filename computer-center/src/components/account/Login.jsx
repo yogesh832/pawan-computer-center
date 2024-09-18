@@ -32,39 +32,40 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     // Validate the form data
     const { error } = schema.validate(loginInfo, { abortEarly: false });
     if (error) {
       error.details.forEach(err => toast.error(err.message));
       return;
     }
-
+  
     try {
       const response = await fetch('http://localhost:5000/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(loginInfo)
       });
-
+  
       const result = await response.json();
-
+  
       if (!response.ok) {
         toast.error(result.message || 'Login failed. Please check your credentials.');
         return;
       }
-
+  
       toast.success('Login successful');
       localStorage.setItem('token', result.token);
       localStorage.setItem('loggedInUser', result.name);
-
-      toast.info(`Welcome ${result.name}`);
-      navigate('/dashboard', { replace: true });
-
+      
+      // Redirect to the dashboard of the logged-in user
+      navigate(`/dashboard/student/${loginInfo.registration}`, { replace: true });
+  
     } catch (err) {
       toast.error('Login failed. Please try again.');
     }
   };
+  
 
   return (
     <>
