@@ -151,7 +151,7 @@ app.post('/dashboard/AddStudent', upload.fields([
     };
 
     // Validate required fields
-    const requiredFields = ['firstname', 'lastname', 'dob', 'state', 'district', 'course', 'courseOption', 'mothername', 'qualification', 'contactno', 'guardiancontact', 'adhar', 'gender', 'category', 'religion', 'address', 'presentaddress'];
+    const requiredFields = ['firstname', 'lastname', 'dob','email',  'state', 'district', 'course', 'courseOption', 'mothername','fathername', 'qualification', 'contactno', 'guardiancontact', 'adhar', 'gender', 'category', 'religion', 'address', 'presentaddress'];
     for (const field of requiredFields) {
       if (!req.body[field]) {
         return res.status(400).json({ error: `${field} is required` });
@@ -169,11 +169,13 @@ app.post('/dashboard/AddStudent', upload.fields([
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       dob: req.body.dob,
+      email: req.body.email,
       state: req.body.state,
       district: req.body.district,
       course: req.body.course,
       courseOption: req.body.courseOption,
       mothername: req.body.mothername,
+      fathername: req.body.fathername,
       qualification: req.body.qualification,
       contactno: req.body.contactno,
       guardiancontact: req.body.guardiancontact,
@@ -292,8 +294,8 @@ app.put('/dashboard/AddStudent/:registrationNumber', upload.fields([
   try {
     // Validate required fields
     const requiredFields = [
-      'firstname', 'lastname', 'dob', 'state', 'district', 
-      'course', 'courseOption', 'mothername', 'qualification', 
+      'firstname', 'lastname', 'dob','email', 'state', 'district', 
+      'course', 'courseOption', 'mothername','fathername', 'qualification', 
       'contactno', 'guardiancontact', 'adhar', 'gender', 
       'category', 'religion', 'address', 'presentaddress'
     ];
@@ -328,11 +330,13 @@ app.put('/dashboard/AddStudent/:registrationNumber', upload.fields([
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       dob: req.body.dob,
+      email:req.body.email,
       state: req.body.state,
       district: req.body.district,
       course: req.body.course,
       courseOption: req.body.courseOption,
       mothername: req.body.mothername,
+      fathername: req.body.fathername,
       qualification: req.body.qualification,
       contactno: req.body.contactno,
       guardiancontact: req.body.guardiancontact,
