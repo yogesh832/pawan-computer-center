@@ -24,6 +24,7 @@ import { Six } from '../services/sixmonth/Six'
 import { Twelve } from '../services/twelvemonth/Twelve'
 import { Eighteen } from '../services/eighteenmonth/Eighteen'
 import { Twentyfour } from '../services/twentyfourmonth/Twentyfour'
+import Result from './Result/Result'
 
 // import StudentTable from './Student section/StudentTable'
 
@@ -33,7 +34,7 @@ export const Dashboard = () => {
 
     <div className='flex flex-row'>
     {/* <ViewCertificate/> */}
-  <Sidebar />  
+  {/* <Sidebar />   */}
  {/* <ControlPanel />  */}
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
@@ -41,7 +42,9 @@ export const Dashboard = () => {
     {/* <PracticeCRUD /> */}
    {/* <Addfund/>  */}
    {/* <Login/> */}
-   <StudentDashboardUI />
+   {/* <StudentDashboardUI /> */}
+   {/* <ViewCertificate /> */}
+   <Result />
 
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}
@@ -63,3 +66,4 @@ export const Dashboard = () => {
   </>
   )
 }
+

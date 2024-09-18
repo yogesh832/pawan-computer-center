@@ -8,8 +8,9 @@ const userSchema = new mongoose.Schema({
   email: { 
     type: String, 
     required: true,  // Required
-    match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address'] // Email validation
-  },  state: { type: String },
+    match: [/^\S+@\S+.\S+$/, 'Please use a valid email address'] // Email validation
+  },
+  state: { type: String },
   district: { type: String },
   course: { type: String },
   courseOption: { type: String },
