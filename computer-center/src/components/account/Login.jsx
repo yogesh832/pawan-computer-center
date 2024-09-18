@@ -12,7 +12,7 @@ const Login = () => {
   // Define the schema for validation using Joi
   const schema = Joi.object({
     registration: Joi.string().min(7).max(100).required().messages({
-      "string.empty": "Registration number is required",
+
       "string.min": "Registration number must be at least 7 characters long",
     }),
     email: Joi.string().email({ tlds: { allow: false } }).required().messages({
@@ -82,7 +82,7 @@ const Login = () => {
             onChange={handleChange}
             placeholder="Registration No."
             className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            required
+           
           />
           <input
             type="email"

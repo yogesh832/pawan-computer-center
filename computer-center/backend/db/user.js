@@ -7,14 +7,14 @@ const userSchema = new mongoose.Schema({
   dob: { type: String },
   email: { 
     type: String, 
-    required: true,  // Required
-    match: [/^\S+@\S+.\S+$/, 'Please use a valid email address'] // Email validation
-  },
-  state: { type: String },
+    // required: true,  // Required
+    match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address'] // Email validation
+  },  state: { type: String },
   district: { type: String },
   course: { type: String },
   courseOption: { type: String },
   mothername: { type: String },
+  fathername: { type: String },
   qualification: { type: String },
   contactno: { type: String },
   guardiancontact: { type: String },

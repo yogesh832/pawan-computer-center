@@ -12,6 +12,7 @@ const AddStudent = () => {
     course: "",
     courseOption: "",
     mothername: "",
+    fathername: "",
     qualification: "",
     contactno: "",
     guardiancontact: "",
@@ -285,7 +286,7 @@ const AddStudent = () => {
                 value={formData.email}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                required
+             
               />
             </div>
 
@@ -347,14 +348,14 @@ const AddStudent = () => {
                 required
               >
                 <option value="">Select Course</option>
-                <option value="8">1-Month Certificate Course</option>
-                <option value="9">3-Months Certificate Course</option>
-                <option value="14">6-Months Certificate Course</option>
-                <option value="15">1-Year Diploma Course</option>
-                <option value="12">1-Year Advance Diploma Course</option>
-                <option value="13">2-Years Diploma Course</option>
-                <option value="20">1-Year Health Care Course</option>
-                <option value="21">2-Years Health Care Course</option>
+                <option value="1-Month Certificate Course">1-Month Certificate Course</option>
+                <option value="3-Months Certificate Course">3-Months Certificate Course</option>
+                <option value="6-Months Certificate Course">6-Months Certificate Course</option>
+                <option value="1-Year Diploma Course">1-Year Diploma Course</option>
+                <option value="1-Year Advance Diploma Course">1-Year Advance Diploma Course</option>
+                <option value="2-Years Diploma Course">2-Years Diploma Course</option>
+                <option value="1-Year Health Care Course">1-Year Health Care Course</option>
+                <option value="2-Year Health Care Course">2-Years Health Care Course</option>
               </select>
             </div>
 
@@ -395,6 +396,23 @@ const AddStudent = () => {
                 id="mothername"
                 name="mothername"
                 value={formData.mothername}
+                onChange={handleChange}
+                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+                required
+              />
+            </div>
+            <div className="w-full md:w-1/2 px-4 mb-4">
+              <label
+                htmlFor="fathername"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Father's Name:
+              </label>
+              <input
+                type="text"
+                id="fathername"
+                name="fathername"
+                value={formData.fathername}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
                 required
