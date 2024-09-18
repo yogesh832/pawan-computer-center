@@ -23,6 +23,7 @@ import Student from "./components/Dashboard/Student.jsx";
 import EditStudent from "./components/Dashboard/Studentsection/EditStudent.jsx";
 import SignUp from "./components/account/SignUp.jsx";
 import Courses from "./components/Dashboard/Courses.jsx";
+import StudentDashboardUI from "./components/StudentDashboard/StudentDashboardUI.jsx";
 
 import One from "./components/services/onemonth/One.jsx"
 import Three from "./components/services/threemonth/Three.jsx"
@@ -57,15 +58,14 @@ const router = createBrowserRouter([
           { path: "centerdocument", element: <Centerdocument /> },
           { path: "marketingtools", element: <MarketingTools /> },
           { path: "addstudent", element: <AddStudent /> },
-          {
-            path: "certificationrequisition",
-            element: <CertificateRequisition />,
-          },
+          { path: "certificationrequisition",element: <CertificateRequisition />,},
           { path: "trackcertificate", element: <TrackCertificate /> },
           { path: "viewcertificate", element: <ViewCertificate /> },
           { path: "seeAllStudents", element: <SeeAllStudent /> },
           { path: "AddStudent/:registrationNumber", element: <Student /> },
           { path: "EditStudent/:registrationNumber", element: <EditStudent /> },
+          { path:"student/:registrationNumber", element:<StudentDashboardUI /> }
+
         ],
       },
     ],

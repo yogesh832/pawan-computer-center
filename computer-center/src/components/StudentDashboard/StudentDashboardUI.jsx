@@ -3,11 +3,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FaEye } from "react-icons/fa";
 import { CiEdit } from "react-icons/ci";
-import ProgressBar from './ProgressBar.jsx';
+import ProgressBar from "./ProgressBar.jsx";
+import { useParams } from "react-router-dom";
 
 const StudentDashboardUI = () => {
   const totalDays = 100; // Total number of days in the course
-  const courseStartDate = new Date('2024-09-01'); // Adjust the start date accordingly
+  const courseStartDate = new Date("2024-09-01"); // Adjust the start date accordingly
 
   const calculateCurrentDay = () => {
     const today = new Date();
@@ -15,16 +16,15 @@ const StudentDashboardUI = () => {
     const elapsedDays = Math.floor(elapsedTime / (1000 * 60 * 60 * 24));
     return Math.min(elapsedDays + 1, totalDays); // Ensure the current day does not exceed totalDays
   };
-
+  const { registrationNumber } = useParams();
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentDay, setCurrentDay] = useState(calculateCurrentDay());
 
   useEffect(() => {
-    const registrationNumber = 'PCC000004'; // Ensure this is correct
     axios
-      .get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
+      .get(`http://localhost:5000/dashboard/student/${registrationNumber}`)
       .then((response) => {
         setStudent(response.data);
         setLoading(false);
@@ -34,7 +34,22 @@ const StudentDashboardUI = () => {
         setError("Failed to fetch student data");
         setLoading(false);
       });
-  }, []);
+  }, [registrationNumber]); // Ensure registrationNumber is included in the dependency array
+
+  // useEffect(() => {
+  //   // const registrationNumber = 'PCC000004'; // Ensure this is correct
+  //   axios
+  //     .get(`http://localhost:5000/dashboard/student/${registrationNumber}`)
+  //     .then((response) => {
+  //       setStudent(response.data);
+  //       setLoading(false);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching student data:", error);
+  //       setError("Failed to fetch student data");
+  //       setLoading(false);
+  //     });
+  // }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -77,12 +92,18 @@ const StudentDashboardUI = () => {
             Date of Birth: {new Date(student.dob).toLocaleDateString()}
           </p>
           <p className="text-gray-600 mb-2">Email: {student.email}</p>
-          <p className="text-gray-600 mb-2">Father's Name: {student.fatherName}</p>
-          <p className="text-gray-600 mb-2">Mother's Name: {student.mothername}</p>
+          <p className="text-gray-600 mb-2">
+            Father's Name: {student.fatherName}
+          </p>
+          <p className="text-gray-600 mb-2">
+            Mother's Name: {student.mothername}
+          </p>
           <p className="text-gray-600 mb-2">Aadhaar Number: {student.adhar}</p>
           <p className="text-gray-600 mb-4">Address: {student.address}</p>
-          <p className="text-gray-600 mb-2">Completion Status: {student.completionStatus}</p>
-          
+          <p className="text-gray-600 mb-2">
+            Completion Status: {student.completionStatus}
+          </p>
+
           <h1 className="text-2xl font-bold mb-4">Course Progress</h1>
           <ProgressBar currentDay={currentDay} totalDays={totalDays} />
 
@@ -100,7 +121,9 @@ const StudentDashboardUI = () => {
               <FaEye className="me-2" /> Check Completion
             </button>
             <button
-              onClick={() => alert("Request to edit completion status sent to admin.")}
+              onClick={() =>
+                alert("Request to edit completion status sent to admin.")
+              }
               className="bg-yellow-500 text-white py-2 px-4 rounded-lg shadow hover:bg-yellow-600 focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
               <CiEdit className="me-2" /> Request Edit
@@ -119,20 +142,3 @@ const StudentDashboardUI = () => {
 };
 
 export default StudentDashboardUI;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
