@@ -1399,3 +1399,5 @@ export function Twelve() {
     </Box>
   );
 }
+
+export default Twelve;

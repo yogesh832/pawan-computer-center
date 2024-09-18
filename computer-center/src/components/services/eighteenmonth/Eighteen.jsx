@@ -64,3 +64,5 @@ export function Eighteen() {
         </Box>
     );
 }
+
+export default Eighteen;

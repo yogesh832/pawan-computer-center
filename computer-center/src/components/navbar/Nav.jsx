@@ -46,12 +46,12 @@ const Nav = () => {
                 Courses
               </Link>
               <div className={style.dropdownMenu}>
-                <Link className={style.dropdownItem} to="/course">1 Month</Link>
-                <Link className={style.dropdownItem} to="/course">2 Month</Link>
-                <Link className={style.dropdownItem} to="/course">6 Month</Link>
-                <Link className={style.dropdownItem} to="/course">12 Month</Link>
-                <Link className={style.dropdownItem} to="/course">18 Month</Link>
-                <Link className={style.dropdownItem} to="/course">24 Month</Link>
+                <Link className={style.dropdownItem} to="/one">1 Month</Link>
+                <Link className={style.dropdownItem} to="/Three">3 Month</Link>
+                <Link className={style.dropdownItem} to="/Six">6 Month</Link>
+                <Link className={style.dropdownItem} to="/Twelve">12 Month</Link>
+                <Link className={style.dropdownItem} to="/Eighteen">18 Month</Link>
+                <Link className={style.dropdownItem} to="/twentyfour">24 Month</Link>
               </div>
             </li>
             <li className={style.navItem}>

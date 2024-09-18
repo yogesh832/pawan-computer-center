@@ -24,7 +24,12 @@ import EditStudent from "./components/Dashboard/Studentsection/EditStudent.jsx";
 import SignUp from "./components/account/SignUp.jsx";
 import Courses from "./components/Dashboard/Courses.jsx";
 
-
+import One from "./components/services/onemonth/One.jsx"
+import Three from "./components/services/threemonth/Three.jsx"
+import Six from "./components/services/sixmonth/Six.jsx"
+import Twelve from "./components/services/twelvemonth/Twelve.jsx";
+import  Eighteen  from "./components/services/eighteenmonth/Eighteen.jsx";
+import  Twentyfour  from "./components/services/twentyfourmonth/Twentyfour.jsx";
 
 const router = createBrowserRouter([
   {
@@ -32,11 +37,17 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "", element: <Home /> },
-      { path: "course", element: <Courses /> },
       { path: "contact", element: <Contact /> },
       { path: "login", element: <Login /> },
       { path: "singup", element: <SignUp /> },
       { path: "about", element: <AboutUs /> },
+      { path: "course", element: <Courses />},
+      { path: "one", element: <One />},
+      { path: "Three", element: <Three />},
+      { path: "Six", element: <Six />},
+      { path: "Twelve", element: <Twelve />},
+      { path: "Eighteen", element: <Eighteen />},
+      { path: "Twentyfour", element: <Twentyfour  />},
       {
         path: "dashboard",
         element: <DashboardLayout />,
