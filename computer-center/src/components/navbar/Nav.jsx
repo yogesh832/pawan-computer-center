@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import logo from '../../assets/Images/logo.png';
-import style from './Nav.module.css';
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,102 +11,48 @@ const Nav = () => {
   };
 
   return (
-    <nav className={style.navigation}>
-      <div className={style.mainContainer}>
-        <img className={style.logo} src={logo} alt="Logo" />
-        <button
-          className={style.menuToggle}
-          type="button"
-          aria-controls="navbarNav"
-          aria-expanded={isMenuOpen}
-          aria-label="Toggle navigation"
-          onClick={toggleMenu}
-        >
-          <FaBars className={style.menuIcon} />
-        </button>
-        <div className={`${style.navbarNav} ${isMenuOpen ? style.showMenu : ''}`} id="navbarNav">
-          <ul className={style.navList}>
-            <li className={style.navItem}>
-              <Link className={style.navLink} to="/">
-                <span className={style.icon}></span>Home
-              </Link>
+    <nav className="bg-white shadow-md">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+        {/* Logo Section */}
+        <div className="flex items-center">
+          <img className="w-[5vw] w-auto" src={logo} alt="Logo" />
+        </div>
+        
+        {/* Centered Menu Links */}
+        <div className={`lg:flex ${isMenuOpen ? 'block' : 'hidden'} flex-col lg:flex-row lg:items-center w-full justify-center lg:space-x-10`}>
+          <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-10">
+            <li>
+              <Link to="/" className="text-xl text-gray-700  hover:text-gray-900 hover:underline">Home</Link>
             </li>
-            <li className={style.navItem}>
-              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/about" role="button">
-                About Us
-              </Link>
-              <div className={style.dropdownMenu}>
-                <Link className={style.dropdownItem} to="/about">Our Story</Link>
-                <Link className={style.dropdownItem} to="/about">Mission & Vision</Link>
-              </div>
+            <li>
+              <Link to="/about" className="text-xl text-gray-700 hover:text-gray-900 hover:underline">About Us</Link>
             </li>
-            <li className={style.navItem}>
-              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/course" role="button">
-                Courses
-              </Link>
-              <div className={style.dropdownMenu}>
-                <Link className={style.dropdownItem} to="/one">1 Month</Link>
-                <Link className={style.dropdownItem} to="/Three">3 Month</Link>
-                <Link className={style.dropdownItem} to="/Six">6 Month</Link>
-                <Link className={style.dropdownItem} to="/Twelve">12 Month</Link>
-                <Link className={style.dropdownItem} to="/Eighteen">18 Month</Link>
-                <Link className={style.dropdownItem} to="/twentyfour">24 Month</Link>
-              </div>
+            <li>
+              <Link to="/course" className="text-xl text-gray-700 hover:text-gray-900 hover:underline">Courses</Link>
             </li>
-            <li className={style.navItem}>
-              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/" role="button">
-                Our Service
-              </Link>
-              <div className={style.dropdownMenu}>
-                <Link className={style.dropdownItem} to="/">Service 1</Link>
-                <Link className={style.dropdownItem} to="/">Service 2</Link>
-              </div>
+            <li>
+              <Link to="/contact" className="text-xl text-gray-700 hover:text-gray-900 hover:underline">Contact Us</Link>
             </li>
-            <li className={style.navItem}>
-              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/" role="button">
-                Certification
-              </Link>
-              <div className={style.dropdownMenu}>
-                <Link className={style.dropdownItem} to="/">Certification 1</Link>
-                <Link className={style.dropdownItem} to="/">Certification 2</Link>
-              </div>
-            </li>
-            <li className={style.navItem}>
-              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/contact" role="button">
-                Contact Us
-              </Link>
-              <div className={style.dropdownMenu}>
-                <Link className={style.dropdownItem} to="/contact">Email</Link>
-                <Link className={style.dropdownItem} to="/contact">Phone</Link>
-              </div>
-            </li>
-            <li className={style.navItem}>
-              <Link className={`${style.navLink} ${style.dropdownToggle}`} to="/" role="button">
-                Gallery
-              </Link>
-              <div className={style.dropdownMenu}>
-                <Link className={style.dropdownItem} to="/">Photos</Link>
-                <Link className={style.dropdownItem} to="/">Videos</Link>
-              </div>
+            <li>
+              <Link to="/gallery" className="text-xl text-gray-700 hover:text-gray-900 hover:underline">Gallery</Link>
             </li>
           </ul>
         </div>
-      </div>
-      <div className={style.buttons}>
-        <Link to="/singup" className={style.button1}>
-          Register Now
-        </Link>
-        <Link to="/login" className={style.button2}>
-          Sign Up
-        </Link>
-      </div>
-      <div className={style.resButtons}>
-        <Link to="/login" className={style.resButton1}>
-          SignIn
-        </Link>
-        <Link to="/login" className={style.resButton2}>
-          SignUp
-        </Link>
+
+        {/* Right Aligned Register and Sign In */}
+        <div className="hidden lg:flex space-x-4 items-center">
+          <Link to="/singup" className="px-10 py-2 bg-black text-white rounded-lg hover:bg-gray-700 text-lg">Register Now</Link>
+          <Link to="/login" className="px-10 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-lg">Sign In</Link>
+        </div>
+        
+        {/* Mobile Menu Button */}
+        <button
+          className="text-gray-500 focus:outline-none lg:hidden"
+          type="button"
+          onClick={toggleMenu}
+        >
+          <FaBars className="h-6 w-6" />
+        </button>
       </div>
     </nav>
   );
