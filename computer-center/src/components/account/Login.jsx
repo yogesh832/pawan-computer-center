@@ -56,9 +56,14 @@ const Login = () => {
       toast.success('Login successful');
       localStorage.setItem('token', result.token);
       localStorage.setItem('loggedInUser', result.name);
-      
-      // Redirect to the dashboard of the logged-in user
-      navigate(`/dashboard/student/${loginInfo.registration}`, { replace: true });
+  
+      // Check if the registration number is provided
+      if (loginInfo.registration) {
+        navigate(`/dashboard/student/${loginInfo.registration}`, { replace: true });
+      } else {
+        // Navigate to a general dashboard if registration is not provided
+        navigate(`/newuser`, { replace: true });
+      }
   
     } catch (err) {
       toast.error('Login failed. Please try again.');
