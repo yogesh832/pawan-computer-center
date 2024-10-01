@@ -33,7 +33,7 @@ const StudentDashboardUI = () => {
         console.error("Error fetching student data:", error);
         setError("Failed to fetch student data");
         setLoading(false);
-      });
+      }); 
   }, [registrationNumber]); // Ensure registrationNumber is included in the dependency array
 
   // useEffect(() => {
