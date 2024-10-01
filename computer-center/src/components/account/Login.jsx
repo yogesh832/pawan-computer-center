@@ -11,8 +11,7 @@ const Login = () => {
 
   // Define the schema for validation using Joi
   const schema = Joi.object({
-    registration: Joi.string().min(7).max(100).required().messages({
-
+    registration: Joi.string().min(7).max(100).allow('').optional().messages({
       "string.min": "Registration number must be at least 7 characters long",
     }),
     email: Joi.string().email({ tlds: { allow: false } }).required().messages({
