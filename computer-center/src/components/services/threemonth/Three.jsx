@@ -373,3 +373,4 @@ export function Three() {
         </Box>
     );
 }
+export default Three;

@@ -1,5 +1,6 @@
 import React from "react";
-import { FaStar, FaUsers, FaLock } from 'react-icons/fa';
+import { FaStar } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 const NewUser = () =>{
     return(
@@ -29,12 +30,11 @@ const NewUser = () =>{
 
         {/* Call-to-Action Button */}
         <div className="flex justify-center">
-          <a 
-            href="mailto:contact@yourwebsite.com" 
-            className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300"
-          >
-            Contact Us
-          </a>
+          
+           <Link className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300" to="/contact" >
+           Contact Us
+           </Link> 
+          
         </div>
       </div>
     </div>

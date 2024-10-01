@@ -317,6 +317,45 @@ app.get("/dashboard/AddStudent/:registrationNumber", async (req, res) => {
   }
 });
 
+
+
+// Backend Route Example (Node.js/Express)
+app.get('/dashboard/student/:registrationNumber', async (req, res) => {
+  try {
+    const { registrationNumber } = req.params;
+    const student = await User.findOne({ registrationNumber });
+
+    if (!student) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+
+    const studentWithPhotos = {
+      ...student.toObject(),
+      photo: student.photo
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
+        : null,
+      signature: student.signature
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
+        : null,
+      marksheet: student.marksheet
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
+        : null,
+    };
+
+    res.status(200).json(studentWithPhotos);
+  } catch (error) {
+    console.error("Error fetching student:", error);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
+
+
+
+
+
+
 // GET: Fetch student photos from GridFS
 app.get("/dashboard/AddStudent/photo/:id", async (req, res) => {
   try {

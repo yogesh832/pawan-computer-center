@@ -497,3 +497,5 @@ export function Six() {
         </Box>
     );
 }
+
+export default Six;

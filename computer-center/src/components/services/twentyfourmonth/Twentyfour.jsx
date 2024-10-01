@@ -128,3 +128,4 @@ export function Twentyfour() {
         </Box>
     );
 }
+export default Twentyfour;
