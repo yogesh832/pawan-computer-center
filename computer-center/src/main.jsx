@@ -31,6 +31,7 @@ import Six from "./components/services/sixmonth/Six.jsx"
 import Twelve from "./components/services/twelvemonth/Twelve.jsx";
 import  Eighteen  from "./components/services/eighteenmonth/Eighteen.jsx";
 import  Twentyfour  from "./components/services/twentyfourmonth/Twentyfour.jsx";
+import NewUser from "./components/NewUserWithoutSub/newUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
       { path: "Twelve", element: <Twelve />},
       { path: "Eighteen", element: <Eighteen />},
       { path: "Twentyfour", element: <Twentyfour  />},
+      { path:"newuser", element:<NewUser/>},
       {
         path: "dashboard",
         element: <DashboardLayout />,
@@ -64,7 +66,8 @@ const router = createBrowserRouter([
           { path: "seeAllStudents", element: <SeeAllStudent /> },
           { path: "AddStudent/:registrationNumber", element: <Student /> },
           { path: "EditStudent/:registrationNumber", element: <EditStudent /> },
-          { path:"student/:registrationNumber", element:<StudentDashboardUI /> }
+          { path:"student/:registrationNumber", element:<StudentDashboardUI /> },
+          
 
         ],
       },

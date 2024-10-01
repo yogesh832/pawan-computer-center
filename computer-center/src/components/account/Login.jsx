@@ -11,8 +11,7 @@ const Login = () => {
 
   // Define the schema for validation using Joi
   const schema = Joi.object({
-    registration: Joi.string().min(7).max(100).required().messages({
-
+    registration: Joi.string().min(7).max(100).allow('').optional().messages({
       "string.min": "Registration number must be at least 7 characters long",
     }),
     email: Joi.string().email({ tlds: { allow: false } }).required().messages({
@@ -57,9 +56,14 @@ const Login = () => {
       toast.success('Login successful');
       localStorage.setItem('token', result.token);
       localStorage.setItem('loggedInUser', result.name);
-      
-      // Redirect to the dashboard of the logged-in user
-      navigate(`/dashboard/student/${loginInfo.registration}`, { replace: true });
+  
+      // Check if the registration number is provided
+      if (loginInfo.registration) {
+        navigate(`/dashboard/student/${loginInfo.registration}`, { replace: true });
+      } else {
+        // Navigate to a general dashboard if registration is not provided
+        navigate(`/newuser`, { replace: true });
+      }
   
     } catch (err) {
       toast.error('Login failed. Please try again.');
