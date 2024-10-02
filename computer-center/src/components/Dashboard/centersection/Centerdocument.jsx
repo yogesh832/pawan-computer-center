@@ -1,66 +1,51 @@
 import React from "react";
-import { alignPropType } from "react-bootstrap/esm/types";
 
-const Centerdocument = () =>{
+const Centerdocument = () => {
+  const imageStyle = "h-24 w-36"; // Tailwind classes for height and width
+  const containerStyle = "bg-white p-5 m-3 flex flex-col items-center text-center justify-center";
+  const linkStyle = "my-2";
+  const alignFormatStyle = "w-full flex items-center justify-between gap-20"; // Adjusted gap and alignment
 
-    const image = {
-        height:'100px', 
-        width:'150px'
-    };
-    const container ={
-        backgroundColor: '#fff', 
-        padding: '20px',
-        margin: '10px',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        justifyContent: 'center'
-    };
-    const linkStyle = {
-        margin: '10px 0'
-    };
-    const alignformat =
-    {
-        width: '100%',
-        display:'flex',
-        alignItems:'center',
-        gap :'200px', 
-        // justifyContent:'center'
-    }
-
-    return(
-        <>
-        <h1>Centre Documents</h1>
-        <div style={container}>
-            <div style={alignformat}>
-            <h4 style={{minWidth: '150px'}}>Trade License</h4>
-            <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" style={linkStyle}><img style={image} src="https://i.imgur.com/PUb5mrm.jpeg" /></a>
-            </div>
-            
-            <div style={alignformat}>
-            <h4 style={{minWidth: '150px'}}>Address Proof</h4>
-           
-            <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" style={linkStyle}><img style={image} src="https://i.imgur.com/PUb5mrm.jpeg" /></a>
-            
-            <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" style={linkStyle}><img style={image} src="https://i.imgur.com/PUb5mrm.jpeg" /></a>
-            </div>
-
-            <div style={alignformat}>
-            <h4 style={{minWidth: '150px'}}>Pan Card</h4>
-            <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" style={linkStyle}><img style={image} src="https://i.imgur.com/PUb5mrm.jpeg" /></a>
-            </div>
-
-            <div style={alignformat}>
-            <h4 style={{minWidth: '150px'}}>Voter Card</h4>
-            
-            <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" style={linkStyle}><img style={image} src="https://i.imgur.com/PUb5mrm.jpeg" /></a>
-           
-            <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" style={linkStyle}><img style={image} src="https://i.imgur.com/PUb5mrm.jpeg" /></a>
-            </div>
+  return (
+    <>
+      <h1 className="text-2xl font-bold mb-4">Centre Documents</h1>
+      <div className={containerStyle}>
+        <div className={alignFormatStyle}>
+          <h4 className="min-w-[150px]">Trade License</h4>
+          <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" className={linkStyle}>
+            <img className={imageStyle} src="https://i.imgur.com/PUb5mrm.jpeg" alt="Trade License" />
+          </a>
         </div>
-        </>
-    )
-}
 
-export default Centerdocument
+        <div className={alignFormatStyle}>
+          <h4 className="min-w-[150px]">Address Proof</h4>
+          <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" className={linkStyle}>
+            <img className={imageStyle} src="https://i.imgur.com/PUb5mrm.jpeg" alt="Address Proof" />
+          </a>
+          <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" className={linkStyle}>
+            <img className={imageStyle} src="https://i.imgur.com/PUb5mrm.jpeg" alt="Address Proof" />
+          </a>
+        </div>
+
+        <div className={alignFormatStyle}>
+          <h4 className="min-w-[150px]">Pan Card</h4>
+          <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" className={linkStyle}>
+            <img className={imageStyle} src="https://i.imgur.com/PUb5mrm.jpeg" alt="Pan Card" />
+          </a>
+        </div>
+
+        <div className={alignFormatStyle}>
+          <h4 className="min-w-[150px]">Voter Card</h4>
+          <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" className={linkStyle}>
+            <img className={imageStyle} src="https://i.imgur.com/PUb5mrm.jpeg" alt="Voter Card" />
+          </a>
+          <a href="https://i.imgur.com/PUb5mrm.jpeg" target="_blank" className={linkStyle}>
+            <img className={imageStyle} src="https://i.imgur.com/PUb5mrm.jpeg" alt="Voter Card" />
+          </a>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default Centerdocument;
