@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import logo from '../../assets/Images/logo.png';
 
@@ -22,28 +22,89 @@ const Nav = () => {
         <div className={`lg:flex ${isMenuOpen ? 'block' : 'hidden'} flex-col lg:flex-row lg:items-center w-full justify-center lg:space-x-10`}>
           <ul className="flex flex-col lg:flex-row space-y-4 lg:space-y-0 lg:space-x-10">
             <li>
-              <Link to="/" className="text-xl text-gray-700  hover:text-gray-900 hover:underline">Home</Link>
+              <NavLink
+                exact="true"
+                to="/"
+                className={({ isActive }) =>
+                  `text-xl text-gray-700 hover:text-gray-900 ${isActive ? 'font-bold' : ''}`
+                }
+              >
+                Home
+              </NavLink>
             </li>
             <li>
-              <Link to="/about" className="text-xl text-gray-700 hover:text-gray-900 hover:underline">About Us</Link>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  `text-xl text-gray-700 hover:text-gray-900 ${isActive ? 'font-bold' : ''}`
+                }
+              >
+                About Us
+              </NavLink>
             </li>
             <li>
-              <Link to="/course" className="text-xl text-gray-700 hover:text-gray-900 hover:underline">Courses</Link>
+              <NavLink
+                to="/course"
+                className={({ isActive }) =>
+                  `text-xl text-gray-700 hover:text-gray-900 ${isActive ? 'font-bold' : ''}`
+                }
+              >
+                Courses
+              </NavLink>
             </li>
             <li>
-              <Link to="/contact" className="text-xl text-gray-700 hover:text-gray-900 hover:underline">Contact Us</Link>
+              <NavLink
+                to="/contact"
+                className={({ isActive }) =>
+                  `text-xl text-gray-700 hover:text-gray-900 ${isActive ? 'font-bold' : ''}`
+                }
+              >
+                Contact Us
+              </NavLink>
             </li>
             <li>
-              <Link to="/gallery" className="text-xl text-gray-700 hover:text-gray-900 hover:underline">Gallery</Link>
+              <NavLink
+                to="/gallery"
+                className={({ isActive }) =>
+                  `text-xl text-gray-700 hover:text-gray-900 ${isActive ? 'font-bold' : ''}`
+                }
+              >
+                Gallery
+              </NavLink>
             </li>
           </ul>
         </div>
 
         {/* Right Aligned Register and Sign In */}
         <div className="hidden lg:flex space-x-4 items-center">
+<<<<<<< HEAD
         <Link to="/singup" className="w-48 px-10 py-2 bg-black text-white rounded-3xl hover:bg-gray-700 text-lg text-center">Register Now</Link>
   
         <Link to="/login" className="w-48 px-10 py-2 bg-gray-100 text-gray-700 rounded-3xl hover:bg-gray-200 text-lg text-center">Sign In</Link>
+=======
+<<<<<<< HEAD
+          <NavLink
+            to="/signup"
+            className={({ isActive }) =>
+              `px-10 py-2 bg-black text-white rounded-lg hover:bg-gray-700 text-lg ${isActive ? 'font-bold' : ''}`
+            }
+          >
+            Register Now
+          </NavLink>
+          <NavLink
+            to="/login"
+            className={({ isActive }) =>
+              `px-10 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-lg ${isActive ? 'font-bold' : ''}`
+            }
+          >
+            Sign In
+          </NavLink>
+=======
+        <Link to="/signup" className="w-48 px-10 py-2 bg-black text-white rounded-lg hover:bg-gray-700 text-lg text-center">Register Now</Link>
+  
+        <Link to="/login" className="w-48 px-10 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-lg text-center">Sign In</Link>
+>>>>>>> d3d5146f3be8fb19c3da895a677a2a02c9356fc9
+>>>>>>> 14ccb79ff4d2dea7a96779d669c22a19bc0eb185
         </div>
 
         
