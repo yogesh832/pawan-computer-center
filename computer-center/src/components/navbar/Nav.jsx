@@ -78,11 +78,14 @@ const Nav = () => {
         {/* Right Aligned Register and Sign In */}
         <div className="hidden lg:flex space-x-4 items-center">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <Link to="/singup" className="w-48 px-10 py-2 bg-black text-white rounded-3xl hover:bg-gray-700 text-lg text-center">Register Now</Link>
   
         <Link to="/login" className="w-48 px-10 py-2 bg-gray-100 text-gray-700 rounded-3xl hover:bg-gray-200 text-lg text-center">Sign In</Link>
 =======
 <<<<<<< HEAD
+=======
+>>>>>>> 47545c9f91c9f63a0876a79ba6c390eda5d3cdac
           <NavLink
             to="/signup"
             className={({ isActive }) =>
@@ -99,12 +102,15 @@ const Nav = () => {
           >
             Sign In
           </NavLink>
+<<<<<<< HEAD
 =======
         <Link to="/signup" className="w-48 px-10 py-2 bg-black text-white rounded-lg hover:bg-gray-700 text-lg text-center">Register Now</Link>
   
         <Link to="/login" className="w-48 px-10 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-lg text-center">Sign In</Link>
 >>>>>>> d3d5146f3be8fb19c3da895a677a2a02c9356fc9
 >>>>>>> 14ccb79ff4d2dea7a96779d669c22a19bc0eb185
+=======
+>>>>>>> 47545c9f91c9f63a0876a79ba6c390eda5d3cdac
         </div>
 
         
