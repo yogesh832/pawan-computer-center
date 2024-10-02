@@ -85,7 +85,7 @@ const Login = () => {
             name="registration"
             value={loginInfo.registration}
             onChange={handleChange}
-            placeholder="Registration No."
+            placeholder="Registration No.(if any)"
             className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
            
           />
@@ -123,6 +123,17 @@ const Login = () => {
               Sign Up Now
             </button>
           </Link>
+
+          <p className="text-center mt-4">Only for Admin</p>
+          <Link to='/admin'>
+            <button
+              type="button"
+              className="w-full mt-2 bg-white text-blue-600 border-2 border-blue-600 p-3 rounded-lg hover:bg-blue-600 hover:text-white"
+            >
+              Click Here
+            </button>
+          </Link>
+
         </form>
       </div>
       <ToastContainer />

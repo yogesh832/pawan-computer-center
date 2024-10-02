@@ -32,6 +32,7 @@ import Twelve from "./components/services/twelvemonth/Twelve.jsx";
 import  Eighteen  from "./components/services/eighteenmonth/Eighteen.jsx";
 import  Twentyfour  from "./components/services/twentyfourmonth/Twentyfour.jsx";
 import NewUser from "./components/NewUserWithoutSub/newUser.jsx";
+import Admin from "./components/account/Admin.jsx";
 
 const router = createBrowserRouter([
   {
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
       { path: "Eighteen", element: <Eighteen />},
       { path: "Twentyfour", element: <Twentyfour  />},
       { path:"newuser", element:<NewUser/>},
+      { path:"admin", element:<Admin/>},
       {
         path: "dashboard",
         element: <DashboardLayout />,
