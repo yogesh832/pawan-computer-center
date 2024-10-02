@@ -5,7 +5,6 @@ import { PiStudentFill } from "react-icons/pi";
 import { AiFillProduct } from "react-icons/ai";
 import { FaBuildingColumns } from "react-icons/fa6";
 
-
 const Sidebar = () => {
   const [studentLink, setStudentLink] = useState("home");
   const [showStudentLinks, setShowStudentLinks] = useState(false);
@@ -25,32 +24,25 @@ const Sidebar = () => {
   const [accountLink, setAccountLink] = useState("home");
   const [showAccountLinks, setShowAccountLinks] = useState(false);
 
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const linkStyle =
-    "transition-colors duration-300 ease-in-out hover:bg-gray-700 p-2 rounded-md";
+  const linkStyle = "transition-colors duration-300 ease-in-out p-2 rounded-md";
   const linkActiveStyle = "bg-gray-800 text-white";
   const linkTextStyle = "flex items-center gap-2 text-lg";
 
   return (
-    
-
     <div className="flex min-w-80 flex-col p-4 mt-2 overflow-y-scroll bg-gray-900 text-white h-100vh">
       <a
         href="/"
         className="flex items-center mb-6 text-white text-xl font-semibold"
       >
-        <svg className="bi pe-none me-2" width="40" height="32">
-          <use xlinkHref="#bootstrap"></use>
-        </svg>
         <span>Dashboard</span>
       </a>
       <hr className="mb-4 border-red-700" />
       <ul className="space-y-2">
+        {/* Student Section */}
         <li>
           <a
             href="#"
-            className={`block ${linkStyle} ${
+            className={`block bg-red-600 ${linkStyle} ${
               studentLink === "dashboard" ? linkActiveStyle : ""
             } flex gap-2`}
             onClick={() => {
@@ -63,31 +55,19 @@ const Sidebar = () => {
           </a>
           {showStudentLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link
-                to="/dashboard/AddStudent"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/AddStudent" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Student
               </Link>
-              <Link
-                to="/dashboard/ManageApplication"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/ManageApplication" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Manage Application
               </Link>
-              <Link
-                to="/dashboard/SeeAllStudents"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/SeeAllStudents" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 See All Students
               </Link>
-              <Link
-                to="/dashboard/CourseEnquiry"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/CourseEnquiry" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Course Enquiry
               </Link>
@@ -95,10 +75,11 @@ const Sidebar = () => {
           )}
         </li>
 
+        {/* Center Section */}
         <li>
           <a
             href="#"
-            className={`block ${linkStyle} ${
+            className={`block bg-blue-600 ${linkStyle} ${
               courseLink === "dashboard" ? linkActiveStyle : ""
             } flex gap-2`}
             onClick={() => {
@@ -111,24 +92,15 @@ const Sidebar = () => {
           </a>
           {showCourseLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link
-                to="/dashboard/CenterDocument"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/CenterDocument" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Center Document
               </Link>
-              <Link
-                to="/dashboard/MarketingTools"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/MarketingTools" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Marketing Tools
               </Link>
-              <Link
-                to="/dashboard/CenterMessage"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/CenterMessage" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Center Message
               </Link>
@@ -136,10 +108,11 @@ const Sidebar = () => {
           )}
         </li>
 
+        {/* Certificate Section */}
         <li>
           <a
             href="#"
-            className={`block ${linkStyle} ${
+            className={`block bg-green-600 ${linkStyle} ${
               certificateLink === "dashboard" ? linkActiveStyle : ""
             } flex gap-2`}
             onClick={() => {
@@ -179,10 +152,11 @@ const Sidebar = () => {
           )}
         </li>
 
+        {/* Online Examination Section */}
         <li>
           <a
             href="#"
-            className={`block ${linkStyle} ${
+            className={`block bg-yellow-600 ${linkStyle} ${
               onlineLink === "dashboard" ? linkActiveStyle : ""
             } flex gap-2`}
             onClick={() => {
@@ -197,17 +171,11 @@ const Sidebar = () => {
           </a>
           {showOnlineLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link
-                to="/dashboard/AddOnline"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/AddOnline" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Exam Link
               </Link>
-              <Link
-                to="/dashboard/AppearedStudents"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/AppearedStudents" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Appeared Students
               </Link>
@@ -215,10 +183,11 @@ const Sidebar = () => {
           )}
         </li>
 
+        {/* Offline Examination Section */}
         <li>
           <a
             href="#"
-            className={`block ${linkStyle} ${
+            className={`block bg-purple-600 ${linkStyle} ${
               offlineLink === "dashboard" ? linkActiveStyle : ""
             } flex gap-2`}
             onClick={() => {
@@ -233,17 +202,11 @@ const Sidebar = () => {
           </a>
           {showOfflineLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link
-                to="/dashboard/AddOffline"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/AddOffline" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Marks
               </Link>
-              <Link
-                to="/dashboard/ViewMarks"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/ViewMarks" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 View Marks
               </Link>
@@ -251,10 +214,11 @@ const Sidebar = () => {
           )}
         </li>
 
+        {/* Account Section */}
         <li>
           <a
             href="#"
-            className={`block ${linkStyle} ${
+            className={`block bg-teal-600 ${linkStyle} ${
               accountLink === "dashboard" ? linkActiveStyle : ""
             } flex gap-2`}
             onClick={() => {
@@ -267,24 +231,15 @@ const Sidebar = () => {
           </a>
           {showAccountLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link
-                to="/dashboard/AddAccount"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/AddAccount" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Fund
               </Link>
-              <Link
-                to="/dashboard/AddStudentFee"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/AddStudentFee" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Student Fee
               </Link>
-              <Link
-                to="/dashboard/ViewStudentFee"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
+              <Link to="/dashboard/ViewStudentFee" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 View Student Fee
               </Link>
@@ -292,22 +247,6 @@ const Sidebar = () => {
           )}
         </li>
       </ul>
-      <hr className="my-4 border-gray-700" />
-      <div className="flex items-center mt-auto space-x-2">
-        <img
-          src="https://github.com/mdo.png"
-          alt=""
-          width="32"
-          height="32"
-          className="rounded-full"
-        />
-        <div className="text-sm">
-          <p className="text-white font-medium">
-            Logged in as <strong>Admin</strong>
-          </p>
-          <p className="text-gray-500 truncate">admin@domain.com</p>
-        </div>
-      </div>
     </div>
   );
 };
