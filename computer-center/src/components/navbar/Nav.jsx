@@ -15,7 +15,7 @@ const Nav = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
         {/* Logo Section */}
         <div className="flex items-center">
-          <img className="w-[5vw] w-auto" src={logo} alt="Logo" />
+          <img className="w-[5vw]" src={logo} alt="Logo" />
         </div>
         
         {/* Centered Menu Links */}
