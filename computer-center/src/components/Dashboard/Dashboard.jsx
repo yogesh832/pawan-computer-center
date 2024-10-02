@@ -39,7 +39,7 @@ export const Dashboard = () => {
     <div className='flex flex-row'>
     {/* <ViewCertificate/> */}
   <Sidebar />  
- {/* <ControlPanel />  */}
+ <ControlPanel /> 
   {/* <MarketingTools />  */}
     {/* <CenterMessage /> */}
     {/* <AddStudent/> */}
@@ -52,7 +52,7 @@ export const Dashboard = () => {
    {/* <ViewCertificate /> */}
    {/* <Result /> */}
    {/* <NewUser /> */}
-   <Admin />
+   {/* <Admin /> */}
 
    {/* <Addstudentfee/> */}
    {/* <Viewstudentfee/> */}

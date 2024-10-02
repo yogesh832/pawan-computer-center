@@ -17,19 +17,18 @@ function Home() {
 
   return (
     <div className="all-content"> 
-      {/* <MySwiper /> 
+      <MySwiper /> 
        <Marquee /> 
       <InfoSections />
-    <Contact />
-    <Login/>
-    <AboutUs/>   */}
+    <AboutUs/>  
+    {/* <Contact /> */}
+    {/* <Login/> */}
 
-<Dashboard />
+{/* <Dashboard /> */}
 
-       {/* <Centersection />
+     {/* /  <Centersection />
        <CenterMessage /> 
      <MarketingTools />  */}
-     {/* 9520082308 */}
     </div>
   );
 }
