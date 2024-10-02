@@ -41,9 +41,9 @@ const Nav = () => {
 
         {/* Right Aligned Register and Sign In */}
         <div className="hidden lg:flex space-x-4 items-center">
-        <Link to="/signup" className="w-48 px-10 py-2 bg-black text-white rounded-lg hover:bg-gray-700 text-lg text-center">Register Now</Link>
+        <Link to="/singup" className="w-48 px-10 py-2 bg-black text-white rounded-3xl hover:bg-gray-700 text-lg text-center">Register Now</Link>
   
-        <Link to="/login" className="w-48 px-10 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 text-lg text-center">Sign In</Link>
+        <Link to="/login" className="w-48 px-10 py-2 bg-gray-100 text-gray-700 rounded-3xl hover:bg-gray-200 text-lg text-center">Sign In</Link>
         </div>
 
         

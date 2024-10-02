@@ -115,7 +115,7 @@ const Login = () => {
           </button>
 
           <p className="text-center mt-4">Don't have an account?</p>
-          <Link to='/signup'>
+          <Link to='/singup'>
             <button
               type="button"
               className="w-full mt-2 bg-white text-blue-600 border-2 border-blue-600 p-3 rounded-lg hover:bg-blue-600 hover:text-white"
