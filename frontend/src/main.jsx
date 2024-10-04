@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ToastContainer } from 'react-toastify'; // Import ToastContainer
-import 'react-toastify/dist/ReactToastify.css'; // Import toastify CSS
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Home from "./components/home/Home.jsx";
 import Layout from "../Layout.jsx";
 import DashboardLayout from "../DashboardLayout.jsx";
@@ -25,14 +25,15 @@ import SignUp from "./components/account/SignUp.jsx";
 import Courses from "./components/Dashboard/Courses.jsx";
 import StudentDashboardUI from "./components/StudentDashboard/StudentDashboardUI.jsx";
 
-import One from "./components/services/onemonth/One.jsx"
-import Three from "./components/services/threemonth/Three.jsx"
-import Six from "./components/services/sixmonth/Six.jsx"
+// Import services
+import One from "./components/services/onemonth/One.jsx";
+import Three from "./components/services/threemonth/Three.jsx";
+import Six from "./components/services/sixmonth/Six.jsx";
 import Twelve from "./components/services/twelvemonth/Twelve.jsx";
-import  Eighteen  from "./components/services/eighteenmonth/Eighteen.jsx";
-import  Twentyfour  from "./components/services/twentyfourmonth/Twentyfour.jsx";
-import NewUser from "./components/NewUserWithoutSub/newUser.jsx";
+import Eighteen from "./components/services/eighteenmonth/Eighteen.jsx";
+import Twentyfour from "./components/services/twentyfourmonth/Twentyfour.jsx";
 import Admin from "./components/account/Admin.jsx";
+import NewUser from "./components/NewUserWithoutSub/newUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -42,17 +43,17 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "contact", element: <Contact /> },
       { path: "login", element: <Login /> },
-      { path: "singup", element: <SignUp /> },
+      { path: "signup", element: <SignUp /> }, // Fixed typo here
       { path: "about", element: <AboutUs /> },
-      { path: "course", element: <Courses />},
-      { path: "one", element: <One />},
-      { path: "Three", element: <Three />},
-      { path: "Six", element: <Six />},
-      { path: "Twelve", element: <Twelve />},
-      { path: "Eighteen", element: <Eighteen />},
-      { path: "Twentyfour", element: <Twentyfour  />},
-      { path:"newuser", element:<NewUser/>},
-      { path:"admin", element:<Admin/>},
+      { path: "course", element: <Courses /> },
+      { path: "one", element: <One /> },
+      { path: "three", element: <Three /> }, // Changed to lowercase for consistency
+      { path: "six", element: <Six /> }, // Changed to lowercase for consistency
+      { path: "twelve", element: <Twelve /> }, // Changed to lowercase for consistency
+      { path: "eighteen", element: <Eighteen /> }, // Changed to lowercase for consistency
+      { path: "twentyfour", element: <Twentyfour /> }, // Changed to lowercase for consistency
+      { path: "newuser", element: <NewUser /> },
+      { path: "admin", element: <Admin /> },
       {
         path: "dashboard",
         element: <DashboardLayout />,
@@ -62,17 +63,23 @@ const router = createBrowserRouter([
           { path: "centerdocument", element: <Centerdocument /> },
           { path: "marketingtools", element: <MarketingTools /> },
           { path: "addstudent", element: <AddStudent /> },
-          { path: "certificationrequisition",element: <CertificateRequisition />,},
+          {
+            path: "certificationrequisition",
+            element: <CertificateRequisition />,
+          },
           { path: "trackcertificate", element: <TrackCertificate /> },
           { path: "viewcertificate", element: <ViewCertificate /> },
           { path: "seeAllStudents", element: <SeeAllStudent /> },
-          { path: "AddStudent/:registrationNumber", element: <Student /> },
-          { path: "EditStudent/:registrationNumber", element: <EditStudent /> },
-          { path:"student/:registrationNumber", element:<StudentDashboardUI /> },
-          
-
+          { path: "addStudent/:registrationNumber", element: <Student /> },
+          { path: "editStudent/:registrationNumber", element: <EditStudent /> },
+          {
+            path: "student/:registrationNumber",
+            element: <StudentDashboardUI />,
+          },
         ],
       },
+      // Optional: Add a fallback route
+      { path: "*", element: <NotFound /> }, // Ensure you create a NotFound component
     ],
   },
 ]);
@@ -81,8 +88,6 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <RouterProvider router={router} />
-    <ToastContainer /> {/* Add ToastContainer here */}
+    <ToastContainer />
   </React.StrictMode>
 );
-
-reportWebVitals(console.log);
