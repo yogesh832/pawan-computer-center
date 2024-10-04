@@ -79,7 +79,7 @@ const router = createBrowserRouter([
         ],
       },
       // Optional: Add a fallback route
-      { path: "*", element: <NotFound /> }, // Ensure you create a NotFound component
+      // { path: "*", element: <NotFound /> }, // Ensure you create a NotFound component
     ],
   },
 ]);
