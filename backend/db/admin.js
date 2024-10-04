@@ -8,6 +8,8 @@ const adminSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now }, // Optional: To track when the admin was created
 });
 
+
+
 // Ensure email is unique to avoid duplicate admins
 adminSchema.index({ email: 1 }, { unique: true });
 
