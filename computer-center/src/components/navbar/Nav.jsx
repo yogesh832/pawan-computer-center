@@ -23,7 +23,7 @@ const Nav = () => {
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `text-xl text-gray-700 hover:text-gray-900 ${isActive ? 'font-bold' : ''}`
+          `text-sm text-gray-700 hover:text-gray-900 ${isActive ? 'font-bold' : ''}`
         }
       >
         {label}
@@ -33,7 +33,7 @@ const Nav = () => {
 
   return (
     <nav className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-2">
         {/* Logo Section */}
         <div className="flex items-center">
           <img className="w-[5vw]" src={logo} alt="Logo" />
@@ -51,7 +51,7 @@ const Nav = () => {
           <NavLink
             to="/singup"
             className={({ isActive }) =>
-              `w-48 px-10 py-2 bg-black text-white rounded-3xl hover:bg-gray-700 text-lg`
+              `w-48 px-5 py-2   bg-gray-100 text-center rounded-3xl hover:bg-gray-200 text-sm`
             }
           >
             Register Now
@@ -59,7 +59,7 @@ const Nav = () => {
           <NavLink
             to="/login"
             className={({ isActive }) =>
-              `w-48 px-10 py-2 bg-gray-100 text-gray-700 text-center rounded-3xl hover:bg-gray-200 text-lg`
+              `w-48 px-5 py-2 bg-gray-100 text-gray-700 text-center rounded-3xl hover:bg-gray-200 text-sm border-gray-300 `
             }
           >
             Sign In

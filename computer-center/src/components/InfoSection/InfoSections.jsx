@@ -1,37 +1,39 @@
 import React from 'react';
 import { FaAmericanSignLanguageInterpreting, FaBook, FaChalkboardTeacher, FaUserGraduate } from 'react-icons/fa';
-import styles from './InfoSections.module.css';
 
 const InfoSections = () => {
   return (
-    <div className={styles.container}>
-      <div className={`${styles.section} ${styles.courses}`}>
-        <div className={`${styles.semiSphere} ${styles.coursesSphere}`}>
-          <div className={styles.icon}><FaAmericanSignLanguageInterpreting /></div>
+    <div className="flex flex-wrap justify-between p-5 rounded-lg w-11/12 mx-auto">
+      <div className="bg-gray-300 text-black p-5 rounded-lg text-left w-[20%] flex flex-col justify-between m-2 relative transform transition-transform duration-300 hover:scale-105">
+        <div className="flex justify-center mb-5">
+          <FaAmericanSignLanguageInterpreting className="text-6xl text-orange-600 transition-transform duration-300 hover:scale-110" />
         </div>
-        <h2>Courses</h2>
-        <p>M.S. OFFICE, TALLY, PROGRAMMING Courses, JAVA</p>
+        <h2 className="text-xl font-bold text-center">Courses</h2>
+        <p className="text-sm mt-3 text-center">M.S. OFFICE, TALLY, PROGRAMMING Courses, JAVA</p>
       </div>
-      <div className={`${styles.section} ${styles.books}`}>
-        <div className={`${styles.semiSphere} ${styles.booksSphere}`}>
-          <div className={styles.icon}><FaBook /></div>
+
+      <div className="bg-gray-300 text-black p-5 rounded-lg text-left w-[20%] flex flex-col justify-between m-2 relative transform transition-transform duration-300 hover:scale-105">
+        <div className="flex justify-center mb-5">
+          <FaBook className="text-6xl text-orange-600 transition-transform duration-300 hover:scale-110" />
         </div>
-        <h2>Books and Library</h2>
-        <p>A collection of books and other materials accessible for use.</p>
+        <h2 className="text-xl font-bold text-center">Books and Library</h2>
+        <p className="text-sm mt-3 text-center">A collection of books and other materials accessible for use.</p>
       </div>
-      <div className={`${styles.section} ${styles.teachers}`}>
-        <div className={`${styles.semiSphere} ${styles.teachersSphere}`}>
-          <div className={styles.icon}><FaChalkboardTeacher /></div>
+
+      <div className="bg-gray-300 text-black p-5 rounded-lg text-left w-[20%] flex flex-col justify-between m-2 relative transform transition-transform duration-300 hover:scale-105">
+        <div className="flex justify-center mb-5">
+          <FaChalkboardTeacher className="text-6xl text-orange-600 transition-transform duration-300 hover:scale-110" />
         </div>
-        <h2>Teachers</h2>
-        <p>Professional knowledge and skill gained through formal preparation and experience.</p>
+        <h2 className="text-xl font-bold text-center">Teachers</h2>
+        <p className="text-sm mt-3 text-center">Professional knowledge and skill gained through formal preparation and experience.</p>
       </div>
-      <div className={`${styles.section} ${styles.certification}`}>
-        <div className={`${styles.semiSphere} ${styles.certificationSphere}`}>
-          <div className={styles.icon}><FaUserGraduate /></div>
+
+      <div className="bg-gray-300 text-black p-5 rounded-lg text-left w-[20%] flex flex-col justify-between m-2 relative transform transition-transform duration-300 hover:scale-105">
+        <div className="flex justify-center mb-5">
+          <FaUserGraduate className="text-6xl text-orange-600 transition-transform duration-300 hover:scale-110" />
         </div>
-        <h2>Certification</h2>
-        <p>Awarded by accredited institutions.</p>
+        <h2 className="text-xl font-bold text-center">Certification</h2>
+        <p className="text-sm mt-3 text-center">Awarded by accredited institutions.</p>
       </div>
     </div>
   );
