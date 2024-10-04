@@ -25,7 +25,7 @@ import { Twelve } from '../services/twelvemonth/Twelve'
 import { Eighteen } from '../services/eighteenmonth/Eighteen'
 import { Twentyfour } from '../services/twentyfourmonth/Twentyfour'
 import Result from './Result/Result'
-import NewUser from '../NewUserWithoutSub/newUser'
+// import NewUser from '../NewUserWithoutSub/newUser'
 import Courses from './Courses'
 import Admin from '../account/Admin'
 
