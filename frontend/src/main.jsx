@@ -33,7 +33,7 @@ import Twelve from "./components/services/twelvemonth/Twelve.jsx";
 import Eighteen from "./components/services/eighteenmonth/Eighteen.jsx";
 import Twentyfour from "./components/services/twentyfourmonth/Twentyfour.jsx";
 import Admin from "./components/account/Admin.jsx";
-// import NewUser from "./components/NewUserWithoutSub/newUser.jsx";
+import NewUser from "./components/NewUserWithoutSub/newUser.jsx";
 
 const router = createBrowserRouter([
   {
@@ -52,7 +52,7 @@ const router = createBrowserRouter([
       { path: "twelve", element: <Twelve /> }, // Changed to lowercase for consistency
       { path: "eighteen", element: <Eighteen /> }, // Changed to lowercase for consistency
       { path: "twentyfour", element: <Twentyfour /> }, // Changed to lowercase for consistency
-      // { path: "newuser", element: <NewUser /> },
+      { path: "newuser", element: <NewUser /> },
       { path: "admin", element: <Admin /> },
       {
         path: "dashboard",
