@@ -24,11 +24,10 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use envir
 
 // Enable CORS for your frontend URL
 app.use(cors({
-  origin: 'https://pawan-computer-center-h5xa.vercel.app',
-  methods: ['GET', 'POST'],
-  credentials: true // Include this if you need to allow cookies
+  origin: 'https://pawan-computer-center-h5xa.vercel.app', // Allow only this origin
+  methods: ['GET', 'POST'], // Allow necessary methods
+  credentials: true // Allow credentials like cookies if needed
 }));
-
 
 // Initialize GridFSBucket
 let gfs;
