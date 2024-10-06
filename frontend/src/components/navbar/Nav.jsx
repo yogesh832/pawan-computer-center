@@ -49,7 +49,7 @@ const Nav = () => {
         {/* Right Aligned Register and Sign In */}
         <div className="hidden lg:flex space-x-4 items-center">
           <NavLink
-            to="/singup"
+            to="/signup"
             className={({ isActive }) =>
               `w-48 px-5 py-2   bg-gray-100 text-center rounded-3xl hover:bg-gray-200 text-sm`
             }
