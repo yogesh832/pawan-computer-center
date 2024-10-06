@@ -17,7 +17,7 @@ const port = 5000;
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+
 
 // JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use environment variable
