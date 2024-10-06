@@ -17,10 +17,18 @@ const port = 5000;
 
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: "*" }));
+
 
 // JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use environment variable
+
+// Enable CORS for your frontend URL
+app.use(cors({
+  origin: 'https://pawan-computer-center-h5xa.vercel.app',
+  methods: ['GET', 'POST'],
+  credentials: true // Include this if you need to allow cookies
+}));
+
 
 // Initialize GridFSBucket
 let gfs;

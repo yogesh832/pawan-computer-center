@@ -47,6 +47,8 @@ const Login = () => {
     }
 
     try {
+      console.log("Submitting login info:", loginInfo); // Log the info for debugging
+
       const response = await fetch(
         "https://pawan-computer-center-backend.vercel.app/login",
         {
@@ -55,7 +57,7 @@ const Login = () => {
           body: JSON.stringify(loginInfo),
         }
       );
-
+      
       const result = await response.json();
 
       if (!response.ok) {
