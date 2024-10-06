@@ -31,6 +31,13 @@ app.use(cors({
 
 app.options('*', cors()); // Preflight request handler for all routes
 
+app.options('/login', (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*'); // or specify your domain
+  res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.status(200).end();
+});
+
 
 // Initialize GridFSBucket
 let gfs;
