@@ -19,7 +19,7 @@
 
 //   useEffect(() => {
 //     axios
-//       .get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
+//       .get(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`)
 //       .then((response) => {
 //         setStudent(response.data);
 //         setFormData({
@@ -44,7 +44,7 @@
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 //     axios
-//       .put(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`, formData)
+//       .put(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`, formData)
 //       .then(() => {
 //         navigate("/dashboard/seeAllStudents");
 //       })
@@ -54,7 +54,7 @@
 //   const handleDelete = () => {
 //     if (window.confirm("Are you sure you want to delete this student?")) {
 //       axios
-//         .delete(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
+//         .delete(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`)
 //         .then(() => {
 //           navigate("/dashboard/seeAllStudents");
 //         })
@@ -175,13 +175,8 @@
 
 // export default EditStudent;
 
-
-
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
-
-
-
 
 // const EditStudent = () => {
 //   console.log("Registration Number:", registrationNumber);
@@ -246,7 +241,7 @@
 //     const fetchStudentData = async () => {
 //       setLoading(true);
 //       try {
-//         const response = await axios.get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`);
+//         const response = await axios.get(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`);
 //         setFormData(response.data);
 //         setSelectedCourse(response.data.course); // Set selected course for course options
 //       } catch (error) {
@@ -288,7 +283,7 @@
 //         }
 //       }
 
-//       await axios.put(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`, data);
+//       await axios.put(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`, data);
 //       setLoading(false);
 //       // Optionally redirect or show a success message
 //     } catch (error) {
@@ -627,10 +622,6 @@
 
 // export default EditStudent;
 
-
-
-
-
 // import React, { useState, useEffect } from "react";
 // import axios from "axios";
 // import { useParams } from "react-router-dom"; // Ensure useParams is imported
@@ -699,7 +690,7 @@
 //     const fetchStudentData = async () => {
 //       setLoading(true);
 //       try {
-//         const response = await axios.get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`);
+//         const response = await axios.get(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`);
 //         setFormData(response.data);
 //         setSelectedCourse(response.data.course); // Set selected course for course options
 //       } catch (error) {
@@ -741,7 +732,7 @@
 //         }
 //       }
 
-//       await axios.put(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`, data);
+//       await axios.put(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`, data);
 //       setLoading(false);
 //       // Optionally redirect or show a success message
 //     } catch (error) {
@@ -1096,18 +1087,14 @@
 
 // export default EditStudent;
 
-
-
-
-
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom"; 
+import { useParams } from "react-router-dom";
 
 const EditStudent = () => {
-  const { registrationNumber } = useParams(); 
+  const { registrationNumber } = useParams();
 
-  console.log("Registration Number:", registrationNumber); 
+  console.log("Registration Number:", registrationNumber);
 
   const [formData, setFormData] = useState({
     firstname: "",
@@ -1152,12 +1139,35 @@ const EditStudent = () => {
   };
 
   const states = [
-    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh",
-    "Goa", "Delhi", "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand",
-    "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur",
-    "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan",
-    "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh",
-    "Uttarakhand", "West Bengal"
+    "Andhra Pradesh",
+    "Arunachal Pradesh",
+    "Assam",
+    "Bihar",
+    "Chhattisgarh",
+    "Goa",
+    "Delhi",
+    "Gujarat",
+    "Haryana",
+    "Himachal Pradesh",
+    "Jharkhand",
+    "Karnataka",
+    "Kerala",
+    "Madhya Pradesh",
+    "Maharashtra",
+    "Manipur",
+    "Meghalaya",
+    "Mizoram",
+    "Nagaland",
+    "Odisha",
+    "Punjab",
+    "Rajasthan",
+    "Sikkim",
+    "Tamil Nadu",
+    "Telangana",
+    "Tripura",
+    "Uttar Pradesh",
+    "Uttarakhand",
+    "West Bengal",
   ];
 
   const categories = ["General", "OBC", "SC", "ST", "EWS"];
@@ -1168,9 +1178,11 @@ const EditStudent = () => {
     const fetchStudentData = async () => {
       setLoading(true);
       try {
-        const response = await axios.get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`);
+        const response = await axios.get(
+          `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`
+        );
         setFormData(response.data);
-        setSelectedCourse(response.data.course); 
+        setSelectedCourse(response.data.course);
       } catch (error) {
         setError("Error fetching student data.");
         console.error("Error fetching student data:", error);
@@ -1210,7 +1222,10 @@ const EditStudent = () => {
         }
       }
 
-      await axios.put(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`, data);
+      await axios.put(
+        `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`,
+        data
+      );
       setLoading(false);
       // Optionally redirect or show a success message
     } catch (error) {
@@ -1231,7 +1246,12 @@ const EditStudent = () => {
           <div className="flex flex-wrap">
             {/* First Name */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="firstname" className="block text-sm font-medium text-gray-700">First Name:</label>
+              <label
+                htmlFor="firstname"
+                className="block text-sm font-medium text-gray-700"
+              >
+                First Name:
+              </label>
               <input
                 type="text"
                 id="firstname"
@@ -1245,7 +1265,12 @@ const EditStudent = () => {
 
             {/* Last Name */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="lastname" className="block text-sm font-medium text-gray-700">Last Name:</label>
+              <label
+                htmlFor="lastname"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Last Name:
+              </label>
               <input
                 type="text"
                 id="lastname"
@@ -1259,7 +1284,12 @@ const EditStudent = () => {
 
             {/* Date of Birth */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="dob" className="block text-sm font-medium text-gray-700">Date of Birth:</label>
+              <label
+                htmlFor="dob"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Date of Birth:
+              </label>
               <input
                 type="date"
                 id="dob"
@@ -1273,7 +1303,12 @@ const EditStudent = () => {
 
             {/* State */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="state" className="block text-sm font-medium text-gray-700">State:</label>
+              <label
+                htmlFor="state"
+                className="block text-sm font-medium text-gray-700"
+              >
+                State:
+              </label>
               <select
                 id="state"
                 name="state"
@@ -1283,15 +1318,22 @@ const EditStudent = () => {
                 required
               >
                 <option value="">Select State</option>
-                {states.map(state => (
-                  <option key={state} value={state}>{state}</option>
+                {states.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
                 ))}
               </select>
             </div>
 
             {/* District */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="district" className="block text-sm font-medium text-gray-700">District:</label>
+              <label
+                htmlFor="district"
+                className="block text-sm font-medium text-gray-700"
+              >
+                District:
+              </label>
               <input
                 type="text"
                 id="district"
@@ -1304,7 +1346,12 @@ const EditStudent = () => {
 
             {/* Course */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="course" className="block text-sm font-medium text-gray-700">Course:</label>
+              <label
+                htmlFor="course"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Course:
+              </label>
               <select
                 id="course"
                 name="course"
@@ -1322,7 +1369,12 @@ const EditStudent = () => {
 
             {/* Course Option */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="courseOption" className="block text-sm font-medium text-gray-700">Course Option:</label>
+              <label
+                htmlFor="courseOption"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Course Option:
+              </label>
               <select
                 id="courseOption"
                 name="courseOption"
@@ -1333,15 +1385,22 @@ const EditStudent = () => {
                 disabled={!selectedCourse}
               >
                 <option value="">Select Course Option</option>
-                {courseOptions[selectedCourse]?.map(option => (
-                  <option key={option} value={option}>{option}</option>
+                {courseOptions[selectedCourse]?.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
                 ))}
               </select>
             </div>
 
             {/* Mother Name */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="mothername" className="block text-sm font-medium text-gray-700">Mother Name:</label>
+              <label
+                htmlFor="mothername"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Mother Name:
+              </label>
               <input
                 type="text"
                 id="mothername"
@@ -1354,7 +1413,12 @@ const EditStudent = () => {
 
             {/* Qualification */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="qualification" className="block text-sm font-medium text-gray-700">Qualification:</label>
+              <label
+                htmlFor="qualification"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Qualification:
+              </label>
               <input
                 type="text"
                 id="qualification"
@@ -1367,7 +1431,12 @@ const EditStudent = () => {
 
             {/* Contact No */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="contactno" className="block text-sm font-medium text-gray-700">Contact No:</label>
+              <label
+                htmlFor="contactno"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Contact No:
+              </label>
               <input
                 type="text"
                 id="contactno"
@@ -1381,7 +1450,12 @@ const EditStudent = () => {
 
             {/* Guardian Contact */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="guardiancontact" className="block text-sm font-medium text-gray-700">Guardian Contact:</label>
+              <label
+                htmlFor="guardiancontact"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Guardian Contact:
+              </label>
               <input
                 type="text"
                 id="guardiancontact"
@@ -1394,7 +1468,12 @@ const EditStudent = () => {
 
             {/* Aadhar */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="adhar" className="block text-sm font-medium text-gray-700">Aadhar:</label>
+              <label
+                htmlFor="adhar"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Aadhar:
+              </label>
               <input
                 type="text"
                 id="adhar"
@@ -1407,7 +1486,12 @@ const EditStudent = () => {
 
             {/* Gender */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="gender" className="block text-sm font-medium text-gray-700">Gender:</label>
+              <label
+                htmlFor="gender"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Gender:
+              </label>
               <select
                 id="gender"
                 name="gender"
@@ -1416,15 +1500,22 @@ const EditStudent = () => {
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
               >
                 <option value="">Select Gender</option>
-                {genders.map(gender => (
-                  <option key={gender} value={gender}>{gender}</option>
+                {genders.map((gender) => (
+                  <option key={gender} value={gender}>
+                    {gender}
+                  </option>
                 ))}
               </select>
             </div>
 
             {/* Category */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="category" className="block text-sm font-medium text-gray-700">Category:</label>
+              <label
+                htmlFor="category"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Category:
+              </label>
               <select
                 id="category"
                 name="category"
@@ -1433,15 +1524,22 @@ const EditStudent = () => {
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
               >
                 <option value="">Select Category</option>
-                {categories.map(category => (
-                  <option key={category} value={category}>{category}</option>
+                {categories.map((category) => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
                 ))}
               </select>
             </div>
 
             {/* Religion */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="religion" className="block text-sm font-medium text-gray-700">Religion:</label>
+              <label
+                htmlFor="religion"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Religion:
+              </label>
               <input
                 type="text"
                 id="religion"
@@ -1454,7 +1552,12 @@ const EditStudent = () => {
 
             {/* Marital Status */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="maritalstatus" className="block text-sm font-medium text-gray-700">Marital Status:</label>
+              <label
+                htmlFor="maritalstatus"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Marital Status:
+              </label>
               <select
                 id="maritalstatus"
                 name="maritalstatus"
@@ -1463,15 +1566,22 @@ const EditStudent = () => {
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
               >
                 <option value="">Select Marital Status</option>
-                {maritalStatuses.map(status => (
-                  <option key={status} value={status}>{status}</option>
+                {maritalStatuses.map((status) => (
+                  <option key={status} value={status}>
+                    {status}
+                  </option>
                 ))}
               </select>
             </div>
 
             {/* Address */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="address" className="block text-sm font-medium text-gray-700">Address:</label>
+              <label
+                htmlFor="address"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Address:
+              </label>
               <textarea
                 id="address"
                 name="address"
@@ -1483,7 +1593,12 @@ const EditStudent = () => {
 
             {/* Present Address */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="presentaddress" className="block text-sm font-medium text-gray-700">Present Address:</label>
+              <label
+                htmlFor="presentaddress"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Present Address:
+              </label>
               <textarea
                 id="presentaddress"
                 name="presentaddress"
@@ -1495,7 +1610,12 @@ const EditStudent = () => {
 
             {/* Photo */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="photo" className="block text-sm font-medium text-gray-700">Photo:</label>
+              <label
+                htmlFor="photo"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Photo:
+              </label>
               <input
                 type="file"
                 id="photo"
@@ -1505,7 +1625,11 @@ const EditStudent = () => {
               />
               {formData.photo && (
                 <img
-                  src={formData.photo instanceof File ? URL.createObjectURL(formData.photo) : null}
+                  src={
+                    formData.photo instanceof File
+                      ? URL.createObjectURL(formData.photo)
+                      : null
+                  }
                   alt="Preview"
                   className="mt-2 w-32 h-32 object-cover"
                 />
@@ -1514,7 +1638,12 @@ const EditStudent = () => {
 
             {/* Signature */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="signature" className="block text-sm font-medium text-gray-700">Signature:</label>
+              <label
+                htmlFor="signature"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Signature:
+              </label>
               <input
                 type="file"
                 id="signature"
@@ -1524,7 +1653,11 @@ const EditStudent = () => {
               />
               {formData.signature && (
                 <img
-                  src={formData.signature instanceof File ? URL.createObjectURL(formData.signature) : null}
+                  src={
+                    formData.signature instanceof File
+                      ? URL.createObjectURL(formData.signature)
+                      : null
+                  }
                   alt="Preview"
                   className="mt-2 w-32 h-32 object-cover"
                 />
@@ -1533,7 +1666,12 @@ const EditStudent = () => {
 
             {/* Marksheet */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label htmlFor="marksheet" className="block text-sm font-medium text-gray-700">Marksheet:</label>
+              <label
+                htmlFor="marksheet"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Marksheet:
+              </label>
               <input
                 type="file"
                 id="marksheet"

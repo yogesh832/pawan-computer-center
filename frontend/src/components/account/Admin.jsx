@@ -1,35 +1,38 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const Admin = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate(); // Initialize useNavigate
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/admin/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+      const response = await fetch(
+        "https://pawan-computer-center-backend.vercel.app/admin/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Login successful:', data);
-        navigate('/dashboard'); // Navigate to the dashboard
+        console.log("Login successful:", data);
+        navigate("/dashboard"); // Navigate to the dashboard
         // Handle successful login (e.g., store token)
       } else {
         const errorData = await response.json();
         setErrorMessage(errorData.message); // Show error message
       }
     } catch (error) {
-      console.error('Error logging in:', error);
-      setErrorMessage('Failed to log in. Please try again.'); // Show general error message
+      console.error("Error logging in:", error);
+      setErrorMessage("Failed to log in. Please try again."); // Show general error message
     }
   };
 

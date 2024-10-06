@@ -69,42 +69,34 @@ app.post("/register", async (req, res) => {
   }
 });
 
-
-
-
 // Sample admin data
 const admins = [
   {
-    email: 'pawan123@gmail.com',
-    password: 'password123',
-    role: 'admin',
+    email: "pawan123@gmail.com",
+    password: "password123",
+    role: "admin",
   },
 ];
 
 // Admin login route
-app.post('/admin/login', (req, res) => {
+app.post("/admin/login", (req, res) => {
   const { email, password } = req.body;
-  
+
   // Log received email and password
-  console.log('Received email:', email);
-  console.log('Received password:', password);
+  console.log("Received email:", email);
+  console.log("Received password:", password);
 
   const admin = admins.find(
     (admin) => admin.email === email && admin.password === password
   );
 
   if (admin) {
-    res.status(200).json({ message: 'Login successful', admin });
+    res.status(200).json({ message: "Login successful", admin });
   } else {
-    console.log('Invalid login attempt for email:', email); // Log invalid attempts
-    res.status(401).json({ message: 'Invalid email or password' });
+    console.log("Invalid login attempt for email:", email); // Log invalid attempts
+    res.status(401).json({ message: "Invalid email or password" });
   }
 });
-
-
-
-
-
 
 // Login User
 app.post("/login", async (req, res) => {
@@ -134,14 +126,12 @@ app.post("/login", async (req, res) => {
       sameSite: "Strict",
     });
 
-    res
-      .status(200)
-      .json({
-        message: "Login successful",
-        token,
-        name: user.name,
-        registration: user.registration,
-      });
+    res.status(200).json({
+      message: "Login successful",
+      token,
+      name: user.name,
+      registration: user.registration,
+    });
   } catch (error) {
     console.error("Error logging in user:", error);
     res.status(500).json({ message: "Error logging in user" });
@@ -309,13 +299,13 @@ app.get("/dashboard/AddStudent", async (req, res) => {
     const studentsWithPhotos = students.map((student) => ({
       ...student.toObject(),
       photo: student.photo
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     }));
     res.status(200).json(studentsWithPhotos);
@@ -338,13 +328,13 @@ app.get("/dashboard/AddStudent/:registrationNumber", async (req, res) => {
     const studentWithPhotos = {
       ...student.toObject(),
       photo: student.photo
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     };
 
@@ -355,39 +345,35 @@ app.get("/dashboard/AddStudent/:registrationNumber", async (req, res) => {
   }
 });
 
-
-
 // Backend Route Example (Node.js/Express)
-app.get('/dashboard/student/:registrationNumber', async (req, res) => {
+app.get("/dashboard/student/:registrationNumber", async (req, res) => {
   try {
     const { registrationNumber } = req.params;
     const student = await User.findOne({ registrationNumber });
 
     if (!student) {
-      return res.status(404).json({ message: 'Student not found' });
+      return res.status(404).json({ message: "Student not found" });
     }
 
     const studentWithPhotos = {
       ...student.toObject(),
       photo: student.photo
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     };
 
     res.status(200).json(studentWithPhotos);
   } catch (error) {
     console.error("Error fetching student:", error);
-    res.status(500).json({ message: 'Server error' });
+    res.status(500).json({ message: "Server error" });
   }
 });
-
-
 
 // GET: Fetch student photos from GridFS
 app.get("/dashboard/AddStudent/photo/:id", async (req, res) => {
@@ -530,13 +516,6 @@ app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
 
-
-
-
-
-
-
-
 // const express = require("express");
 // const mongoose = require("mongoose");
 // const cors = require("cors");
@@ -546,10 +525,6 @@ app.listen(port, () => {
 // const User = require("./db/user"); // Ensure User model is correctly defined
 // const Counter = require("./db/counter");
 // const bodyParser = require('body-parser');
-
-
-
-
 
 // const bcrypt = require("bcrypt");
 // const jwt = require("jsonwebtoken");
@@ -596,7 +571,7 @@ app.listen(port, () => {
 // // Admin login route
 // app.post('/admin/login', (req, res) => {
 //   const { email, password } = req.body;
-  
+
 //   // Log received email and password
 //   console.log('Received email:', email);
 //   console.log('Received password:', password);
@@ -612,8 +587,6 @@ app.listen(port, () => {
 //     res.status(401).json({ message: 'Invalid email or password' });
 //   }
 // });
-
-
 
 // // Register route
 // app.post("/register", async (req, res) => {
