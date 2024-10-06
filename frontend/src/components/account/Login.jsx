@@ -57,13 +57,11 @@ const Login = () => {
           body: JSON.stringify(loginInfo),
         }
       );
-      
+
       const result = await response.json();
 
       if (!response.ok) {
-        toast.error(
-          result.message || "Login failed. Please check your credentials."
-        );
+        toast.error(result.message || "Login failed. Please check your credentials.");
         return;
       }
 
@@ -73,14 +71,13 @@ const Login = () => {
 
       // Check if the registration number is provided
       if (loginInfo.registration) {
-        navigate(`/dashboard/student/${loginInfo.registration}`, {
-          replace: true,
-        });
+        navigate(`/dashboard/student/${loginInfo.registration}`, { replace: true });
       } else {
         // Navigate to a general dashboard if registration is not provided
         navigate(`/newuser`, { replace: true });
       }
     } catch (err) {
+      console.error(err); // Log the error for debugging
       toast.error("Login failed. Please try again.");
     }
   };
@@ -106,7 +103,7 @@ const Login = () => {
             name="registration"
             value={loginInfo.registration}
             onChange={handleChange}
-            placeholder="Registration No.(if any)"
+            placeholder="Registration No. (if any)"
             className="w-full p-3 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
           <input
@@ -135,7 +132,7 @@ const Login = () => {
           </button>
 
           <p className="text-center mt-4">Don't have an account?</p>
-          <Link to="/singup">
+          <Link to="/signup"> {/* Fixed the typo from "/singup" to "/signup" */}
             <button
               type="button"
               className="w-full mt-2 bg-white text-blue-600 border-2 border-blue-600 p-3 rounded-lg hover:bg-blue-600 hover:text-white"
