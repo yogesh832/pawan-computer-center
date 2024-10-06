@@ -55,18 +55,11 @@ const Login = () => {
       console.log("Submitting login info:", loginInfo); // Log the info for debugging
 
       // Use axios instead of fetch
-      const response = await axios.post('https://pawan-computer-center-backend.vercel.app/login', {
-        registration: 'PCC000039',
-        email: 'upadhayayyogesh832@gmail.com',
-        password: 'asdf'
-    })
-    .then(response => {
-        console.log('Login successful:', response.data);
-    })
-    .catch(error => {
-        console.error('Error during login:', error);
-    });
-    
+      const response = await axios.post(
+        "https://pawan-computer-center-backend.vercel.app/login", // Backend API URL
+        loginInfo
+      );
+
       const result = response.data;
 
       if (!response.status === 200) {

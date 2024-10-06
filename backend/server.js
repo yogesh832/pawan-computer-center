@@ -24,11 +24,10 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use envir
 
 // Enable CORS for your frontend URL
 app.use(cors({
-  origin: 'https://pawan-computer-center-h5xa.vercel.app', // Allow your frontend's origin
-  methods: ['GET', 'POST', 'OPTIONS'], // Allow these HTTP methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify headers you expect to receive
-  credentials: true // Enable if you need to send credentials like cookies
-}));
+  origin: 'https://pawan-computer-center-h5xa.vercel.app/',
+  methods: 'GET,POST,PUT,DELETE',
+  credentials: true,  // Allow cookies or other credentials
+}));;
 
 app.options('*', cors()); // Preflight request handler for all routes
 
