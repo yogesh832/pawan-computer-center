@@ -1,20 +1,19 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-import bgImg from "../../../assets/bg-img.png";
-import bgBorder from "../../../assets/Images/bgBorder.png";
+import bgImg from '../../../assets/bg-img.png';
+import bgBorder from '../../../assets/Images/bgBorder.png';
 
 const Certificate = () => {
+
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const registrationNumber = "PCC000001"; // Ensure this is correct
+    const registrationNumber = 'PCC000001'; // Ensure this is correct
     axios
-      .get(
-        `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`
-      )
+      .get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
       .then((response) => {
         setStudent(response.data);
         setLoading(false);
@@ -34,6 +33,7 @@ const Certificate = () => {
     return <p className="text-center text-red-500">{error}</p>;
   }
 
+
   return (
     <div className="relative w-[900px] h-[594px] m-20 border-2 border-gray-400">
       {/* Background Image */}
@@ -43,7 +43,7 @@ const Certificate = () => {
         className="absolute inset-0 w-full h-full object-cover"
         style={{ zIndex: 1 }} // Ensure this is below the border image
       />
-
+      
       {/* Border Image */}
       <img
         src={bgBorder}
@@ -57,36 +57,14 @@ const Certificate = () => {
         {/* Body Content */}
         <div className="mb-8 leading-relaxed">
           <p className=" leading-8 text-xl text-gray-700">
-            This is to certify that Mr./Miss.{" "}
-            <span className="text-base  font-extrabold">
-              {student.firstname} {student.lastname}
-            </span>
-            , S/O, D/O, W/O{" "}
-            <span className="text-base font-extrabold">
-              {student.mothername}
-            </span>
-            , with the registration number{" "}
-            <span className="text-base  font-extrabold">
-              {student.registrationNumber}
-            </span>
-            , has successfully completed the{" "}
-            <span className="text-base  font-extrabold">
-              {student.courseOption}{" "}
-            </span>
-            course during the period of{" "}
-            <span className="text-base  font-extrabold">
-              01/10/2023 TO 31/12/2023
-            </span>
-            . The grade obtained is{" "}
-            <span className="text-base  font-extrabold">A</span>, with a score
-            of
-            <span className="text-base  font-extrabold"> 82%</span>. The course
-            was conducted at
-            <span className="text-base  font-extrabold">
-              {" "}
-              PAWAN COMPUTER CENTER
-            </span>
-            .
+            This is to certify that Mr./Miss. <span className="text-base  font-extrabold">{student.firstname} {student.lastname}</span>, 
+            S/O, D/O, W/O <span className="text-base font-extrabold">{student.mothername}</span>, with the 
+            registration number <span className="text-base  font-extrabold">{student.registrationNumber}</span>, has successfully 
+            completed the <span className="text-base  font-extrabold">{student.courseOption} </span> 
+            course during the period of <span className="text-base  font-extrabold">01/10/2023 TO 31/12/2023</span>. 
+            The grade obtained is <span className="text-base  font-extrabold">A</span>, with a score of 
+            <span className="text-base  font-extrabold"> 82%</span>. The course was conducted at 
+            <span className="text-base  font-extrabold"> PAWAN COMPUTER CENTER</span>.
           </p>
         </div>
 
@@ -113,3 +91,4 @@ const Certificate = () => {
 };
 
 export default Certificate;
+

@@ -24,9 +24,7 @@ const StudentDashboardUI = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://pawan-computer-center-backend.vercel.app/dashboard/student/${registrationNumber}`
-      )
+      .get(`http://localhost:5000/dashboard/student/${registrationNumber}`)
       .then((response) => {
         setStudent(response.data);
         setLoading(false);
@@ -35,13 +33,13 @@ const StudentDashboardUI = () => {
         console.error("Error fetching student data:", error);
         setError("Failed to fetch student data");
         setLoading(false);
-      });
+      }); 
   }, [registrationNumber]); // Ensure registrationNumber is included in the dependency array
 
   // useEffect(() => {
   //   // const registrationNumber = 'PCC000004'; // Ensure this is correct
   //   axios
-  //     .get(`https://pawan-computer-center-backend.vercel.app/dashboard/student/${registrationNumber}`)
+  //     .get(`http://localhost:5000/dashboard/student/${registrationNumber}`)
   //     .then((response) => {
   //       setStudent(response.data);
   //       setLoading(false);

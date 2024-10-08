@@ -6,7 +6,7 @@ const AddStudent = () => {
     firstname: "",
     lastname: "",
     dob: "",
-    email: "",
+    email:"",
     state: "",
     district: "",
     course: "",
@@ -99,14 +99,8 @@ const AddStudent = () => {
       "UNDER GRADUATE DIPLOMA IN FASHION DESIGNING(RVV24006)",
       "POST GRADUATE DIPLOMA IN INFORMATION TECHNOLOGY(RV24001)",
     ],
-    "1-Year Health Care Course": [
-      "1-Year Health Care Option 1",
-      "1-Year Health Care Option 2",
-    ],
-    "2-Year Health Care Course": [
-      "2-Years Health Care Option 1",
-      "2-Years Health Care Option 2",
-    ],
+    '1-Year Health Care Course': ["1-Year Health Care Option 1", "1-Year Health Care Option 2"],
+    "2-Year Health Care Course": ["2-Years Health Care Option 1", "2-Years Health Care Option 2"],
   };
 
   const states = [
@@ -176,7 +170,7 @@ const AddStudent = () => {
       console.log("Submitting form data:", data);
 
       const response = await axios.post(
-        "https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent",
+        "http://localhost:5000/dashboard/AddStudent",
         data,
         {
           headers: {
@@ -278,20 +272,21 @@ const AddStudent = () => {
                 required
               />
             </div>
-
+            
             <div className="w-full md:w-1/2 px-4 mb-4">
               <label
                 htmlFor="firstname"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email
+               Email
               </label>
-              <input
+              <input 
                 type="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
                 className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+             
               />
             </div>
 
@@ -353,30 +348,14 @@ const AddStudent = () => {
                 required
               >
                 <option value="">Select Course</option>
-                <option value="1-Month Certificate Course">
-                  1-Month Certificate Course
-                </option>
-                <option value="3-Months Certificate Course">
-                  3-Months Certificate Course
-                </option>
-                <option value="6-Months Certificate Course">
-                  6-Months Certificate Course
-                </option>
-                <option value="1-Year Diploma Course">
-                  1-Year Diploma Course
-                </option>
-                <option value="1-Year Advance Diploma Course">
-                  1-Year Advance Diploma Course
-                </option>
-                <option value="2-Years Diploma Course">
-                  2-Years Diploma Course
-                </option>
-                <option value="1-Year Health Care Course">
-                  1-Year Health Care Course
-                </option>
-                <option value="2-Year Health Care Course">
-                  2-Years Health Care Course
-                </option>
+                <option value="1-Month Certificate Course">1-Month Certificate Course</option>
+                <option value="3-Months Certificate Course">3-Months Certificate Course</option>
+                <option value="6-Months Certificate Course">6-Months Certificate Course</option>
+                <option value="1-Year Diploma Course">1-Year Diploma Course</option>
+                <option value="1-Year Advance Diploma Course">1-Year Advance Diploma Course</option>
+                <option value="2-Years Diploma Course">2-Years Diploma Course</option>
+                <option value="1-Year Health Care Course">1-Year Health Care Course</option>
+                <option value="2-Year Health Care Course">2-Years Health Care Course</option>
               </select>
             </div>
 

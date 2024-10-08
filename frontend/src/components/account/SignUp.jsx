@@ -50,14 +50,11 @@ const SignUp = () => {
     }
 
     try {
-      const response = await fetch(
-        "https://pawan-computer-center-backend.vercel.app/register",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(signUpInfo),
-        }
-      );
+      const response = await fetch("http://localhost:5000/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(signUpInfo),
+      });
 
       const result = await response.json();
 
@@ -66,9 +63,7 @@ const SignUp = () => {
       console.log("Result:", result); // Logs the response body from the server
 
       if (!response.ok) {
-        return toast.error(
-          result.message || "Sign up failed. Please try again."
-        );
+        return toast.error(result.message || "Sign up failed. Please try again.");
       }
 
       toast.success("Sign up successful!");
@@ -81,9 +76,7 @@ const SignUp = () => {
 
   return (
     <>
-      <h1 className="text-center text-5xl font-bold mt-10 mb-5">
-        Sign Up Now!
-      </h1>
+      <h1 className="text-center text-5xl font-bold mt-10 mb-5">Sign Up Now!</h1>
       <div className="flex flex-col md:flex-row items-center justify-center p-6 min-h-screen">
         <div className="w-full md:w-1/2 p-6">
           <img

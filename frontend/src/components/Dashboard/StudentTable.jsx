@@ -10,9 +10,7 @@ const StudentTable = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent"
-      )
+      .get("http://localhost:5000/dashboard/AddStudent")
       .then((response) => {
         console.log("Fetched Data:", response.data);
 
@@ -38,7 +36,9 @@ const StudentTable = () => {
                   <th className="border border-gray-400 px-4 py-2">
                     Registration Number
                   </th>
-                  <th className="border border-gray-400 px-4 py-2">Name</th>
+                  <th className="border border-gray-400 px-4 py-2">
+                    Name
+                  </th>
                   <th className="border border-gray-400 px-4 py-2">Course</th>
                   <th className="border border-gray-400 px-4 py-2">
                     Course Option
@@ -69,7 +69,7 @@ const StudentTable = () => {
                     </td>
                     <td className="border border-gray-400 px-4 py-2">
                       <div className="flex flex-col gap-3 text-center justify-center items-center">
-                        <button className="bg-green-500 gap-2 flex hover:bg-green-700 text-white font-bold py-2 px-2 rounded">
+                        <button  className="bg-green-500 gap-2 flex hover:bg-green-700 text-white font-bold py-2 px-2 rounded">
                           <FaEye className="w-5 h-5 font-bold" /> View Details
                         </button>
                         <div className="flex gap-2 flex-row">

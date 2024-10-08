@@ -18,26 +18,26 @@ const port = 5000;
 // Middleware
 app.use(express.json());
 
-
 // JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use environment variable
 
 // Enable CORS for your frontend URL
-app.use(cors({
-  origin: 'https://pawan-computer-center-h5xa.vercel.app/',
-  methods: 'GET,POST,PUT,DELETE',
-  credentials: true,  // Allow cookies or other credentials
-}));;
+app.use(
+  cors({
+    // origin: 'https://pawan-computer-center-h5xa.vercel.app/',
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true, // Allow cookies or other credentials
+  })
+);
 
-app.options('*', cors()); // Preflight request handler for all routes
+app.options("*", cors()); // Preflight request handler for all routes
 
-app.options('/login', (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*'); // or specify your domain
-  res.setHeader('Access-Control-Allow-Methods', 'POST,GET,OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+app.options("/login", (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*"); // or specify your domain
+  res.setHeader("Access-Control-Allow-Methods", "POST,GET,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   res.status(200).end();
 });
-
 
 // Initialize GridFSBucket
 let gfs;
@@ -87,6 +87,7 @@ app.post("/register", async (req, res) => {
 });
 
 // Sample admin data
+
 const admins = [
   {
     email: "pawan123@gmail.com",
@@ -99,7 +100,6 @@ const admins = [
 app.post("/admin/login", (req, res) => {
   const { email, password } = req.body;
 
-  // Log received email and password
   console.log("Received email:", email);
   console.log("Received password:", password);
 
@@ -110,7 +110,7 @@ app.post("/admin/login", (req, res) => {
   if (admin) {
     res.status(200).json({ message: "Login successful", admin });
   } else {
-    console.log("Invalid login attempt for email:", email); // Log invalid attempts
+    console.log("Invalid login attempt for email:", email);
     res.status(401).json({ message: "Invalid email or password" });
   }
 });
@@ -316,13 +316,13 @@ app.get("/dashboard/AddStudent", async (req, res) => {
     const studentsWithPhotos = students.map((student) => ({
       ...student.toObject(),
       photo: student.photo
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     }));
     res.status(200).json(studentsWithPhotos);
@@ -345,13 +345,13 @@ app.get("/dashboard/AddStudent/:registrationNumber", async (req, res) => {
     const studentWithPhotos = {
       ...student.toObject(),
       photo: student.photo
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     };
 
@@ -375,13 +375,13 @@ app.get("/dashboard/student/:registrationNumber", async (req, res) => {
     const studentWithPhotos = {
       ...student.toObject(),
       photo: student.photo
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     };
 

@@ -60,7 +60,7 @@
 //   useEffect(() => {
 //     const fetchStudentData = async () => {
 //       try {
-//         const response = await axios.get(`https://pawan-computer-center-backend.vercel.app/dashboard/student/${studentId}`);
+//         const response = await axios.get(`http://localhost:5000/dashboard/student/${studentId}`);
 //         setFormData(response.data);
 //         setSelectedCourse(response.data.course); // Set selected course for course options
 //       } catch (error) {
@@ -97,7 +97,7 @@
 //         }
 //       }
 
-//       await axios.put(`https://pawan-computer-center-backend.vercel.app/dashboard/student/${studentId}`, data);
+//       await axios.put(`http://localhost:5000/dashboard/student/${studentId}`, data);
 //       setLoading(false);
 //       // Optionally redirect or show a success message
 //     } catch (error) {
