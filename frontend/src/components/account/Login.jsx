@@ -47,6 +47,7 @@ const Login = () => {
       const response = await axios.post(
         "http://localhost:5000/login", // Backend API URL
         loginInfo
+        
       );
 
       const result = response.data;
