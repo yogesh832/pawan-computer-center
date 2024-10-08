@@ -28,5 +28,8 @@
     "react-router-dom": "^6.26.1",
     "react-toastify": "^10.0.5",
     "whatwg-fetch": "^3.6.20"
+  },
+  "engines": {
+    "node": "v20.17.0"
   }
 }
