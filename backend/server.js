@@ -24,7 +24,7 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use envir
 // Enable CORS for your frontend URL
 app.use(
   cors({
-    origin: 'https://pawan-computer-center-backend.vercel.app/login',
+    origin: 'https://pawan-computer-center-backend.vercel.app/',
     methods: "GET,POST,PUT,DELETE",
     credentials: true, // Allow cookies or other credentials
   })
