@@ -7,7 +7,7 @@ const connectDB = require("./db/dbConnection.js");
 const User = require("./db/user"); // Ensure User model is correctly defined
 const Counter = require("./db/counter");
 
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 const LoginModel = require("./db/Login.schema.js");
