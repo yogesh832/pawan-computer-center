@@ -96,6 +96,7 @@ const admins = [
   },
 ];
 
+console.log("checking the console");
 // Admin login route
 app.post("/admin/login", (req, res) => {
   const { email, password } = req.body;
