@@ -21,14 +21,31 @@ app.use(express.json());
 // JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use environment variable
 
-// Enable CORS for your frontend URL
+const allowedOrigins = ["http://localhost:5173", "https://pawan-computer-center-h5xa.vercel.app/"];
+
 app.use(
   cors({
-    origin: 'https://pawan-computer-center-backend.vercel.app/' && "https://pawan-computer-center-h5xa.vercel.app/",
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     methods: "GET,POST,PUT,DELETE",
     credentials: true, // Allow cookies or other credentials
   })
 );
+
+// Enable CORS for your frontend URL
+app.use(
+  cors({
+    origin: "*", // Allow any origin to access the API
+    methods: "GET,POST,PUT,DELETE",
+    credentials: true, // Allow cookies or other credentials
+  })
+);
+
 
 app.options("*", cors()); // Preflight request handler for all routes
 
@@ -317,13 +334,13 @@ app.get("/dashboard/AddStudent", async (req, res) => {
     const studentsWithPhotos = students.map((student) => ({
       ...student.toObject(),
       photo: student.photo
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     }));
     res.status(200).json(studentsWithPhotos);
@@ -346,13 +363,13 @@ app.get("/dashboard/AddStudent/:registrationNumber", async (req, res) => {
     const studentWithPhotos = {
       ...student.toObject(),
       photo: student.photo
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     };
 
@@ -376,13 +393,13 @@ app.get("/dashboard/student/:registrationNumber", async (req, res) => {
     const studentWithPhotos = {
       ...student.toObject(),
       photo: student.photo
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     };
 
@@ -531,5 +548,5 @@ app.put(
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server is running on http://localhost:${port}`);
+  console.log(`Server is running on https://pawan-computer-center-backend.vercel.app`);
 });

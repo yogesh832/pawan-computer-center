@@ -10,7 +10,9 @@ const Student = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
+      .get(
+        `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`
+      )
       .then((response) => {
         if (response.data) {
           setStudent(response.data);
@@ -52,91 +54,177 @@ const Student = () => {
           </thead>
           <tbody>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Registration Number</td>
-              <td className="border border-gray-400 px-4 py-2">{student.registrationNumber}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Registration Number
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.registrationNumber}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">First Name</td>
-              <td className="border border-gray-400 px-4 py-2">{student.firstname}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                First Name
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.firstname}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Last Name</td>
-              <td className="border border-gray-400 px-4 py-2">{student.lastname}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Last Name
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.lastname}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Date of Birth</td>
-              <td className="border border-gray-400 px-4 py-2">{student.dob}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Date of Birth
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.dob}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Email</td>
-              <td className="border border-gray-400 px-4 py-2">{student.email}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Email
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.email}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">State</td>
-              <td className="border border-gray-400 px-4 py-2">{student.state}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                State
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.state}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">District</td>
-              <td className="border border-gray-400 px-4 py-2">{student.district}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                District
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.district}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Course</td>
-              <td className="border border-gray-400 px-4 py-2">{student.course}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Course
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.course}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Course Option</td>
-              <td className="border border-gray-400 px-4 py-2">{student.courseOption}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Course Option
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.courseOption}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Mother's Name</td>
-              <td className="border border-gray-400 px-4 py-2">{student.mothername}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Mother's Name
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.mothername}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Father's Name</td>
-              <td className="border border-gray-400 px-4 py-2">{student.fathername}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Father's Name
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.fathername}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Qualification</td>
-              <td className="border border-gray-400 px-4 py-2">{student.qualification}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Qualification
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.qualification}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Contact No</td>
-              <td className="border border-gray-400 px-4 py-2">{student.contactno}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Contact No
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.contactno}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Guardian's Contact</td>
-              <td className="border border-gray-400 px-4 py-2">{student.guardiancontact}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Guardian's Contact
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.guardiancontact}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Aadhaar No</td>
-              <td className="border border-gray-400 px-4 py-2">{student.adhar}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Aadhaar No
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.adhar}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Gender</td>
-              <td className="border border-gray-400 px-4 py-2">{student.gender}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Gender
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.gender}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Category</td>
-              <td className="border border-gray-400 px-4 py-2">{student.category}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Category
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.category}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Religion</td>
-              <td className="border border-gray-400 px-4 py-2">{student.religion}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Religion
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.religion}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Marital Status</td>
-              <td className="border border-gray-400 px-4 py-2">{student.maritalstatus}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Marital Status
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.maritalstatus}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Permanent Address</td>
-              <td className="border border-gray-400 px-4 py-2">{student.address}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Permanent Address
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.address}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Present Address</td>
-              <td className="border border-gray-400 px-4 py-2">{student.presentaddress}</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Present Address
+              </td>
+              <td className="border border-gray-400 px-4 py-2">
+                {student.presentaddress}
+              </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Photo</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Photo
+              </td>
               <td className="border border-gray-400 px-4 py-2">
                 <img
                   src={student.photo || "https://via.placeholder.com/150"}
@@ -146,7 +234,9 @@ const Student = () => {
               </td>
             </tr>
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Signature</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Signature
+              </td>
               <td className="border border-gray-400 px-4 py-2">
                 <img
                   src={student.signature || "https://via.placeholder.com/150"}
@@ -157,7 +247,9 @@ const Student = () => {
             </tr>
 
             <tr className="border-b">
-              <td className="border border-gray-400 px-4 py-2 font-semibold">Marksheet</td>
+              <td className="border border-gray-400 px-4 py-2 font-semibold">
+                Marksheet
+              </td>
               <td className="border border-gray-400 px-4 py-2">
                 <img
                   src={student.marksheet || "https://via.placeholder.com/150"}
@@ -166,7 +258,6 @@ const Student = () => {
                 />
               </td>
             </tr>
-
           </tbody>
         </table>
       </div>
@@ -175,8 +266,3 @@ const Student = () => {
 };
 
 export default Student;
-
-
-
-
-
