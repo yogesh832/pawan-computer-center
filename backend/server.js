@@ -21,7 +21,7 @@ app.use(express.json());
 // JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use environment variable
 
-const allowedOrigins = ["http://localhost:5173", "https://pawan-computer-center-h5xa.vercel.app/"];
+const allowedOrigins = ["http://localhost:5173", "https://pawan-computer-center-h5xa.vercel.app"];
 
 app.use(
   cors({
