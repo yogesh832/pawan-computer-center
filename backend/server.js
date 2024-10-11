@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const multer = require("multer");
+const multer = require("multer");// multer
 const { GridFSBucket } = require("mongodb");
 const connectDB = require("./db/dbConnection.js");
 const User = require("./db/user"); // Ensure User model is correctly defined
