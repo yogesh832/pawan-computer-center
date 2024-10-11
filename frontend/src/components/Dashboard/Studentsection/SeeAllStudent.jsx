@@ -57,7 +57,11 @@ const SeeAllStudent = () => {
 
   return (
     <div className="max-h-96 overflow-y-auto">
-      {students.length > 0 ? (
+      {loading ? (
+        <p className="text-center py-5">Loading...</p> // Loading state
+      ) : error ? (
+        <p className="text-center py-5 text-red-500">{error}</p> // Error state
+      ) : students.length > 0 ? (
         <div className="overflow-x-auto">
           <table className="table-auto w-full border-collapse border border-gray-400">
             <thead>
@@ -126,7 +130,7 @@ const SeeAllStudent = () => {
           </table>
         </div>
       ) : (
-        <p>No student data available.</p>
+        <p className="text-center py-5">No student data available.</p> // No student data
       )}
     </div>
   );
