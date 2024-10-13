@@ -26,8 +26,8 @@ const LandingContact = () => {
           </div>
         </div>
 
-        {/* Social Media Icons */}
-        <div className="flex gap-4">
+        {/* Social Media Icons - Visible only on large screens */}
+        <div className="hidden lg:flex gap-4">
           <a href="#" className="text-white text-xl hover:text-blue-500">
             <FaFacebookF />
           </a>
