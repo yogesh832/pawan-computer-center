@@ -9,6 +9,7 @@ import MarketingTools from '../Dashboard/Marketing Tool/MarketingTool';
 import Login from '../account/Login';
 import AboutUs from '../navbar/About us/AboutUs';
 import Contact from '../contact/Contact';
+import MiniContact from '../contact/MiniContact';
 
 
 
@@ -20,7 +21,7 @@ function Home() {
       <MySwiper /> 
        <Marquee /> 
       <InfoSections />
-    <AboutUs/>  
+    <MiniContact />
     {/* <Contact /> */}
     {/* <Login/> */}
 
