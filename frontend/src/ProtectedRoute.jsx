@@ -18,3 +18,4 @@ const ProtectedRoute = ({ children }) => {
 };
 
 export default ProtectedRoute;
+// this protect routes to use directly 
