@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
+import { RxCross2 } from "react-icons/rx";
 import logo from '../../assets/Images/logo.png';
 
 const Nav = () => {
@@ -18,8 +19,13 @@ const Nav = () => {
     { to: "/gallery", label: "Gallery" },
   ];
 
+  const handleNavLinkClick = () => {
+    // Close the menu after clicking a link
+    setIsMenuOpen(false);
+  };
+
   const renderNavLink = (to, label) => (
-    <li key={to}>
+    <li key={to} onClick={handleNavLinkClick}>
       <NavLink
         to={to}
         className={({ isActive }) =>
@@ -45,7 +51,11 @@ const Nav = () => {
           type="button"
           onClick={toggleMenu}
         >
-          <FaBars className="h-6 w-6" />
+          {isMenuOpen ? (
+            <RxCross2 className="h-6 w-6" />
+          ) : (
+            <FaBars className="h-6 w-6" />
+          )}
         </button>
 
         {/* Desktop Navbar - Hidden on smaller screens */}
