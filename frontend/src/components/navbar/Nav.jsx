@@ -37,12 +37,20 @@ const Nav = () => {
     </li>
   );
 
+  const handleButtonClick = () => {
+    // Close the menu after clicking Register or Sign In button
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
         {/* Logo Section */}
         <div className="flex items-center">
-          <img className="w-[10vw] sm:w-[8vw] lg:w-[5vw]" src={logo} alt="Logo" />
+          {/* Wrap logo in NavLink to make it clickable and navigate to home */}
+          <NavLink to="/">
+            <img className="w-[10vw] sm:w-[8vw] lg:w-[5vw]" src={logo} alt="Logo" />
+          </NavLink>
         </div>
 
         {/* Mobile Menu Button - Only visible on smaller screens */}
@@ -69,12 +77,14 @@ const Nav = () => {
             <NavLink
               to="/signup"
               className="w-32 px-4 py-2 bg-gray-100 text-center rounded-3xl hover:bg-gray-200 text-sm"
+              onClick={handleButtonClick}
             >
               Register Now
             </NavLink>
             <NavLink
               to="/login"
               className="w-32 px-4 py-2 bg-gray-100 text-gray-700 text-center rounded-3xl hover:bg-gray-200 text-sm"
+              onClick={handleButtonClick}
             >
               Sign In
             </NavLink>
@@ -83,28 +93,30 @@ const Nav = () => {
       </div>
 
       {/* Mobile Navbar - Only visible when menu is open */}
-      {isMenuOpen && (
-        <div className="lg:hidden px-4 pb-4">
-          <ul className="space-y-4">
-            {navLinks.map(({ to, label }) => renderNavLink(to, label))}
-          </ul>
+      <div
+        className={`lg:hidden px-4 pb-1 transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}
+      >
+        <ul className="space-y-4">
+          {navLinks.map(({ to, label }) => renderNavLink(to, label))}
+        </ul>
 
-          <div className="mt-4 flex space-x-4">
-            <NavLink
-              to="/signup"
-              className="w-full px-4 py-2 bg-gray-100 text-center rounded-3xl hover:bg-gray-200 text-sm"
-            >
-              Register Now
-            </NavLink>
-            <NavLink
-              to="/login"
-              className="w-full px-4 py-2 bg-gray-100 text-gray-700 text-center rounded-3xl hover:bg-gray-200 text-sm"
-            >
-              Sign In
-            </NavLink>
-          </div>
+        <div className="mt-4 flex space-x-4">
+          <NavLink
+            to="/signup"
+            className="w-full px-4 py-2 bg-gray-100 text-center rounded-3xl hover:bg-gray-200 text-sm"
+            onClick={handleButtonClick}
+          >
+            Register Now
+          </NavLink>
+          <NavLink
+            to="/login"
+            className="w-full px-4 py-2 bg-gray-100 text-gray-700 text-center rounded-3xl hover:bg-gray-200 text-sm"
+            onClick={handleButtonClick}
+          >
+            Sign In
+          </NavLink>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

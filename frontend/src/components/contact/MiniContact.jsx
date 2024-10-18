@@ -1,19 +1,18 @@
 import React from "react";
 
-const MiniContact = ()=>{
-    return (
-        
-      <div className="bg-indigo-100 mt-16 py-12">
+const MiniContact = () => {
+  return (
+    <div className="bg-indigo-100 mt-16 py-12 px-4">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-2xl md:text-3xl font-semibold text-indigo-900 mb-6">
           For More Info, Please Contact Us
         </h2>
-        
+
         <p className="text-lg text-gray-700 mb-8">
           Have any questions or inquiries? Feel free to get in touch with us for more details about our services and how we can assist you.
         </p>
-        
-        <div className="flex justify-center gap-4">
+
+        <div className="flex flex-col sm:flex-row justify-center gap-4 flex-wrap">
           {/* Email Info */}
           <div className="bg-white p-4 rounded-md shadow-lg flex items-center gap-3">
             <svg className="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
@@ -22,7 +21,7 @@ const MiniContact = ()=>{
             </svg>
             <p className="text-sm font-medium text-gray-800">contact@pcc.com</p>
           </div>
-          
+
           {/* Phone Info */}
           <div className="bg-white p-4 rounded-md shadow-lg flex items-center gap-3">
             <svg className="w-6 h-6 text-indigo-600" fill="currentColor" viewBox="0 0 20 20">
@@ -39,7 +38,7 @@ const MiniContact = ()=>{
         </button>
       </div>
     </div>
-    )
-}
+  );
+};
 
 export default MiniContact;

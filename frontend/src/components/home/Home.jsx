@@ -10,6 +10,7 @@ import Login from '../account/Login';
 import AboutUs from '../navbar/About us/AboutUs';
 import Contact from '../contact/Contact';
 import MiniContact from '../contact/MiniContact';
+import CourseCarousel from './CourseCarousel';
 
 
 
@@ -21,6 +22,7 @@ function Home() {
       <MySwiper /> 
        <Marquee /> 
       <InfoSections />
+      <CourseCarousel />
     <MiniContact />
     {/* <Contact /> */}
     {/* <Login/> */}
