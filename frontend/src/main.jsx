@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import NotFound from "./NotFound.jsx"
 
 // Importing Components
 import Home from "./components/home/Home.jsx";
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
       { path: "eighteen", element: <Eighteen /> },
       { path: "twentyfour", element: <Twentyfour /> },
       { path: "admin", element: <Admin /> },
+      { path: "notfound", element: <NotFound /> },
       {
         path: "dashboard",
   element: (
@@ -82,7 +84,7 @@ const router = createBrowserRouter([
         ],
       },
       // Optional fallback route if you have a NotFound component
-      // { path: "*", element: <NotFound /> },
+      { path: "*", element: <NotFound /> },
     ],
   },
 ]);

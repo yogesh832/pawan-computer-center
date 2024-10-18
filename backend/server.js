@@ -22,31 +22,23 @@ app.use(express.json());
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use environment variable
 
 const allowedOrigins = ["http://localhost:5173", "https://pawan-computer-center-h5xa.vercel.app"];
-
 app.use(
   cors({
     origin: function (origin, callback) {
+      console.log("Origin received: ", origin); // Log the origin
       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true, // Allow cookies or other credentials
+    methods: "GET,POST,PUT,DELETE,OPTIONS",
+    credentials: true,
   })
 );
+
 
 // Enable CORS for your frontend URL
-app.use(
-  cors({
-    origin: "*", // Allow any origin to access the API
-    methods: "GET,POST,PUT,DELETE",
-    credentials: true, // Allow cookies or other credentials
-  })
-);
-
-
 app.options("*", cors()); // Preflight request handler for all routes
 
 app.options("/login", (req, res) => {
