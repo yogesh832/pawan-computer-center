@@ -17,9 +17,4 @@
 //   return children;
 // };
 
-<<<<<<< HEAD
 // export default ProtectedRoute;
-=======
-export default ProtectedRoute;
-// this protect routes to use directly 
->>>>>>> 5d40ed5b09cc38284bb98aab6f6c609881cd7630
