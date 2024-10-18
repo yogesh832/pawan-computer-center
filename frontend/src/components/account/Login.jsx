@@ -40,7 +40,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post("your-api-url", loginInfo);
+      const response = await axios.post("https://pawan-computer-center-backend.vercel.app/dashboard/login", loginInfo);
       const result = response.data;
       if (response.status === 200) {
         localStorage.setItem("token", result.token);
