@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom"; 
 
 const MiniContact = () => {
   return (
@@ -33,9 +34,11 @@ const MiniContact = () => {
         </div>
 
         {/* Contact Button */}
+        <NavLink to="/contact">
         <button className="mt-8 px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white text-lg rounded-md shadow-lg transition-all duration-300">
           Contact Us
         </button>
+        </NavLink>
       </div>
     </div>
   );

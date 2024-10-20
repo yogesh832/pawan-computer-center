@@ -5,9 +5,9 @@ import Sidebar from './src/components/Dashboard/Sidebar';
 
 const DashboardLayout = () => {
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row ">
       <Sidebar />
-      <main className="flex-1 p-4">
+      <main className="w-full ">
         <Outlet /> {/* Render nested dashboard routes */}
       </main>
     </div>

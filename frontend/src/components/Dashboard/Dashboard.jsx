@@ -36,7 +36,7 @@ export const Dashboard = () => {
   return (
     <>
 
-    <div className='flex flex-row'>
+    <div>
     {/* <ViewCertificate/> */}
   
  <ControlPanel /> 
