@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const multer = require("multer");// multer
+const multer = require("multer"); // multer
 const { GridFSBucket } = require("mongodb");
 const connectDB = require("./db/dbConnection.js");
 const User = require("./db/user"); // Ensure User model is correctly defined
@@ -21,11 +21,14 @@ app.use(express.json());
 // JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use environment variable
 
-const allowedOrigins = ["http://localhost:5173", "https://pawan-computer-center-h5xa.vercel.app"];
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://pawan-computer-center-h5xa.vercel.app",
+];
+
 app.use(
   cors({
     origin: function (origin, callback) {
-      console.log("Origin received: ", origin); // Log the origin
       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
         callback(null, true);
       } else {
@@ -37,9 +40,8 @@ app.use(
   })
 );
 
-
-// Enable CORS for your frontend URL
-app.options("*", cors()); // Preflight request handler for all routes
+// Preflight request handler for all routes
+app.options("*", cors());
 
 app.options("/login", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); // or specify your domain
@@ -326,13 +328,13 @@ app.get("/dashboard/AddStudent", async (req, res) => {
     const studentsWithPhotos = students.map((student) => ({
       ...student.toObject(),
       photo: student.photo
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     }));
     res.status(200).json(studentsWithPhotos);
@@ -355,13 +357,13 @@ app.get("/dashboard/AddStudent/:registrationNumber", async (req, res) => {
     const studentWithPhotos = {
       ...student.toObject(),
       photo: student.photo
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     };
 
@@ -385,13 +387,13 @@ app.get("/dashboard/student/:registrationNumber", async (req, res) => {
     const studentWithPhotos = {
       ...student.toObject(),
       photo: student.photo
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.photo}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.photo}`
         : null,
       signature: student.signature
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.signature}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.signature}`
         : null,
       marksheet: student.marksheet
-        ? `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/photo/${student.marksheet}`
+        ? `http://localhost:5000/dashboard/AddStudent/photo/${student.marksheet}`
         : null,
     };
 
@@ -540,5 +542,5 @@ app.put(
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server is running on https://pawan-computer-center-backend.vercel.app`);
+  console.log(`Server is running on http://localhost:5000`);
 });

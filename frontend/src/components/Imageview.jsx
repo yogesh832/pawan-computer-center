@@ -10,7 +10,7 @@ function Imageview() {
     const fetchStudents = async () => {
       try {
         const response = await axios.get(
-          "https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent"
+          "http://localhost:5000/dashboard/AddStudent"
         );
         if (Array.isArray(response.data)) {
           setStudents(response.data);

@@ -27,6 +27,7 @@ import Student from "./components/Dashboard/Student.jsx";
 import EditStudent from "./components/Dashboard/Studentsection/EditStudent.jsx";
 import StudentDashboardUI from "./components/StudentDashboard/StudentDashboardUI.jsx";
 import Admin from "./components/account/Admin.jsx";
+import NewUser from "./components/NewUserWithoutSub/newUser.jsx";
 
 // Importing Service Components
 import One from "./components/services/onemonth/One.jsx";
@@ -61,6 +62,7 @@ const router = createBrowserRouter([
       { path: "twentyfour", element: <Twentyfour /> },
       { path: "admin", element: <Admin /> },
       { path: "notfound", element: <NotFound /> },
+      {path:"newuser", element: <NewUser /> },
       {
         path: "dashboard",
   element: (

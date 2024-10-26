@@ -19,7 +19,7 @@
 
 //   useEffect(() => {
 //     axios
-//       .get(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`)
+//       .get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
 //       .then((response) => {
 //         setStudent(response.data);
 //         setFormData({
@@ -44,7 +44,7 @@
 //   const handleSubmit = (e) => {
 //     e.preventDefault();
 //     axios
-//       .put(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`, formData)
+//       .put(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`, formData)
 //       .then(() => {
 //         navigate("/dashboard/seeAllStudents");
 //       })
@@ -54,7 +54,7 @@
 //   const handleDelete = () => {
 //     if (window.confirm("Are you sure you want to delete this student?")) {
 //       axios
-//         .delete(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`)
+//         .delete(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
 //         .then(() => {
 //           navigate("/dashboard/seeAllStudents");
 //         })
@@ -241,7 +241,7 @@
 //     const fetchStudentData = async () => {
 //       setLoading(true);
 //       try {
-//         const response = await axios.get(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`);
+//         const response = await axios.get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`);
 //         setFormData(response.data);
 //         setSelectedCourse(response.data.course); // Set selected course for course options
 //       } catch (error) {
@@ -283,7 +283,7 @@
 //         }
 //       }
 
-//       await axios.put(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`, data);
+//       await axios.put(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`, data);
 //       setLoading(false);
 //       // Optionally redirect or show a success message
 //     } catch (error) {
@@ -690,7 +690,7 @@
 //     const fetchStudentData = async () => {
 //       setLoading(true);
 //       try {
-//         const response = await axios.get(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`);
+//         const response = await axios.get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`);
 //         setFormData(response.data);
 //         setSelectedCourse(response.data.course); // Set selected course for course options
 //       } catch (error) {
@@ -732,7 +732,7 @@
 //         }
 //       }
 
-//       await axios.put(`https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`, data);
+//       await axios.put(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`, data);
 //       setLoading(false);
 //       // Optionally redirect or show a success message
 //     } catch (error) {
@@ -1179,7 +1179,7 @@ const EditStudent = () => {
       setLoading(true);
       try {
         const response = await axios.get(
-          `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`
+          `http://localhost:5000/dashboard/AddStudent/${registrationNumber}`
         );
         setFormData(response.data);
         setSelectedCourse(response.data.course);
@@ -1223,7 +1223,7 @@ const EditStudent = () => {
       }
 
       await axios.put(
-        `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`,
+        `http://localhost:5000/dashboard/AddStudent/${registrationNumber}`,
         data
       );
       setLoading(false);
