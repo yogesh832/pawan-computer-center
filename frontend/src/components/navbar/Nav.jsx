@@ -44,12 +44,12 @@ const Nav = () => {
 
   return (
     <nav className="bg-white shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-1">
         {/* Logo Section */}
         <div className="flex items-center">
           {/* Wrap logo in NavLink to make it clickable and navigate to home */}
           <NavLink to="/">
-            <img className="w-[10vw] sm:w-[8vw] lg:w-[5vw]" src={logo} alt="Logo" />
+            <img className="w-[10vw] sm:w-[5vw] lg:w-[5vw]" src={logo} alt="Logo" />
           </NavLink>
         </div>
 
