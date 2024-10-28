@@ -176,7 +176,7 @@ const AddStudent = () => {
       console.log("Submitting form data:", data);
 
       const response = await axios.post(
-        "https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent",
+        "http://localhost:5000/dashboard/AddStudent",
         data,
         {
           headers: {

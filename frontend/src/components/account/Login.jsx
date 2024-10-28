@@ -39,19 +39,50 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+
+    // Validate the form data
+    const { error } = schema.validate(loginInfo, { abortEarly: false });
+    if (error) {
+      error.details.forEach((err) => toast.error(err.message));
+      return;
+    }
+
     try {
-      const response = await axios.post("https://pawan-computer-center-backend.vercel.app/dashboard/login", loginInfo);
+      console.log("Submitting login info:", loginInfo); // Log the info for debugging
+
+      // Use axios instead of fetch
+      const response = await axios.post(
+        "http://localhost:5000/login", // Backend API URL
+        loginInfo
+      );
+
       const result = response.data;
-      if (response.status === 200) {
-        localStorage.setItem("token", result.token);
-        toast.success("Login successful");
-        navigate("/dashboard"); // Redirect to dashboard
+
+      if (!response.status === 200) {
+        toast.error(
+          result.message || "Login failed. Please check your credentials."
+        );
+        return;
+      }
+
+      toast.success("Login successful");
+      localStorage.setItem("token", result.token);
+      localStorage.setItem("loggedInUser", result.name);
+
+      // Check if the registration number is provided
+      if (loginInfo.registration) {
+        navigate(`/dashboard/student/${loginInfo.registration}`, {
+          replace: true,
+        });
+      } else {
+        // Navigate to a general dashboard if registration is not provided
+        navigate(`/newuser`, { replace: true });
       }
     } catch (err) {
-      toast.error("Login failed");
+      console.error(err); // Log the error for debugging
+      toast.error("Login failed. Please try again.");
     }
   };
-  
 
   return (
     <>

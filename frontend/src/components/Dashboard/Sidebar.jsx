@@ -59,10 +59,6 @@ const Sidebar = () => {
                 <FaRegCircle />
                 Add Student
               </Link>
-              <Link to="/dashboard/ManageApplication" className={`${linkStyle} flex items-center gap-2`}>
-                <FaRegCircle />
-                Manage Application
-              </Link>
               <Link to="/dashboard/SeeAllStudents" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 See All Students
@@ -96,10 +92,6 @@ const Sidebar = () => {
                 <FaRegCircle />
                 Center Document
               </Link>
-              <Link to="/dashboard/MarketingTools" className={`${linkStyle} flex items-center gap-2`}>
-                <FaRegCircle />
-                Marketing Tools
-              </Link>
               <Link to="/dashboard/CenterMessage" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Center Message
@@ -127,20 +119,8 @@ const Sidebar = () => {
           </a>
           {showCertificateLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link
-                to="/dashboard/CertificationRequisition"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
-                <FaRegCircle />
-                Certificate Requisition
-              </Link>
-              <Link
-                to="/dashboard/TrackCertificate"
-                className={`${linkStyle} flex items-center gap-2`}
-              >
-                <FaRegCircle />
-                Track Certificate
-              </Link>
+            
+              
               <Link
                 to="/dashboard/ViewCertificate"
                 className={`${linkStyle} flex items-center gap-2`}
@@ -148,37 +128,13 @@ const Sidebar = () => {
                 <FaRegCircle />
                 View Certificates
               </Link>
-            </div>
-          )}
-        </li>
-
-        {/* Online Examination Section */}
-        <li>
-          <a
-            href="#"
-            className={`block bg-yellow-600 ${linkStyle} ${
-              onlineLink === "dashboard" ? linkActiveStyle : ""
-            } flex gap-2`}
-            onClick={() => {
-              setOnlineLink("dashboard");
-              setShowOnlineLinks(!showOnlineLinks);
-            }}
-          >
-            <PiStudentFill className="text-2xl" />
-            <span className={`linkTextStyle text-[15px]`}>
-              Online Examination
-            </span>
-          </a>
-          {showOnlineLinks && (
-            <div className="pl-6 mt-2 space-y-1">
-              <Link to="/dashboard/AddOnline" className={`${linkStyle} flex items-center gap-2`}>
+              {/* <Link
+                to="/dashboard/TrackCertificate"
+                className={`${linkStyle} flex items-center gap-2`}
+              >
                 <FaRegCircle />
-                Exam Link
-              </Link>
-              <Link to="/dashboard/AppearedStudents" className={`${linkStyle} flex items-center gap-2`}>
-                <FaRegCircle />
-                Appeared Students
-              </Link>
+                Track Certificate
+              </Link> */}
             </div>
           )}
         </li>

@@ -24,9 +24,7 @@ const StudentDashboardUI = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://pawan-computer-center-backend.vercel.app/dashboard/student/${registrationNumber}`
-      )
+      .get(`http://localhost:5000/dashboard/student/${registrationNumber}`)
       .then((response) => {
         setStudent(response.data);
         setLoading(false);
@@ -41,7 +39,7 @@ const StudentDashboardUI = () => {
   // useEffect(() => {
   //   // const registrationNumber = 'PCC000004'; // Ensure this is correct
   //   axios
-  //     .get(`https://pawan-computer-center-backend.vercel.app/dashboard/student/${registrationNumber}`)
+  //     .get(`http://localhost:5000/dashboard/student/${registrationNumber}`)
   //     .then((response) => {
   //       setStudent(response.data);
   //       setLoading(false);

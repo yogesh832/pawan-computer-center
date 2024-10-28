@@ -10,9 +10,7 @@ const StudentTable = () => {
 
   useEffect(() => {
     axios
-      .get(
-        "https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent"
-      )
+      .get("http://localhost:5000/dashboard/AddStudent")
       .then((response) => {
         console.log("Fetched Data:", response.data);
 

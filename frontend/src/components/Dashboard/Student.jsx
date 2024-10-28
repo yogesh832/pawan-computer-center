@@ -10,9 +10,7 @@ const Student = () => {
 
   useEffect(() => {
     axios
-      .get(
-        `https://pawan-computer-center-backend.vercel.app/dashboard/AddStudent/${registrationNumber}`
-      )
+      .get(`http://localhost:5000/dashboard/AddStudent/${registrationNumber}`)
       .then((response) => {
         if (response.data) {
           setStudent(response.data);
