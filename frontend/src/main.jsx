@@ -1,9 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import NotFound from "./NotFound.jsx"
+import NotFound from "./NotFound.jsx";
 
 // Importing Components
 import Home from "./components/home/Home.jsx";
@@ -51,25 +51,25 @@ const router = createBrowserRouter([
       { path: "", element: <Home /> },
       { path: "contact", element: <Contact /> },
       { path: "login", element: <Login /> },
-      { path: "signup", element: <SignUp /> }, // Correct path
+      { path: "signup", element: <SignUp /> },
       { path: "about", element: <AboutUs /> },
       { path: "course", element: <Courses /> },
       { path: "one", element: <One /> },
-      { path: "three", element: <Three /> }, // Consistent lowercase
+      { path: "three", element: <Three /> },
       { path: "six", element: <Six /> },
       { path: "twelve", element: <Twelve /> },
       { path: "eighteen", element: <Eighteen /> },
       { path: "twentyfour", element: <Twentyfour /> },
       { path: "admin", element: <Admin /> },
       { path: "notfound", element: <NotFound /> },
-      {path:"newuser", element: <NewUser /> },
+      { path: "newuser", element: <NewUser /> },
       {
         path: "dashboard",
-  element: (
-    <ProtectedRoute>        // Protects all dashboard routes
-      <DashboardLayout />   // Renders the dashboard layout for consistency
-    </ProtectedRoute>
-  ),
+        element: (
+          <ProtectedRoute>
+            <DashboardLayout />
+           </ProtectedRoute>
+        ),
         children: [
           { path: "", element: <Dashboard /> },
           { path: "centermessage", element: <CenterMessage /> },
@@ -85,7 +85,6 @@ const router = createBrowserRouter([
           { path: "student/:registrationNumber", element: <StudentDashboardUI /> },
         ],
       },
-      // Optional fallback route if you have a NotFound component
       { path: "*", element: <NotFound /> },
     ],
   },
@@ -99,3 +98,6 @@ root.render(
     <ToastContainer />
   </React.StrictMode>
 );
+
+// Test toast notification on load
+toast.success("Toast is working!")
