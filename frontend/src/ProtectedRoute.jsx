@@ -3,7 +3,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode"; // Correct import
 
-const isAuthenticated = () => {
+const isAuthenticated = () => {// added the following
   const token = localStorage.getItem("token"); // Get the token
   if (!token) return false; // No token means not authenticated
 
