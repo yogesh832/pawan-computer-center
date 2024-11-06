@@ -38,7 +38,7 @@ import Eighteen from "./components/services/eighteenmonth/Eighteen.jsx";
 import Twentyfour from "./components/services/twentyfourmonth/Twentyfour.jsx";
 
 // Importing ProtectedRoute
-import ProtectedRoute from "./ProtectedRoute.jsx";
+// import ProtectedRoute from "./ProtectedRoute.jsx";
 
 import "../src/index.css";
 
@@ -66,9 +66,9 @@ const router = createBrowserRouter([
       {
         path: "dashboard",
         element: (
-          <ProtectedRoute>
+          // <ProtectedRoute>
             <DashboardLayout />
-           </ProtectedRoute>
+          //  </ProtectedRoute>
         ),
         children: [
           { path: "", element: <Dashboard /> },

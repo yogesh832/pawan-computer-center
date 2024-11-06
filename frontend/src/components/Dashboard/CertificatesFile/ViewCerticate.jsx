@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
 import bgImg from "../../../assets/bg-img.png";
 import bgBorder from "../../../assets/Images/bgBorder.png";
 
 const CertificatePage = () => {
-  const [registrationNo, setRegistrationNo] = useState(""); // Changed from studentID to registrationNo
+  const [registrationNo, setRegistrationNo] = useState("");
   const [student, setStudent] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -20,15 +22,28 @@ const CertificatePage = () => {
 
     try {
       const response = await axios.get(
-        `http://localhost:5000/dashboard/AddStudent/${registrationNo}` // Use registrationNo for the API request
+        `http://localhost:5000/dashboard/AddStudent/${registrationNo}`
       );
-      setStudent(response.data); // Set fetched data
+      setStudent(response.data);
     } catch (err) {
       console.error("Error fetching student data:", err);
       setError("Failed to fetch student data. Please check the registration number and try again.");
     } finally {
       setLoading(false);
     }
+  };
+
+  const downloadPDF = () => {
+    const certificateDiv = document.getElementById("certificateDiv");
+  
+    html2canvas(certificateDiv, {
+      scale: 3, // Increase scale to improve resolution
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+      const pdf = new jsPDF("landscape", "px", [canvas.width, canvas.height]); // Match canvas dimensions
+      pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
+      pdf.save("certificate.pdf");
+    });
   };
 
   return (
@@ -50,7 +65,7 @@ const CertificatePage = () => {
                 value={registrationNo}
                 onChange={handleRegistrationNoChange}
                 className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                required // Optional: To ensure the field is not empty
+                required
               />
             </div>
             <button
@@ -69,7 +84,7 @@ const CertificatePage = () => {
         <p className="text-center text-gray-500">Loading...</p>
       ) : (
         student && (
-          <div className="relative w-[900px] h-[594px] m-20 border-2 border-gray-400">
+          <div id="certificateDiv" className="relative w-[900px] h-[594px] m-20 border-2 border-gray-400">
             <img
               src={bgImg}
               alt="Background"
@@ -120,6 +135,16 @@ const CertificatePage = () => {
             </div>
           </div>
         )
+      )}
+
+      {/* Download Button */}
+      {student && (
+        <button
+          onClick={downloadPDF}
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+        >
+          Download Certificate as PDF
+        </button>
       )}
     </div>
   );
