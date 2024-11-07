@@ -15,8 +15,8 @@ const courses = [
 
 const CourseCarousel = () => {
   return (
-    <div className="flex items-center justify-center px-4 min-h-full">
-      <div className="w-full lg:w-[89%] xl:w-2/3 min-h-full">
+    <div className="flex items-center justify-center px-4">
+      <div className="w-full lg:w-3/4 xl:w-2/3">
         <Splide
           options={{
             type: 'loop',
@@ -28,59 +28,58 @@ const CourseCarousel = () => {
             autoplay: true,
             interval: 3000,
             pauseOnHover: true,
-            fixedHeight: '20rem', // Base height for screens
             breakpoints: {
-              480: {
+              480: { // Very small screens
                 perPage: 1,
                 gap: '0.5rem',
                 arrows: false,
                 pagination: true,
                 fixedHeight: '16rem',
               },
-              640: {
+              640: { // Mobile devices
                 perPage: 1,
                 gap: '0.5rem',
                 arrows: false,
                 pagination: true,
-                fixedHeight: '18rem',
+                fixedHeight: '20rem',
               },
-              768: {
+              768: { // Tablets
                 perPage: 2,
                 gap: '0.75rem',
                 arrows: true,
                 fixedHeight: '20rem',
               },
-              1024: {
+              1024: { // Laptops
                 perPage: 3,
                 gap: '1rem',
                 fixedHeight: '20rem',
               },
-              1280: {
+              1280: { // Desktops
                 perPage: 4,
                 gap: '1.5rem',
-                fixedHeight: '22rem',
+                fixedHeight: '20rem',
               },
-              1920: {
+              1920: { // Full HD displays
                 perPage: 5,
                 gap: '1.5rem',
-                fixedHeight: '24rem',
+                fixedHeight: '20rem', // Slightly taller for full HD
               },
-              2560: {
+              2560: { // 2K displays
                 perPage: 6,
                 gap: '2rem',
-                fixedHeight: '26rem',
+                fixedHeight: '20rem', // Adjust for 2K
               },
-              3840: {
+              3840: { // 4K displays
                 perPage: 7,
                 gap: '2.5rem',
-                fixedHeight: '28rem',
+                fixedHeight: '20rem', // Larger height for 4K displays
               },
             },
           }}
         >
           {courses.map((course, index) => (
-            <SplideSlide key={index} style={{ height: '20rem' }}>
-              <div className="h-full p-4 bg-white border rounded-md shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between">
+            <SplideSlide className="min-h-full" key={index}>
+              <div className="p-4 h-64 sm:h-72 bg-white border rounded-md shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between min-h-full">
                 <div>
                   <h3 className="text-sm sm:text-lg font-semibold text-center">{course.duration}</h3>
                   <ul className="mt-2 text-center">

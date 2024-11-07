@@ -41,6 +41,8 @@ import Twentyfour from "./components/services/twentyfourmonth/Twentyfour.jsx";
 // import ProtectedRoute from "./ProtectedRoute.jsx";
 
 import "../src/index.css";
+import AddMarks from "./components/Dashboard/OfflineExamination/AddMarks.jsx";
+import ViewMarks from "./components/Dashboard/OfflineExamination/ViewMarks.jsx";
 
 // Browser Router Setup
 const router = createBrowserRouter([
@@ -82,6 +84,8 @@ const router = createBrowserRouter([
           { path: "seeAllStudents", element: <SeeAllStudent /> },
           { path: "addStudent/:registrationNumber", element: <Student /> },
           { path: "editStudent/:registrationNumber", element: <EditStudent /> },
+          {path:"addMarks", element: <AddMarks/>},
+          {path:"viewMarks", element: <ViewMarks/>},
           { path: "student/:registrationNumber", element: <StudentDashboardUI /> },
         ],
       },
