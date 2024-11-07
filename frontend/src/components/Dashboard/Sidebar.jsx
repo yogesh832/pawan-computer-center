@@ -158,7 +158,7 @@ const Sidebar = () => {
           </a>
           {showOfflineLinks && (
             <div className="pl-6 mt-2 space-y-1">
-              <Link to="/dashboard/AddOffline" className={`${linkStyle} flex items-center gap-2`}>
+              <Link to="/dashboard/addMarks" className={`${linkStyle} flex items-center gap-2`}>
                 <FaRegCircle />
                 Add Marks
               </Link>
