@@ -1,0 +1,4 @@
+# Global ignore rules
+.DS_Store
+*.log
+*.local
