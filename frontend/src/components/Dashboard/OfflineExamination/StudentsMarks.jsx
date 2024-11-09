@@ -47,8 +47,8 @@ const StudentsMarks = () => {
 
     if (field === "practical" || field === "written") {
       newSubjects[index].total =
-        (parseInt(newSubjects[index].practical || "0", 10) +
-          parseInt(newSubjects[index].written || "0", 10)) || 0;
+        parseInt(newSubjects[index].practical || "0", 10) +
+          parseInt(newSubjects[index].written || "0", 10) || 0;
     }
 
     setSubjects(newSubjects);
@@ -63,17 +63,25 @@ const StudentsMarks = () => {
       <h2 className="text-2xl font-semibold text-center mb-4">Student Marks</h2>
 
       <div className="text-center mb-6">
-        <span className="font-bold">Name:</span> {studentData.name} &nbsp; | &nbsp;
-        <span className="font-bold">Registration No:</span> {studentData.registrationNo}
+        <span className="font-bold">Name:</span> {studentData.name} &nbsp; |
+        &nbsp;
+        <span className="font-bold">Registration No:</span>{" "}
+        {studentData.registrationNo}
       </div>
 
       <table className="min-w-full border-collapse border border-black">
         <thead>
           <tr className="border border-black">
             <th className="px-4 py-2 border border-black font-bold">Subject</th>
-            <th className="px-4 py-2 border border-black font-bold">Practical Marks</th>
-            <th className="px-4 py-2 border border-black font-bold">Written Marks</th>
-            <th className="px-4 py-2 border border-black font-bold">Total Marks</th>
+            <th className="px-4 py-2 border border-black font-bold">
+              Practical Marks
+            </th>
+            <th className="px-4 py-2 border border-black font-bold">
+              Written Marks
+            </th>
+            <th className="px-4 py-2 border border-black font-bold">
+              Total Marks
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -94,7 +102,9 @@ const StudentsMarks = () => {
                   placeholder="Practical Marks"
                   className="w-full px-2 py-1 border rounded"
                   value={subject.practical}
-                  onChange={(e) => updateSubject(index, "practical", e.target.value)}
+                  onChange={(e) =>
+                    updateSubject(index, "practical", e.target.value)
+                  }
                 />
               </td>
               <td className="px-4 py-2 border border-black">
@@ -103,7 +113,9 @@ const StudentsMarks = () => {
                   placeholder="Written Marks"
                   className="w-full px-2 py-1 border rounded"
                   value={subject.written}
-                  onChange={(e) => updateSubject(index, "written", e.target.value)}
+                  onChange={(e) =>
+                    updateSubject(index, "written", e.target.value)
+                  }
                 />
               </td>
               <td className="px-4 py-2 border border-black">
@@ -130,6 +142,4 @@ const StudentsMarks = () => {
   );
 };
 
-
 export default StudentsMarks;
-  

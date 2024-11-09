@@ -1,6 +1,6 @@
 import React from "react";
 
-const CenterMessage = () => {
+const UnderConstruction = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="text-center">
@@ -16,4 +16,4 @@ const CenterMessage = () => {
   );
 };
 
-export default CenterMessage;
+export default UnderConstruction;

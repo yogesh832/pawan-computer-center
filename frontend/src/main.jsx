@@ -44,6 +44,7 @@ import "../src/index.css";
 import AddMarks from "./components/Dashboard/OfflineExamination/AddMarks.jsx";
 import ViewMarks from "./components/Dashboard/OfflineExamination/ViewMarks.jsx";
 import StudentsMarks from "./components/Dashboard/OfflineExamination/studentsMarks.jsx";
+import UnderConstruction from "./UnderConstruction.jsx";
 // Browser Router Setup
 const router = createBrowserRouter([
   {
@@ -65,6 +66,7 @@ const router = createBrowserRouter([
       { path: "admin", element: <Admin /> },
       { path: "notfound", element: <NotFound /> },
       { path: "newuser", element: <NewUser /> },
+      { path: "gallery", element: <UnderConstruction /> },
       {
         path: "dashboard",
         element: (
@@ -89,8 +91,18 @@ const router = createBrowserRouter([
           { path: "editStudent/:registrationNumber", element: <EditStudent /> },
           { path: "addMarks", element: <AddMarks /> },
           { path: "viewMarks", element: <ViewMarks /> },
-          { path: "studentsMarks/:registrationNumber", element: <StudentsMarks /> },
- // Updated with correct component name
+          {
+            path: "studentsMarks/:registrationNumber",
+            element: <StudentsMarks />,
+          },
+
+          // added some site that are under construction
+          { path: "CourseEnquiry", element: <UnderConstruction /> },
+          { path: "AddAccount", element: <UnderConstruction /> },
+          { path: "AddStudentFee", element: <UnderConstruction /> },
+          { path: "ViewStudentFee", element: <UnderConstruction /> },
+
+          // Updated with correct component name
 
           {
             path: "student/:registrationNumber",

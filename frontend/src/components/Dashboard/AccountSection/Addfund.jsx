@@ -3,10 +3,15 @@ import React from "react";
 const AddFund = () => {
   return (
     <div className="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8 m-5">
-      <h2 className="text-3xl font-semibold mb-6 text-center text-blue-600">Send Transaction Receipt</h2>
+      <h2 className="text-3xl font-semibold mb-6 text-center text-blue-600">
+        Send Transaction Receipt
+      </h2>
       <form>
         <div className="mb-6">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="amount">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="amount"
+          >
             Amount<span className="text-red-500">*</span>
           </label>
           <input
@@ -18,7 +23,10 @@ const AddFund = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="comment">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="comment"
+          >
             Comment <span className="text-gray-500 text-sm">(optional)</span>
           </label>
           <textarea
@@ -28,7 +36,10 @@ const AddFund = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="receipt">
+          <label
+            className="block text-gray-700 font-bold mb-2"
+            htmlFor="receipt"
+          >
             Transaction Receipt<span className="text-red-500">*</span>
           </label>
           <input

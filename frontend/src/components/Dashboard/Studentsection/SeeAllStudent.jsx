@@ -11,7 +11,6 @@ const SeeAllStudent = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-
   const fetchStudents = async () => {
     try {
       const response = await axios.get(
@@ -30,7 +29,6 @@ const SeeAllStudent = () => {
   };
 
   useEffect(() => {
-  
     fetchStudents();
   }, []);
 

@@ -1,11 +1,10 @@
-import React from 'react';
+import React from "react";
 
 const AboutUs = () => {
   return (
     <section className="py-24 relative bg-gray-50">
       <div className="max-w-7xl px-6 md:px-12 lg:px-16 mx-auto">
         <div className="grid lg:grid-cols-2 grid-cols-1 gap-12 items-center">
-          
           {/* Left Side - Images */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 order-last lg:order-first">
             <div className="pt-24 lg:justify-center sm:justify-end flex">
@@ -30,7 +29,10 @@ const AboutUs = () => {
                   Empowering Each Other to Succeed
                 </h2>
                 <p className="text-gray-600 text-base font-light leading-relaxed">
-                  Every project we've undertaken has been a collaborative effort, where every person involved has left their mark. Together, we've not only constructed buildings but also built enduring connections that define our success story.
+                  Every project we've undertaken has been a collaborative
+                  effort, where every person involved has left their mark.
+                  Together, we've not only constructed buildings but also built
+                  enduring connections that define our success story.
                 </p>
               </div>
 
@@ -58,8 +60,6 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-
-      
     </section>
   );
 };

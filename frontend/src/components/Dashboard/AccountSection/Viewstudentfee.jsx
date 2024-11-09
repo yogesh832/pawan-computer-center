@@ -1,8 +1,8 @@
 import React from "react";
 
-const Viewstudentfee = () =>{
-    return(
-        <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg m-5">
+const Viewstudentfee = () => {
+  return (
+    <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg m-5">
       <div className="bg-blue-600 rounded-t-lg p-4">
         <h2 className="text-3xl font-semibold text-center text-white">
           Student Fee Payment
@@ -13,12 +13,24 @@ const Viewstudentfee = () =>{
           <table className="min-w-full bg-white">
             <thead>
               <tr>
-                <th className="py-2 px-4 bg-blue-500 text-white font-bold">Sl.No.</th>
-                <th className="py-2 px-4 bg-blue-500 text-white font-bold">Fee Date</th>
-                <th className="py-2 px-4 bg-blue-500 text-white font-bold">Student Name</th>
-                <th className="py-2 px-4 bg-blue-500 text-white font-bold">Course Category</th>
-                <th className="py-2 px-4 bg-blue-500 text-white font-bold">Course Name</th>
-                <th className="py-2 px-4 bg-blue-500 text-white font-bold">Amount</th>
+                <th className="py-2 px-4 bg-blue-500 text-white font-bold">
+                  Sl.No.
+                </th>
+                <th className="py-2 px-4 bg-blue-500 text-white font-bold">
+                  Fee Date
+                </th>
+                <th className="py-2 px-4 bg-blue-500 text-white font-bold">
+                  Student Name
+                </th>
+                <th className="py-2 px-4 bg-blue-500 text-white font-bold">
+                  Course Category
+                </th>
+                <th className="py-2 px-4 bg-blue-500 text-white font-bold">
+                  Course Name
+                </th>
+                <th className="py-2 px-4 bg-blue-500 text-white font-bold">
+                  Amount
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -45,7 +57,7 @@ const Viewstudentfee = () =>{
         </div>
       </div>
     </div>
-    )
-}
+  );
+};
 
-export default Viewstudentfee
+export default Viewstudentfee;

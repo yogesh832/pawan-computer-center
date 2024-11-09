@@ -1,4 +1,4 @@
-import { } from 'web-vitals';
+import {} from "web-vitals";
 
 const reportWebVitals = (onPerfEntry) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {

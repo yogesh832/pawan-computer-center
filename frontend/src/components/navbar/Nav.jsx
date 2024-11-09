@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
-import { FaBars } from 'react-icons/fa';
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { FaBars } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
-import logo from '../../assets/Images/logo.png';
+import logo from "../../assets/Images/logo.png";
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +29,9 @@ const Nav = () => {
       <NavLink
         to={to}
         className={({ isActive }) =>
-          `text-sm text-gray-700 hover:text-gray-900 transition-colors duration-300 ${isActive ? 'font-bold' : ''}`
+          `text-sm text-gray-700 hover:text-gray-900 transition-colors duration-300 ${
+            isActive ? "font-bold" : ""
+          }`
         }
       >
         {label}
@@ -49,7 +51,11 @@ const Nav = () => {
         <div className="flex items-center">
           {/* Wrap logo in NavLink to make it clickable and navigate to home */}
           <NavLink to="/">
-            <img className="w-[10vw] sm:w-[5vw] lg:w-[5vw]" src={logo} alt="Logo" />
+            <img
+              className="w-[10vw] sm:w-[5vw] lg:w-[5vw]"
+              src={logo}
+              alt="Logo"
+            />
           </NavLink>
         </div>
 
@@ -94,7 +100,9 @@ const Nav = () => {
 
       {/* Mobile Navbar - Only visible when menu is open */}
       <div
-        className={`lg:hidden px-4 pb-1 transition-all duration-500 ease-in-out ${isMenuOpen ? 'max-h-screen' : 'max-h-0 overflow-hidden'}`}
+        className={`lg:hidden px-4 pb-1 transition-all duration-500 ease-in-out ${
+          isMenuOpen ? "max-h-screen" : "max-h-0 overflow-hidden"
+        }`}
       >
         <ul className="space-y-4">
           {navLinks.map(({ to, label }) => renderNavLink(to, label))}

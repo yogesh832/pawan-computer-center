@@ -54,8 +54,7 @@ const ViewMarks = () => {
                 <th className="py-2 px-4 bg-blue-500 text-white font-bold">
                   Course
                 </th>
-               
-              
+
                 <th className="py-2 px-4 bg-blue-500 text-white font-bold">
                   Total Marks
                 </th>
@@ -65,10 +64,14 @@ const ViewMarks = () => {
               {students.map((student, index) => (
                 <tr key={student.id}>
                   <td className="border px-4 py-2">{index + 1}</td>
-                  <td className="border px-4 py-2">{student.registrationNumber}</td>
-                  <td className="border px-4 py-2">{student.firstname + " " + student.lastname}</td>
+                  <td className="border px-4 py-2">
+                    {student.registrationNumber}
+                  </td>
+                  <td className="border px-4 py-2">
+                    {student.firstname + " " + student.lastname}
+                  </td>
                   <td className="border px-4 py-2">{student.course}</td>
-                  
+
                   <td className="border px-4 py-2">{student.totalMarks}</td>
                 </tr>
               ))}

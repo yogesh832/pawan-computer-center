@@ -7,10 +7,9 @@ const connectDB = require("./db/dbConnection.js");
 const User = require("./db/user"); // Ensure User model is correctly defined
 const Counter = require("./db/counter");
 
-const Marks = require('./db/marksUser.js'); //for student marks
+const Marks = require("./db/marksUser.js"); //for student marks
 
 const nodemailer = require("nodemailer");
-
 
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -545,29 +544,26 @@ app.put(
   }
 );
 
-
-
 //nodemailer backend logic
 
-
-app.post('/send-email', (req, res) => {
+app.post("/send-email", (req, res) => {
   const { name, email, message } = req.body;
 
   // Configure the transporter for sending email using Nodemailer
   const transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: "gmail",
     auth: {
-      user: 'virender288@gmail.com',  // Your Gmail email address
-      pass: 'rfrfyxzeddbjshrz',     // Use the generated app password
+      user: "virender288@gmail.com", // Your Gmail email address
+      pass: "rfrfyxzeddbjshrz", // Use the generated app password
     },
   });
 
   // Email options
   const mailOptions = {
     from: email,
-    to: 'virender288@gmail.com', // Where the email will be sent
+    to: "virender288@gmail.com", // Where the email will be sent
     subject: `Contact Form Submission from ${name}`,
-     text: `You have received a new message from your contact form:
+    text: `You have received a new message from your contact form:
 
     Name: ${name}
     Email: ${email}
@@ -577,17 +573,16 @@ app.post('/send-email', (req, res) => {
   // Send the email
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.log('Error sending email:', error);
-      return res.status(500).send('Error sending email');
+      console.log("Error sending email:", error);
+      return res.status(500).send("Error sending email");
     }
-    console.log('Email sent:', info.response);
-    res.status(200).send('Email sent successfully');
+    console.log("Email sent:", info.response);
+    res.status(200).send("Email sent successfully");
   });
 });
 
-
 // POST route to create marks for a student using registrationNumber
-app.post('/dashboard/addmarks/:registrationNumber', async (req, res) => {
+app.post("/dashboard/addmarks/:registrationNumber", async (req, res) => {
   try {
     // Get and sanitize the registrationNumber from URL params
     const registrationNumber = req.params.registrationNumber.trim(); // Ensure there are no extra spaces or newlines
@@ -599,46 +594,50 @@ app.post('/dashboard/addmarks/:registrationNumber', async (req, res) => {
     const student = await User.findOne({ registrationNumber });
 
     if (!student) {
-      return res.status(404).json({ message: 'Student not found' });
+      return res.status(404).json({ message: "Student not found" });
     }
 
     // Create the new Marks entry with a reference to the found student
     const newMarksData = new Marks({
       student: student._id, // Reference the student's ObjectId
-      marks
+      marks,
     });
 
     // Save the new Marks document
     const savedMarks = await newMarksData.save();
 
     // Respond with success message
-    res.status(201).json({ message: 'Marks saved successfully', data: savedMarks });
+    res
+      .status(201)
+      .json({ message: "Marks saved successfully", data: savedMarks });
   } catch (error) {
     // Handle errors
-    res.status(500).json({ message: 'Error saving marks', error: error.message });
+    res
+      .status(500)
+      .json({ message: "Error saving marks", error: error.message });
   }
 });
 
-
-app.get('/addStudent/:registrationNumber', async (req, res) => {
+app.get("/addStudent/:registrationNumber", async (req, res) => {
   const registrationNumber = req.params.registrationNumber;
   console.log("Fetching student with registration number:", registrationNumber);
 
   try {
     // Fetch student data
-    const student = await Student.findOne({ registrationNo: registrationNumber });
+    const student = await Student.findOne({
+      registrationNo: registrationNumber,
+    });
 
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    res.json(student);  // Return student data as JSON
+    res.json(student); // Return student data as JSON
   } catch (error) {
     console.error("Error fetching student:", error.message); // Log the error message
-    res.status(500).json({ message: "Server error" });  // Send a more descriptive error
+    res.status(500).json({ message: "Server error" }); // Send a more descriptive error
   }
 });
-
 
 // Start the server
 app.listen(port, () => {

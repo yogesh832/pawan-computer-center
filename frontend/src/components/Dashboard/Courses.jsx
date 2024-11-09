@@ -1,13 +1,45 @@
-import React from 'react';
+import React from "react";
 
 const Courses = () => {
   const courses = [
-    { duration: '1 Month', features: ['Basic content access', 'Community support'], link: '/one' },
-    { duration: '3 Months', features: ['Premium content', 'Access to Q&A sessions', 'Exclusive webinars'], link: '/three' },
-    { duration: '6 Months', features: ['All Premium content', '1-on-1 mentoring', 'Project reviews'], link: '/six' },
-    { duration: '12 Months', features: ['Full Course Access', 'All mentoring', 'Unlimited reviews'], link: '/twelve' },
-    { duration: '18 Months', features: ['Extended support', 'Priority content', 'Unlimited mentorship'], link: '/eighteen' },
-    { duration: '24 Months', features: ['Lifetime Access', 'Priority Q&A', 'Exclusive content'], link: '/twentyfour' },
+    {
+      duration: "1 Month",
+      features: ["Basic content access", "Community support"],
+      link: "/one",
+    },
+    {
+      duration: "3 Months",
+      features: [
+        "Premium content",
+        "Access to Q&A sessions",
+        "Exclusive webinars",
+      ],
+      link: "/three",
+    },
+    {
+      duration: "6 Months",
+      features: ["All Premium content", "1-on-1 mentoring", "Project reviews"],
+      link: "/six",
+    },
+    {
+      duration: "12 Months",
+      features: ["Full Course Access", "All mentoring", "Unlimited reviews"],
+      link: "/twelve",
+    },
+    {
+      duration: "18 Months",
+      features: [
+        "Extended support",
+        "Priority content",
+        "Unlimited mentorship",
+      ],
+      link: "/eighteen",
+    },
+    {
+      duration: "24 Months",
+      features: ["Lifetime Access", "Priority Q&A", "Exclusive content"],
+      link: "/twentyfour",
+    },
   ];
 
   return (
@@ -23,7 +55,9 @@ const Courses = () => {
               key={index}
               className="bg-white shadow-md rounded-lg p-6 hover:shadow-xl transition duration-300 ease-in-out"
             >
-              <h3 className="text-xl font-semibold text-blue-600 mb-4 text-center">{course.duration}</h3>
+              <h3 className="text-xl font-semibold text-blue-600 mb-4 text-center">
+                {course.duration}
+              </h3>
               <ul className="text-gray-700 mb-6 space-y-2">
                 {course.features.map((feature, i) => (
                   <li key={i} className="flex items-center">

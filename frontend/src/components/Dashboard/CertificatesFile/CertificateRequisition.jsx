@@ -1,10 +1,20 @@
-import {React, useState}  from "react";
+import { React, useState } from "react";
 
-const CertificateRequisition = () =>{
-    const [studentID, setStudentID] = useState('');
+const CertificateRequisition = () => {
+  const [studentID, setStudentID] = useState("");
   const [requests, setRequests] = useState([
-    { id: 2, studentId: 'RVSP2407105428', name: 'SANTOSH SINGH', date: '06-07-2024' },
-    { id: -1, studentId: 'RVSP2406105424', name: 'RAJEEV KUMAR', date: '30-06-2024' },
+    {
+      id: 2,
+      studentId: "RVSP2407105428",
+      name: "SANTOSH SINGH",
+      date: "06-07-2024",
+    },
+    {
+      id: -1,
+      studentId: "RVSP2406105424",
+      name: "RAJEEV KUMAR",
+      date: "30-06-2024",
+    },
   ]);
 
   const handleStudentIDChange = (event) => {
@@ -15,23 +25,30 @@ const CertificateRequisition = () =>{
     event.preventDefault();
     if (studentID) {
       const newRequest = {
-        id: Date.now(), 
+        id: Date.now(),
         studentId,
-        name: 'Unknown', 
-        date: new Date().toLocaleDateString('en-CA'),
+        name: "Unknown",
+        date: new Date().toLocaleDateString("en-CA"),
       };
       setRequests([...requests, newRequest]);
-      setStudentID('');
+      setStudentID("");
     }
   };
-    return(
-        <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8">Certificate Requisition</h1>
+  return (
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold text-center mb-8">
+        Certificate Requisition
+      </h1>
       <div className="bg-white p-4 rounded-md mb-4">
-        <h2 className="text-xl font-bold text-black">Certificate Request (Apply)</h2>
+        <h2 className="text-xl font-bold text-black">
+          Certificate Request (Apply)
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="studentId" className="block text-black text-sm font-bold mb-2">
+            <label
+              htmlFor="studentId"
+              className="block text-black text-sm font-bold mb-2"
+            >
               Student ID *
             </label>
             <input
@@ -52,7 +69,9 @@ const CertificateRequisition = () =>{
       </div>
 
       <div className="bg-white p-4 rounded-md">
-        <h2 className="text-xl font-bold text-black">Certificate Requisition (View)</h2>
+        <h2 className="text-xl font-bold text-black">
+          Certificate Requisition (View)
+        </h2>
         <table className="table-auto w-full mt-4">
           <thead>
             <tr>
@@ -75,7 +94,7 @@ const CertificateRequisition = () =>{
         </table>
       </div>
     </div>
-    )
-}
+  );
+};
 
-export default CertificateRequisition
+export default CertificateRequisition;

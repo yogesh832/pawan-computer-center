@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const ProfileHeader = () => {
   return (
@@ -23,32 +23,52 @@ const ProfileHeader = () => {
         {/* About Section */}
         <div className="bg-white p-6 rounded shadow-md w-full sm:w-1/2">
           <h2 className="text-xl font-bold text-gray-800 mb-4">About</h2>
-          <p><strong>Gender:</strong> Male</p>
-          <p><strong>Born:</strong> June 26, xxxx</p>
-          <p><strong>Address:</strong> Bageshwar</p>
-          <p><strong>Email:</strong> pawan123@gmail.com</p>
-          <p><strong>Phone:</strong> +91-1231313414</p>
+          <p>
+            <strong>Gender:</strong> Male
+          </p>
+          <p>
+            <strong>Born:</strong> June 26, xxxx
+          </p>
+          <p>
+            <strong>Address:</strong> Bageshwar
+          </p>
+          <p>
+            <strong>Email:</strong> pawan123@gmail.com
+          </p>
+          <p>
+            <strong>Phone:</strong> +91-1231313414
+          </p>
         </div>
 
         {/* Student Enrolled Section */}
         <div className="bg-white p-6 rounded shadow-md w-full sm:w-1/2">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Student Enrolled</h2>
+          <h2 className="text-xl font-bold text-gray-800 mb-4">
+            Student Enrolled
+          </h2>
           <ul className="space-y-2">
             <li className="bg-gray-100 p-3 rounded-md flex justify-between items-center">
               <span>Student 1</span>
-              <span className="text-sm text-gray-600">Enrolled: 1st Jan 2024</span>
+              <span className="text-sm text-gray-600">
+                Enrolled: 1st Jan 2024
+              </span>
             </li>
             <li className="bg-gray-100 p-3 rounded-md flex justify-between items-center">
               <span>Student 2</span>
-              <span className="text-sm text-gray-600">Enrolled: 15th Feb 2024</span>
+              <span className="text-sm text-gray-600">
+                Enrolled: 15th Feb 2024
+              </span>
             </li>
             <li className="bg-gray-100 p-3 rounded-md flex justify-between items-center">
               <span>Student 3</span>
-              <span className="text-sm text-gray-600">Enrolled: 10th Mar 2024</span>
+              <span className="text-sm text-gray-600">
+                Enrolled: 10th Mar 2024
+              </span>
             </li>
             <li className="bg-gray-100 p-3 rounded-md flex justify-between items-center">
               <span>Student 4</span>
-              <span className="text-sm text-gray-600">Enrolled: 22nd Apr 2024</span>
+              <span className="text-sm text-gray-600">
+                Enrolled: 22nd Apr 2024
+              </span>
             </li>
           </ul>
         </div>

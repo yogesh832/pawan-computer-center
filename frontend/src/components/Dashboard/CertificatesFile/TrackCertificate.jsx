@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const TrackCertificate = () => {
-  const [registrationNo, setRegistrationNo] = useState('');
+  const [registrationNo, setRegistrationNo] = useState("");
   const navigate = useNavigate();
 
   const handleRegistrationNoChange = (event) => {
@@ -18,12 +18,19 @@ const TrackCertificate = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold text-center mb-8">Certificate Tracking</h1>
+      <h1 className="text-3xl font-bold text-center mb-8">
+        Certificate Tracking
+      </h1>
       <div className="bg-white p-4 rounded-md mb-4">
-        <h2 className="text-xl font-bold text-black">Track Certificate (View)</h2>
+        <h2 className="text-xl font-bold text-black">
+          Track Certificate (View)
+        </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label htmlFor="registrationNo" className="block text-black text-sm font-bold mb-2">
+            <label
+              htmlFor="registrationNo"
+              className="block text-black text-sm font-bold mb-2"
+            >
               Registration No *
             </label>
             <input

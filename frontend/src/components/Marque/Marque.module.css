@@ -6,27 +6,26 @@
   box-sizing: border-box;
   margin-block: 20px;
   padding-top: 10px;
-  background-color: #D3D3D3;
+  background-color: #d3d3d3;
 }
 
 .marqueName {
-  background-color: #DB2016;
+  background-color: #db2016;
   z-index: 9;
   color: white;
   font-size: 20px;
   width: 100%;
   display: flex;
- 
+
   align-items: center;
   justify-content: center;
   padding-inline: 32px;
   font-weight: 500;
   margin-top: -10px;
 }
-.resMarqueName{
+.resMarqueName {
   display: none;
 }
-
 
 .marqueeText {
   display: inline-block;
@@ -86,22 +85,22 @@ p {
 
 @media (max-width: 400px) {
   .marqueName {
-    background-color: #DB2016;
+    background-color: #db2016;
     z-index: 9;
     color: white;
     font-size: 16px;
     width: 100%;
     display: flex;
-     display: none;
+    display: none;
     align-items: center;
     justify-content: center;
     height: 45px;
     font-weight: 500;
     margin-top: -10px;
     margin-left: -24px;
-}
+  }
   .resMarqueName {
-    background-color: #DB2016;
+    background-color: #db2016;
     z-index: 9;
     color: white;
     font-size: 16px;
@@ -114,13 +113,12 @@ p {
     font-weight: 500;
     margin-top: -5px;
     margin-left: -24px;
-}
+  }
 
-.marqueeContainer{
-  height: 40px;
-}
+  .marqueeContainer {
+    height: 40px;
+  }
   .marqueeText {
-    
     font-size: 20px;
     height: 40px;
   }

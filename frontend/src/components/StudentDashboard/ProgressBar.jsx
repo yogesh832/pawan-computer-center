@@ -1,5 +1,5 @@
 // ProgressBar.js
-import React from 'react';
+import React from "react";
 
 const ProgressBar = ({ currentDay, totalDays }) => {
   const percentage = (currentDay / totalDays) * 100;
