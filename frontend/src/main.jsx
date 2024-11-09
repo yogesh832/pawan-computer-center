@@ -27,7 +27,7 @@ import Student from "./components/Dashboard/Student.jsx";
 import EditStudent from "./components/Dashboard/Studentsection/EditStudent.jsx";
 import StudentDashboardUI from "./components/StudentDashboard/StudentDashboardUI.jsx";
 import Admin from "./components/account/Admin.jsx";
-import NewUser from "./components/NewUserWithoutSub/newUser.jsx";
+import NewUser from "./components/NewUserWithoutSub/NewUser.jsx";
 
 // Importing Service Components
 import One from "./components/services/onemonth/One.jsx";
@@ -43,7 +43,7 @@ import Twentyfour from "./components/services/twentyfourmonth/Twentyfour.jsx";
 import "../src/index.css";
 import AddMarks from "./components/Dashboard/OfflineExamination/AddMarks.jsx";
 import ViewMarks from "./components/Dashboard/OfflineExamination/ViewMarks.jsx";
-import StudentsMarks from "./components/Dashboard/OfflineExamination/studentsMarks.jsx";
+import StudentsMarks from "./components/Dashboard/OfflineExamination/StudentsMarks.jsx";
 import UnderConstruction from "./UnderConstruction.jsx";
 // Browser Router Setup
 const router = createBrowserRouter([
