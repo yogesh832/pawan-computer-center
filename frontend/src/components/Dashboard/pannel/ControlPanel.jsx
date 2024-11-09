@@ -7,7 +7,7 @@ const ProfileHeader = () => {
       <div className="bg-purple-100 p-6 rounded w-full max-w-screen-lg shadow-lg">
         <div className="flex flex-col items-center">
           <img
-            src="https://placehold.co/400"
+            src="https://www.gravatar.com/avatar/?d=mp"
             alt="Pawan Kumar"
             className="rounded-full w-24 h-24 mb-4 border-4 border-purple-200"
           />
