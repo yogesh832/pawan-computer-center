@@ -620,6 +620,24 @@ app.post('/dashboard/addmarks/:registrationNumber', async (req, res) => {
 });
 
 
+app.get('/addStudent/:registrationNumber', async (req, res) => {
+  const registrationNumber = req.params.registrationNumber;
+  console.log("Fetching student with registration number:", registrationNumber);
+
+  try {
+    // Fetch student data
+    const student = await Student.findOne({ registrationNo: registrationNumber });
+
+    if (!student) {
+      return res.status(404).json({ message: "Student not found" });
+    }
+
+    res.json(student);  // Return student data as JSON
+  } catch (error) {
+    console.error("Error fetching student:", error.message); // Log the error message
+    res.status(500).json({ message: "Server error" });  // Send a more descriptive error
+  }
+});
 
 
 // Start the server

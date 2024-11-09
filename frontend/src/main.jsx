@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import NotFound from "./NotFound.jsx";
-// s
+
 // Importing Components
 import Home from "./components/home/Home.jsx";
 import Layout from "../Layout.jsx";
@@ -43,7 +43,7 @@ import Twentyfour from "./components/services/twentyfourmonth/Twentyfour.jsx";
 import "../src/index.css";
 import AddMarks from "./components/Dashboard/OfflineExamination/AddMarks.jsx";
 import ViewMarks from "./components/Dashboard/OfflineExamination/ViewMarks.jsx";
-
+import StudentsMarks from "./components/Dashboard/OfflineExamination/studentsMarks.jsx";
 // Browser Router Setup
 const router = createBrowserRouter([
   {
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: (
           // <ProtectedRoute>
-            <DashboardLayout />
+          <DashboardLayout />
           //  </ProtectedRoute>
         ),
         children: [
@@ -78,15 +78,24 @@ const router = createBrowserRouter([
           { path: "centerdocument", element: <Centerdocument /> },
           { path: "marketingtools", element: <MarketingTools /> },
           { path: "addstudent", element: <AddStudent /> },
-          { path: "certificationrequisition", element: <CertificateRequisition /> },
+          {
+            path: "certificationrequisition",
+            element: <CertificateRequisition />,
+          },
           { path: "trackcertificate", element: <TrackCertificate /> },
           { path: "viewcertificate", element: <ViewCertificate /> },
           { path: "seeAllStudents", element: <SeeAllStudent /> },
           { path: "addStudent/:registrationNumber", element: <Student /> },
           { path: "editStudent/:registrationNumber", element: <EditStudent /> },
-          {path:"addMarks", element: <AddMarks/>},
-          {path:"viewMarks", element: <ViewMarks/>},
-          { path: "student/:registrationNumber", element: <StudentDashboardUI /> },
+          { path: "addMarks", element: <AddMarks /> },
+          { path: "viewMarks", element: <ViewMarks /> },
+          { path: "studentsMarks/:registrationNumber", element: <StudentsMarks /> },
+ // Updated with correct component name
+
+          {
+            path: "student/:registrationNumber",
+            element: <StudentDashboardUI />,
+          },
         ],
       },
       { path: "*", element: <NotFound /> },
@@ -103,5 +112,5 @@ root.render(
   </React.StrictMode>
 );
 
-// Test toast notification on load
-toast.success("Toast is working!")
+// Display a toast on load within a component
+toast.success("Toast is working!");

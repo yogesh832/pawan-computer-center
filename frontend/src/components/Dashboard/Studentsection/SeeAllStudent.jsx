@@ -11,24 +11,26 @@ const SeeAllStudent = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchStudents = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:5000/dashboard/AddStudent"
-        );
-        if (Array.isArray(response.data)) {
-          setStudents(response.data);
-        } else {
-          setError("Unexpected data format");
-        }
-      } catch (error) {
-        setError("Error fetching data");
-      } finally {
-        setLoading(false);
-      }
-    };
 
+  const fetchStudents = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5000/dashboard/AddStudent"
+      );
+      if (Array.isArray(response.data)) {
+        setStudents(response.data);
+      } else {
+        setError("Unexpected data format");
+      }
+    } catch (error) {
+      setError("Error fetching data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+  
     fetchStudents();
   }, []);
 
