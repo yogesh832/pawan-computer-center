@@ -77,7 +77,7 @@ const StudentDashboardUI = () => {
       <div className="bg-white rounded-lg shadow-lg p-6">
         <div className="flex justify-center mb-4">
           <img
-            src={student.photo || "https://via.placeholder.com/150"}
+            src={student.photo || "https://www.gravatar.com/avatar/?d=mp"}
             alt={`${student.firstname} ${student.lastname}`}
             className="w-32 h-32 object-cover rounded-full border-4 border-gray-200"
           />
