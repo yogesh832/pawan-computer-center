@@ -4,7 +4,8 @@ import { CiEdit } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { FaEye } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-
+import { Link } from "react-router-dom";
+import BackBtn from "../BackBtnForAll/BackBtn";
 const SeeAllStudent = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -57,6 +58,10 @@ const SeeAllStudent = () => {
 
   return (
     <div className="max-h-96 overflow-y-auto">
+      <Link to="/dashboard">
+        <BackBtn />
+      </Link>
+
       {loading ? (
         <p className="text-center py-5">Loading...</p> // Loading state
       ) : error ? (
