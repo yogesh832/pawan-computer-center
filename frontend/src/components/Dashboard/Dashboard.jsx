@@ -28,6 +28,7 @@ import Result from "./Result/Result";
 // import NewUser from '../NewUserWithoutSub/newUser'
 import Courses from "./Courses";
 import Admin from "../account/Admin";
+import AdminUI from "./AdminUI/AdminUI";
 
 // import StudentTable from './Student section/StudentTable'
 
@@ -35,8 +36,9 @@ export const Dashboard = () => {
   return (
     <>
       <div className="flex flex-row ">
-        <Sidebar />
-        <ControlPanel />
+         <Sidebar />
+        {/* <ControlPanel /> */}
+        <AdminUI />
         {/* <ViewCertificate/> */}
         {/* <MarketingTools />  */}
         {/* <CenterMessage /> */}
