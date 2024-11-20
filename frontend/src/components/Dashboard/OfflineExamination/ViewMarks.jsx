@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-<<<<<<< HEAD
-=======
-import BackBtn from "../BackBtnForAll/BackBtn";
->>>>>>> e9180e562cc903e6347ded2c16ecf92230ad6904
 import { Link } from "react-router-dom";
 
 const ViewMarks = () => {
