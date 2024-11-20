@@ -1,4 +1,6 @@
 import React from "react";
+import BackBtn from "../BackBtnForAll/BackBtn";
+import { Link } from "react-router-dom";
 
 const Centerdocument = () => {
   const imageStyle = "h-24 w-36"; // Tailwind classes for height and width
@@ -9,6 +11,9 @@ const Centerdocument = () => {
 
   return (
     <>
+      <Link to="/dashboard">
+        <BackBtn />
+      </Link>
       <h1 className="text-2xl font-bold mb-4">Centre Documents</h1>
       <div className={containerStyle}>
         <div className={alignFormatStyle}>

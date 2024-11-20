@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import BackBtn from "../BackBtnForAll/BackBtn";
+import { Link } from "react-router-dom";
 
 const AddStudent = () => {
   const [formData, setFormData] = useState({
@@ -221,6 +223,9 @@ const AddStudent = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <Link to="/dashboard"> 
+      <BackBtn />
+      </Link>
       <h1 className="text-2xl font-semibold mb-4">Add Student</h1>
       <div className="bg-white p-6 rounded-lg shadow-md">
         <form onSubmit={handleSubmit}>

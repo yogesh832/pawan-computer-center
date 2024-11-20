@@ -73,7 +73,9 @@ const StudentDashboardUI = () => {
             </tr>
             <tr>
               <td className="font-semibold">Name:</td>
-              <td>{student.firstname} {student.lastname}</td>
+              <td>
+                {student.firstname} {student.lastname}
+              </td>
             </tr>
             <tr>
               <td className="font-semibold">ID:</td>

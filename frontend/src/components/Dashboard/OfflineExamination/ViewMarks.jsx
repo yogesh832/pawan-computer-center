@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+<<<<<<< HEAD
+=======
+import BackBtn from "../BackBtnForAll/BackBtn";
+>>>>>>> e9180e562cc903e6347ded2c16ecf92230ad6904
 import { Link } from "react-router-dom";
 
 const ViewMarks = () => {
@@ -36,6 +40,10 @@ const ViewMarks = () => {
 
   return (
     <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg m-5">
+      <Link to="/dashboard"> 
+      <BackBtn />
+      </Link>
+      
       <div className="bg-blue-600 rounded-t-lg p-4">
         <h2 className="text-3xl font-semibold text-center text-white">
           Offline Examination Marks

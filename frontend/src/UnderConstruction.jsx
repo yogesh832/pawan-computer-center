@@ -1,7 +1,9 @@
 import React from "react";
 
+
 const UnderConstruction = () => {
   return (
+      
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="text-center">
         <div className="text-6xl font-bold text-yellow-500 mb-4">🚧</div>

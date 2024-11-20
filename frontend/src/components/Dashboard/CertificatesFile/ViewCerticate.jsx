@@ -4,6 +4,8 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import bgImg from "../../../assets/bg-img.png";
 import bgBorder from "../../../assets/Images/bgBorder.png";
+import { Link } from "react-router-dom";
+import BackBtn from "../BackBtnForAll/BackBtn";
 
 const CertificatePage = () => {
   const [registrationNo, setRegistrationNo] = useState("");
@@ -50,6 +52,10 @@ const CertificatePage = () => {
 
   return (
     <div className="container mx-auto p-4">
+      <Link to="/dashboard"> 
+      <BackBtn />
+      </Link>
+
       <h1 className="text-3xl font-bold text-center mb-8">
         Certificate Tracking
       </h1>

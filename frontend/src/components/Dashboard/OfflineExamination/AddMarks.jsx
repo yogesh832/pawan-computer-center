@@ -1,6 +1,8 @@
 // AddMarks.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import BackBtn from "../BackBtnForAll/BackBtn";
+import { Link } from "react-router-dom";
 
 const AddMarks = () => {
   const [registrationNumber, setRegistrationNumber] = useState(""); // State for student ID
@@ -15,6 +17,9 @@ const AddMarks = () => {
 
   return (
     <div className="max-w-lg mx-auto bg-white shadow-lg rounded-lg m-5">
+      <Link to="/dashboard"> 
+      <BackBtn />
+      </Link>
       <div className="bg-blue-600 rounded-t-lg p-4">
         <h2 className="text-3xl font-semibold text-center text-white">
           Offline Examination
