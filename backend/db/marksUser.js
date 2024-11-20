@@ -1,77 +1,110 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
 
-// Assuming `User` schema is already defined and imported here
-const User = require("./user.js"); // Adjust path if necessary
+const Schema = mongoose.Schema;
 
 // Define schema for individual subjects and their marks
 const subjectSchema = new Schema({
-  subject: {
+  name: {
     type: String,
-    required: true,
+    required: true, // Subject name is mandatory
   },
-  marksObtained: {
+  practical: {
     type: Number,
     required: true,
     min: 0, // Ensure marks are non-negative
   },
-  totalMarks: {
+  written: {
     type: Number,
     required: true,
-    min: 0,
+    min: 0, // Ensure marks are non-negative
+  },
+  total: {
+    type: Number,
+    required: true,
+    min: 0, // Total marks are the sum of practical and written
   },
 });
 
-// Define schema for marks, referencing the User schema
+// Define schema for marks, referencing the Student model
 const marksSchema = new Schema(
   {
-    student: {
-      type: Schema.Types.ObjectId,
-      ref: "User", // Link to the User model
+    registrationNumber: {
+      type: String,
       required: true,
     },
-    marks: [subjectSchema],
+    marksData: [subjectSchema], // Array of subjects with marks
+    totalPractical: {
+      type: Number,
+      default: 0, // Sum of all practical marks
+    },
+    totalWritten: {
+      type: Number,
+      default: 0, // Sum of all written marks
+    },
     totalMarks: {
       type: Number,
-      default: 0,
-    },
-    totalObtained: {
-      type: Number,
-      default: 0,
+      default: 0, // Sum of all total marks
     },
     percentage: {
       type: Number,
-      default: 0,
+      default: 0, // Percentage calculation
+    },
+    grade: {
+      type: String,
+      default: "", // Grade based on percentage
     },
     status: {
       type: String,
-      enum: ["Passed", "Failed"],
-      default: "Passed",
+      default: "", // Pass or Fail based on percentage
     },
   },
   {
-    timestamps: true,
+    timestamps: true, // Add createdAt and updatedAt timestamps
   }
 );
 
-// Pre-save middleware to calculate total marks, obtained marks, and percentage
-marksSchema.pre("save", function (next) {
-  this.totalMarks = this.marks.reduce(
-    (sum, subject) => sum + subject.totalMarks,
+// Pre-save middleware to calculate total marks for practical, written, and overall
+marksSchema.pre('save', function (next) {
+  this.totalPractical = this.marksData.reduce(
+    (sum, subject) => sum + subject.practical,
     0
   );
-  this.totalObtained = this.marks.reduce(
-    (sum, subject) => sum + subject.marksObtained,
+  this.totalWritten = this.marksData.reduce(
+    (sum, subject) => sum + subject.written,
     0
   );
-  this.percentage = this.totalMarks
-    ? (this.totalObtained / this.totalMarks) * 100
-    : 0;
-  this.status = this.percentage >= 40 ? "Passed" : "Failed"; // Assuming 40% is passing
+  this.totalMarks = this.marksData.reduce(
+    (sum, subject) => sum + subject.total,
+    0
+  );
+
+  // Calculate percentage
+  const totalPossibleMarks = this.marksData.length * 100; // Assuming each subject has a maximum of 100 marks
+  this.percentage = (this.totalMarks / totalPossibleMarks) * 100;
+
+  // Assign grade based on percentage
+  if (this.percentage >= 90) {
+    this.grade = 'A+';
+  } else if (this.percentage >= 80) {
+    this.grade = 'A';
+  } else if (this.percentage >= 70) {
+    this.grade = 'B+';
+  } else if (this.percentage >= 60) {
+    this.grade = 'B';
+  } else if (this.percentage >= 50) {
+    this.grade = 'C+';
+  } else if (this.percentage >= 40) {
+    this.grade = 'C';
+  } else {
+    this.grade = 'F';
+  }
+
+  // Determine pass/fail based on percentage or total marks
+  this.status = this.percentage >= 40 ? 'Pass' : 'Fail';
 
   next();
 });
 
-const Marks = mongoose.model("Marks", marksSchema);
-
+// Create and export the Marks model
+const Marks = mongoose.model('Marks', marksSchema);
 module.exports = Marks;

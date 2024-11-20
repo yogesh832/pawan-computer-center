@@ -89,6 +89,7 @@ const router = createBrowserRouter([
           { path: "seeAllStudents", element: <SeeAllStudent /> },
           { path: "addStudent/:registrationNumber", element: <Student /> },
           { path: "editStudent/:registrationNumber", element: <EditStudent /> },
+          {path: "addMarks/:registrationNumber", element:<StudentsMarks/>},
           { path: "addMarks", element: <AddMarks /> },
           { path: "viewMarks", element: <ViewMarks /> },
           {

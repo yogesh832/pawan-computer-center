@@ -581,65 +581,82 @@ app.post("/send-email", (req, res) => {
   });
 });
 
-// POST route to create marks for a student using registrationNumber
-app.post("/dashboard/addmarks/:registrationNumber", async (req, res) => {
+// POST rou// Add Marks for a Student by Registration Number
+app.post('/addMarks/:registrationNumber', async (req, res) => {
+  console.log(req.body); // Log received data for debugging
+
   try {
-    // Get and sanitize the registrationNumber from URL params
-    const registrationNumber = req.params.registrationNumber.trim(); // Ensure there are no extra spaces or newlines
+    const { registrationNumber } = req.params;
+    const { marksData } = req.body;
 
-    // Get marks array from request body
-    const { marks } = req.body;
-
-    // Find the student by registrationNumber
-    const student = await User.findOne({ registrationNumber });
-
-    if (!student) {
-      return res.status(404).json({ message: "Student not found" });
+    // Validate if marksData is provided and is an array
+    if (!marksData || !Array.isArray(marksData) || marksData.length === 0) {
+      return res.status(400).json({ message: "Marks data is required" });
     }
 
-    // Create the new Marks entry with a reference to the found student
-    const newMarksData = new Marks({
-      student: student._id, // Reference the student's ObjectId
-      marks,
+    // Validate each subject in marksData
+    for (const [index, subject] of marksData.entries()) {
+      if (
+        !subject.name ||
+        !subject.practical ||
+        !subject.written ||
+        !subject.total
+      ) {
+        return res.status(400).json({
+          message: `Invalid data in subject ${
+            index + 1
+          }: Name, Practical, Written, and Total fields are required.`,
+        });
+      }
+
+      // Check if practical, written, and total are numbers
+      if (
+        isNaN(subject.practical) ||
+        isNaN(subject.written) ||
+        isNaN(subject.total)
+      ) {
+        return res.status(400).json({
+          message: `Invalid marks for subject ${
+            index + 1
+          }: Practical, Written, and Total must be valid numbers.`,
+        });
+      }
+    }
+
+    // Proceed to save the marks data to the database
+    const newMarks = new Marks({
+      registrationNumber,
+      marksData,
     });
 
-    // Save the new Marks document
-    const savedMarks = await newMarksData.save();
+    await newMarks.save();
 
-    // Respond with success message
-    res
-      .status(201)
-      .json({ message: "Marks saved successfully", data: savedMarks });
+    res.status(201).json({ message: "Marks saved successfully" });
   } catch (error) {
-    // Handle errors
-    res
-      .status(500)
-      .json({ message: "Error saving marks", error: error.message });
+    console.error("Error saving marks:", error);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
 
+
+// Fetch Student by Registration Number
 app.get("/addStudent/:registrationNumber", async (req, res) => {
-  const registrationNumber = req.params.registrationNumber;
-  console.log("Fetching student with registration number:", registrationNumber);
-
   try {
-    // Fetch student data
-    const student = await Student.findOne({
-      registrationNo: registrationNumber,
-    });
+    const { registrationNumber } = req.params;
 
+    // Find the student by registration number
+    const student = await User.findOne({ registrationNumber });
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    res.json(student); // Return student data as JSON
+    res.status(200).json(student); // Return the student data
   } catch (error) {
-    console.error("Error fetching student:", error.message); // Log the error message
-    res.status(500).json({ message: "Server error" }); // Send a more descriptive error
+    console.error("Error fetching student:", error);
+    res.status(500).json({ message: "Error fetching student" });
   }
 });
 
-// Start the server
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:5000`);
 });

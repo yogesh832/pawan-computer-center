@@ -1,4 +1,3 @@
-// StudentsMarks.jsx
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
@@ -11,21 +10,30 @@ const StudentsMarks = () => {
   });
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [message, setMessage] = useState(""); // For success/error messages
+  const [error, setError] = useState(""); // Separate error message for better UX
 
+  // Fetch student data based on registration number
   useEffect(() => {
     const fetchStudentData = async () => {
       try {
+        setLoading(true);
         const response = await axios.get(
-          `http://localhost:5000/addStudent/${registrationNumber}`
+          `http://localhost:5000/dashboard/addStudent/${registrationNumber}`
         );
         const student = response.data;
-        console.log(student);
-        setStudentData((prevData) => ({
-          ...prevData,
-          name: student.name || "Unknown Student",
-        }));
+
+        if (student) {
+          setStudentData({
+            name: `${student.firstname || "Unknown"} ${student.lastname || ""}`,
+            registrationNo: registrationNumber,
+          });
+        } else {
+          setError("Student not found.");
+        }
       } catch (error) {
-        console.error("Error fetching student data:", error);
+        setError("Error fetching student data. Please try again later.");
+        console.error("Error fetching student data:", error.message);
       } finally {
         setLoading(false);
       }
@@ -34,28 +42,84 @@ const StudentsMarks = () => {
     fetchStudentData();
   }, [registrationNumber]);
 
+  // Add a new subject row
   const addSubject = () => {
     setSubjects([
       ...subjects,
-      { name: "", practical: "", written: "", total: "" },
+      { name: "", practical: 0, written: 0, total: 0 },
     ]);
   };
 
+  // Update subject field
   const updateSubject = (index, field, value) => {
     const newSubjects = [...subjects];
-    newSubjects[index][field] = value;
+    const parsedValue = field !== "name" ? parseInt(value || "0", 10) : value;
 
-    if (field === "practical" || field === "written") {
-      newSubjects[index].total =
-        parseInt(newSubjects[index].practical || "0", 10) +
-          parseInt(newSubjects[index].written || "0", 10) || 0;
+    if (isNaN(parsedValue) && field !== "name") {
+      newSubjects[index][field] = ""; // Clear invalid input
+    } else {
+      newSubjects[index][field] = parsedValue;
+
+      // Calculate total if practical or written marks are updated
+      if (field === "practical" || field === "written") {
+        newSubjects[index].total =
+          parseInt(newSubjects[index].practical || "0", 10) +
+          parseInt(newSubjects[index].written || "0", 10);
+      }
     }
 
     setSubjects(newSubjects);
   };
 
+  // Handle saving the marks to the backend
+  const saveMarks = async () => {
+    try {
+      // Validate input
+      if (
+        subjects.some(
+          (subject) =>
+            !subject.name ||
+            subject.practical === "" ||
+            subject.written === "" ||
+            subject.total === ""
+        )
+      ) {
+        setMessage("Please fill out all fields before saving.");
+        return;
+      }
+
+      const marksData = subjects.map((subject) => ({
+        name: subject.name,
+        practical: parseInt(subject.practical, 10),
+        written: parseInt(subject.written, 10),
+        total: parseInt(subject.total, 10),
+      }));
+
+      const response = await axios.post(
+        `http://localhost:5000/addMarks/${registrationNumber}`,
+        { marksData }
+      );
+
+      if (response.status === 201) {
+        setMessage("Marks saved successfully!");
+        setSubjects([]); // Clear subjects after successful save
+      } else {
+        setMessage("Failed to save marks. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error saving marks:", error.message);
+      setMessage("Error saving marks. Please try again later.");
+    }
+  };
+
+  // Loading state while fetching student data
   if (loading) {
-    return <div>Loading student data...</div>; // Loading state
+    return <div>Loading student data...</div>;
+  }
+
+  // Error state
+  if (error) {
+    return <div className="text-center text-red-600">{error}</div>;
   }
 
   return (
@@ -68,6 +132,19 @@ const StudentsMarks = () => {
         <span className="font-bold">Registration No:</span>{" "}
         {studentData.registrationNo}
       </div>
+
+      {/* Display success or error message */}
+      {message && (
+        <div
+          className={`text-center ${
+            message.includes("successfully")
+              ? "text-green-600"
+              : "text-red-600"
+          }`}
+        >
+          {message}
+        </div>
+      )}
 
       <table className="min-w-full border-collapse border border-black">
         <thead>
@@ -138,6 +215,15 @@ const StudentsMarks = () => {
       >
         Add Subject
       </button>
+
+      <div className="mt-5">
+        <button
+          onClick={saveMarks}
+          className="mt-4 px-4 py-2 bg-green-500 text-white font-semibold rounded shadow hover:bg-green-600"
+        >
+          Save Data
+        </button>
+      </div>
     </div>
   );
 };
