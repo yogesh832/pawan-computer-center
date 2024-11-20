@@ -1,77 +1,119 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import bgImg from "../../../assets/bg-img.png";
 import bgBorder from "../../../assets/Images/bgBorder.png";
-import { Link } from "react-router-dom";
 import BackBtn from "../BackBtnForAll/BackBtn";
 
 const CertificatePage = () => {
   const [registrationNo, setRegistrationNo] = useState("");
-  const [student, setStudent] = useState(null);
+  const { registrationNumber } = useParams(); // This will get the registration number from the URL params
+  const [student, setStudent] = useState(null); // Single state for student info
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  // Handle Registration Number Input
   const handleRegistrationNoChange = (event) => {
     setRegistrationNo(event.target.value);
   };
 
+  // Fetch Student Information
   const handleSubmit = async (event) => {
     event.preventDefault();
     setLoading(true);
     setError("");
+    const regNoToUse = registrationNo || registrationNumber; // Use registration number from URL or input field
+
+    if (!regNoToUse) {
+      setError("Please provide a registration number.");
+      setLoading(false);
+      return;
+    }
 
     try {
+      // Make sure the URL is correct and matches your backend route
       const response = await axios.get(
-        `http://localhost:5000/dashboard/AddStudent/${registrationNo}`
+        `http://localhost:5000/dashboard/AddStudent/${regNoToUse}`
       );
       setStudent(response.data);
     } catch (err) {
       console.error("Error fetching student data:", err);
-      setError(
-        "Failed to fetch student data. Please check the registration number and try again."
-      );
+      setError("Failed to fetch student data. Please check the registration number and try again.");
     } finally {
       setLoading(false);
     }
   };
 
+  // Fetch Marks Data (Using Registration Number)
+  useEffect(() => {
+    const fetchStudentResult = async () => {
+      const regNoToUse = registrationNumber || student?.registrationNumber;
+
+      if (!regNoToUse) return;
+
+      try {
+        setLoading(true);
+        // Fetch student result from the backend API
+        const response = await axios.get(
+          `http://localhost:5000/studentsResult/${regNoToUse}`
+        );
+        setStudent((prevStudent) => ({
+          ...prevStudent,
+          result: response.data.marks,
+        }));
+      } catch (error) {
+        setError("Error fetching student result data");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStudentResult();
+  }, [registrationNumber, student?.registrationNumber]); // Dependencies for re-fetching
+
+  // PDF Download Logic
   const downloadPDF = () => {
     const certificateDiv = document.getElementById("certificateDiv");
 
-    html2canvas(certificateDiv, {
-      scale: 3, // Increase scale to improve resolution
-    }).then((canvas) => {
+    html2canvas(certificateDiv, { scale: 3 }).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");
-      const pdf = new jsPDF("landscape", "px", [canvas.width, canvas.height]); // Match canvas dimensions
+      const pdf = new jsPDF("landscape", "px", [canvas.width, canvas.height]);
       pdf.addImage(imgData, "PNG", 0, 0, canvas.width, canvas.height);
       pdf.save("certificate.pdf");
     });
   };
 
+  // Fallback Values for Student Data
+  const studentInfo = student?.studentData || {};
+  const { percentage = 0, status = "N/A" } = studentInfo;
+
   return (
     <div className="container mx-auto p-4">
-      <Link to="/dashboard"> 
-      <BackBtn />
+      <Link to="/dashboard">
+        <BackBtn />
       </Link>
 
-      <h1 className="text-3xl font-bold text-center mb-8">
-        Certificate Tracking
-      </h1>
+      <h1 className="text-3xl font-bold text-center mb-8">Certificate Tracking</h1>
+
+      {/* Download Button */}
+      {student && (
+        <button
+          onClick={downloadPDF}
+          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
+        >
+          Download Certificate as PDF
+        </button>
+      )}
 
       {/* Registration Number Input Form */}
       {!student && (
         <div className="bg-white p-4 rounded-md mb-4">
-          <h2 className="text-xl font-bold text-black mb-4">
-            Track Certificate
-          </h2>
+          <h2 className="text-xl font-bold text-black mb-4">Track Certificate</h2>
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label
-                htmlFor="registrationNo"
-                className="block text-black text-sm font-bold mb-2"
-              >
+              <label htmlFor="registrationNo" className="block text-black text-sm font-bold mb-2">
                 Registration Number *
               </label>
               <input
@@ -99,10 +141,7 @@ const CertificatePage = () => {
         <p className="text-center text-gray-500">Loading...</p>
       ) : (
         student && (
-          <div
-            id="certificateDiv"
-            className="relative w-[900px] h-[594px] m-20 border-2 border-gray-400"
-          >
+          <div id="certificateDiv" className="relative w-[900px] h-[594px] m-20 border-2 border-gray-400">
             <img
               src={bgImg}
               alt="Background"
@@ -117,35 +156,25 @@ const CertificatePage = () => {
             />
             <div className="relative z-10 p-8 mx-[100px] my-[180px]">
               <div className="mb-8 leading-relaxed">
-                <p className=" leading-8 text-xl text-gray-700">
+                <p className="leading-8 text-xl text-gray-700">
                   This is to certify that Mr./Miss.{" "}
                   <span className="text-base font-extrabold">
                     {student.firstname} {student.lastname}
                   </span>
                   , S/O, D/O, W/O{" "}
+                  <span className="text-base font-extrabold">{student.mothername}</span>, with the registration number{" "}
+                  <span className="text-base font-extrabold">{student.registrationNumber}</span>, has successfully completed the{" "}
+                  <span className="text-base font-extrabold">{student.courseOption}</span> course during the period of{" "}
                   <span className="text-base font-extrabold">
-                    {student.mothername}
-                  </span>
-                  , with the registration number{" "}
-                  <span className="text-base font-extrabold">
-                    {student.registrationNumber}
-                  </span>
-                  , has successfully completed the{" "}
-                  <span className="text-base font-extrabold">
-                    {student.courseOption}
-                  </span>{" "}
-                  course during the period of{" "}
-                  <span className="text-base font-extrabold">
-                    01/10/2023 TO 31/12/2023
-                  </span>
-                  . The grade obtained is{" "}
-                  <span className="text-base font-extrabold">A</span>, with a
-                  score of <span className="text-base font-extrabold">82%</span>
-                  . The course was conducted at{" "}
-                  <span className="text-base font-extrabold">
-                    PAWAN COMPUTER CENTER
-                  </span>
-                  .
+                    {new Date(student.createdAt).toLocaleDateString("en-GB", {
+                      day: "2-digit",
+                      month: "2-digit",
+                      year: "numeric",
+                    })} - LAST_DATE_HERE
+                  </span>. The grade obtained is{" "}
+                  <span className="text-base font-extrabold">{status}</span>, with a score of{" "}
+                  <span className="text-base font-extrabold">{percentage}%</span>. The course was conducted at{" "}
+                  <span className="text-base font-extrabold">PAWAN COMPUTER CENTER</span>.
                 </p>
               </div>
               <div className="flex justify-between mb-4 text-sm">
@@ -154,7 +183,7 @@ const CertificatePage = () => {
                 </p>
               </div>
               <div className="flex justify-between items-center text-sm mb-4">
-                <img src="logo1_url_here" alt="ProfilePic" className="h-12" />
+                <img src="logo1_url_here" alt="Logo" className="h-12" />
                 <div>
                   <p>Director Signature</p>
                 </div>
@@ -165,16 +194,6 @@ const CertificatePage = () => {
             </div>
           </div>
         )
-      )}
-
-      {/* Download Button */}
-      {student && (
-        <button
-          onClick={downloadPDF}
-          className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline mt-4"
-        >
-          Download Certificate as PDF
-        </button>
       )}
     </div>
   );
