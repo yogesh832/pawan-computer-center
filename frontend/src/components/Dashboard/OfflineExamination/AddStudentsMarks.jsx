@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const StudentsMarks = () => {
+const AddStudentsMarks = () => {
   const { registrationNumber } = useParams();
   const [studentData, setStudentData] = useState({
     name: "",
@@ -228,4 +228,4 @@ const StudentsMarks = () => {
   );
 };
 
-export default StudentsMarks;
+export default AddStudentsMarks;

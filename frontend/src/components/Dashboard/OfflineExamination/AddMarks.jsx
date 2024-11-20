@@ -9,7 +9,7 @@ const AddMarks = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (registrationNumber) {
-      navigate(`/dashboard/studentsMarks/${registrationNumber}`);
+      navigate(`/dashboard/AddStudentsMarks/${registrationNumber}`);
     }
   };
 

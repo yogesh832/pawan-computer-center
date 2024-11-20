@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const ViewMarks = () => {
   const [students, setStudents] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
+  // Fetch the list of students from the server
   const fetchStudents = async () => {
     try {
       const response = await axios.get(
@@ -23,10 +25,12 @@ const ViewMarks = () => {
     }
   };
 
+  // Fetch students data on component mount
   useEffect(() => {
     fetchStudents();
   }, []);
 
+  // Return loading or error state if applicable
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
@@ -54,9 +58,8 @@ const ViewMarks = () => {
                 <th className="py-2 px-4 bg-blue-500 text-white font-bold">
                   Course
                 </th>
-
                 <th className="py-2 px-4 bg-blue-500 text-white font-bold">
-                  Total Marks
+                  Result
                 </th>
               </tr>
             </thead>
@@ -72,7 +75,16 @@ const ViewMarks = () => {
                   </td>
                   <td className="border px-4 py-2">{student.course}</td>
 
-                  <td className="border px-4 py-2">{student.totalMarks}</td>
+                  <td className="border px-4 py-2">
+                    <Link to={`/dashboard/studentsResult/${student.registrationNumber}`}>
+                      <button
+                        type="button"
+                        className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                      >
+                        View Result
+                      </button>
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>

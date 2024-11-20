@@ -43,8 +43,9 @@ import Twentyfour from "./components/services/twentyfourmonth/Twentyfour.jsx";
 import "../src/index.css";
 import AddMarks from "./components/Dashboard/OfflineExamination/AddMarks.jsx";
 import ViewMarks from "./components/Dashboard/OfflineExamination/ViewMarks.jsx";
-import StudentsMarks from "./components/Dashboard/OfflineExamination/StudentsMarks.jsx";
+import AddStudentsMarks from "./components/Dashboard/OfflineExamination/AddStudentsMarks.jsx";
 import UnderConstruction from "./UnderConstruction.jsx";
+import StudentsResult from "./components/Dashboard/OfflineExamination/StudentsResult.jsx"
 // Browser Router Setup
 const router = createBrowserRouter([
   {
@@ -89,12 +90,20 @@ const router = createBrowserRouter([
           { path: "seeAllStudents", element: <SeeAllStudent /> },
           { path: "addStudent/:registrationNumber", element: <Student /> },
           { path: "editStudent/:registrationNumber", element: <EditStudent /> },
-          {path: "addMarks/:registrationNumber", element:<StudentsMarks/>},
+          {
+            path: "addMarks/:registrationNumber",
+            element: <AddStudentsMarks />,
+          },
+        
           { path: "addMarks", element: <AddMarks /> },
           { path: "viewMarks", element: <ViewMarks /> },
           {
-            path: "studentsMarks/:registrationNumber",
-            element: <StudentsMarks />,
+            path: "AddStudentsMarks/:registrationNumber",
+            element: <AddStudentsMarks />,
+          },
+          {
+            path: "studentsResult/:registrationNumber",
+            element: <StudentsResult />,
           },
 
           // added some site that are under construction

@@ -640,22 +640,34 @@ app.post('/addMarks/:registrationNumber', async (req, res) => {
 
 
 // Fetch Student by Registration Number
-app.get("/addStudent/:registrationNumber", async (req, res) => {
+// Fetch Student by Registration Number and Marks
+app.get("/studentsResult/:registrationNumber", async (req, res) => {
   try {
     const { registrationNumber } = req.params;
 
     // Find the student by registration number
     const student = await User.findOne({ registrationNumber });
+
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    res.status(200).json(student); // Return the student data
+    // Fetch the marks data for the student
+    const marks = await Marks.findOne({ registrationNumber });
+
+    if (!marks) {
+      return res.status(404).json({ message: "Marks data not found" });
+    }
+
+    // Return the student data along with their marks
+    res.status(200).json({ student, marks });
   } catch (error) {
-    console.error("Error fetching student:", error);
-    res.status(500).json({ message: "Error fetching student" });
+    console.error("Error fetching student data:", error);
+    res.status(500).json({ message: "Error fetching student data" });
   }
 });
+
+
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:5000`);
