@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import BackBtn from "../BackBtnForAll/BackBtn";
 
 const ViewMarks = () => {
   const [students, setStudents] = useState([]);
