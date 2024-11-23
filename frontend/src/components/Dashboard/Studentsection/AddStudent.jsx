@@ -36,13 +36,13 @@ const AddStudent = () => {
 
   const courseOptions = {
     "": [],
-    "1-Month Certificate Course": [
+    "1 Month Certificate Course": [
       "CERTIFICATE IN FUNDAMENTAL(RV01001)",
       "CERTIFICATE IN MS EXCEL(RV01003)",
       "CERTIFICATE IN MS POWER POINT(RV01004)",
       "CERTIFICATE IN MS WORD(RV01002)",
     ],
-    "3-Months Certificate Course": [
+    "3 Months Certificate Course": [
       "Advanced Level Graphic Design(RV03039)",
       "Advanced Level Video Production(RV03040)",
       "CERTIFICATE IN ADOBE IN-DESIGN(RV03023)",
@@ -71,7 +71,7 @@ const AddStudent = () => {
       "CERTIFICATE IN AFTER EFFECTS(RV03014)",
       "DIPLOMA IN COMPUTER APPLICATION(RV03001)",
     ],
-    "6-Months Certificate Course": [
+    "6 Months Certificate Course": [
       "DIPLOMA IN MOBILE REPAIRING & SOFTWARE INSTALLATION(RVV06021)",
       "CERTIFICATE IN COMPUTER BASIC AND TALLY(RV06016)",
       "CERTIFICATE IN ENGLISH AND HINDI TYPING(RV06018)",
@@ -86,12 +86,11 @@ const AddStudent = () => {
       "TO WEAR WITH ANGELA WOLF (RVV06006)",
       "DIPLOMA IN WEB TECHNOLOGY(RV06006)",
     ],
-    "1-Year Diploma Course": [],
-    "1-Year Advance Diploma Course": [
+    "12 Months Advance Diploma Course": [
       "ADVANCE DIPLOMA IN COMPUTER APPLICATION(RV18001)",
       "Master Diploma in Computer information(EV18002)",
     ],
-    "2-Years Diploma Course": [
+    "12 Months Diploma Course": [
       "Advance Diploma in Barbering(RVV24004)",
       "ADVANCE DIPLOMA IN COMPUTER HARDWARE & NETWORKING ENGINEERING(RV24003)",
       "ADVANCE DIPLOMA IN FINANCIAL ACCOUNTING(RV24006)",
@@ -101,13 +100,13 @@ const AddStudent = () => {
       "UNDER GRADUATE DIPLOMA IN FASHION DESIGNING(RVV24006)",
       "POST GRADUATE DIPLOMA IN INFORMATION TECHNOLOGY(RV24001)",
     ],
-    "1-Year Health Care Course": [
-      "1-Year Health Care Option 1",
-      "1-Year Health Care Option 2",
+    "12 Months Health Care Course": [
+      "Health Care",
+      "Health Care",
     ],
-    "2-Year Health Care Course": [
-      "2-Years Health Care Option 1",
-      "2-Years Health Care Option 2",
+    "24 Months Health Care Course": [
+      "Health Care",
+      "Health Care",
     ],
   };
 
@@ -358,29 +357,29 @@ const AddStudent = () => {
                 required
               >
                 <option value="">Select Course</option>
-                <option value="1-Month Certificate Course">
-                  1-Month Certificate Course
+                <option value="1 Month Certificate Course">
+                  1 Month Certificate Course
                 </option>
-                <option value="3-Months Certificate Course">
-                  3-Months Certificate Course
+                <option value="3 Months Certificate Course">
+                  3 Months Certificate Course
                 </option>
-                <option value="6-Months Certificate Course">
-                  6-Months Certificate Course
+                <option value="6 Months Certificate Course">
+                  6 Months Certificate Course
                 </option>
-                <option value="1-Year Diploma Course">
-                  1-Year Diploma Course
+                <option value="12 Months Diploma Course">
+                12 Months Diploma Course
                 </option>
-                <option value="1-Year Advance Diploma Course">
-                  1-Year Advance Diploma Course
+                <option value="12 Months Advance Diploma Course">
+                12 Months Advance Diploma Course
                 </option>
-                <option value="2-Years Diploma Course">
-                  2-Years Diploma Course
+                {/* <option value="24 Months Diploma Course">
+                24 Months Diploma Course
+                </option> */}
+                <option value="12 Months Health Care Course">
+                12 Months Health Care Course
                 </option>
-                <option value="1-Year Health Care Course">
-                  1-Year Health Care Course
-                </option>
-                <option value="2-Year Health Care Course">
-                  2-Years Health Care Course
+                <option value="24 Months Health Care Course">
+                24 Months Health Care Course
                 </option>
               </select>
             </div>

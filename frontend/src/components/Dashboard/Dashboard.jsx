@@ -39,8 +39,8 @@ export const Dashboard = () => {
       <div className="flex flex-row ">
          <Sidebar />
         {/* <ControlPanel /> */}
-        {/* <AdminUI /> */}
-        <CourseEnquiries />
+        <AdminUI />
+        {/* <CourseEnquiries /> */}
         {/* <ViewCertificate/> */}
         {/* <MarketingTools />  */}
         {/* <CenterMessage /> */}
