@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import BackBtn from "../../BackBtnForAll/BackBtn";
+import { Link } from "react-router-dom";
 
 const CourseEnquiries = () => {
   const [enquiries, setEnquiries] = useState([]); // State to store contact forms
@@ -20,16 +22,23 @@ const CourseEnquiries = () => {
     fetchEnquiries();
   }, []);
 
+  // Sort enquiries by sentAt in descending order
+  const sortedEnquiries = [...enquiries].sort(
+    (a, b) => new Date(b.sentAt) - new Date(a.sentAt)
+  );
+
   return (
     <div className="p-4">
+     <Link to={"/dashboard"}> <BackBtn /></Link>
+
       <h1 className="text-2xl font-bold mb-4">Course Enquiries</h1>
       {error && <p className="text-red-500">{error}</p>} {/* Display error message */}
-      {enquiries.length > 0 ? (
+      {sortedEnquiries.length > 0 ? (
         <ul className="space-y-4">
-          {enquiries.map((form) => (
+          {sortedEnquiries.map((form) => (
             <li
               key={form._id}
-              className="relative p-4 border rounded-lg shadow-md  bg-white"
+              className="relative p-4 border rounded-lg shadow-md bg-white"
             >
               <p className="mb-2">
                 <strong>Name:</strong> {form.name}

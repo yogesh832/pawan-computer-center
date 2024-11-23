@@ -42,6 +42,7 @@ const [studentCount, setStudentCount] = useState(0);
   }, []); // Empty dependency array to run once when component mounts
 
   return (
+    
     <div className="mb-20 bg-white">
       <div className="bg-cover bg-center h-40 flex mt-10 w-full p-2">
         <img
@@ -57,7 +58,7 @@ const [studentCount, setStudentCount] = useState(0);
         </div>
         <div className="">
           <div>
-            <video className="h-40 mb-2" width="600" autoPlay loop muted>
+            <video className="h-40 mb-2 ml-40" width="600" autoPlay loop muted>
               <source src={vedio} type="video/mp4" />
               Your browser does not support the video tag.
             </video>
