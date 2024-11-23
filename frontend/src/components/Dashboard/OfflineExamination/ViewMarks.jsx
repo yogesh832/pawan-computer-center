@@ -59,7 +59,7 @@ const ViewMarks = () => {
                 </th>
                 <th className="py-2 px-4 bg-blue-500 text-white font-bold">
                   Student Name
-                </th>
+              </th>
                 <th className="py-2 px-4 bg-blue-500 text-white font-bold">
                   Course
                 </th>
