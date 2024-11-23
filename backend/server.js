@@ -670,11 +670,7 @@ app.post('/addMarks/:registrationNumber', async (req, res) => {
 });
 
 
-<<<<<<< HEAD
 // Fetch Student by Registration Number
-=======
-// Fetch Student by Registration Number and Marks
->>>>>>> 4ba3b40757988db86168e7a69e91ac1c8693f28b
 app.get("/studentsResult/:registrationNumber", async (req, res) => {
   try {
     const { registrationNumber } = req.params;
