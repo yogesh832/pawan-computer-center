@@ -8,6 +8,7 @@ const User = require("./db/user"); // Ensure User model is correctly defined
 const Counter = require("./db/counter");
 
 const Marks = require("./db/marksUser.js"); //for student marks
+const ContactForm = require("./db/contactForm.js")
 
 const nodemailer = require("nodemailer");
 
@@ -557,40 +558,59 @@ app.put(
 
 //nodemailer backend logic
 
-app.post("/send-email", (req, res) => {
+app.post("/send-email", async (req, res) => {
   const { name, email, message } = req.body;
 
-  // Configure the transporter for sending email using Nodemailer
+  if (!name || !email || !message) {
+    return res.status(400).send("All fields are required.");
+  }
+
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "virender288@gmail.com", // Your Gmail email address
-      pass: "rfrfyxzeddbjshrz", // Use the generated app password
+      user: "virender288@gmail.com",
+      pass: "rfrfyxzeddbjshrz", // Use app password
     },
   });
 
-  // Email options
   const mailOptions = {
     from: email,
-    to: "virender288@gmail.com", // Where the email will be sent
+    to: "virender288@gmail.com",
     subject: `Contact Form Submission from ${name}`,
     text: `You have received a new message from your contact form:
-
+    
     Name: ${name}
     Email: ${email}
     Message: ${message}`,
   };
 
-  // Send the email
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log("Error sending email:", error);
-      return res.status(500).send("Error sending email");
-    }
-    console.log("Email sent:", info.response);
-    res.status(200).send("Email sent successfully");
-  });
+  try {
+    // Send the email
+    await transporter.sendMail(mailOptions);
+
+    // Save to MongoDB
+    const newContactForm = new ContactForm({ name, email, message });
+    const savedForm = await newContactForm.save();
+
+    console.log("Saved form:", savedForm); // Debug log
+    res.status(200).send("Email sent and form data saved successfully.");
+  } catch (error) {
+    console.error("Error:", error.message); // Debug log for errors
+    res.status(500).send("Error sending email or saving form data.");
+  }
 });
+
+//get route from the backend for nodemailer
+app.get("/contact-forms", async (req, res) => {
+  try {
+    const forms = await ContactForm.find().sort({ sentAt: -1 }); // Fetch and sort by date
+    res.status(200).json(forms);
+  } catch (error) {
+    console.error("Error fetching contact forms:", error);
+    res.status(500).send("Error fetching contact forms.");
+  }
+});
+
 
 // POST rou// Add Marks for a Student by Registration Number
 app.post('/addMarks/:registrationNumber', async (req, res) => {
@@ -650,7 +670,11 @@ app.post('/addMarks/:registrationNumber', async (req, res) => {
 });
 
 
+<<<<<<< HEAD
 // Fetch Student by Registration Number
+=======
+// Fetch Student by Registration Number and Marks
+>>>>>>> 4ba3b40757988db86168e7a69e91ac1c8693f28b
 app.get("/studentsResult/:registrationNumber", async (req, res) => {
   try {
     const { registrationNumber } = req.params;

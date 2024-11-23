@@ -46,6 +46,7 @@ import ViewMarks from "./components/Dashboard/OfflineExamination/ViewMarks.jsx";
 import AddStudentsMarks from "./components/Dashboard/OfflineExamination/AddStudentsMarks.jsx";
 import UnderConstruction from "./UnderConstruction.jsx";
 import StudentsResult from "./components/Dashboard/OfflineExamination/StudentsResult.jsx"
+import CourseEnquiries from "./components/Dashboard/Studentsection/CourseEnquiries/CourseEnquiries.jsx";
 // Browser Router Setup
 const router = createBrowserRouter([
   {
@@ -107,7 +108,7 @@ const router = createBrowserRouter([
           },
 
           // added some site that are under construction
-          { path: "CourseEnquiry", element: <UnderConstruction /> },
+          { path: "CourseEnquiry", element: <CourseEnquiries /> },
           { path: "AddAccount", element: <UnderConstruction /> },
           { path: "AddStudentFee", element: <UnderConstruction /> },
           { path: "ViewStudentFee", element: <UnderConstruction /> },
