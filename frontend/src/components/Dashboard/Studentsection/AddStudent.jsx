@@ -157,6 +157,23 @@ const AddStudent = () => {
       setSelectedCourse(value);
       setFormData({ ...formData, course: value, courseOption: "" });
     }
+      const file = e.target.files[0]; // Get the uploaded file
+  const maxFileSize = 1 * 1024 * 1024; // 1MB size limit
+  const fieldName = e.target.name; // Identify which field triggered the change
+
+  if (!file) return; // No file selected, exit early
+
+  if (file.size > maxFileSize) {
+    alert(`${fieldName} file size must be less than 1MB.`);
+    e.target.value = ""; // Clear the invalid file
+    return;
+  }
+
+ 
+
+  // Handle the valid file (e.g., store in state or upload directly)
+  console.log(`${fieldName} is valid. File size: ${file.size / 1024 / 1024} MB`);
+
   };
 
   const handleSubmit = async (e) => {
@@ -638,56 +655,61 @@ const AddStudent = () => {
               ></textarea>
             </div>
 
-            <div className="w-full md:w-1/2 px-4 mb-4">
-              <label
-                htmlFor="photo"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Upload Photo:
-              </label>
-              <input
-                type="file"
-                id="photo"
-                name="photo"
-                onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                accept="image/*"
-              />
-            </div>
 
-            <div className="w-full md:w-1/2 px-4 mb-4">
-              <label
-                htmlFor="signature"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Upload Signature:
-              </label>
-              <input
-                type="file"
-                id="signature"
-                name="signature"
-                onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                accept="image/*"
-              />
-            </div>
 
+
+{/* img upload */}
             <div className="w-full md:w-1/2 px-4 mb-4">
-              <label
-                htmlFor="marksheet"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Upload Marksheet:
-              </label>
-              <input
-                type="file"
-                id="marksheet"
-                name="marksheet"
-                onChange={handleChange}
-                className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
-                accept="image/*,application/pdf"
-              />
-            </div>
+            <p className="text-blue-500 text-sm"><span className="text-red-500">NOTE:</span>Images must be less then 1 MB each</p>
+      <label htmlFor="photo" className="block text-sm font-medium text-gray-700">
+        Upload Photo:
+      </label>
+      <input
+        type="file"
+        id="photo"
+        name="photo"
+        onChange={handleChange}
+        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        accept="image/*"
+      />
+    </div>
+
+    <div className="w-full md:w-1/2 px-4 mb-4">
+      <label
+        htmlFor="signature"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Upload Signature:
+      </label>
+      <input
+        type="file"
+        id="signature"
+        name="signature"
+        onChange={handleChange}
+        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        accept="image/*"
+      />
+    </div>
+
+    <div className="w-full md:w-1/2 px-4 mb-4">
+      <label
+        htmlFor="marksheet"
+        className="block text-sm font-medium text-gray-700"
+      >
+        Upload Marksheet:
+      </label>
+      <input
+        type="file"
+        id="marksheet"
+        name="marksheet"
+        onChange={handleChange}
+        className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2"
+        accept="image/*,application/pdf"
+      />
+    </div>
+
+
+
 
             <div className="w-full px-4">
               <button

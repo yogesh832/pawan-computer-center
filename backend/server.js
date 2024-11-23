@@ -57,8 +57,8 @@ app.options("/login", (req, res) => {
 
 // Initialize GridFSBucket
 let gfs;
-connectDB()
-  .then(() => {
+
+connectDB().then(() => {
     const db = mongoose.connection.db;
     gfs = new GridFSBucket(db, { bucketName: "uploads" });
     console.log("Database connected and GridFSBucket initialized");
@@ -102,6 +102,17 @@ app.post("/register", async (req, res) => {
   }
 });
 
+
+// GET route for fetching all registered users
+app.get("/users", async (req, res) => {
+  try {
+    const users = await LoginModel.find(); // Fetch all users from the database
+    res.status(200).json(users); // Return the list of users
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    res.status(500).json({ message: "Error fetching users" });
+  }
+});
 // Sample admin data
 
 const admins = [
@@ -659,34 +670,29 @@ app.post('/addMarks/:registrationNumber', async (req, res) => {
 });
 
 
+<<<<<<< HEAD
+// Fetch Student by Registration Number
+=======
 // Fetch Student by Registration Number and Marks
+>>>>>>> 4ba3b40757988db86168e7a69e91ac1c8693f28b
 app.get("/studentsResult/:registrationNumber", async (req, res) => {
   try {
     const { registrationNumber } = req.params;
 
     // Find the student by registration number
     const student = await User.findOne({ registrationNumber });
-
+    
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
     }
 
-    // Fetch the marks data for the student
-    const marks = await Marks.findOne({ registrationNumber });
-
-    if (!marks) {
-      return res.status(404).json({ message: "Marks data not found" });
-    }
-
-    // Return the student data along with their marks
-    res.status(200).json({ student, marks });
+    // Return the student data, including results (assuming results are part of the student document)
+    res.status(200).json(student);
   } catch (error) {
-    console.error("Error fetching student data:", error);
+    console.error("Error fetching student:", error);
     res.status(500).json({ message: "Error fetching student data" });
   }
 });
-
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:5000`);
