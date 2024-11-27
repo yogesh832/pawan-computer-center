@@ -676,7 +676,7 @@ app.get("/studentsResult/:registrationNumber", async (req, res) => {
     const { registrationNumber } = req.params;
 
     // Find the student by registration number
-    const student = await User.findOne({ registrationNumber });
+    const student = await Marks.findOne({ registrationNumber });
     
     if (!student) {
       return res.status(404).json({ message: "Student not found" });
