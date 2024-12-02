@@ -71,7 +71,7 @@ const SeeAllStudent = () => {
   };
 
   return (
-    <div className="max-h-96 overflow-y-auto">
+    <div className="max-h-96 overflow-y-auto mx-10">
       <Link to="/dashboard">
         <BackBtn />
       </Link>

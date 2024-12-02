@@ -1,8 +1,8 @@
 import React from "react";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import { CourseCard } from "../CourseCard.jsx";
-import img from "../../../assets/Images/books.jpg";
+import OneCard from "./OneCard"; // Correct import path
+import img from "../../../assets/Images/books.jpg"; // Ensure path is correct
 
 // Course data
 const courseData = [
@@ -33,15 +33,6 @@ const courseData = [
 ];
 
 export function One() {
-  // Styles for gallery
-  const galleryStyles = {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
-    gap: "16px",
-    padding: "16px",
-  };
-
   return (
     <Box sx={{ padding: { xs: "8px", sm: "16px", md: "16px" } }}>
       <Typography
@@ -60,19 +51,21 @@ export function One() {
         We have selected all the courses ideally for the student for their
         better improvement in technical career prospect.
       </Typography>
-
-      <Box sx={galleryStyles}>
+      <Box
+        sx={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "16px",
+          justifyContent: "center",
+        }}
+      >
         {courseData.map((course, index) => (
-          <CourseCard
+          <OneCard
             key={index}
             title={course.title}
             semester={course.semester}
             description={course.description}
             image={course.image}
-            sx={{
-              width: { xs: "100%", sm: "45%", md: "30%" },
-              maxWidth: "300px",
-            }}
           />
         ))}
       </Box>

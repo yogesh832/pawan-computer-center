@@ -14,11 +14,12 @@ const CertificatePage = () => {
   const [marks, setMarks] = useState([]); // Marks data
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
+const [monthsOfCourse, setMonthsOfCourse] = useState("")
   // Handle Registration Number Input
   const handleRegistrationNoChange = (event) => {
     setRegistrationNo(event.target.value);
   };
+
 
   // Fetch Student Information
   const handleSubmit = async (event) => {
@@ -38,6 +39,9 @@ const CertificatePage = () => {
         `http://localhost:5000/dashboard/AddStudent/${regNoToUse}`
       );
       setStudent(response.data);
+      
+  setMonthsOfCourse(parseInt(response.data.course.split(' ')[0]));
+    console.log(monthsOfCourse);
     } catch (err) {
       console.error("Error fetching student data:", err);
       setError(
@@ -60,7 +64,7 @@ const CertificatePage = () => {
           `http://localhost:5000/studentsResult/${regNoToUse}`
         );
         setMarks(response.data);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error("Error fetching student result data:", error);
         setError("Error fetching student result data.");
@@ -184,7 +188,11 @@ const CertificatePage = () => {
                     month: "2-digit",
                     year: "numeric",
                   })}{" "}
-                  - LAST_DATE_HERE
+                  - {new Date(student.createdAt).toLocaleDateString("en-GB", {
+                    day: "2-digit",
+                    month: "2-digit" ,
+                    year: "numeric",
+                  })}
                 </span>
                 . The grade obtained is{" "}
                 <span className="text-base font-extrabold">{marks.grade}</span>,

@@ -113,35 +113,9 @@ app.get("/users", async (req, res) => {
     res.status(500).json({ message: "Error fetching users" });
 }
 });
+
 // Sample admin data
 
-const admins = [
-  {
-    email: "pawan123@gmail.com",
-    password: "password123",
-    role: "admin",
-  },
-];
-
-console.log("checking the console");
-// Admin login route
-app.post("/admin/login", (req, res) => {
-  const { email, password } = req.body;
-
-  console.log("Received email:", email);
-  console.log("Received password:", password);
-
-  const admin = admins.find(
-    (admin) => admin.email === email && admin.password === password
-  );
-
-  if (admin) {
-    res.status(200).json({ message: "Login successful", admin });
-  } else {
-    console.log("Invalid login attempt for email:", email);
-    res.status(401).json({ message: "Invalid email or password" });
-  }
-});
 
 // Login User
 app.post("/login", async (req, res) => {
@@ -183,9 +157,42 @@ app.post("/login", async (req, res) => {
   }
 });
 
+
+const admins = [
+  {
+    email: "pawan123@gmail.com",
+    password: "password123",
+    role: "admin",
+  },
+];
+
+console.log("checking the console");
+
+
+// Admin login route
+app.post("/admin/login", (req, res) => {
+  const { email, password } = req.body;
+
+  console.log("Received email:", email);
+  console.log("Received password:", password);
+
+  const admin = admins.find(
+    (admin) => admin.email === email && admin.password === password
+  );
+
+  if (admin) {
+    res.status(200).json({ message: "Login successful", admin });
+  } else {
+    console.log("Invalid login attempt for email:", email);
+    res.status(401).json({ message: "Invalid email or password" });
+  }
+});
+
+
+
 // POST: Add a new student
 app.post(
-  "/dashboard/AddStudent",
+"/dashboard/AddStudent",
   upload.fields([
     { name: "photo", maxCount: 1 },
     { name: "signature", maxCount: 1 },
