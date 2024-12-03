@@ -14,43 +14,88 @@ const CertificatePage = () => {
   const [marks, setMarks] = useState([]); // Marks data
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-const [monthsOfCourse, setMonthsOfCourse] = useState("")
+  const [monthsOfCourse, setMonthsOfCourse] = useState("");
+  const [firstDate, setFirstDate] = useState("");
+  const [lastDate, setLastDate] = useState("");
+
   // Handle Registration Number Input
   const handleRegistrationNoChange = (event) => {
     setRegistrationNo(event.target.value);
   };
 
+  // Function to compute dates when the student data is fetched
+// Function to compute dates when the student data is fetched
+const computeCourseDates = (createdAt, monthsOfCourse) => {
+  const startDate = new Date(createdAt).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
 
-  // Fetch Student Information
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError("");
-    const regNoToUse = registrationNo || registrationNumber;
+  const endDate = new Date(
+    new Date(createdAt).setMonth(new Date(createdAt).getMonth() + monthsOfCourse)
+  ).toLocaleDateString("en-GB", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
 
-    if (!regNoToUse) {
-      setError("Please provide a registration number.");
+  return { startDate, endDate };
+};
+
+// Fetch Student Information
+const handleSubmit = async (event) => {
+  event.preventDefault();
+  setLoading(true);
+  setError("");
+  const regNoToUse = registrationNo || registrationNumber;
+
+  if (!regNoToUse) {
+    setError("Please provide a registration number.");
+    setLoading(false);
+    return;
+  }
+
+  try {
+    const response = await axios.get(
+      `http://localhost:5000/dashboard/AddStudent/${regNoToUse}`
+    );
+    const studentData = response.data;
+
+    const courseDuration = parseInt(studentData.course.split(" ")[0]);
+    const { startDate, endDate } = computeCourseDates(
+      studentData.createdAt,
+      courseDuration
+    );
+
+    // Compare last date with the present date
+    const currentDate = new Date();
+    const parsedLastDate = new Date(
+      new Date(studentData.createdAt).setMonth(
+        new Date(studentData.createdAt).getMonth() + courseDuration
+      )
+    );
+
+    if (parsedLastDate >= currentDate) {
+      setError("The course completion date has passed. Cannot show the result.");
       setLoading(false);
       return;
     }
 
-    try {
-      const response = await axios.get(
-        `http://localhost:5000/dashboard/AddStudent/${regNoToUse}`
-      );
-      setStudent(response.data);
-      
-  setMonthsOfCourse(parseInt(response.data.course.split(' ')[0]));
-    console.log(monthsOfCourse);
-    } catch (err) {
-      console.error("Error fetching student data:", err);
-      setError(
-        "Failed to fetch student data. Please check the registration number and try again."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+    // Set valid data to state
+    setStudent(studentData);
+    setMonthsOfCourse(courseDuration);
+    setFirstDate(startDate);
+    setLastDate(endDate);
+  } catch (err) {
+    console.error("Error fetching student data:", err);
+    setError(
+      "Failed to fetch student data. Please check the registration number and try again."
+    );
+  } finally {
+    setLoading(false);
+  }
+};
 
   // Fetch Marks Data
   useEffect(() => {
@@ -64,7 +109,6 @@ const [monthsOfCourse, setMonthsOfCourse] = useState("")
           `http://localhost:5000/studentsResult/${regNoToUse}`
         );
         setMarks(response.data);
-        // console.log(response.data);
       } catch (error) {
         console.error("Error fetching student result data:", error);
         setError("Error fetching student result data.");
@@ -86,10 +130,6 @@ const [monthsOfCourse, setMonthsOfCourse] = useState("")
       pdf.save("certificate.pdf");
     });
   };
-
-  // Student Data Fallbacks
-  const studentInfo = student?.studentData || {};
-  const { percentage = 0, status = "N/A" } = studentInfo;
 
   return (
     <div className="container mx-auto p-4">
@@ -183,25 +223,21 @@ const [monthsOfCourse, setMonthsOfCourse] = useState("")
                 </span>{" "}
                 course during the period of{" "}
                 <span className="text-base font-extrabold">
-                  {new Date(student.createdAt).toLocaleDateString("en-GB", {
-                    day: "2-digit",
-                    month: "2-digit",
-                    year: "numeric",
-                  })}{" "}
-                  - {new Date(student.createdAt).toLocaleDateString("en-GB", {
-                    day: "2-digit",
-                    month: "2-digit" ,
-                    year: "numeric",
-                  })}
+                  {firstDate} to {lastDate}
                 </span>
                 . The grade obtained is{" "}
                 <span className="text-base font-extrabold">{marks.grade}</span>,
                 with a score of{" "}
                 <span className="text-base font-extrabold">
-                  {marks.totalMarks} out of {(marks.marksData ? marks.marksData.length : 0 )*100}
-                </span> and with 
-                <span className="text-base font-extrabold"> {marks.percentage}%</span>.
-                The course was conducted at{" "}
+                  {marks.totalMarks} out of{" "}
+                  {(marks.marksData ? marks.marksData.length : 0) * 100}
+                </span>{" "}
+                and with
+                <span className="text-base font-extrabold">
+                  {" "}
+                  {marks.percentage}%
+                </span>
+                . The course was conducted at{" "}
                 <span className="text-base font-extrabold">
                   PAWAN COMPUTER CENTER
                 </span>

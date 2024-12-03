@@ -79,7 +79,6 @@ app.post("/register", async (req, res) => {
     if (!name || !email || !password) {
       return res.status(400).json({ message: "All fields are required" });
     }
-
     const existingUser = await LoginModel.findOne({ email });
     if (existingUser) {
       return res.status(400).json({ message: "User already exists" });
