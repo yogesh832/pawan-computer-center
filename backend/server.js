@@ -31,7 +31,7 @@ const allowedOrigins = [
   "https://pawan-computer-center-h5xa.vercel.app",
 ];
 
-app.use(
+app.use( 
   cors({
     origin: function (origin, callback) {
       if (!origin || allowedOrigins.indexOf(origin) !== -1) {
