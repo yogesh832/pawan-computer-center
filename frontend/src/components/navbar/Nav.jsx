@@ -52,7 +52,7 @@ const Nav = () => {
           {/* Wrap logo in NavLink to make it clickable and navigate to home */}
           <NavLink to="/">
             <img
-              className="w-[10vw] sm:w-[5vw] lg:w-[5vw]"
+              className="w-[15vw] sm:w-[6vw] lg:w-[6vw]"
               src={logo}
               alt="Logo"
             />
