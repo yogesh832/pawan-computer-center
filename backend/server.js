@@ -26,27 +26,31 @@ app.use(express.json());
 // // JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret_key"; // Use environment variable
 
+
+app.use(express.json());
+
+// Allowed origins for CORS
 const allowedOrigins = [
   "http://localhost:5173",
+  "http://localhost:5174",
   "https://pawan-computer-center-h5xa.vercel.app",
 ];
 
-app.use( 
+// CORS configuration
+app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
         callback(new Error("Not allowed by CORS"));
       }
     },
-    methods: "GET,POST,PUT,DELETE,OPTIONS",
-    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // Allowed HTTP methods
+    credentials: true, // Include credentials in cross-origin requests
   })
 );
 
-// Preflight request handler for all routes
-app.options("*", cors());
 
 app.options("/login", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*"); // or specify your domain
@@ -397,6 +401,7 @@ app.get("/dashboard/AddStudent/:registrationNumber", async (req, res) => {
 });
 
 // Backend Route Example (Node.js/Express)
+//----------------------------***** In Doubt *****----------------------------------
 app.get("/dashboard/student/:registrationNumber", async (req, res) => {
   try {
     const { registrationNumber } = req.params;
